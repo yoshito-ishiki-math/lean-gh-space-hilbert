@@ -15,7 +15,7 @@ jobs:
       repository: yoshito-ishiki-math/lean-gh-space-hilbert
       commit: ${{ inputs.commit || github.sha }}
       pipeline_commit: a59f25bd8a66bf6faf3a4f4260d412989c0185ea
-      request_id: papern-${{ github.run_id }}-${{ github.run_attempt }}
+      request_id: papern000001
       mode: full
       execution_profile: palomar-standard-v1
-      options: '{"comparator_config_path":"comparator.json"}'
+      options: '{"comparator_config_path":"comparator.json","authorization_relationship":"maintainer"}'
