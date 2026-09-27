@@ -1,0 +1,266 @@
+\paraid{p-e72a35de4049}
+Let
+$\GHSpace$
+denote the space of isometry classes of nonempty compact metric spaces
+with the Gromov--Hausdorff distance
+$\GHDistance$.
+In this paper,
+we construct a measure for each compact metric space.
+The assignment is continuous in the Gromov--Hausdorff topology.
+Specifically,
+if the spaces are isometrically embedded in a common compact metric space
+and converge in Hausdorff distance,
+then the pushed-forward measures converge weakly.
+
+\paraid{p-96038747b89a}
+Larrieu
+\cite[arXiv v4, Theorem~3]{Larrieu2014InvariantProbabilities}
+describes a construction of Borel probability measures on nonempty compact
+metric spaces that are invariant under isometries between open subsets.
+The construction uses a fixed generalized limit.
+The cited result does not assert full support or continuity as the underlying
+compact metric space varies.
+Leinster and Roff
+\cite[Theorem~1.1 and Definition~9.2]{LeinsterRoff2021Entropy}
+study probability measures that maximize their family of metric entropies.
+They define a uniform measure by taking a weak limit of maximizing measures
+as the metric is multiplied by a factor tending to infinity,
+under the assumptions that the maximizing measure is unique for all sufficiently
+large factors and that the limit exists.
+The  problem here concerns the ordinary Gromov--Hausdorff topology
+on the underlying compact spaces and weak convergence of measures in
+common ambient spaces.
+
+\paraid{p-6e73278858c1}
+In our main result,
+\Cref{thm:invariant-measures},
+we assign to every nonempty compact metric space
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+a Borel probability measure
+$\SelectedMeasure{\BaseCarrier}{\MetricSymbol}$
+with full support,
+so that
+\[
+ \supp(\SelectedMeasure{\BaseCarrier}{\MetricSymbol})=\BaseCarrier.
+\]
+For every isometry
+$\IdentifyingIsometry\colon\MetricSpace{\BaseCarrier}{\MetricSymbol}
+\to\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$,
+we have
+\[
+ \IdentifyingIsometry\Pushforward\SelectedMeasure{\BaseCarrier}{\MetricSymbol}
+ =\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric}.
+\]
+This means well-definedness.
+Let compact subspaces
+$\BaseCarrier_\SequenceIndex$
+and
+$\BaseCarrier$
+of a compact metric space
+$\MetricSpace{\AmbientCarrier}{\AmbientMetric}$
+carry the restricted metrics
+$\MetricSymbol_\SequenceIndex$
+and
+$\MetricSymbol$.
+Then
+\[
+ \HausdorffDistance{\AmbientMetric}(\BaseCarrier_\SequenceIndex,\BaseCarrier)\to0
+ \quad\Longrightarrow\quad
+ \SelectedMeasure{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex}
+ \to\SelectedMeasure{\BaseCarrier}{\MetricSymbol}
+ \quad\text{weakly in }\ProbabilityMeasures(\AmbientCarrier).
+\]
+We regard the selected measures as probabilities on the common ambient space.
+Since
+$\supp(\SelectedMeasure{\BaseCarrier}{\MetricSymbol})=\BaseCarrier$,
+for every
+$1\leq\IntegrabilityExponent<\infty$
+and every
+$\HilbertFunction\in\ContinuousFunctions(\BaseCarrier)\setminus\{0\}$,
+we have
+\[
+ \norm{\HilbertFunction}_{\LebesgueSpace^\IntegrabilityExponent
+   (\BaseCarrier,\SelectedMeasure{\BaseCarrier}{\MetricSymbol})}^{\IntegrabilityExponent}
+ =\int_\BaseCarrier|\HilbertFunction(\BasePoint)|^{\IntegrabilityExponent}
+   \,\IntegrationDifferential\SelectedMeasure{\BaseCarrier}{\MetricSymbol}(\BasePoint)
+ >0.
+\]
+Isometry compatibility and weak continuity permit the corresponding
+integrals to be compared as the compact spaces vary.
+
+\paraid{p-a9e34dfe60e6}
+To obtain an invariant full-support probability,
+for a fixed compact metric space,
+we average a full-support probability over its compact isometry group.
+Rouyer's results
+\cite[arXiv v1, Theorems~2 and~4]{Rouyer2011}
+imply that compact metric spaces with trivial isometry group are dense in
+$\GHSpace$.
+Thus the map assigning to each compact metric space its isometry group,
+equipped with the uniform metric, is discontinuous with respect to the
+Gromov--Hausdorff distance.
+We therefore construct the invariant probabilities simultaneously and continuously.
+We work in the Gromov--Hausdorff--Prokhorov space of compact spaces
+with probability measures.
+In this space,
+we retain the whole underlying compact space even when
+the measure has smaller support.
+Let
+$\InvariantMeasuredSpaces$
+denote the subspace of invariant full-support measured spaces.
+We prove that
+$\InvariantMeasuredSpaces$
+is Polish and that the forgetful map,
+\[
+ \MeasureProjection\colon\InvariantMeasuredSpaces\to\GHSpace,
+ \qquad
+ \MeasureProjection\MeasuredSpace{\BaseCarrier}{\MetricSymbol}{\FirstMeasure}
+ =\MetricSpace{\BaseCarrier}{\MetricSymbol},
+\]
+is a continuous open surjection.
+By the theorems of Banakh and Radul
+\cite[Theorem~1.2, p.~20]{BanakhRadul1999}
+and Valov (\Cref{thm:valov}),
+there is a continuous map
+\[
+ \LawSection\colon\GHSpace\to\ProbabilityMeasures(\InvariantMeasuredSpaces),
+\]
+satisfying
+\[
+ \MeasureProjection\Pushforward\LawSection\MetricSpace{\BaseCarrier}{\MetricSymbol}
+ =\DiracProbability_{\MetricSpace{\BaseCarrier}{\MetricSymbol}}.
+\]
+Fix a compact metric space
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$.
+Each point of the fiber
+$\MeasureProjection^{-1}(\MetricSpace{\BaseCarrier}{\MetricSymbol})$
+can be represented by a compact metric space isometric to
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$,
+together with an invariant full-support probability measure.
+We choose an isometry from that space to
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+and push the measure forward to
+$\BaseCarrier$.
+The resulting probability does not depend on the chosen isometry,
+since the measure is invariant under isometries.
+It also does not depend on the representative,
+since two representatives of the same class are related by a measure-preserving isometry.
+We average these probabilities with respect to
+$\LawSection\MetricSpace{\BaseCarrier}{\MetricSymbol}$,
+using the Riesz--Markov--Kakutani theorem
+(\Cref{thm:riesz-markov-kakutani}).
+We prove continuity of the selected measures by comparing integrals in a
+common compact ambient space.
+
+\paraid{p-b5920f7184fb}
+The law and its average have different domains.
+For the fixed representative
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$,
+put
+$\MeasureFiber{\BaseCarrier}
+ =\MeasureProjection^{-1}(\MetricSpace{\BaseCarrier}{\MetricSymbol})$.
+For every
+$\FiberPoint\in\MeasureFiber{\BaseCarrier}$,
+let
+$\FiberMeasure{\BaseCarrier}{\FiberPoint}$
+be the transported probability on
+$\BaseCarrier$
+described above.
+For every continuous real function
+$\TestFunction$
+on
+$\BaseCarrier$,
+the selected measure satisfies
+\begin{equation}\label{eq:part-i-average-interface}
+ \int_\BaseCarrier\TestFunction(\BasePoint)
+ \,\IntegrationDifferential\SelectedMeasure{\BaseCarrier}{\MetricSymbol}(\BasePoint)
+ =\int_{\MeasureFiber{\BaseCarrier}}
+ \left(\int_\BaseCarrier\TestFunction(\BasePoint)
+ \,\IntegrationDifferential\FiberMeasure{\BaseCarrier}{\FiberPoint}(\BasePoint)\right)
+ \,\IntegrationDifferential\LawSection\MetricSpace{\BaseCarrier}{\MetricSymbol}(\FiberPoint).
+\end{equation}
+The inner integral uses an invariant full-support probability on the
+fixed carrier,
+and the outer integral uses a law on measured isomorphism classes.
+\Cref{lem:continuous-barycenter} shows that this averaging preserves
+invariance and full support.
+
+\paraid{p-3423d1d0cc93}
+As an application,
+we construct a topological embedding
+$s$
+of
+$\GHSpace$
+into the Gromov--Hausdorff--Prokhorov space by attaching the selected measure.
+The forgetful map is a continuous left inverse of
+$s$.
+We prove that the image
+$s(\GHSpace)$
+is a retract of the Gromov--Hausdorff--Prokhorov space and is contained in
+the subspace of invariant full-support probabilities
+(Corollary~\ref{cor:ghp-retract}).
+
+\paraid{p-7734020dafc8}
+For metric measure spaces,
+Kazukawa,
+Nakajima,
+and Shioya
+\cite[arXiv v1, Theorems~1.4--1.6]{KazukawaNakajimaShioya2024}
+prove contractibility and local path connectedness for both the box and
+concentration topologies.
+The section and retraction constructed here relate the ordinary
+Gromov--Hausdorff space to the Gromov--Hausdorff--Prokhorov space.
+
+\medskip
+\noindent\textbf{Dependence on the other parts.}
+\paraid{p-f205aa0a2b93}
+We prove the selection theorem and the retraction using the common
+preliminaries and the results recalled in Section~\ref{sec:prelim-measures}.
+In Part~\ref{part:spectral},
+we use \Cref{thm:invariant-measures}
+to construct local models.
+The later absolute retract argument combines these local models.
+The selected measures enter that argument in the construction of the local models.
+
+\medskip
+\noindent\textbf{Organization.}
+\paraid{p-0dd0534490f6}
+Section~\ref{sec:prelim-measures} contains the preliminaries for this part.
+In Subsection~\ref{subsec:measures-ghp},
+we use the probability background from Subsection~\ref{subsec:preliminaries-probability}
+to introduce the Gromov--Hausdorff--Prokhorov space and prove common ambient
+realization results.
+Subsection~\ref{subsec:measures-preliminaries-laws} recalls Haar probability
+and Valov's theorem.
+In Subsection~\ref{subsec:measures-open-projection},
+we prove that the space of metric measured spaces with invariant full-support
+measures is Polish
+and that its projection onto the unmeasured Gromov--Hausdorff space is open.
+In Subsection~\ref{subsec:measures-laws-and-averages},
+we construct continuous probability laws on the fibers
+and average them to prove \Cref{thm:invariant-measures}.
+In Subsection~\ref{subsec:measures-retract},
+we identify the selected measured spaces as a retract
+of the Gromov--Hausdorff--Prokhorov space.
+
+\medskip
+\noindent\textbf{Conventions and notation.}
+\paraid{p-33d1f4dd98d2}
+All compact metric spaces are nonempty.
+When a metric space represents a point of
+$\GHSpace$,
+we identify it with its isometry class.
+An isometry is a surjective isometric embedding.
+We denote by
+$\ProbabilityMeasures(\DomainSpace)$
+the set of Radon probability measures on a metrizable space
+$\DomainSpace$,
+equipped with the topology of weak convergence against bounded continuous real functions.
+Subscripts in
+$\SelectedMeasure{\BaseCarrier}{\MetricSymbol}$
+refer to the specified metric space
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$.
+For isometrically embedded subsets of a common ambient space,
+we use the same symbols for the subsets and their restricted metrics.
+Sequences are indexed by
+$\NonnegativeIntegers=\{0,1,2,\ldots\}$.

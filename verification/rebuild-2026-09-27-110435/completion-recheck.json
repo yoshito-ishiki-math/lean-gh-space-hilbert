@@ -1,0 +1,9 @@
+{
+  "source_files": 463,
+  "archive_hashes_match": true,
+  "current_sources_match": true,
+  "check_modules": 9,
+  "all_checks_exit_zero": true,
+  "unexpected_axioms": [],
+  "new_lint_diagnostics": []
+}

@@ -1,0 +1,214 @@
+{
+  "date": "2026-09-27T10:46:12.681651+09:00",
+  "scope": "Five active literature inputs; historical eliminated input entries retained with their statuses",
+  "inputs": [
+    {
+      "argument": "hm",
+      "input": "PaperN.PartI.GHPMetricInput",
+      "definition": "PaperN/PartI/GHPMetricInput.lean",
+      "line": 15,
+      "file_sha256": "c8140ec12765f5675600add9266d14cc059642adca74335cff461c81dcb1bab2",
+      "register": "EXTERNAL-INPUTS.md",
+      "register_line": 11,
+      "status": "proved internally by PaperN.PartI.ghpMetricInput_proved; no longer an argument of active main"
+    },
+    {
+      "argument": "hp",
+      "input": "PaperN.PartI.GHPPolishInput",
+      "definition": "PaperN/PartI/GHPMetricInput.lean",
+      "line": 41,
+      "file_sha256": "c8140ec12765f5675600add9266d14cc059642adca74335cff461c81dcb1bab2",
+      "register": "EXTERNAL-INPUTS.md",
+      "register_line": 11,
+      "status": "proved internally for Type-0 by PaperN.PartI.ghpPolishInput_proved; no longer an argument of active main"
+    },
+    {
+      "argument": "hc",
+      "input": "PaperN.PartI.GHPCommonEmbeddingInput",
+      "definition": "PaperN/PartI/CommonRealization.lean",
+      "line": 47,
+      "file_sha256": "61c3b12f5941d71ae6f626843e888f1b191964172c3669ac04214b4852e40911",
+      "register": "EXTERNAL-INPUTS.md",
+      "register_line": 11,
+      "status": "proved internally by PaperN.PartI.ghpCommonEmbeddingInput_proved; no longer an argument of active main"
+    },
+    {
+      "argument": "hg",
+      "input": "PaperN.PartI.GHCommonEmbeddingInput",
+      "definition": "PaperN/PartI/LiftInputs.lean",
+      "line": 13,
+      "file_sha256": "5843c15adff03241c3f1e38fa61d687b26a98268a4048bfc8eb6f9063da74d32",
+      "register": "EXTERNAL-INPUTS.md",
+      "register_line": 118,
+      "status": "proved internally by PaperN.PartI.ghCommonEmbeddingInput_proved; no longer an argument of active main"
+    },
+    {
+      "argument": "ha",
+      "input": "PaperN.PartI.ProbabilityApproximationInput",
+      "definition": "PaperN/PartI/LiftInputs.lean",
+      "line": 20,
+      "file_sha256": "5843c15adff03241c3f1e38fa61d687b26a98268a4048bfc8eb6f9063da74d32",
+      "register": "EXTERNAL-INPUTS.md",
+      "register_line": 118,
+      "status": "proved internally by PaperN.PartI.probabilityApproximationInput_proved; no longer an argument of active main"
+    },
+    {
+      "argument": "hv",
+      "input": "PaperN.PartI.InvariantValovInput",
+      "definition": "PaperN/PartI/InvariantSelectionStatements.lean",
+      "line": 18,
+      "file_sha256": "0c7c53d443e125da2a242b95263107011efdf1545704bae520ec94c3cd97701a",
+      "register": "EXTERNAL-INPUTS.md",
+      "register_line": 89,
+      "status": "explicit-proposition-input; definition-to-existing-register checked; no new source audit"
+    },
+    {
+      "argument": "hk",
+      "input": "PaperN.PartII.DistanceKernelSpectralInput",
+      "definition": "PaperN/PartII/DistanceOperatorStatements.lean",
+      "line": 11,
+      "file_sha256": "411713e6d64c2646a6d66a538399c29b7d74474a216941ebcab254dde8779554",
+      "register": "EXTERNAL-INPUTS.md",
+      "register_line": 155,
+      "status": "proved-in-Lean; no longer external for active entry",
+      "proof": "PaperN.PartII.distanceKernelSpectralInput_proved"
+    },
+    {
+      "argument": "hP",
+      "input": "PaperN.PartII.CutoffProjectionConvergenceInput",
+      "definition": "PaperN/PartII/CutoffProjectionConvergence.lean",
+      "line": 11,
+      "file_sha256": "6bf9207cb3fc7f0a09ade29a2a29a96afdde27bc2a1c0f156d5ad0d9c2d90daa",
+      "register": "EXTERNAL-INPUTS.md",
+      "register_line": 242,
+      "status": "removed from active main chain: selected cutoff strong convergence and rank stability proved internally; general input predicate not inhabited",
+      "proof": "PaperN.PartII.AmbientKernel.selectedCutoffProjection_rank_proved"
+    },
+    {
+      "argument": "hS",
+      "input": "PaperN.PartII.CollectivelyCompactSpectralInclusionInput",
+      "definition": "PaperN/PartII/CollectivelyCompactSpectralInput.lean",
+      "line": 11,
+      "file_sha256": "dba27eab6e7820f5521ff709eecbc1996dc80360099840ddd2b81943924425e0",
+      "register": "EXTERNAL-INPUTS.md",
+      "register_line": 221,
+      "status": "proved in Lean by collectivelyCompactSpectralInclusionInput_proved; already removed from active main chain"
+    },
+    {
+      "argument": "hf",
+      "input": "PaperN.PartII.CompactEigenvalueFinitenessInput",
+      "definition": "PaperN/PartII/CompactEigenvalueInput.lean",
+      "line": 10,
+      "file_sha256": "e32a9dd7aca354e89af08dca946e3041f31dfc72d51c12bc54c71f9b95c3b5da",
+      "register": "EXTERNAL-INPUTS.md",
+      "register_line": 170,
+      "status": "proved-in-Lean; no longer external for active entry",
+      "proof": "PaperN.PartII.compactEigenvalueFinitenessInput_proved"
+    },
+    {
+      "argument": "hR",
+      "input": "PaperN.PartII.CompactCutoffRieszRangeInput",
+      "definition": "PaperN/PartII/CutoffRieszInput.lean",
+      "line": 10,
+      "file_sha256": "b0d3f4a11e0eeaaec047adccef2c05d5a36806ce184fb7fda883e310c65b0689",
+      "register": "EXTERNAL-INPUTS.md",
+      "register_line": 182,
+      "status": "removed from active main; required distance-kernel case proved by ambient_cutoffCircle_range_proved; general predicate remains uninhabited"
+    },
+    {
+      "argument": "hC",
+      "input": "PaperN.PartII.RectangleCircleResolventInput",
+      "definition": "PaperN/PartII/ContourComparison.lean",
+      "line": 9,
+      "file_sha256": "36cff3b79081ebfb9149d2213404fe908e99deee2bc1e620db432973d429d0bb",
+      "register": "EXTERNAL-INPUTS.md",
+      "register_line": 192,
+      "status": "removed from active main; required distance-kernel case proved by ambient_cutoffContour_eq_circle_of_bound; general predicate remains uninhabited"
+    },
+    {
+      "argument": "hH",
+      "input": "PaperN.PartII.EquivariantHyperspaceARInput",
+      "definition": "PaperN/PartII/EquivariantARInputs.lean",
+      "line": 27,
+      "file_sha256": "9b14d12cda190128095407e0d7b807707797a4d74f3d3a4513d53e40207c2b8b",
+      "register": "EXTERNAL-INPUTS.md",
+      "register_line": 267,
+      "status": "explicit-proposition-input; definition-to-existing-register checked; no new source audit"
+    },
+    {
+      "argument": "hO",
+      "input": "PaperN.PartII.OrbitARInput",
+      "definition": "PaperN/PartII/EquivariantARInputs.lean",
+      "line": 40,
+      "file_sha256": "9b14d12cda190128095407e0d7b807707797a4d74f3d3a4513d53e40207c2b8b",
+      "register": "EXTERNAL-INPUTS.md",
+      "register_line": 267,
+      "status": "explicit-proposition-input; definition-to-existing-register checked; no new source audit"
+    },
+    {
+      "argument": "hD",
+      "input": "PaperN.PartII.HannerDominationInput",
+      "definition": "PaperN/PartII/HannerDomination.lean",
+      "line": 20,
+      "file_sha256": "0c35b30c11c329a7d24d8849828f78c3ec319ae5559a1880b91465824c0134e5",
+      "register": "EXTERNAL-INPUTS.md",
+      "register_line": 297,
+      "status": "explicit-proposition-input; definition-to-existing-register checked; no new source audit"
+    },
+    {
+      "argument": "hA",
+      "input": "PaperN.PartII.HannerANRCategoryInput",
+      "definition": "PaperN/PartII/HannerDomination.lean",
+      "line": 25,
+      "file_sha256": "0c35b30c11c329a7d24d8849828f78c3ec319ae5559a1880b91465824c0134e5",
+      "register": "EXTERNAL-INPUTS.md",
+      "register_line": 297,
+      "status": "proved internally by PaperN.PartII.hannerANRCategoryInput_proved; no longer an argument of active main"
+    },
+    {
+      "argument": "hE",
+      "input": "PaperN.PartII.ANRToANEInput",
+      "definition": "PaperN/PartII/GHAbsoluteRetract.lean",
+      "line": 9,
+      "file_sha256": "dfab90d882600b390cc08886e8046eb0a8ce8c2de5b1277f1845f7b3230805c4",
+      "register": "EXTERNAL-INPUTS.md",
+      "register_line": 317,
+      "status": "removed from active main; GH-space case proved using separable ANR-to-ANE; general nonseparable predicate remains uninhabited"
+    },
+    {
+      "argument": "hK",
+      "input": "PaperN.PartII.ContractibleANEToAEInput",
+      "definition": "PaperN/PartII/GHAbsoluteRetract.lean",
+      "line": 14,
+      "file_sha256": "dfab90d882600b390cc08886e8046eb0a8ce8c2de5b1277f1845f7b3230805c4",
+      "register": "EXTERNAL-INPUTS.md",
+      "register_line": 317,
+      "status": "proved internally by PaperN.PartII.contractibleANEToAEInput_proved; no longer an argument of active main"
+    },
+    {
+      "argument": "hT",
+      "input": "PaperN.PartIV.TorunczykRecognitionInput",
+      "definition": "PaperN/PartIV/HilbertRecognition.lean",
+      "line": 13,
+      "file_sha256": "1dc2084c4aa53e76747a4e77e787cb7dd0b65dd85a7b52dc99013b0fe45ff2d3",
+      "register": "EXTERNAL-INPUTS.md",
+      "register_line": 333,
+      "status": "explicit-proposition-input; definition-to-existing-register checked; no new source audit"
+    }
+  ],
+  "register_sha256": "50b3bfe3df90fdfecae929a047bc323cacf8d5e886947c6dfaf7d469cf300d1f",
+  "remaining": [],
+  "finding": "The active main has five external inputs; hp is replaced by internally proved completeness and small-carrier separability.",
+  "active_entry": "PaperN.PartIV.ghSpace_homeomorphic_hilbert_main",
+  "remaining_external_inputs": 5,
+  "current_register_sha256": "2f57316fb95a033703bbb873b3d601dbfc17895fd2e3d2b8332e4e7989358589",
+  "active_signature_evidence": "verification/rebuild-2026-09-27-110435/CheckMainStatements.log",
+  "independent_review": "not performed; same-agent alignment explicitly recorded",
+  "final_alignment_records": [
+    "verification/part-i-final-alignment-2026-09-27-111236/ALIGNMENT.md",
+    "verification/part-ii-final-alignment-2026-09-27-111409/ALIGNMENT.md",
+    "verification/parts-iii-iv-final-alignment-2026-09-27-111534/ALIGNMENT.md"
+  ],
+  "completion_record": "COMPLETION.md",
+  "completion_scope": "owner-authorized main theorems and dependencies, conditional on five cited inputs"
+}

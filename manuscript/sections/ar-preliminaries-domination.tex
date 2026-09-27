@@ -1,0 +1,57 @@
+\subsection{Domination and absolute extension}\label{subsec:ar-preliminaries-domination}
+\paraid{p-e539d8246cc3}
+We first use domination by ANRs to obtain the ANR property for
+all separable
+metrizable spaces.
+For a contractible space,
+we obtain the AE property.
+Roughly speaking,
+the next theorem states that a space is an ANR if,
+for every
+$\ErrorTolerance>0$,
+its identity map can be deformed to a map factoring through an ANR
+by a homotopy whose point tracks have diameter less than
+$\ErrorTolerance$.
+
+\begin{theorem}[{\cite[Theorem~7.2(b)]{Hanner1951}}]\label{thm:hanner-domination}
+\paraid{p-91db7d801e6b}
+Let
+$\MetricSpace{\RecognitionTarget}{\TargetMetric}$
+be a separable metric space.
+Assume that for every
+$\ErrorTolerance>0$
+there exist a separable metrizable ANR
+$\AuxiliaryAR$
+and continuous maps
+\[
+ \ApproximationMap\colon\RecognitionTarget\to\AuxiliaryAR,
+ \quad\RealizationMap\colon\AuxiliaryAR\to\RecognitionTarget,
+ \quad\ApproximationHomotopy\colon\RecognitionTarget\times\UnitInterval\to\RecognitionTarget
+\]
+such that for every
+$\DomainPoint\in\RecognitionTarget$,
+\[
+ \ApproximationHomotopy(\DomainPoint,0)=\DomainPoint,
+ \quad\ApproximationHomotopy(\DomainPoint,1)=\RealizationMap\ApproximationMap(\DomainPoint),
+ \quad
+ \diam_{\TargetMetric}\{\ApproximationHomotopy(\DomainPoint,\HomotopyTime)
+ \mid\HomotopyTime\in\UnitInterval\}<\ErrorTolerance.
+\]
+Then
+$\RecognitionTarget$
+is an ANR
+for all  separable metrizable spaces.
+\end{theorem}
+
+\begin{theorem}[{\cite[Theorem~13.4]{Hanner1952}}]\label{thm:anr-category}
+\paraid{p-acd75c965ce7}
+A separable metrizable space which is an ANR for all separable metrizable
+spaces is an ANR for all metrizable spaces.
+\end{theorem}
+
+\begin{theorem}[{\cite[Theorem~12.3]{Hanner1952}}]\label{thm:contractible-ane}
+\paraid{p-741437522ce9}
+A nonempty contractible metrizable ANE for
+all metrizable spaces is an AE
+for all metrizable spaces.
+\end{theorem}

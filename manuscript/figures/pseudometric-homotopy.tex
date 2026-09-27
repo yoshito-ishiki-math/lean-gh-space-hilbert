@@ -1,0 +1,73 @@
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Stealth,font=\small]
+\node at (0,2.15) {$\HomotopyTime=0$};
+\node at (3.8,2.15) {$\HomotopyTime=\tfrac12$};
+\node at (7.6,2.15) {$\HomotopyTime=1$};
+\coordinate (leftzero) at (-0.375,0);
+\coordinate (leftone) at (0.375,0);
+\coordinate (lefttwo) at (0,1.4524);
+\draw (leftzero) -- node[left] {$2$} (lefttwo)
+ -- node[right] {$2$} (leftone)
+ -- node[below] {$1$} (leftzero);
+\foreach \point in {leftzero,leftone,lefttwo}
+ \fill (\point) circle (1.4pt);
+\node[below left] at (leftzero) {$\ComparisonPoint_0$};
+\node[below right] at (leftone) {$\ComparisonPoint_1$};
+\node[above] at (lefttwo) {$\ComparisonPoint_2$};
+\begin{scope}[xshift=3.8cm]
+ \coordinate (middlezero) at (-0.1875,0);
+ \coordinate (middleone) at (0.1875,0);
+ \coordinate (middletwo) at (0,1.4882);
+ \draw (middlezero) -- node[left] {$2$} (middletwo)
+ -- node[right] {$2$} (middleone)
+ -- node[below] {$\tfrac12$} (middlezero);
+ \foreach \point in {middlezero,middleone,middletwo}
+  \fill (\point) circle (1.4pt);
+ \node[below left] at (middlezero) {$\ComparisonPoint_0$};
+ \node[below right] at (middleone) {$\ComparisonPoint_1$};
+ \node[above] at (middletwo) {$\ComparisonPoint_2$};
+\end{scope}
+\begin{scope}[xshift=7.6cm]
+ \draw (0,0) -- node[right] {$2$} (0,1.5);
+ \fill (0,0) circle (1.4pt);
+ \fill (0,1.5) circle (1.4pt);
+ \node[below] at (0,0) {$[\ComparisonPoint_0]=[\ComparisonPoint_1]$};
+ \node[above] at (0,1.5) {$[\ComparisonPoint_2]$};
+\end{scope}
+\draw[->] (1.15,0.7) -- (2.6,0.7);
+\draw[->] (4.9,0.7) -- (6.4,0.7);
+\node at (3.8,-1)
+ {$\InterpolatingPseudometric_{\ComparisonCarrier,\HomotopyTime}
+   =(1-\HomotopyTime)\ComparisonMetric
+     +\HomotopyTime\ModelPseudometric_\ComparisonCarrier$};
+\node at (3.8,-1.85)
+ {$\begin{aligned}
+  &\GHDistance\bigl(
+   \ApproximationHomotopy(\MetricSpace{\ComparisonCarrier}{\ComparisonMetric},\FirstTime),
+   \ApproximationHomotopy(\MetricSpace{\ComparisonCarrier}{\ComparisonMetric},\HomotopyTime)
+   \bigr)\\
+  &\qquad\leq\tfrac12|\FirstTime-\HomotopyTime|
+       \ModelError\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}
+  \end{aligned}$};
+\end{tikzpicture}
+\caption{Interpolation on a three-point carrier.
+The edge labels are distances for
+$\InterpolatingPseudometric_{\ComparisonCarrier,\HomotopyTime}$.
+The distance between
+$\ComparisonPoint_0$
+and
+$\ComparisonPoint_1$
+decreases from
+$1$
+to
+$0$,
+while their distances to
+$\ComparisonPoint_2$
+remain
+$2$.
+Distinct points can be identified at the endpoint.
+The general track estimate \eqref{eq:global-track-control}
+also holds there.}
+\label{fig:pseudometric-homotopy}
+\end{figure}

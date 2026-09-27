@@ -1,0 +1,61 @@
+\subsection{Best approximation in Lebesgue spaces}\label{subsec:spectral-preliminaries-lp}
+\paraid{p-57b625728f09}
+Fix a nonempty compact metric space
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$.
+For a probability
+$\FirstMeasure $
+on
+$\BaseCarrier $
+and an exponent
+$1\leq\IntegrabilityExponent<\infty$,
+we identify measurable functions
+$\HilbertFunction\colon\BaseCarrier\to\RealNumbers$
+that are equal
+$\FirstMeasure$-almost everywhere.
+We denote by
+$\LebesgueSpace^\IntegrabilityExponent (\BaseCarrier ,\FirstMeasure )$
+the space of equivalence classes with finite norm
+\[
+ \norm{\HilbertFunction }_\IntegrabilityExponent =\left(\int_\BaseCarrier |\HilbertFunction |^\IntegrabilityExponent \,\IntegrationDifferential \FirstMeasure \right)^{1/\IntegrabilityExponent }.
+\]
+
+\begin{theorem}[{Best approximation, a consequence of \cite[Lemma~3.2.36(b), Theorem~5.6.1]{BreitGmeineder2026}}]\label{thm:best-approximation}
+\paraid{p-b7f7a8e7fdb8}
+Let
+$1<\IntegrabilityExponent<\infty$,
+let
+$\FirstMeasure$
+be a probability measure on
+$\BaseCarrier$,
+and let
+$\ClosedDomain\subset\LebesgueSpace^{\IntegrabilityExponent}(\BaseCarrier,\FirstMeasure)$
+be nonempty,
+closed,
+and convex.
+Then for every
+$\HilbertFunction\in\LebesgueSpace^{\IntegrabilityExponent}(\BaseCarrier,\FirstMeasure)$,
+there is a unique
+$\BestApproximation\in\ClosedDomain$
+such that
+\[
+ \norm{\HilbertFunction-\BestApproximation}_{\IntegrabilityExponent}
+ =\inf_{\Vector\in\ClosedDomain}\norm{\HilbertFunction-\Vector}_{\IntegrabilityExponent}.
+\]
+\end{theorem}
+
+\begin{proof}
+\paraid{p-6dd85192f3b4}
+By the cited Theorem~5.6.1,
+$\LebesgueSpace^{\IntegrabilityExponent}(\BaseCarrier,\FirstMeasure)$
+is uniformly convex.
+The translated set
+$\{\Vector-\HilbertFunction\mid\Vector\in\ClosedDomain\}$
+is nonempty,
+closed,
+and convex.
+By Lemma~3.2.36(b) of the cited source,
+we obtain a unique element of minimum norm in this set.
+Translating that element by
+$\HilbertFunction$
+proves the assertion.
+\end{proof}

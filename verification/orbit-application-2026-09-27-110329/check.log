@@ -1,0 +1,11 @@
+def PaperN.PartII.OrbitARInput : Prop :=
+∀ (G X Q : Type) [inst : Group G] [inst_1 : TopologicalSpace G] [IsTopologicalGroup G] [T2Space G] [CompactSpace G]
+  [SecondCountableTopology G] [inst_6 : TopologicalSpace X] [inst_7 : MulAction G X] [inst_8 : TopologicalSpace Q],
+  IsEquivariantAbsoluteRetract G X →
+    ∀ (q : X → Q), Topology.IsQuotientMap q → (∀ (x y : X), q x = q y ↔ ∃ a, x = a • y) → IsAbsoluteRetract Q
+PaperN.PartII.SphereOrbit.absoluteRetract (n : ℕ → ℕ) (hH : EquivariantHyperspaceARInput) (hO : OrbitARInput) :
+  IsAbsoluteRetract (SphereOrbit.Space n)
+'PaperN.PartII.orthogonalProduct_secondCountable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.SphereOrbit.projection_isQuotientMap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.SphereOrbit.projection_eq_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.SphereOrbit.absoluteRetract' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,120 @@
+\subsection{Compact operators and spectral decomposition}\label{subsec:spectral-preliminaries-operators}
+\paraid{p-17e565d7cc93}
+For a Hilbert space
+$\HilbertDomain $,
+we call a bounded linear operator
+$\CompactOperator \colon \HilbertDomain \to \HilbertDomain $
+\emph{compact} if the image of the closed unit ball of
+$\HilbertDomain$
+has compact closure.
+We call
+$\CompactOperator$
+\emph{self-adjoint} if for every
+$\HilbertFunction,\HilbertTestFunction\in\HilbertDomain$
+we have
+\[
+ \langle \CompactOperator \HilbertFunction ,\HilbertTestFunction \rangle_\HilbertDomain =\langle \HilbertFunction ,\CompactOperator \HilbertTestFunction \rangle_\HilbertDomain.
+\]
+A nonzero vector
+$\HilbertFunction $
+is an \emph{eigenvector} for the eigenvalue
+$\Eigenvalue $
+if
+$\CompactOperator \HilbertFunction =\Eigenvalue  \HilbertFunction $.
+For an operator on a function space we also call it an eigenfunction.
+
+\paraid{p-e197c5fac09a}
+For a real Hilbert space
+$\HilbertDomain$,
+write
+$\HilbertDomain_{\ComplexNumbers}=\HilbertDomain\oplus\ImaginaryUnit\HilbertDomain$
+for its complexification.
+We denote the complex-linear extension of
+$\CompactOperator$
+by the same symbol.
+For
+$\HilbertFunction,\HilbertTestFunction\in\HilbertDomain$,
+set
+\[
+ \CompactOperator(\HilbertFunction+\ImaginaryUnit\HilbertTestFunction)
+ =\CompactOperator\HilbertFunction+\ImaginaryUnit\CompactOperator\HilbertTestFunction.
+\]
+For a complex Banach space,
+write
+$\IdentityMap$
+for its identity operator.
+For a bounded operator
+$\CompactOperator$
+on that space,
+its \emph{spectrum}
+$\spec(\CompactOperator)$
+is the set of complex numbers
+$\Eigenvalue$
+for which
+$\Eigenvalue\IdentityMap-\CompactOperator$
+has no bounded inverse.
+For an operator on a real Hilbert space,
+we use the spectrum of its
+complex-linear extension to
+$\HilbertDomain_{\ComplexNumbers}$.
+For a self-adjoint operator this set is real.
+In finite dimension it is exactly the set of eigenvalues.
+In infinite dimension,
+the number  $0$ can belong to the spectrum without being an
+eigenvalue.
+
+\begin{theorem}[{Riesz--Schauder and the self-adjoint spectral theorem, \cite[Theorems~14.19 and~15.22]{Muscat2024}}]\label{prop:spectral-basics}
+\paraid{p-0edefea64bb3}
+Let
+$\CompactOperator $
+be a compact self-adjoint operator on a separable real Hilbert space
+$\HilbertDomain $.
+Then every nonzero spectral value is a real eigenvalue with finite-dimensional
+eigenspace.
+For each
+$\SpectralCutoff >0$,
+there are only finitely many eigenvalues,
+counted with multiplicity,
+with absolute value greater than
+$\SpectralCutoff $.
+There is a finite or countable orthonormal family
+$\{\Eigenfunction _\CoordinateIndex \}_{\CoordinateIndex \in \EigenIndexSet }$
+indexed by a subset
+$\EigenIndexSet\subset\NonnegativeIntegers$,
+with nonzero eigenvalues
+$\{\Eigenvalue _\CoordinateIndex \}_{\CoordinateIndex \in \EigenIndexSet }$
+such that
+\[
+ \HilbertDomain =\ker \CompactOperator \ \mathbin{\oplus}\
+       \overline{\LinearSpan }\{\Eigenfunction _\CoordinateIndex \mid \CoordinateIndex \in \EigenIndexSet \}.
+\]
+Every
+$\HilbertFunction \in \HilbertDomain $
+admits the decomposition
+\[
+ \HilbertFunction =\HilbertFunction _0+\sum_{\CoordinateIndex \in \EigenIndexSet }\langle \HilbertFunction ,\Eigenfunction _\CoordinateIndex \rangle \Eigenfunction _\CoordinateIndex .
+\]
+The operator acts on this decomposition by
+\[
+ \CompactOperator \HilbertFunction =\sum_{\CoordinateIndex \in \EigenIndexSet }\Eigenvalue _\CoordinateIndex \langle \HilbertFunction ,\Eigenfunction _\CoordinateIndex \rangle \Eigenfunction _\CoordinateIndex .
+\]
+The remaining component satisfies
+\[
+ \HilbertFunction _0\in\ker \CompactOperator .
+\]
+Both sums converge in
+$\HilbertDomain $.
+If
+$\EigenIndexSet $
+is infinite,
+its eigenvalues tend to
+$0$
+in any enumeration.
+\end{theorem}
+
+\paraid{p-c81130e9d92f}
+This is the self-adjoint case of the spectral theorem for compact normal
+operators
+\cite[Theorems~14.19 and~15.22]{Muscat2024}.
+In particular,
+a nonzero compact self-adjoint operator has a nonzero eigenvalue.

@@ -1,0 +1,111 @@
+\subsection{A retract of the measured space}\label{subsec:measures-retract}
+\paraid{p-e9cc85069378}
+We now realize
+$\GHSpace$
+as a retract of the measured space.
+By \Cref{thm:invariant-measures},
+we obtain a continuous section of the forgetful map from
+$\MeasuredSpaces$
+to
+$\GHSpace$.
+
+\begin{corollary}\label{cor:ghp-retract}
+\paraid{p-49d998de0004}
+The map
+\[
+ s\colon\GHSpace\to\MeasuredSpaces
+\]
+defined by
+\[
+ s(\MetricSpace{\BaseCarrier}{\MetricSymbol})
+ =\MeasuredSpace{\BaseCarrier}{\MetricSymbol}
+   {\SelectedMeasure{\BaseCarrier}{\MetricSymbol}}
+\]
+is a topological embedding.
+Its image is contained in
+$\InvariantMeasuredSpaces$
+and is a retract of
+$\MeasuredSpaces$.
+Consequently,
+$\GHSpace$
+is homeomorphic to a retract of the Gromov--Hausdorff--Prokhorov space
+$\MeasuredSpaces$,
+also when the latter is restricted to full-support probabilities or to
+invariant full-support probabilities.
+\end{corollary}
+
+\begin{proof}
+\paraid{p-170912b3d7e5}
+Define the forgetful map on the whole measured space
+\[
+ p\colon\MeasuredSpaces\to\GHSpace
+\]
+by
+\[
+ p(\MeasuredSpace{\BaseCarrier}{\MetricSymbol}{\FirstMeasure})
+ =\MetricSpace{\BaseCarrier}{\MetricSymbol}.
+\]
+Isomorphic measured spaces have isometric underlying spaces,
+so this map is well defined.
+By \eqref{eq:ghp-distance},
+\[
+ \GHDistance\bigl(p(\MeasuredSpace{\BaseCarrier}{\MetricSymbol}{\FirstMeasure}),
+                   p(\MeasuredSpace{\ComparisonCarrier}{\ComparisonMetric}{\SecondMeasure})\bigr)
+ \leq\GHPDistance(\MeasuredSpace{\BaseCarrier}{\MetricSymbol}{\FirstMeasure},
+                   \MeasuredSpace{\ComparisonCarrier}{\ComparisonMetric}{\SecondMeasure}).
+\]
+Thus
+$p$
+is continuous.
+By \Cref{thm:invariant-measures},
+$s$
+is well defined and takes its values in
+$\InvariantMeasuredSpaces$.
+Let
+$\{\MetricSpace{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex}\}_{\SequenceIndex\in\NonnegativeIntegers}$
+converge to
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+in
+$\GHSpace$.
+By \Cref{lem:common-gh-embedding},
+choose compact representatives in a common compact metric space
+$\MetricSpace{\AmbientCarrier}{\AmbientMetric}$
+whose Hausdorff distances to
+$\BaseCarrier$
+tend to
+$0$.
+By \Cref{thm:invariant-measures},
+\[
+ \SelectedMeasure{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex}
+ \to\SelectedMeasure{\BaseCarrier}{\MetricSymbol}
+ \quad\text{weakly in }\ProbabilityMeasures(\AmbientCarrier).
+\]
+The L\'evy--Prokhorov distance metrizes weak convergence,
+so \eqref{eq:ghp-distance} implies
+\[
+ \GHPDistance\bigl(
+ s\MetricSpace{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex},
+ s\MetricSpace{\BaseCarrier}{\MetricSymbol}\bigr)\to0.
+\]
+This proves continuity of
+$s$.
+
+\paraid{p-f1d4cfcbf0d7}
+Since
+$p\circ s=\IdentityMap_{\GHSpace}$,
+$s$
+is a topological embedding and
+\[
+ r=s\circ p\colon\MeasuredSpaces\to s(\GHSpace)
+\]
+is a retraction.
+Its restrictions to the full-support subspace and to
+$\InvariantMeasuredSpaces$
+are retractions onto the same image.
+\end{proof}
+
+\paraid{p-fee6b65c4104}
+The retract conclusion of \Cref{cor:ghp-retract} is a special case of
+the absolute retract property of
+$\GHSpace$,
+which we prove in \Cref{thm:absolute-extensor}.

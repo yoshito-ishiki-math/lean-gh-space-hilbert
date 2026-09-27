@@ -1,0 +1,38 @@
+{
+  "CheckValovApplication.log": {
+    "declarations_with_axiom_report": 6,
+    "unexpected_axioms": []
+  },
+  "CheckHannerApplication.log": {
+    "declarations_with_axiom_report": 3,
+    "unexpected_axioms": []
+  },
+  "CheckRecognitionApplication.log": {
+    "declarations_with_axiom_report": 2,
+    "unexpected_axioms": []
+  },
+  "CheckMain.log": {
+    "declarations_with_axiom_report": 2,
+    "unexpected_axioms": []
+  },
+  "CheckOrbitApplication.log": {
+    "declarations_with_axiom_report": 4,
+    "unexpected_axioms": []
+  },
+  "CheckHyperspaceApplication.log": {
+    "declarations_with_axiom_report": 4,
+    "unexpected_axioms": []
+  },
+  "CheckMainStatements.log": {
+    "declarations_with_axiom_report": 0,
+    "unexpected_axioms": []
+  },
+  "CheckPartII.log": {
+    "declarations_with_axiom_report": 1299,
+    "unexpected_axioms": []
+  },
+  "CheckPartIComplete.log": {
+    "declarations_with_axiom_report": 236,
+    "unexpected_axioms": []
+  }
+}

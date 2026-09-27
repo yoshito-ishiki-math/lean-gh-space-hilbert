@@ -1,0 +1,1685 @@
+\subsection{Continuity of finite spectral subspaces}\label{subsec:spectral-subspace-continuity}
+\paraid{p-f52fe507fe4d}
+The distance operators for different compact spaces act on different Hilbert spaces.
+We extend the distance kernels to one compact metric space
+$\MetricSpace{\AmbientCarrier}{\AmbientMetric}$
+to obtain operators on the fixed Banach space
+$\ContinuousFunctions(\AmbientCarrier ,\ComplexNumbers)$.
+We apply the spectral inclusion and spectral projection convergence theorems
+of Anselone and Palmer,
+\Cref{thm:spectral-inclusion,thm:riesz-convergence}
+in Subsection~\ref{subsec:spectral-preliminaries-perturbation},
+to these ambient operators.
+By spectral inclusion,
+the gaps at the chosen real numbers
+$\pm\SpectralCutoff$
+persist for all sufficiently large indices.
+By convergence of the spectral projections,
+the retained spectral subspaces
+have the same dimension for all sufficiently large indices.
+
+\paraid{p-040fa54a5428}
+By \Cref{lem:parameter-integrals},
+the parameter-dependent integrals used below converge uniformly.
+
+\paraid{p-f33149a827cc}
+The next proposition compares the generalized eigenspaces of the ambient
+kernel operator with those of the self-adjoint distance operator.
+
+\begin{proposition}\label{lem:ambient-eigenspaces}
+\paraid{p-c756883ac07c}
+Let
+$\ComparisonCarrier$
+be a nonempty compact subset of a compact metric space
+$\MetricSpace{\AmbientCarrier}{\AmbientMetric}$,
+and put
+\[
+ \ComparisonMetric=\AmbientMetric|_{\ComparisonCarrier\times\ComparisonCarrier},
+\]
+and
+\[
+ \DiameterBound=\diam\MetricSpace{\AmbientCarrier}{\AmbientMetric}.
+\]
+Regard
+$\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}$
+as its complex-linear extension
+\[
+ \DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}\colon
+ \LebesgueSpace^2(\ComparisonCarrier,\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric};\ComplexNumbers)
+ \to
+ \LebesgueSpace^2(\ComparisonCarrier,\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric};\ComplexNumbers).
+\]
+Define
+$\RestrictionOperator _\ComparisonCarrier \colon\ContinuousFunctions(\AmbientCarrier ,\ComplexNumbers)\to
+                       \LebesgueSpace^2(\ComparisonCarrier ,\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric};\ComplexNumbers)$
+as follows.
+For every
+$\HilbertFunction\in\ContinuousFunctions(\AmbientCarrier,\ComplexNumbers)$,
+let
+$\RestrictionOperator_\ComparisonCarrier\HilbertFunction$
+be the equivalence class of
+$\HilbertFunction|_\ComparisonCarrier$.
+Define
+$\KernelExtensionOperator _\ComparisonCarrier \colon\LebesgueSpace^2(\ComparisonCarrier ,\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric};\ComplexNumbers)
+                       \to\ContinuousFunctions(\AmbientCarrier ,\ComplexNumbers)$
+as follows.
+For every
+$\HilbertTestFunction\in\LebesgueSpace^2(\ComparisonCarrier,\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric};\ComplexNumbers)$,
+using
+$\SecondVector\in\ComparisonCarrier$
+as the integration variable,
+define for every
+$\IntegrationPoint\in\AmbientCarrier$
+\[
+ (\KernelExtensionOperator_\ComparisonCarrier\HilbertTestFunction)(\IntegrationPoint)
+ =\int_\ComparisonCarrier
+ \AmbientMetric(\IntegrationPoint,\SecondVector)\HilbertTestFunction(\SecondVector)
+ \,\IntegrationDifferential\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric}(\SecondVector).
+\]
+The integral depends only on the equivalence class of
+$\HilbertTestFunction$.
+The bounded continuous kernel defines a continuous function on
+$\AmbientCarrier$.
+Set
+\[
+ \CarrierAmbientOperator_\ComparisonCarrier
+ =\KernelExtensionOperator_\ComparisonCarrier\RestrictionOperator_\ComparisonCarrier
+ \colon\ContinuousFunctions(\AmbientCarrier,\ComplexNumbers)
+ \to\ContinuousFunctions(\AmbientCarrier,\ComplexNumbers).
+\]
+Then
+$\CarrierAmbientOperator_\ComparisonCarrier$
+is compact.
+For every
+$\Eigenvalue\in\ComplexNumbers\setminus\{0\}$,
+the generalized eigenspaces satisfy
+\[
+ \GeneralizedEigenspace{\CarrierAmbientOperator_\ComparisonCarrier}{\Eigenvalue}
+ =\ker(\CarrierAmbientOperator_\ComparisonCarrier-\Eigenvalue\IdentityMap),
+\]
+and
+\[
+ \GeneralizedEigenspace{\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}}{\Eigenvalue}
+ =\ker(\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}-\Eigenvalue\IdentityMap).
+\]
+Moreover, for every
+$\Eigenvalue\in\ComplexNumbers\setminus\{0\}$
+and every integer
+$\RootOrder\geq1$,
+\[
+ \ker\bigl((\CarrierAmbientOperator_\ComparisonCarrier-\Eigenvalue\IdentityMap)^\RootOrder\bigr)
+ =\ker(\CarrierAmbientOperator_\ComparisonCarrier-\Eigenvalue\IdentityMap),
+\]
+and
+\[
+ \ker\bigl((\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}-\Eigenvalue\IdentityMap)^\RootOrder\bigr)
+ =\ker(\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}-\Eigenvalue\IdentityMap).
+\]
+Restriction induces the linear isomorphism
+\[
+ \RestrictionOperator_\ComparisonCarrier\colon
+ \GeneralizedEigenspace{\CarrierAmbientOperator_\ComparisonCarrier}{\Eigenvalue}
+ \to
+ \GeneralizedEigenspace{\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}}{\Eigenvalue},
+\]
+Its inverse is the restricted map
+\[
+ \Eigenvalue^{-1}\KernelExtensionOperator_\ComparisonCarrier\colon
+ \GeneralizedEigenspace{\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}}{\Eigenvalue}
+ \to\GeneralizedEigenspace{\CarrierAmbientOperator_\ComparisonCarrier}{\Eigenvalue}.
+\]
+Moreover,
+\[
+ \spec(\CarrierAmbientOperator_\ComparisonCarrier)\setminus\{0\}
+ =\spec(\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric})\setminus\{0\}
+ \subset[-\DiameterBound,\DiameterBound].
+\]
+\end{proposition}
+
+\begin{proof}
+\textbf{Step 1. Compactness and factorization.}
+\paraid{p-03d00ab877e8}
+Since
+$\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric}$
+has total mass one,
+for every
+$\HilbertFunction\in\ContinuousFunctions(\AmbientCarrier,\ComplexNumbers)$
+we have
+\[
+ \norm{\RestrictionOperator_\ComparisonCarrier\HilbertFunction}_2
+ \leq\norm{\HilbertFunction}_\infty.
+\]
+For every
+$\HilbertTestFunction\in\LebesgueSpace^2(\ComparisonCarrier,\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric};\ComplexNumbers)$
+and
+$\IntegrationPoint,\IntegrationPoint_0\in\AmbientCarrier$,
+the Cauchy--Schwarz inequality yields
+\[
+ \norm{\KernelExtensionOperator_\ComparisonCarrier\HilbertTestFunction}_\infty
+ \leq\DiameterBound\norm{\HilbertTestFunction}_2,
+\]
+and
+\[
+ |\KernelExtensionOperator_\ComparisonCarrier\HilbertTestFunction(\IntegrationPoint)
+  -\KernelExtensionOperator_\ComparisonCarrier\HilbertTestFunction(\IntegrationPoint_0)|
+ \leq\AmbientMetric(\IntegrationPoint,\IntegrationPoint_0)
+       \norm{\HilbertTestFunction}_2.
+\]
+Thus
+$\RestrictionOperator_\ComparisonCarrier$
+and
+$\KernelExtensionOperator_\ComparisonCarrier$
+are bounded,
+and the Arzel\`a--Ascoli theorem (\Cref{thm:arzela-ascoli}) implies that
+$\KernelExtensionOperator_\ComparisonCarrier$
+is compact.
+Consequently,
+$\CarrierAmbientOperator_\ComparisonCarrier$
+is compact.
+By their definitions,
+\begin{equation}\label{eq:operator-factorization-1}
+ \CarrierAmbientOperator _\ComparisonCarrier =\KernelExtensionOperator _\ComparisonCarrier \RestrictionOperator _\ComparisonCarrier ,
+\end{equation}
+and
+\begin{equation}\label{eq:operator-factorization-2}
+ \DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}=\RestrictionOperator _\ComparisonCarrier \KernelExtensionOperator _\ComparisonCarrier ,
+\end{equation}
+and
+\begin{equation}\label{eq:operator-factorization-3}
+ \RestrictionOperator _\ComparisonCarrier  \CarrierAmbientOperator _\ComparisonCarrier =\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}\RestrictionOperator _\ComparisonCarrier .
+\end{equation}
+
+\paraid{p-55a3ce893fd0}
+The intertwining identity is displayed in Figure~\ref{fig:operator-comparison}.
+\input{figures/operator-comparison}
+
+\textbf{Step 2. Generalized eigenspaces and restriction.}
+\paraid{p-3b9fc77c0141}
+Fix
+$\Eigenvalue\in\ComplexNumbers\setminus\{0\}$
+and an integer
+$\RootOrder\geq1$.
+By the self-adjoint spectral theorem (\Cref{prop:spectral-basics}),
+\begin{equation}\label{eq:self-adjoint-power-kernel}
+ \ker\bigl((\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}
+               -\Eigenvalue\IdentityMap)^\RootOrder\bigr)
+ =\ker(\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}
+               -\Eigenvalue\IdentityMap).
+\end{equation}
+We prove the equality
+\begin{equation}\label{eq:restricted-power-kernel}
+ \RestrictionOperator_\ComparisonCarrier
+ \left(\ker\bigl((\CarrierAmbientOperator_\ComparisonCarrier
+                    -\Eigenvalue\IdentityMap)^\RootOrder\bigr)\right)
+ =\ker(\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}
+                    -\Eigenvalue\IdentityMap)
+\end{equation}
+by both inclusions.
+Take
+$\HilbertTestFunction\in
+ \RestrictionOperator_\ComparisonCarrier
+ \left(\ker\bigl((\CarrierAmbientOperator_\ComparisonCarrier
+                 -\Eigenvalue\IdentityMap)^\RootOrder\bigr)\right)$.
+Then there is
+$\HilbertFunction\in\ker\bigl((\CarrierAmbientOperator_\ComparisonCarrier
+ -\Eigenvalue\IdentityMap)^\RootOrder\bigr)$
+with
+$\HilbertTestFunction=\RestrictionOperator_\ComparisonCarrier\HilbertFunction$.
+By \eqref{eq:operator-factorization-3},
+\[
+ (\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}-\Eigenvalue\IdentityMap)^\RootOrder
+ \HilbertTestFunction
+ =\RestrictionOperator_\ComparisonCarrier
+  (\CarrierAmbientOperator_\ComparisonCarrier-\Eigenvalue\IdentityMap)^\RootOrder
+  \HilbertFunction=0.
+\]
+Equation \eqref{eq:self-adjoint-power-kernel} therefore implies
+$\HilbertTestFunction\in\ker(\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}
+ -\Eigenvalue\IdentityMap)$.
+
+\paraid{p-8a2730244eab}
+Conversely,
+take
+$\HilbertTestFunction\in\ker(\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}
+ -\Eigenvalue\IdentityMap)$
+and put
+$\HilbertFunction=\Eigenvalue^{-1}\KernelExtensionOperator_\ComparisonCarrier\HilbertTestFunction$.
+Using \eqref{eq:operator-factorization-1} and \eqref{eq:operator-factorization-2},
+we obtain
+\begin{equation}\label{eq:eigenfunction-extension-1}
+ \RestrictionOperator_\ComparisonCarrier\HilbertFunction
+ =\Eigenvalue^{-1}\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}
+    \HilbertTestFunction=\HilbertTestFunction,
+\end{equation}
+and
+\begin{equation}\label{eq:eigenfunction-extension-2}
+ \CarrierAmbientOperator_\ComparisonCarrier\HilbertFunction
+ =\KernelExtensionOperator_\ComparisonCarrier\HilbertTestFunction
+ =\Eigenvalue\HilbertFunction.
+\end{equation}
+Thus
+$\HilbertFunction\in\ker\bigl((\CarrierAmbientOperator_\ComparisonCarrier
+ -\Eigenvalue\IdentityMap)^\RootOrder\bigr)$,
+and \eqref{eq:eigenfunction-extension-1} implies
+$\HilbertTestFunction\in
+ \RestrictionOperator_\ComparisonCarrier
+ \left(\ker\bigl((\CarrierAmbientOperator_\ComparisonCarrier
+                 -\Eigenvalue\IdentityMap)^\RootOrder\bigr)\right)$.
+This proves \eqref{eq:restricted-power-kernel}.
+
+\paraid{p-7ddba0188af2}
+The restriction operator
+$\RestrictionOperator_\ComparisonCarrier$
+is injective on
+$\ker\bigl((\CarrierAmbientOperator_\ComparisonCarrier-\Eigenvalue\IdentityMap)^\RootOrder\bigr)$.
+To see this,
+take
+$\HilbertFunction$
+in this kernel with
+$\RestrictionOperator_\ComparisonCarrier\HilbertFunction=0$.
+Then \eqref{eq:operator-factorization-1} implies
+$\CarrierAmbientOperator_\ComparisonCarrier\HilbertFunction=0$,
+so
+\[
+ 0=(\CarrierAmbientOperator_\ComparisonCarrier-\Eigenvalue\IdentityMap)^\RootOrder
+     \HilbertFunction=(-\Eigenvalue)^\RootOrder\HilbertFunction.
+\]
+Since
+$\Eigenvalue\ne0$,
+we have
+$\HilbertFunction=0$.
+
+\paraid{p-60e424cf6d26}
+We next prove
+\begin{equation}\label{eq:ambient-power-kernel}
+ \ker\bigl((\CarrierAmbientOperator_\ComparisonCarrier-\Eigenvalue\IdentityMap)^\RootOrder\bigr)
+ =\ker(\CarrierAmbientOperator_\ComparisonCarrier-\Eigenvalue\IdentityMap).
+\end{equation}
+Take
+$\HilbertFunction\in\ker\bigl((\CarrierAmbientOperator_\ComparisonCarrier
+ -\Eigenvalue\IdentityMap)^\RootOrder\bigr)$
+and set
+\[
+ \HilbertTestFunction=\RestrictionOperator_\ComparisonCarrier\HilbertFunction,
+\]
+and
+\[
+ \LiftedEigenfunction=\Eigenvalue^{-1}\KernelExtensionOperator_\ComparisonCarrier\HilbertTestFunction.
+\]
+Equations \eqref{eq:restricted-power-kernel},
+\eqref{eq:eigenfunction-extension-1} and \eqref{eq:eigenfunction-extension-2}
+imply
+\[
+ \LiftedEigenfunction\in\ker(\CarrierAmbientOperator_\ComparisonCarrier-\Eigenvalue\IdentityMap),
+\]
+and
+\[
+ \RestrictionOperator_\ComparisonCarrier\LiftedEigenfunction
+ =\RestrictionOperator_\ComparisonCarrier\HilbertFunction.
+\]
+Both
+$\HilbertFunction$
+and
+$\LiftedEigenfunction$
+belong to
+\[
+ \ker\bigl((\CarrierAmbientOperator_\ComparisonCarrier
+ -\Eigenvalue\IdentityMap)^\RootOrder\bigr),
+\]
+the kernel on the left of \eqref{eq:ambient-power-kernel}.
+Injectivity of restriction on this kernel implies
+$\HilbertFunction=\LiftedEigenfunction$,
+so
+$\HilbertFunction\in\ker(\CarrierAmbientOperator_\ComparisonCarrier-\Eigenvalue\IdentityMap)$.
+Conversely,
+if
+$\HilbertFunction\in\ker(\CarrierAmbientOperator_\ComparisonCarrier-\Eigenvalue\IdentityMap)$,
+then
+\[
+ (\CarrierAmbientOperator_\ComparisonCarrier-\Eigenvalue\IdentityMap)^\RootOrder\HilbertFunction
+ =(\CarrierAmbientOperator_\ComparisonCarrier-\Eigenvalue\IdentityMap)^{\RootOrder-1}0=0.
+\]
+Hence
+$\HilbertFunction\in\ker\bigl((\CarrierAmbientOperator_\ComparisonCarrier
+ -\Eigenvalue\IdentityMap)^\RootOrder\bigr)$.
+This proves \eqref{eq:ambient-power-kernel}.
+Taking the union over
+$\RootOrder\geq1$
+in \eqref{eq:self-adjoint-power-kernel} and \eqref{eq:ambient-power-kernel}
+identifies the corresponding generalized eigenspaces.
+In particular,
+restriction induces the linear isomorphism
+\[
+ \RestrictionOperator_\ComparisonCarrier\colon
+ \ker(\CarrierAmbientOperator_\ComparisonCarrier-\Eigenvalue\IdentityMap)
+ \to\ker(\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}-\Eigenvalue\IdentityMap),
+\]
+Its inverse is the restricted map
+\[
+ \Eigenvalue^{-1}
+ \left.\KernelExtensionOperator_\ComparisonCarrier\right|
+ _{\ker(\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}-\Eigenvalue\IdentityMap)}\colon
+ \ker(\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}-\Eigenvalue\IdentityMap)
+ \to\ker(\CarrierAmbientOperator_\ComparisonCarrier-\Eigenvalue\IdentityMap).
+\]
+
+\textbf{Step 3. Equality of the nonzero spectra.}
+\paraid{p-7bd77f5fa755}
+Both operators are compact,
+so the Riesz--Schauder theorem (\Cref{thm:compact-spectrum}) ensures
+that every nonzero spectral value is an eigenvalue.
+By \Cref{lem:distance-operator},
+$\norm{\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}}
+ \leq\diam\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}
+ \leq\DiameterBound$.
+The standard spectral bound for bounded operators
+\cite[Theorem~14.3]{Muscat2024}
+implies
+\[
+ \spec(\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric})
+ \subset
+ \{\Eigenvalue\in\ComplexNumbers\mid
+   |\Eigenvalue|\leq
+   \norm{\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}}\}.
+\]
+Since
+$\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}$
+is self-adjoint, its spectrum is real. Thus
+\[
+ \spec(\CarrierAmbientOperator _\ComparisonCarrier )\setminus\{0\}
+ =\spec(\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric})\setminus\{0\}
+ \subset[-\DiameterBound,\DiameterBound].
+\]
+This proves the equality and the bound for the nonzero spectra,
+and finishes the proof.
+\end{proof}
+
+\paraid{p-6a4c7f8bfb4d}
+We first compare the ambient Riesz projection with the orthogonal projection
+for a fixed compact carrier.
+We then prove convergence of the ambient projections as the carrier varies.
+
+\begin{proposition}\label{lem:projection-restriction}
+\paraid{p-7625e731f8c2}
+Let
+$\ComparisonCarrier$
+be a nonempty compact subset of a compact metric space
+$\MetricSpace{\AmbientCarrier}{\AmbientMetric}$,
+and put
+$\ComparisonMetric=\AmbientMetric|_{\ComparisonCarrier\times\ComparisonCarrier}$.
+Use the operators of \Cref{lem:ambient-eigenspaces}.
+Fix
+$\SpectralCutoff>0$
+with
+$\pm\SpectralCutoff\notin\spec(\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric})$.
+Let
+$\AmbientProjection_\ComparisonCarrier$
+be the Riesz projection of
+$\CarrierAmbientOperator_\ComparisonCarrier$
+associated with the eigenvalues of absolute value greater than
+$\SpectralCutoff$,
+as in Definition~\ref{def:riesz-projection}.
+Then this projection preserves real functions,
+and restriction induces the complex-linear isomorphism
+\[
+ \RestrictionOperator_\ComparisonCarrier\colon
+ \range\AmbientProjection_\ComparisonCarrier
+ \to\SpectralSubspace{\ComparisonCarrier}{\SpectralCutoff}
+   +\ImaginaryUnit\SpectralSubspace{\ComparisonCarrier}{\SpectralCutoff}.
+\]
+Use
+$\SpectralProjection{\ComparisonCarrier}{\SpectralCutoff}$
+also for the complex-linear extension of the orthogonal projection.
+For every
+$\HilbertFunction\in\ContinuousFunctions(\AmbientCarrier,\ComplexNumbers)$
+we have
+\[
+ (\AmbientProjection_\ComparisonCarrier\HilbertFunction)|_\ComparisonCarrier
+ =\SpectralProjection{\ComparisonCarrier}{\SpectralCutoff}
+   (\HilbertFunction|_\ComparisonCarrier).
+\]
+\end{proposition}
+
+\begin{proof}
+\paraid{p-8812db27373e}
+By \Cref{lem:ambient-eigenspaces},
+\begin{equation}\label{eq:fixed-carrier-nonzero-spectra}
+ \spec(\CarrierAmbientOperator_\ComparisonCarrier)\setminus\{0\}
+ =\spec(\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric})\setminus\{0\}
+ \subset\RealNumbers.
+\end{equation}
+Choose a bounded open set
+$\SpectralRegion\subset\ComplexNumbers$
+that is a union of two rectangles symmetric about the real axis and satisfies
+$0\notin\overline{\SpectralRegion}$.
+By \eqref{eq:fixed-carrier-nonzero-spectra}
+and the hypothesis
+$\pm\SpectralCutoff\notin\spec(\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric})$,
+we can choose
+$\SpectralRegion$
+so that for each operator
+$\CompactOperator\in\{\CarrierAmbientOperator_\ComparisonCarrier,
+\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}\}$,
+\begin{equation}\label{eq:fixed-carrier-selected-spectrum}
+ \SpectralRegion\cap\spec(\CompactOperator)
+ =\{\Eigenvalue\in\spec(\CompactOperator)\mid|\Eigenvalue|>\SpectralCutoff\},
+\end{equation}
+and
+\[
+ \partial\SpectralRegion\cap\spec(\CompactOperator)=\emptyset.
+\]
+Orient
+$\SpectralContour=\partial\SpectralRegion$
+positively.
+By Definition~\ref{def:riesz-projection}
+and \Cref{lem:riesz-projection-properties},
+we have
+\[
+ \AmbientProjection_\ComparisonCarrier
+ =\RieszProjection{\CarrierAmbientOperator_\ComparisonCarrier}{\SpectralContour}.
+\]
+By \Cref{lem:riesz-range-generalized-eigenspace},
+\begin{equation}\label{eq:fixed-carrier-riesz-range}
+ \range\AmbientProjection_\ComparisonCarrier
+ =\bigoplus_{\Eigenvalue\in\SpectralRegion\cap\spec(\CarrierAmbientOperator_\ComparisonCarrier)}
+ \GeneralizedEigenspace{\CarrierAmbientOperator_\ComparisonCarrier}{\Eigenvalue}.
+\end{equation}
+For each
+$\Eigenvalue\in\SpectralRegion\cap\spec(\CarrierAmbientOperator_\ComparisonCarrier)$,
+\Cref{lem:ambient-eigenspaces} shows that the restriction operator
+$\RestrictionOperator_\ComparisonCarrier$
+maps
+$\GeneralizedEigenspace{\CarrierAmbientOperator_\ComparisonCarrier}{\Eigenvalue}$
+isomorphically onto
+$\ker(\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}-\Eigenvalue\IdentityMap)$.
+Taking the direct sum in \eqref{eq:fixed-carrier-riesz-range}
+and using \eqref{eq:fixed-carrier-selected-spectrum},
+we obtain the isomorphism
+\[
+ \RestrictionOperator_\ComparisonCarrier\colon
+ \range\AmbientProjection_\ComparisonCarrier
+ \to\bigoplus_{\substack{\Eigenvalue\in\spec(\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric})\\
+ |\Eigenvalue|>\SpectralCutoff}}
+ \ker(\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}-\Eigenvalue\IdentityMap).
+\]
+By the definition of
+$\SpectralSubspace{\ComparisonCarrier}{\SpectralCutoff}$,
+this direct sum is
+$\SpectralSubspace{\ComparisonCarrier}{\SpectralCutoff}
++\ImaginaryUnit\SpectralSubspace{\ComparisonCarrier}{\SpectralCutoff}$.
+We prove the identity relating projection and restriction for
+an arbitrary continuous function.
+For every
+$\ResolventParameter\in\SpectralContour$,
+\eqref{eq:operator-factorization-3} implies
+\[
+ (\ResolventParameter\IdentityMap-\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric})
+ \RestrictionOperator_\ComparisonCarrier
+ =\RestrictionOperator_\ComparisonCarrier
+ (\ResolventParameter\IdentityMap-\CarrierAmbientOperator_\ComparisonCarrier).
+\]
+For
+$\ResolventParameter\in\SpectralContour$,
+both operators in parentheses are invertible.
+Multiplying by their inverses on the left and on the right,
+respectively,
+we obtain
+\begin{equation}\label{eq:resolvent-restriction}
+ \RestrictionOperator_\ComparisonCarrier
+ (\ResolventParameter\IdentityMap-\CarrierAmbientOperator_\ComparisonCarrier)^{-1}
+ =(\ResolventParameter\IdentityMap-\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric})^{-1}
+ \RestrictionOperator_\ComparisonCarrier.
+\end{equation}
+Both sides are bounded maps from
+$\ContinuousFunctions(\AmbientCarrier,\ComplexNumbers)$
+to
+$\LebesgueSpace^2(\ComparisonCarrier,\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric};\ComplexNumbers)$.
+Both resolvents in \eqref{eq:resolvent-restriction} depend continuously on
+$\ResolventParameter\in\SpectralContour$
+in the operator norm.
+The line integrals can therefore be computed as limits of Riemann sums.
+Since
+$\RestrictionOperator_\ComparisonCarrier$
+is bounded and linear,
+it commutes with these sums and their limits.
+For every
+$\HilbertFunction\in\ContinuousFunctions(\AmbientCarrier,\ComplexNumbers)$,
+we consequently obtain
+\begin{equation}\label{eq:restricted-contour-integral}
+ \begin{aligned}
+ \RestrictionOperator_\ComparisonCarrier\AmbientProjection_\ComparisonCarrier\HilbertFunction
+ &=\RestrictionOperator_\ComparisonCarrier
+   \left(\frac{1}{2\CircleConstant\ImaginaryUnit}
+   \int_\SpectralContour
+   (\ResolventParameter\IdentityMap-\CarrierAmbientOperator_\ComparisonCarrier)^{-1}
+   \HilbertFunction\,\IntegrationDifferential\ResolventParameter\right)\\
+ &=\frac{1}{2\CircleConstant\ImaginaryUnit}
+   \int_\SpectralContour\RestrictionOperator_\ComparisonCarrier
+   (\ResolventParameter\IdentityMap-\CarrierAmbientOperator_\ComparisonCarrier)^{-1}
+   \HilbertFunction\,\IntegrationDifferential\ResolventParameter\\
+ &=\frac{1}{2\CircleConstant\ImaginaryUnit}
+   \int_\SpectralContour
+   (\ResolventParameter\IdentityMap-\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric})^{-1}
+   \RestrictionOperator_\ComparisonCarrier\HilbertFunction
+   \,\IntegrationDifferential\ResolventParameter.
+ \end{aligned}
+\end{equation}
+In \eqref{eq:restricted-contour-integral},
+the first equality is the definition of
+$\AmbientProjection_\ComparisonCarrier$,
+the second uses the bounded linearity of
+$\RestrictionOperator_\ComparisonCarrier$,
+and the third uses \eqref{eq:resolvent-restriction}.
+
+\paraid{p-b3df5075d3de}
+We next prove that the last line integral in
+\eqref{eq:restricted-contour-integral} equals
+$\SpectralProjection{\ComparisonCarrier}{\SpectralCutoff}
+ (\RestrictionOperator_\ComparisonCarrier\HilbertFunction)$.
+Here
+$\SpectralProjection{\ComparisonCarrier}{\SpectralCutoff}$
+also denotes the complex-linear extension of the orthogonal projection
+defined in \eqref{eq:spectral-projection-definition}.
+Let
+$\HilbertTestFunction$
+be an eigenvector of
+$\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}$
+with eigenvalue
+$\Eigenvalue$.
+For every
+$\ResolventParameter\in\SpectralContour$,
+\begin{equation}\label{eq:eigenvector-resolvent}
+ (\ResolventParameter\IdentityMap-\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric})^{-1}
+ \HilbertTestFunction
+ =\frac{1}{\ResolventParameter-\Eigenvalue}\HilbertTestFunction.
+\end{equation}
+Substituting \eqref{eq:eigenvector-resolvent} into the line integral
+and using the winding numbers of
+$\SpectralContour$,
+we obtain
+\begin{equation}\label{eq:eigenvector-contour-integral}
+ \begin{aligned}
+ &\frac{1}{2\CircleConstant\ImaginaryUnit}
+ \int_\SpectralContour
+ (\ResolventParameter\IdentityMap-\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric})^{-1}
+ \HilbertTestFunction\,\IntegrationDifferential\ResolventParameter\\
+ &\qquad=
+ \left(\frac{1}{2\CircleConstant\ImaginaryUnit}
+ \int_\SpectralContour
+ \frac{\IntegrationDifferential\ResolventParameter}{\ResolventParameter-\Eigenvalue}\right)
+ \HilbertTestFunction
+ =
+ \begin{cases}
+ \HilbertTestFunction,&|\Eigenvalue|>\SpectralCutoff,\\
+ 0,&|\Eigenvalue|<\SpectralCutoff.
+ \end{cases}
+ \end{aligned}
+\end{equation}
+The scalar line integral equals one when
+$\Eigenvalue$
+is inside
+$\SpectralContour$
+and zero when it is outside.
+The second case includes
+$\Eigenvalue=0$,
+so the line integral vanishes on
+$\ker\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}$.
+Take the closure in the
+$\LebesgueSpace^2$-norm.
+By the self-adjoint spectral theorem (\Cref{prop:spectral-basics}),
+\begin{equation}\label{eq:hilbert-eigenspace-density}
+ \begin{aligned}
+ &\overline{
+   \ker\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}
+   \mathbin{\oplus}
+   \bigoplus_{\substack{
+     \Eigenvalue\in\spec(\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric})\\
+     \Eigenvalue\ne0}}
+   \ker(\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}-\Eigenvalue\IdentityMap)
+   }\\
+ &\qquad=
+ \LebesgueSpace^2(\ComparisonCarrier,\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric};\ComplexNumbers).
+ \end{aligned}
+\end{equation}
+By \eqref{eq:eigenvector-contour-integral},
+\eqref{eq:spectral-projection-definition},
+and orthogonality of eigenspaces for distinct eigenvalues,
+the operator defined by the line integral and
+$\SpectralProjection{\ComparisonCarrier}{\SpectralCutoff}$
+agree on each summand in \eqref{eq:hilbert-eigenspace-density}.
+By linearity and boundedness,
+the density in \eqref{eq:hilbert-eigenspace-density} proves
+\begin{equation}\label{eq:hilbert-riesz-projection}
+ \frac{1}{2\CircleConstant\ImaginaryUnit}
+ \int_\SpectralContour
+ (\ResolventParameter\IdentityMap-\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric})^{-1}
+ \,\IntegrationDifferential\ResolventParameter
+ =\SpectralProjection{\ComparisonCarrier}{\SpectralCutoff}
+\end{equation}
+as operators on
+$\LebesgueSpace^2(\ComparisonCarrier,\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric};\ComplexNumbers)$.
+Substituting \eqref{eq:hilbert-riesz-projection} into
+\eqref{eq:restricted-contour-integral},
+we obtain
+\[
+ \RestrictionOperator_\ComparisonCarrier\AmbientProjection_\ComparisonCarrier\HilbertFunction
+ =\SpectralProjection{\ComparisonCarrier}{\SpectralCutoff}
+    \RestrictionOperator_\ComparisonCarrier\HilbertFunction.
+\]
+Since
+$\RestrictionOperator_\ComparisonCarrier\HilbertFunction=\HilbertFunction|_\ComparisonCarrier$,
+we conclude that
+\begin{equation}\label{eq:projection-restriction}
+ (\AmbientProjection_\ComparisonCarrier\HilbertFunction)|_\ComparisonCarrier
+ =\SpectralProjection{\ComparisonCarrier}{\SpectralCutoff}
+   (\HilbertFunction|_\ComparisonCarrier).
+\end{equation}
+On the left we project in
+$\ContinuousFunctions(\AmbientCarrier,\ComplexNumbers)$
+and then restrict to
+$\ComparisonCarrier$.
+On the right we first restrict and then apply the projection on
+$\LebesgueSpace^2(\ComparisonCarrier,\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric};\ComplexNumbers)$.
+Both sides of \eqref{eq:projection-restriction} are continuous on
+$\ComparisonCarrier$.
+Since
+$\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric}$
+has full support,
+their equality in
+$\LebesgueSpace^2$
+also implies pointwise equality on
+$\ComparisonCarrier$.
+
+\paraid{p-4e9939cad1e5}
+Finally,
+the distance kernels are real and
+$\SpectralRegion$
+is invariant under complex conjugation.
+Conjugating the line integrals and reversing the orientation of
+$\SpectralContour$
+therefore yields
+\[
+ \overline{\AmbientProjection_\ComparisonCarrier\HilbertFunction}
+ =\AmbientProjection_\ComparisonCarrier\overline{\HilbertFunction}.
+\]
+Thus
+$\AmbientProjection_\ComparisonCarrier$
+preserves real functions.
+\end{proof}
+
+\begin{proposition}\label{lem:spectral-projections}
+\paraid{p-b10cee5c3ca1}
+Let
+$\BaseCarrier _\SequenceIndex ,\BaseCarrier $
+be nonempty compact subsets of a compact metric space
+$\MetricSpace{\AmbientCarrier }{\AmbientMetric }$,
+with restricted metrics
+\[
+ \MetricSymbol_\SequenceIndex=\AmbientMetric|_{\BaseCarrier_\SequenceIndex\times\BaseCarrier_\SequenceIndex},
+\]
+and
+\[
+ \MetricSymbol=\AmbientMetric|_{\BaseCarrier\times\BaseCarrier},
+\]
+such that
+\[
+ \HausdorffDistance{\AmbientMetric }(\BaseCarrier _\SequenceIndex ,\BaseCarrier )\to0,
+\]
+and let $\iota_\SequenceIndex\colon\BaseCarrier_\SequenceIndex\hookrightarrow\AmbientCarrier$
+and $\iota\colon\BaseCarrier\hookrightarrow\AmbientCarrier$ be the inclusions.
+Define probabilities on $\AmbientCarrier$ by
+$\bar\mu_\SequenceIndex=(\iota_\SequenceIndex)_*\SelectedMeasure{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex}$
+and $\bar\mu=\iota_*\SelectedMeasure{\BaseCarrier}{\MetricSymbol}$.
+Fix
+$\SpectralCutoff >0$
+with
+$\SpectralCutoff ,-\SpectralCutoff \notin\spec(\DistanceOperator{\BaseCarrier}{\MetricSymbol})$.
+Use the operators of \Cref{lem:ambient-eigenspaces} and set
+\[
+ \AmbientOperator_\SequenceIndex=\CarrierAmbientOperator_{\BaseCarrier_\SequenceIndex},
+\]
+and
+\[
+ \AmbientOperator=\CarrierAmbientOperator_\BaseCarrier.
+\]
+Then for all sufficiently large
+$\SequenceIndex$,
+\[
+ \pm\SpectralCutoff
+ \notin\spec(\DistanceOperator{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex}),
+\]
+and
+\[
+ \dim\SpectralSubspace{\BaseCarrier_\SequenceIndex}{\SpectralCutoff}
+ =\dim\SpectralSubspace{\BaseCarrier}{\SpectralCutoff}
+ =\SpectralRank.
+\]
+Moreover,
+there are finite-rank Riesz projections
+\[
+ \AmbientProjection_\SequenceIndex,\AmbientProjection
+ \colon\ContinuousFunctions(\AmbientCarrier,\ComplexNumbers)
+ \to\ContinuousFunctions(\AmbientCarrier,\ComplexNumbers)
+\]
+associated with the eigenvalues of absolute value greater than
+$\SpectralCutoff$
+of
+$\AmbientOperator_\SequenceIndex$
+and
+$\AmbientOperator$,
+respectively.
+Their ranges are the finite-dimensional sums
+\[
+ \range\AmbientProjection
+ =\bigoplus_{\substack{\Eigenvalue\in\spec(\AmbientOperator)\\|\Eigenvalue|>\SpectralCutoff}}
+ \GeneralizedEigenspace{\AmbientOperator}{\Eigenvalue},
+\]
+and, for every sufficiently large $\SequenceIndex$,
+\[
+ \range\AmbientProjection_\SequenceIndex
+ =\bigoplus_{\substack{\Eigenvalue\in\spec(\AmbientOperator_\SequenceIndex)\\|\Eigenvalue|>\SpectralCutoff}}
+ \GeneralizedEigenspace{\AmbientOperator_\SequenceIndex}{\Eigenvalue}.
+\]
+Both projections preserve real functions and satisfy,
+for every
+$\HilbertFunction\in\ContinuousFunctions(\AmbientCarrier,\ComplexNumbers)$,
+\[
+ \norm{\AmbientProjection_\SequenceIndex\HilbertFunction
+       -\AmbientProjection\HilbertFunction}_\infty\to0.
+\]
+\end{proposition}
+
+\begin{proof}
+\textbf{Step 1. Strong convergence and collective compactness.}
+\paraid{p-424dfa7891fa}
+By \Cref{thm:invariant-measures}\ref{item:invariant-measures-continuity} applied to the inclusions
+$\iota_\SequenceIndex$
+and
+$\iota$,
+we have
+$\bar\mu_\SequenceIndex\to\bar\mu$
+weakly.
+For every
+$\SequenceIndex\in\NonnegativeIntegers$,
+$\HilbertFunction\in\ContinuousFunctions(\AmbientCarrier,\ComplexNumbers)$,
+and
+$\IntegrationPoint\in\AmbientCarrier$,
+the definitions imply
+\[
+\AmbientOperator _\SequenceIndex \HilbertFunction (\IntegrationPoint )=\int_\AmbientCarrier  \AmbientMetric (\IntegrationPoint ,\SecondVector )\HilbertFunction (\SecondVector )\,\IntegrationDifferential \bar\mu_\SequenceIndex(\SecondVector ),
+\]
+and
+\[
+\AmbientOperator \HilbertFunction (\IntegrationPoint )=\int_\AmbientCarrier  \AmbientMetric (\IntegrationPoint ,\SecondVector )\HilbertFunction (\SecondVector )\,\IntegrationDifferential \bar\mu(\SecondVector ).
+\]
+For each fixed
+$\HilbertFunction $,
+the family
+$\{\AmbientMetric (\IntegrationPoint ,\cdot)\HilbertFunction (\cdot)\mid \IntegrationPoint \in \AmbientCarrier \}$
+is compact in
+$\ContinuousFunctions(\AmbientCarrier ,\ComplexNumbers)$.
+By \Cref{lem:parameter-integrals} with parameter
+$\IntegrationPoint\in\AmbientCarrier$,
+\begin{equation}\label{eq:ambient-strong-convergence}
+ \norm{\AmbientOperator _\SequenceIndex \HilbertFunction -\AmbientOperator \HilbertFunction }_\infty\to0.
+\end{equation}
+Thus
+$\AmbientOperator_\SequenceIndex\to\AmbientOperator$
+strongly.
+Writing
+$\DiameterBound =\diam\MetricSpace{\AmbientCarrier }{\AmbientMetric }$,
+for every
+$\SequenceIndex\in\NonnegativeIntegers$,
+$\HilbertFunction\in\ContinuousFunctions(\AmbientCarrier,\ComplexNumbers)$
+with
+$\norm{\HilbertFunction}_\infty\leq1$,
+and
+$\IntegrationPoint,\IntegrationPoint_0\in\AmbientCarrier$,
+we obtain
+\begin{equation}\label{eq:ambient-operator-bounds-1}
+ \norm{\AmbientOperator _\SequenceIndex \HilbertFunction }_\infty\leq \DiameterBound ,
+\end{equation}
+and
+\begin{equation}\label{eq:ambient-operator-bounds-2}
+ |\AmbientOperator _\SequenceIndex \HilbertFunction (\IntegrationPoint )-\AmbientOperator _\SequenceIndex \HilbertFunction (\IntegrationPoint _0)|\leq \AmbientMetric (\IntegrationPoint ,\IntegrationPoint _0).
+\end{equation}
+Hence
+$\bigcup_\SequenceIndex  \AmbientOperator _\SequenceIndex \{\HilbertFunction \mid\norm{\HilbertFunction }_\infty\leq1\}$
+has compact closure by the Arzel\`a--Ascoli theorem (\Cref{thm:arzela-ascoli}).
+Thus
+$\{\AmbientOperator_\SequenceIndex\}_{\SequenceIndex\in\NonnegativeIntegers}$
+is collectively compact.
+Since
+$\AmbientOperator$
+is compact by \Cref{lem:ambient-eigenspaces},
+the family
+$\{\AmbientOperator_\SequenceIndex-\AmbientOperator\}_{\SequenceIndex\in\NonnegativeIntegers}$
+is also collectively compact.
+
+\textbf{Step 2. A common boundary and spectral projections.}
+\paraid{p-8737a7c3af89}
+By \Cref{lem:ambient-eigenspaces} and the hypothesis on
+$\SpectralCutoff$,
+we have
+\[
+ \spec(\AmbientOperator)
+ \subset\ComplexNumbers\setminus\{-\SpectralCutoff,\SpectralCutoff\}.
+\]
+The set
+$\ComplexNumbers\setminus\{-\SpectralCutoff,\SpectralCutoff\}$
+is open.
+The strong convergence in \eqref{eq:ambient-strong-convergence}
+and the collective compactness of
+$\{\AmbientOperator_\SequenceIndex-\AmbientOperator\}_{\SequenceIndex\in\NonnegativeIntegers}$
+verify the hypotheses on operators in the statement of
+\Cref{thm:spectral-inclusion}.
+Applying that theorem with this open set
+$\ComplexNumbers\setminus\{-\SpectralCutoff,\SpectralCutoff\}$,
+we obtain an index
+$\SequenceIndex_0\in\NonnegativeIntegers$
+such that for every
+$\SequenceIndex\geq\SequenceIndex_0$
+we have
+\begin{equation}\label{eq:ambient-cutoff-exclusion}
+ \{-\SpectralCutoff,\SpectralCutoff\}
+ \cap\bigl(\spec(\AmbientOperator)\cup\spec(\AmbientOperator_\SequenceIndex)\bigr)
+ =\emptyset.
+\end{equation}
+\Cref{lem:ambient-eigenspaces} then implies
+\[
+ \pm\SpectralCutoff
+ \notin\spec(\DistanceOperator{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex}).
+\]
+This proves the claimed exclusion of
+$\pm\SpectralCutoff$.
+
+\paraid{p-4c4bdee6941a}
+We next choose a bounded open set whose boundary encloses the eigenvalues of absolute
+value greater than
+$\SpectralCutoff$
+for both
+$\AmbientOperator$
+and
+$\AmbientOperator_\SequenceIndex$.
+Choose
+$\SpectralOuterBound >\max\{\DiameterBound ,\SpectralCutoff \}+1$
+and let
+$\SpectralRegion $
+be the union of the two rectangles
+\[
+ \begin{gathered}
+ \{\ResolventParameter \in\ComplexNumbers\mid \SpectralCutoff <\RealPart \ResolventParameter <\SpectralOuterBound ,\ |\ImaginaryPart \ResolventParameter |<1\},\\
+ \{\ResolventParameter \in\ComplexNumbers\mid-\SpectralOuterBound <\RealPart \ResolventParameter <-\SpectralCutoff ,\ |\ImaginaryPart \ResolventParameter |<1\}.
+ \end{gathered}
+\]
+Write
+$\SpectralContour =\partial\SpectralRegion $
+with positive orientation.
+For every
+$\SequenceIndex\in\NonnegativeIntegers$,
+\Cref{lem:ambient-eigenspaces} implies
+\begin{equation}\label{eq:ambient-spectral-bound}
+ \spec(\AmbientOperator)\cup\spec(\AmbientOperator_\SequenceIndex)
+ \subset[-\DiameterBound,\DiameterBound].
+\end{equation}
+The choice of
+$\SpectralOuterBound$
+implies
+\begin{equation}\label{eq:contour-real-intersection}
+ \SpectralContour\cap[-\DiameterBound,\DiameterBound]
+ \subset\{-\SpectralCutoff,\SpectralCutoff\}.
+\end{equation}
+Combining \eqref{eq:contour-real-intersection} with \eqref{eq:ambient-cutoff-exclusion}
+and \eqref{eq:ambient-spectral-bound},
+we obtain for every
+$\SequenceIndex\geq\SequenceIndex_0$
+\begin{equation}\label{eq:common-spectral-contour}
+ \SpectralContour\cap
+ \bigl(\spec(\AmbientOperator)\cup\spec(\AmbientOperator_\SequenceIndex)\bigr)
+ =\emptyset.
+\end{equation}
+Moreover,
+\begin{equation}\label{eq:spectral-region-selection-1}
+ \spec(\AmbientOperator)\cap\SpectralRegion
+ =\{\Eigenvalue\in\spec(\AmbientOperator)\mid|\Eigenvalue|>\SpectralCutoff\},
+\end{equation}
+and
+\begin{equation}\label{eq:spectral-region-selection-2}
+ \spec(\AmbientOperator_\SequenceIndex)\cap\SpectralRegion
+ =\{\Eigenvalue\in\spec(\AmbientOperator_\SequenceIndex)\mid|\Eigenvalue|>\SpectralCutoff\},
+\end{equation}
+and
+\begin{equation}\label{eq:spectral-region-selection-3}
+ 0\notin\overline\SpectralRegion.
+\end{equation}
+By \eqref{eq:common-spectral-contour},
+we use the same boundary for both operators
+for all sufficiently large indices.
+Equations \eqref{eq:spectral-region-selection-1} and \eqref{eq:spectral-region-selection-2}
+show that this boundary encloses precisely the eigenvalues with absolute value
+greater than
+$\SpectralCutoff$.
+Figure~\ref{fig:spectral-contour} shows the two components of this boundary.
+\input{figures/spectral-contour}
+
+\paraid{p-341c679243de}
+Using Definition~\ref{def:riesz-projection},
+we define the projections
+$\AmbientProjection,\AmbientProjection_\SequenceIndex
+ \colon\ContinuousFunctions(\AmbientCarrier,\ComplexNumbers)
+ \to\ContinuousFunctions(\AmbientCarrier,\ComplexNumbers)$
+by
+\[
+ \AmbientProjection=\RieszProjection{\AmbientOperator}{\SpectralContour},
+\]
+and
+\[
+ \AmbientProjection_\SequenceIndex
+ =\RieszProjection{\AmbientOperator_\SequenceIndex}{\SpectralContour}.
+\]
+For
+$\HilbertFunction\in\ContinuousFunctions(\AmbientCarrier,\ComplexNumbers)$
+and each fixed
+$\IntegrationPoint\in\AmbientCarrier$,
+we have
+\begin{equation}\label{eq:riesz-pointwise-integral}
+ (\AmbientProjection\HilbertFunction)(\IntegrationPoint)
+ =\frac{1}{2\CircleConstant\ImaginaryUnit}
+ \int_\SpectralContour
+ \bigl[(\ResolventParameter\IdentityMap-\AmbientOperator)^{-1}
+       \HilbertFunction\bigr](\IntegrationPoint)
+ \,\IntegrationDifferential\ResolventParameter.
+\end{equation}
+The integration variable
+$\ResolventParameter$
+ranges over the boundary
+$\SpectralContour$,
+while the point
+$\IntegrationPoint\in\AmbientCarrier$
+is fixed.
+Evaluation at
+$\IntegrationPoint$
+is a bounded linear functional on
+$\ContinuousFunctions(\AmbientCarrier,\ComplexNumbers)$,
+so it commutes with the line integral.
+Equation \eqref{eq:riesz-pointwise-integral} also holds for
+$\AmbientProjection_\SequenceIndex$
+with
+$\AmbientOperator_\SequenceIndex$
+in place of
+$\AmbientOperator$.
+
+\textbf{Step 3. Convergence and dimensions of the ranges.}
+\paraid{p-a982b8ced6ab}
+By \Cref{lem:riesz-range-generalized-eigenspace},
+we obtain
+\begin{equation}\label{eq:ambient-projection-range}
+ \range\AmbientProjection
+ =\bigoplus_{\Eigenvalue\in\spec(\AmbientOperator)\cap\SpectralRegion}
+   \GeneralizedEigenspace{\AmbientOperator}{\Eigenvalue}.
+\end{equation}
+For all sufficiently large
+$\SequenceIndex$,
+we also have
+\begin{equation}\label{eq:approximating-projection-range}
+ \range\AmbientProjection_\SequenceIndex
+ =\bigoplus_{\Eigenvalue\in\spec(\AmbientOperator_\SequenceIndex)\cap\SpectralRegion}
+   \GeneralizedEigenspace{\AmbientOperator_\SequenceIndex}{\Eigenvalue}.
+\end{equation}
+The sums are finite by \Cref{thm:compact-spectrum},
+since
+$0\notin\overline\SpectralRegion$.
+By \Cref{lem:ambient-eigenspaces},
+for every
+$\Eigenvalue\in\spec(\AmbientOperator)\cap\SpectralRegion$,
+\begin{equation}\label{eq:projection-range-eigenspace}
+ \GeneralizedEigenspace{\AmbientOperator}{\Eigenvalue}
+ =\ker(\AmbientOperator-\Eigenvalue\IdentityMap).
+\end{equation}
+For every sufficiently large
+$\SequenceIndex$
+and every
+$\Eigenvalue\in\spec(\AmbientOperator_\SequenceIndex)\cap\SpectralRegion$,
+the same proposition implies
+\begin{equation}\label{eq:approximating-range-eigenspace}
+ \GeneralizedEigenspace{\AmbientOperator_\SequenceIndex}{\Eigenvalue}
+ =\ker(\AmbientOperator_\SequenceIndex-\Eigenvalue\IdentityMap).
+\end{equation}
+We can now apply \Cref{thm:riesz-convergence}
+on the fixed Banach space
+$\ContinuousFunctions(\AmbientCarrier,\ComplexNumbers)$.
+The hypotheses on operators in the statement of
+\Cref{thm:riesz-convergence}
+follow from \eqref{eq:ambient-strong-convergence}
+and the collective compactness of
+$\{\AmbientOperator_\SequenceIndex-\AmbientOperator\}_{\SequenceIndex\in\NonnegativeIntegers}$.
+Equations \eqref{eq:common-spectral-contour},
+\eqref{eq:spectral-region-selection-1},
+\eqref{eq:spectral-region-selection-2} and \eqref{eq:spectral-region-selection-3}
+verify its hypotheses on
+$\SpectralContour$.
+For all sufficiently large
+$\SequenceIndex$,
+we obtain
+\begin{equation}\label{eq:spectral-projection-convergence-1}
+ \dim\range \AmbientProjection _\SequenceIndex =\dim\range \AmbientProjection .
+\end{equation}
+For every
+$\HilbertFunction\in\ContinuousFunctions(\AmbientCarrier,\ComplexNumbers)$,
+we also obtain
+\begin{equation}\label{eq:spectral-projection-convergence-2}
+ \norm{\AmbientProjection _\SequenceIndex \HilbertFunction -\AmbientProjection \HilbertFunction }_\infty\to0.
+\end{equation}
+The dimensions are finite because
+$0\notin\overline\SpectralRegion $.
+The convergence in \eqref{eq:spectral-projection-convergence-2} means
+uniform convergence on
+$\AmbientCarrier$
+for each fixed function
+$\HilbertFunction\in\ContinuousFunctions(\AmbientCarrier,\ComplexNumbers)$.
+
+\paraid{p-60dd00c4dbee}
+We now compare the projections on
+$\ContinuousFunctions(\AmbientCarrier,\ComplexNumbers)$
+with the spectral subspaces of the distance operators.
+For
+$\ComparisonCarrier=\BaseCarrier$
+or
+$\ComparisonCarrier=\BaseCarrier_\SequenceIndex$
+with
+$\SequenceIndex$
+sufficiently large,
+write
+$\AmbientProjection_\BaseCarrier=\AmbientProjection$
+and
+$\AmbientProjection_{\BaseCarrier_\SequenceIndex}=\AmbientProjection_\SequenceIndex$.
+By \eqref{eq:spectral-region-selection-1} and
+\eqref{eq:spectral-region-selection-2},
+$\SpectralRegion$
+contains exactly those $\Eigenvalue\in\spec(\AmbientOperator)$ with
+$|\Eigenvalue|>\SpectralCutoff$,
+and exactly those $\Eigenvalue\in\spec(\AmbientOperator_\SequenceIndex)$ with
+$|\Eigenvalue|>\SpectralCutoff$.
+\Cref{lem:projection-restriction} induces the complex-linear isomorphism
+\[
+ \RestrictionOperator_\ComparisonCarrier\colon
+ \range\AmbientProjection_\ComparisonCarrier
+ \to
+ \SpectralSubspace{\ComparisonCarrier}{\SpectralCutoff}
+ +\ImaginaryUnit\SpectralSubspace{\ComparisonCarrier}{\SpectralCutoff}.
+\]
+Here the space on the right is the complexification of the real space
+$\SpectralSubspace{\ComparisonCarrier}{\SpectralCutoff}$.
+Its complex dimension equals
+$\dim_\RealNumbers\SpectralSubspace{\ComparisonCarrier}{\SpectralCutoff}$.
+The dimension equality in \eqref{eq:spectral-projection-convergence-1}
+therefore yields
+\begin{equation}\label{eq:spectral-dimension-identification}
+ \begin{aligned}
+ \dim_\RealNumbers\SpectralSubspace{\BaseCarrier_\SequenceIndex}{\SpectralCutoff}
+ &=\dim_\ComplexNumbers\range\AmbientProjection_\SequenceIndex
+ =\dim_\ComplexNumbers\range\AmbientProjection\\
+ &=\dim_\RealNumbers\SpectralSubspace{\BaseCarrier}{\SpectralCutoff}
+ =\SpectralRank.
+ \end{aligned}
+\end{equation}
+\paraid{p-7a7a27ecec95}
+Finally, applying \Cref{lem:projection-restriction} to the limit carrier
+and to each sufficiently late carrier $\BaseCarrier_\SequenceIndex$ shows that
+$\AmbientProjection$ and $\AmbientProjection_\SequenceIndex$ preserve real
+functions.
+\end{proof}
+
+\begin{theorem}\label{lem:spectral-continuity}
+\paraid{p-56449b80711e}
+Let
+$\BaseCarrier _\SequenceIndex ,\BaseCarrier $
+be compact subsets of a compact metric space
+$\MetricSpace{\AmbientCarrier }{\AmbientMetric }$,
+with restricted metrics
+\[
+ \MetricSymbol_\SequenceIndex=\AmbientMetric|_{\BaseCarrier_\SequenceIndex\times\BaseCarrier_\SequenceIndex},
+\]
+and
+\[
+ \MetricSymbol=\AmbientMetric|_{\BaseCarrier\times\BaseCarrier},
+\]
+such that
+\[
+ \HausdorffDistance{\AmbientMetric }(\BaseCarrier _\SequenceIndex ,\BaseCarrier )\to0,
+\]
+and let $\iota_\SequenceIndex\colon\BaseCarrier_\SequenceIndex\hookrightarrow\AmbientCarrier$
+and $\iota\colon\BaseCarrier\hookrightarrow\AmbientCarrier$ be the inclusions.
+Define probabilities on $\AmbientCarrier$ by
+$\bar\mu_\SequenceIndex=(\iota_\SequenceIndex)_*\SelectedMeasure{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex}$
+and $\bar\mu=\iota_*\SelectedMeasure{\BaseCarrier}{\MetricSymbol}$.
+Fix
+$\SpectralCutoff >0$
+with
+$\SpectralCutoff ,-\SpectralCutoff \notin\spec(\DistanceOperator{\BaseCarrier}{\MetricSymbol})$.
+Put
+$\SpectralRank=\dim\SpectralSubspace{\BaseCarrier}{\SpectralCutoff}$.
+There exists $\SequenceIndex_0\in\NonnegativeIntegers$ such that, for every
+$\SequenceIndex\geq\SequenceIndex_0$,
+\begin{equation}\label{eq:stable-spectral-endpoints}
+ \SpectralCutoff,-\SpectralCutoff
+ \notin\spec(\DistanceOperator{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex}),
+\end{equation}
+and
+\begin{equation}\label{eq:stable-spectral-rank}
+ \dim\SpectralSubspace{\BaseCarrier_\SequenceIndex}{\SpectralCutoff}
+ =\SpectralRank.
+\end{equation}
+If
+$\SpectralRank>0$,
+fix any real orthonormal basis
+$\{\Eigenfunction_\BasisIndex\}_{0\leq\BasisIndex<\SpectralRank}$
+of
+$\SpectralSubspace{\BaseCarrier}{\SpectralCutoff}$.
+For the fixed basis
+$\{\Eigenfunction_\BasisIndex\}_{0\leq\BasisIndex<\SpectralRank}$
+and the sequence
+$\{(\BaseCarrier_\SequenceIndex,\bar\mu_\SequenceIndex)\}_{\SequenceIndex\in\NonnegativeIntegers}$,
+increase
+$\SequenceIndex_0$
+if necessary.
+Then there exist families of functions
+\[
+ \{\Eigenfunction_{\SequenceIndex,\BasisIndex}
+   \colon\BaseCarrier_\SequenceIndex\to\RealNumbers\}_{\SequenceIndex\geq\SequenceIndex_0,\,0\leq\BasisIndex<\SpectralRank},
+\]
+\[
+ \{\BasisExtension_{\SequenceIndex,\BasisIndex}
+   \colon\AmbientCarrier\to\RealNumbers\}_{\SequenceIndex\geq\SequenceIndex_0,\,0\leq\BasisIndex<\SpectralRank},
+\]
+and
+\[
+ \{\BasisExtension_\BasisIndex
+   \colon\AmbientCarrier\to\RealNumbers\}_{0\leq\BasisIndex<\SpectralRank}
+\]
+with the following properties.
+\begin{enumerate}[label=\textup{(B\arabic*)},ref=\textup{(B\arabic*)}]
+\item\label{item:spectral-basis-orthonormality}
+For every
+$\SequenceIndex\geq\SequenceIndex_0$,
+the family
+$\{\Eigenfunction_{\SequenceIndex,\BasisIndex}\}_{0\leq\BasisIndex<\SpectralRank}$
+is a real orthonormal basis of
+$\SpectralSubspace{\BaseCarrier_\SequenceIndex}{\SpectralCutoff}$.
+\item\label{item:spectral-basis-extensions}
+For every
+$\SequenceIndex\geq\SequenceIndex_0$
+and
+$0\leq\BasisIndex<\SpectralRank$,
+the functions
+$\BasisExtension_{\SequenceIndex,\BasisIndex},\BasisExtension_\BasisIndex
+ \colon\AmbientCarrier\to\RealNumbers$
+are continuous and satisfy
+\[
+ \BasisExtension_{\SequenceIndex,\BasisIndex}|_{\BaseCarrier_\SequenceIndex}
+ =\Eigenfunction_{\SequenceIndex,\BasisIndex},
+\]
+and
+\[
+ \BasisExtension_\BasisIndex|_\BaseCarrier=\Eigenfunction_\BasisIndex.
+\]
+\item\label{item:spectral-basis-uniform-convergence}
+The extensions also satisfy
+\begin{equation}\label{eq:aligned-basis-extensions}
+ \max_{0\leq\BasisIndex<\SpectralRank}
+ \norm{\BasisExtension_{\SequenceIndex,\BasisIndex}-\BasisExtension_\BasisIndex}_\infty
+ \longrightarrow0.
+\end{equation}
+\item\label{item:spectral-basis-correspondence-convergence}
+For every sequence of correspondences
+$\{\Correspondence_\SequenceIndex\subset\BaseCarrier_\SequenceIndex\times\BaseCarrier\}_{\SequenceIndex\geq\SequenceIndex_0}$
+satisfying
+\[
+ \sup_{(\BasePoint_\SequenceIndex,\BasePoint)\in\Correspondence_\SequenceIndex}
+ \AmbientMetric(\BasePoint_\SequenceIndex,\BasePoint)\longrightarrow0,
+\]
+the bases
+$\{\Eigenfunction_{\SequenceIndex,\BasisIndex}\}_{0\leq\BasisIndex<\SpectralRank}$
+and
+$\{\Eigenfunction_\BasisIndex\}_{0\leq\BasisIndex<\SpectralRank}$
+satisfy
+\begin{equation}\label{eq:aligned-bases}
+ \max_{0\leq\BasisIndex<\SpectralRank}
+ \sup_{(\BasePoint_\SequenceIndex,\BasePoint)\in\Correspondence_\SequenceIndex}
+ |\Eigenfunction_{\SequenceIndex,\BasisIndex}(\BasePoint_\SequenceIndex)
+       -\Eigenfunction_\BasisIndex(\BasePoint)|\longrightarrow0.
+\end{equation}
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\paraid{p-dc3fbce63b61}
+By \Cref{thm:invariant-measures}\ref{item:invariant-measures-continuity} applied to the inclusions
+$\iota_\SequenceIndex$
+and
+$\iota$,
+we have
+$\bar\mu_\SequenceIndex\to\bar\mu$
+weakly.
+By \Cref{lem:spectral-projections},
+we obtain \eqref{eq:stable-spectral-endpoints}
+and \eqref{eq:stable-spectral-rank}.
+Let
+$\AmbientProjection_\SequenceIndex,\AmbientProjection$
+be the projections constructed in that proposition.
+If
+$\SpectralRank=0$,
+the stable spectral subspaces are zero and no basis or extension data are required.
+Assume that
+$\SpectralRank>0$.
+To construct the real orthonormal bases
+$\{\Eigenfunction_{\SequenceIndex,\BasisIndex}\}_{0\leq\BasisIndex<\SpectralRank}$
+of
+$\SpectralSubspace{\BaseCarrier_\SequenceIndex}{\SpectralCutoff}$
+in \ref{item:spectral-basis-orthonormality},
+we first project continuous extensions of the prescribed basis
+$\{\Eigenfunction_\BasisIndex\}_{0\leq\BasisIndex<\SpectralRank}$.
+The resulting functions need not be orthonormal for the varying measures
+$\SelectedMeasure{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex}$.
+We use the Gram matrix to normalize these functions without changing their limit.
+We then verify \ref{item:spectral-basis-extensions}
+and \ref{item:spectral-basis-uniform-convergence}
+for the normalized extensions and deduce
+\ref{item:spectral-basis-correspondence-convergence}
+from uniform continuity.
+
+\ProofStep{Projected extensions and convergence of the Gram matrices.}\label{step:spectral-basis-projection}
+\paraid{p-b8f758726161}
+For every integer
+$0\leq\BasisIndex<\SpectralRank$,
+use the Tietze--Urysohn theorem (\Cref{thm:tietze}) to choose a continuous real extension
+$\widetilde\Eigenfunction_\BasisIndex\colon\AmbientCarrier\to\RealNumbers$
+of the prescribed function
+$\Eigenfunction_\BasisIndex\colon\BaseCarrier\to\RealNumbers$.
+For every sufficiently large
+$\SequenceIndex\in\NonnegativeIntegers$
+and every integer
+$0\leq\BasisIndex<\SpectralRank$,
+put
+\[
+ \ProjectedBasisFunction _{\SequenceIndex ,\BasisIndex }=\AmbientProjection _\SequenceIndex \widetilde \Eigenfunction _\BasisIndex .
+\]
+For every integer
+$0\leq\BasisIndex<\SpectralRank$,
+put
+\[
+ \ProjectedBasisFunction _\BasisIndex =\AmbientProjection \widetilde \Eigenfunction _\BasisIndex .
+\]
+Applying \eqref{eq:spectral-projection-convergence-2} to each fixed function
+$\widetilde\Eigenfunction_\BasisIndex$,
+we obtain
+$\norm{\ProjectedBasisFunction _{\SequenceIndex ,\BasisIndex }-\ProjectedBasisFunction _\BasisIndex }_\infty\to0$
+for every
+$0\leq\BasisIndex<\SpectralRank$.
+Moreover,
+\eqref{eq:projection-restriction} implies
+\[
+ \RestrictionOperator_\BaseCarrier\ProjectedBasisFunction_\BasisIndex
+ =\SpectralProjection{\BaseCarrier}{\SpectralCutoff}
+   \RestrictionOperator_\BaseCarrier\widetilde\Eigenfunction_\BasisIndex
+ =\SpectralProjection{\BaseCarrier}{\SpectralCutoff}\Eigenfunction_\BasisIndex
+ =\Eigenfunction_\BasisIndex.
+\]
+Thus
+$\ProjectedBasisFunction_\BasisIndex|_\BaseCarrier=\Eigenfunction_\BasisIndex$.
+Equation \eqref{eq:projection-restriction} on
+$\BaseCarrier_\SequenceIndex$
+shows that
+\[
+ \ProjectedBasisFunction_{\SequenceIndex,\BasisIndex}|_{\BaseCarrier_\SequenceIndex}
+ =\SpectralProjection{\BaseCarrier_\SequenceIndex}{\SpectralCutoff}
+   (\widetilde\Eigenfunction_\BasisIndex|_{\BaseCarrier_\SequenceIndex})
+ \in\SpectralSubspace{\BaseCarrier_\SequenceIndex}{\SpectralCutoff}.
+\]
+Using
+$\IntegrationPoint\in\AmbientCarrier$
+as the integration variable,
+define the real Gram matrix
+\[
+ \GramMatrix _\SequenceIndex =\left(\int_\AmbientCarrier  \ProjectedBasisFunction _{\SequenceIndex ,\BasisIndex }(\IntegrationPoint)\ProjectedBasisFunction _{\SequenceIndex ,\SecondBasisIndex }(\IntegrationPoint)\,\IntegrationDifferential \bar\mu_\SequenceIndex(\IntegrationPoint)
+                                     \right)_{0\leq \BasisIndex ,\SecondBasisIndex<\SpectralRank }.
+\]
+For every pair of integers
+$0\leq\BasisIndex,\SecondBasisIndex<\SpectralRank$,
+the products
+$\ProjectedBasisFunction_{\SequenceIndex,\BasisIndex}
+ \ProjectedBasisFunction_{\SequenceIndex,\SecondBasisIndex}$
+converge uniformly on
+$\AmbientCarrier$
+to
+$\ProjectedBasisFunction_\BasisIndex\ProjectedBasisFunction_\SecondBasisIndex$.
+Since
+$\ProjectedBasisFunction_\BasisIndex|_\BaseCarrier=\Eigenfunction_\BasisIndex$
+and the prescribed basis is orthonormal,
+\[
+ \int_\AmbientCarrier
+ \ProjectedBasisFunction_\BasisIndex(\IntegrationPoint)\ProjectedBasisFunction_\SecondBasisIndex(\IntegrationPoint)
+ \,\IntegrationDifferential\bar\mu(\IntegrationPoint)
+ =\KroneckerSymbol_{\BasisIndex\SecondBasisIndex}.
+\]
+For every sufficiently large
+$\SequenceIndex$
+and every pair of integers
+$0\leq\BasisIndex,\SecondBasisIndex<\SpectralRank$,
+define the uniform product error by
+\begin{equation}\label{eq:gram-uniform-product-error}
+ a_{\SequenceIndex,\BasisIndex,\SecondBasisIndex}
+ =\norm{\ProjectedBasisFunction_{\SequenceIndex,\BasisIndex}
+       \ProjectedBasisFunction_{\SequenceIndex,\SecondBasisIndex}
+       -\ProjectedBasisFunction_\BasisIndex\ProjectedBasisFunction_\SecondBasisIndex}_\infty.
+\end{equation}
+For the same indices,
+define the integration error for the fixed limiting product by
+\begin{equation}\label{eq:gram-weak-integration-error}
+ b_{\SequenceIndex,\BasisIndex,\SecondBasisIndex}
+ =\left|\int_\AmbientCarrier
+       \ProjectedBasisFunction_\BasisIndex(\IntegrationPoint)\ProjectedBasisFunction_\SecondBasisIndex(\IntegrationPoint)
+       \,\IntegrationDifferential\bar\mu_\SequenceIndex(\IntegrationPoint)
+       -\int_\AmbientCarrier
+       \ProjectedBasisFunction_\BasisIndex(\IntegrationPoint)\ProjectedBasisFunction_\SecondBasisIndex(\IntegrationPoint)
+       \,\IntegrationDifferential\bar\mu(\IntegrationPoint)\right|.
+\end{equation}
+Since
+$\bar\mu_\SequenceIndex(\AmbientCarrier)=1$,
+\begin{equation}\label{eq:gram-entry-error}
+ \left|(\GramMatrix_\SequenceIndex)_{\BasisIndex\SecondBasisIndex}
+             -\KroneckerSymbol_{\BasisIndex\SecondBasisIndex}\right|
+ \leq a_{\SequenceIndex,\BasisIndex,\SecondBasisIndex}
+       +b_{\SequenceIndex,\BasisIndex,\SecondBasisIndex}.
+\end{equation}
+For every fixed
+$0\leq\BasisIndex,\SecondBasisIndex<\SpectralRank$,
+uniform convergence of the products implies
+$a_{\SequenceIndex,\BasisIndex,\SecondBasisIndex}\to0$
+in \eqref{eq:gram-uniform-product-error},
+and weak convergence of
+$\bar\mu_\SequenceIndex$
+to
+$\bar\mu$
+implies
+$b_{\SequenceIndex,\BasisIndex,\SecondBasisIndex}\to0$
+in \eqref{eq:gram-weak-integration-error}.
+By \eqref{eq:gram-entry-error},
+\[
+ (\GramMatrix _\SequenceIndex )_{\BasisIndex \SecondBasisIndex }\to\int_\AmbientCarrier  \ProjectedBasisFunction _\BasisIndex(\IntegrationPoint) \ProjectedBasisFunction _\SecondBasisIndex(\IntegrationPoint) \,\IntegrationDifferential \bar\mu(\IntegrationPoint)=\KroneckerSymbol _{\BasisIndex \SecondBasisIndex }.
+\]
+Thus
+$\GramMatrix _\SequenceIndex \to \IdentityMatrix _\SpectralRank $,
+so choose
+$\SequenceIndex_0\in\NonnegativeIntegers$
+such that for every
+$\SequenceIndex\geq\SequenceIndex_0$
+the matrix
+$\GramMatrix_\SequenceIndex$
+is positive definite.
+
+\ProofStep{Normalization by inverse square roots.}\label{step:spectral-basis-normalization}
+\paraid{p-dc0f659821c3}
+We prove that the inverse square roots of the Gram matrices converge to the identity.
+\Cref{thm:matrix-square-root} defines
+$\GramMatrix_\SequenceIndex^{-1/2}$
+by replacing each positive eigenvalue with its inverse square root in
+an orthonormal eigenbasis.
+For a real
+$\SpectralRank\times\SpectralRank$
+matrix
+$\MatrixOperator$,
+write its Euclidean operator norm as
+\[
+ \norm{\MatrixOperator}_\OperatorNorm
+ =\sup_{\substack{\CoefficientVector\in\RealNumbers^\SpectralRank\\
+                  \norm{\CoefficientVector}_2=1}}
+       \norm{\MatrixOperator\CoefficientVector}_2.
+\]
+For every sufficiently large
+$\SequenceIndex\in\NonnegativeIntegers$,
+put
+\[
+ \MatrixError_\SequenceIndex
+ =\norm{\GramMatrix_\SequenceIndex-\IdentityMatrix_\SpectralRank}_\OperatorNorm.
+\]
+Entrywise convergence  implies
+$\MatrixError_\SequenceIndex\to0$.
+Increase
+$\SequenceIndex_0$
+if necessary so that for every
+$\SequenceIndex\geq\SequenceIndex_0$,
+\[
+ 0\leq\MatrixError_\SequenceIndex<1.
+\]
+Fix
+$\SequenceIndex\geq\SequenceIndex_0$.
+Since
+$\GramMatrix_\SequenceIndex$
+is real symmetric,
+\Cref{thm:matrix-square-root} implies that every
+$\Eigenvalue\in\spec(\GramMatrix_\SequenceIndex)$
+is real and admits an eigenvector
+$\CoefficientVector\in\RealNumbers^\SpectralRank$
+with
+$\norm{\CoefficientVector}_2=1$.
+For such
+$\Eigenvalue$
+and
+$\CoefficientVector$,
+we have
+\[
+ |\Eigenvalue-1|
+ =\norm{(\GramMatrix_\SequenceIndex-\IdentityMatrix_\SpectralRank)
+         \CoefficientVector}_2
+ \leq\norm{\GramMatrix_\SequenceIndex-\IdentityMatrix_\SpectralRank}_\OperatorNorm
+      \norm{\CoefficientVector}_2
+ =\MatrixError_\SequenceIndex.
+\]
+Since
+$\Eigenvalue\in\RealNumbers$
+and
+$\MatrixError_\SequenceIndex<1$,
+it follows that
+\[
+ \spec(\GramMatrix_\SequenceIndex)
+ \subset[1-\MatrixError_\SequenceIndex,1+\MatrixError_\SequenceIndex]
+ \subset(0,\infty).
+\]
+For these indices
+$\SequenceIndex$,
+\Cref{thm:matrix-square-root} implies
+\[
+ \begin{aligned}
+ \norm{\GramMatrix_\SequenceIndex^{-1/2}-\IdentityMatrix_\SpectralRank}_\OperatorNorm
+ &=\max_{\Eigenvalue\in\spec(\GramMatrix_\SequenceIndex)}
+       |\Eigenvalue^{-1/2}-1|
+ \leq\max_{1-\MatrixError_\SequenceIndex\leq\SecondParameter\leq1+\MatrixError_\SequenceIndex}
+       |\SecondParameter^{-1/2}-1|\\
+ &=\max_{1-\MatrixError_\SequenceIndex\leq\SecondParameter\leq1+\MatrixError_\SequenceIndex}
+       \frac{|\SecondParameter-1|}
+       {\sqrt{\SecondParameter}(1+\sqrt{\SecondParameter})}\\
+ &\leq
+ \frac{\MatrixError_\SequenceIndex}
+ {\sqrt{1-\MatrixError_\SequenceIndex}
+  (1+\sqrt{1-\MatrixError_\SequenceIndex})}
+ \longrightarrow0.
+ \end{aligned}
+\]
+Thus
+\[
+ \GramMatrix_\SequenceIndex^{-1/2}
+ \xrightarrow[\SequenceIndex\to\infty]{\norm{\cdot}_\OperatorNorm}
+ \IdentityMatrix_\SpectralRank.
+\]
+For every
+$\SequenceIndex\geq\SequenceIndex_0$
+and
+$\IntegrationPoint\in\AmbientCarrier$,
+we define the row map
+\[
+ \ProjectedBasisRow_\SequenceIndex\colon\AmbientCarrier\to\RealNumbers^{1\times\SpectralRank}
+\]
+by
+\[
+ \ProjectedBasisRow_\SequenceIndex(\IntegrationPoint)
+ =(\ProjectedBasisFunction_{\SequenceIndex,0}(\IntegrationPoint),\ldots,
+   \ProjectedBasisFunction_{\SequenceIndex,\SpectralRank-1}(\IntegrationPoint)).
+\]
+We multiply this row vector by the matrix
+$\GramMatrix_\SequenceIndex^{-1/2}$
+on the right and define
+\begin{equation}\label{eq:normalized-basis-row}
+ \bigl(\widetilde\Eigenfunction_{\SequenceIndex,0}(\IntegrationPoint),\ldots,
+       \widetilde\Eigenfunction_{\SequenceIndex,\SpectralRank-1}(\IntegrationPoint)\bigr)
+ =\ProjectedBasisRow_\SequenceIndex(\IntegrationPoint)\GramMatrix_\SequenceIndex^{-1/2}.
+\end{equation}
+For every integer
+$0\leq\BasisIndex<\SpectralRank$,
+the components in \eqref{eq:normalized-basis-row} satisfy
+\[
+ \widetilde\Eigenfunction_{\SequenceIndex,\BasisIndex}(\IntegrationPoint)
+ =\sum_{\SecondBasisIndex=0}^{\SpectralRank-1}
+ \ProjectedBasisFunction_{\SequenceIndex,\SecondBasisIndex}(\IntegrationPoint)
+ (\GramMatrix_\SequenceIndex^{-1/2})_{\SecondBasisIndex\BasisIndex},
+\]
+and
+\[
+ \Eigenfunction_{\SequenceIndex,\BasisIndex}
+ =\widetilde\Eigenfunction_{\SequenceIndex,\BasisIndex}|_{\BaseCarrier_\SequenceIndex}.
+\]
+Since
+$\GramMatrix_\SequenceIndex^{-1/2}$
+is symmetric,
+the Gram matrix of these restrictions is
+\begin{equation}\label{eq:normalized-basis-gram}
+ \begin{aligned}
+ &\int_\AmbientCarrier
+   \bigl(\ProjectedBasisRow_\SequenceIndex(\IntegrationPoint)
+         \GramMatrix_\SequenceIndex^{-1/2}\bigr)^{\TransposeSymbol}
+   \bigl(\ProjectedBasisRow_\SequenceIndex(\IntegrationPoint)
+         \GramMatrix_\SequenceIndex^{-1/2}\bigr)
+   \,\IntegrationDifferential\bar\mu_\SequenceIndex(\IntegrationPoint)\\
+ &=(\GramMatrix_\SequenceIndex^{-1/2})^{\TransposeSymbol}
+   \GramMatrix_\SequenceIndex\GramMatrix_\SequenceIndex^{-1/2}\\
+ &=\GramMatrix_\SequenceIndex^{-1/2}\GramMatrix_\SequenceIndex
+   \GramMatrix_\SequenceIndex^{-1/2}=\IdentityMatrix_\SpectralRank.
+ \end{aligned}
+\end{equation}
+By \eqref{eq:projection-restriction},
+the functions
+$\Eigenfunction_{\SequenceIndex,\BasisIndex}$
+belong to
+$\SpectralSubspace{\BaseCarrier_\SequenceIndex}{\SpectralCutoff}$.
+Equation \eqref{eq:normalized-basis-gram} proves orthonormality,
+and their number equals
+$\dim\SpectralSubspace{\BaseCarrier_\SequenceIndex}{\SpectralCutoff}$,
+so they form an orthonormal basis of
+$\SpectralSubspace{\BaseCarrier_\SequenceIndex}{\SpectralCutoff}$.
+This proves \ref{item:spectral-basis-orthonormality}.
+
+\ProofStep{Continuous extensions and convergence.}\label{step:spectral-basis-extensions}
+\paraid{p-9a01e68ec997}
+For every
+$\SequenceIndex\geq\SequenceIndex_0$
+and every integer
+$0\leq\BasisIndex<\SpectralRank$,
+put
+$\BasisExtension_{\SequenceIndex,\BasisIndex}
+ =\widetilde\Eigenfunction_{\SequenceIndex,\BasisIndex}$
+and
+$\BasisExtension_\BasisIndex=\ProjectedBasisFunction_\BasisIndex$.
+The projections preserve real functions,
+so the construction in Step~\ref{step:spectral-basis-projection} and the finite linear combinations in
+\eqref{eq:normalized-basis-row} show that these functions are real and continuous.
+Their restriction identities follow from Step~\ref{step:spectral-basis-projection} and the definition of
+$\Eigenfunction_{\SequenceIndex,\BasisIndex}$
+in Step~\ref{step:spectral-basis-normalization}.
+This proves \ref{item:spectral-basis-extensions}.
+We next prove \ref{item:spectral-basis-uniform-convergence}.
+The uniform convergence of the projected basis functions in Step~\ref{step:spectral-basis-projection},
+the convergence
+$\GramMatrix_\SequenceIndex^{-1/2}\to\IdentityMatrix_\SpectralRank$,
+and \eqref{eq:normalized-basis-row} imply that,
+for every integer
+$0\leq\BasisIndex<\SpectralRank$,
+\[
+ \norm{\widetilde\Eigenfunction_{\SequenceIndex,\BasisIndex}
+       -\ProjectedBasisFunction_\BasisIndex}_\infty\longrightarrow0.
+\]
+Since there are finitely many basis indices,
+it follows that
+\[
+ \max_{0\leq\BasisIndex<\SpectralRank}
+ \norm{\widetilde\Eigenfunction_{\SequenceIndex,\BasisIndex}
+       -\ProjectedBasisFunction_\BasisIndex}_\infty\longrightarrow0.
+\]
+By the definitions of the extensions,
+\[
+ \max_{0\leq\BasisIndex<\SpectralRank}
+ \norm{\BasisExtension_{\SequenceIndex,\BasisIndex}
+       -\BasisExtension_\BasisIndex}_\infty
+ =\max_{0\leq\BasisIndex<\SpectralRank}
+ \norm{\widetilde\Eigenfunction_{\SequenceIndex,\BasisIndex}
+       -\ProjectedBasisFunction_\BasisIndex}_\infty
+ \longrightarrow0,
+\]
+which proves \ref{item:spectral-basis-uniform-convergence}.
+Finally,
+let
+$\Correspondence_\SequenceIndex\subset\BaseCarrier_\SequenceIndex\times\BaseCarrier$
+be a sequence of correspondences satisfying the hypothesis in
+\ref{item:spectral-basis-correspondence-convergence}.
+For every
+$\SequenceIndex\geq\SequenceIndex_0$,
+put
+\[
+ \CorrespondenceDisplacement_\SequenceIndex
+ =\sup_{(\BasePoint_\SequenceIndex,\BasePoint)\in\Correspondence_\SequenceIndex}
+       \AmbientMetric(\BasePoint_\SequenceIndex,\BasePoint).
+\]
+For every integer
+$0\leq\BasisIndex<\SpectralRank$,
+the restriction identities in \ref{item:spectral-basis-extensions} imply
+\begin{equation}\label{eq:basis-alignment-error}
+ \sup_{(\BasePoint_\SequenceIndex,\BasePoint)\in\Correspondence_\SequenceIndex}|\Eigenfunction _{\SequenceIndex ,\BasisIndex }(\BasePoint _\SequenceIndex )-\Eigenfunction _\BasisIndex (\BasePoint )|
+ \leq\norm{\widetilde \Eigenfunction _{\SequenceIndex ,\BasisIndex }-\ProjectedBasisFunction _\BasisIndex }_\infty
+       +\sup_{\substack{\IntegrationPoint ,\IntegrationPoint _0\in \AmbientCarrier \\\AmbientMetric (\IntegrationPoint ,\IntegrationPoint _0)\leq\CorrespondenceDisplacement _\SequenceIndex }}
+                  |\ProjectedBasisFunction _\BasisIndex (\IntegrationPoint )-\ProjectedBasisFunction _\BasisIndex (\IntegrationPoint _0)|.
+\end{equation}
+The maximum over the basis indices of the norm term in
+\eqref{eq:basis-alignment-error} tends to
+$0$
+by
+\ref{item:spectral-basis-uniform-convergence}
+and the definitions of the extensions.
+For each
+$0\leq\BasisIndex<\SpectralRank$,
+uniform continuity of
+$\ProjectedBasisFunction_\BasisIndex$
+on the compact space $\AmbientCarrier$ and
+$\CorrespondenceDisplacement_\SequenceIndex\to0$
+imply the following convergence,
+where the maximum tends to
+$0$
+because there are finitely many basis indices.
+\[
+ \max_{0\leq\BasisIndex<\SpectralRank}
+ \sup_{\substack{\IntegrationPoint,\IntegrationPoint_0\in\AmbientCarrier\\
+                  \AmbientMetric(\IntegrationPoint,\IntegrationPoint_0)
+                  \leq\CorrespondenceDisplacement_\SequenceIndex}}
+ \left|\ProjectedBasisFunction_\BasisIndex(\IntegrationPoint)
+       -\ProjectedBasisFunction_\BasisIndex(\IntegrationPoint_0)\right|
+ \longrightarrow0.
+\]
+Taking the maximum over the basis indices in
+\eqref{eq:basis-alignment-error} now yields
+\[
+ \max_{0\leq\BasisIndex<\SpectralRank}
+ \sup_{(\BasePoint_\SequenceIndex,\BasePoint)\in\Correspondence_\SequenceIndex}
+ \left|\Eigenfunction_{\SequenceIndex,\BasisIndex}(\BasePoint_\SequenceIndex)
+       -\Eigenfunction_\BasisIndex(\BasePoint)\right|
+ \longrightarrow0,
+\]
+which proves \ref{item:spectral-basis-correspondence-convergence}.
+\end{proof}

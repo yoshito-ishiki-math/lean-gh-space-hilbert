@@ -1,0 +1,21 @@
+{
+  "state": "locally-prepared",
+  "lean_build": "passed",
+  "jobs": 9040,
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "challenge_intentional_sorry": 1,
+  "solution_sorry": 0,
+  "challenge_imports": [
+    "Mathlib"
+  ],
+  "substantive_source_files_matching": 432,
+  "comparator": "not run; required Linux tools unavailable",
+  "nanoda": "not run",
+  "public_repository": "https://github.com/yoshito-ishiki-math/lean-gh-space-hilbert",
+  "submission_commit": null,
+  "submitted": false
+}

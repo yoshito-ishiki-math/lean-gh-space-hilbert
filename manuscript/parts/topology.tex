@@ -1,0 +1,399 @@
+\paraid{p-61c139e831ec}
+The Gromov--Hausdorff space is a global analogue of a hyperspace.
+For a fixed metric space,
+the hyperspace of its nonempty compact subsets is equipped with the
+Hausdorff distance.
+In the Gromov--Hausdorff space
+$\GHSpace$,
+we consider the isometry classes of all nonempty compact metric spaces
+and allow the ambient metric space to vary.
+The ordinary unpointed
+Gromov--Hausdorff distance
+$\GHDistance$
+is the infimum of the Hausdorff distances between isometric copies
+in all common ambient metric spaces.
+
+
+
+\paraid{p-f1859d6a167a}
+Curtis
+\cite[Theorem~1.6]{Curtis1980}
+proves,
+in particular,
+that the hyperspace of nonempty compact subsets of a Banach space,
+equipped with the Hausdorff metric of its norm,
+is an absolute retract and hence an absolute neighborhood retract.
+This result for a fixed ambient space motivates the analogous question
+for the global space
+$\GHSpace$.
+Antonyan
+\cite[p.~2]{Antonyan2020Euclidean}
+asks whether
+$\GHSpace$
+is an absolute retract.
+In this part,
+we answer this question affirmatively by proving the following theorem.
+
+\begin{theorem}\label{thm:part-iii-main}
+\paraid{p-11b6e24f7baa}
+The space
+$\GHSpace$
+is an absolute retract for all metrizable spaces.
+\end{theorem}
+
+
+
+\paraid{p-4df38d2e7f6c}
+As a related result,
+for each positive integer
+$\FiniteSize$,
+Antonyan identifies the subspace represented by compact subsets of
+$\RealNumbers^\FiniteSize$
+with the Hilbert cube minus a point
+\cite[Corollary~5.3]{Antonyan2021Euclidean}.
+Hyperspaces also appear in the study of Gromov--Hausdorff geodesics.
+M\'emoli and Wan
+\cite[arXiv v2, Theorem~1]{MemoliWan2023}
+prove that every Gromov--Hausdorff geodesic can be realized as a Hausdorff
+geodesic of compact subsets of one compact metric space.
+
+\paraid{p-1cc29943ea5e}
+For metrics on a fixed metrizable space,
+the author proved an interpolation theorem with a uniform error bound
+for prescribed metrics on a discrete family of closed subsets
+\cite[Theorem~1.1]{Ishiki2026Interpolation}.
+In this paper,
+the domain of an extension problem maps into
+$\GHSpace$,
+so the underlying compact spaces vary with the parameter.
+The coordinate pairs in the local models can be chosen to satisfy
+the norm and coordinate convergence in \ref{item:model-continuity}
+of \Cref{thm:local-models}.
+We preserve their norms when placing the models in Banach spaces,
+so that the partition of unity controls the error in all pairwise distances.
+
+
+\paraid{p-402bb42dd02f}
+To prove that
+$\GHSpace$
+is an ANR,
+we use Hanner's domination theorem
+(\Cref{thm:hanner-domination}).
+Roughly speaking,
+this theorem states that a separable metric space is an ANR if its identity
+map can be deformed to a map factoring through an ANR by a homotopy
+whose point tracks have arbitrarily small diameter.
+For
+$\GHSpace$,
+we construct the auxiliary ANR as the quotient of the hyperspace of a
+Banach space by a compact group action.
+The Banach space and the group are obtained from the local models,
+and the absolute retract property of this quotient follows from
+Antonyan's results on equivariant hyperspaces and orbit spaces.
+
+\paraid{p-433e89812f55}
+Fix a continuous error function
+$\ErrorControl\colon\GHSpace\to(0,\infty)$.
+Choose local models whose errors are less than
+$\ErrorControl$
+on their domains,
+and choose a countable locally finite partition of unity
+$\{\PartitionWeight_\CoverIndex\}_{\CoverIndex\in\NonnegativeIntegers}$
+subordinate to these domains.
+For each
+$\CoverIndex\in\NonnegativeIntegers$,
+fix a local model of dimension
+$\ModelDimension_\CoverIndex\geq1$
+on an open set
+$\ModelDomain_\CoverIndex$
+containing
+$\supp\PartitionWeight_\CoverIndex$.
+For every
+$\CoverIndex\in\NonnegativeIntegers$
+and every compact metric representative
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$
+whose isometry class belongs to
+$\ModelDomain_\CoverIndex$,
+choose a coordinate pair for the local model and write its point map and norm as
+\[
+ \FeatureCoordinates_{\CoverIndex,\ComparisonCarrier}\colon
+ \ComparisonCarrier\to\RealNumbers^{\ModelDimension_\CoverIndex},
+ \qquad
+ \NormSymbol_{\CoverIndex,\ComparisonCarrier}\colon
+ \RealNumbers^{\ModelDimension_\CoverIndex}\to[0,\infty).
+\]
+
+\paraid{p-b1d3e3825e91}
+We first represent the varying local norms in fixed Banach spaces.
+For each integer
+$\ModelDimension\geq1$,
+let
+$\UnitSphere^{\ModelDimension-1}$
+be the Euclidean unit sphere and set
+\[
+ \BanachAmbientSpace_\ModelDimension
+ =\ContinuousFunctions(\UnitSphere^{\ModelDimension-1},\RealNumbers),
+\]
+with the uniform norm.
+For every integer
+$\ModelDimension\geq1$
+and every norm
+$\NormSymbol$
+on
+$\RealNumbers^\ModelDimension$,
+let
+$\NormSymbol\DualNorm$
+denote its dual norm with respect to the Euclidean inner product.
+\Cref{lem:dual-representation} constructs the linear isometric embedding
+\[
+ \NormEmbedding_\NormSymbol\colon
+ (\RealNumbers^\ModelDimension,\NormSymbol)
+ \to\BanachAmbientSpace_\ModelDimension
+\]
+defined,
+for
+$\FirstVector\in\RealNumbers^\ModelDimension$
+and
+$\SpherePoint\in\UnitSphere^{\ModelDimension-1}$,
+by
+\[
+ \NormEmbedding_\NormSymbol(\FirstVector)(\SpherePoint)
+ =\frac{\langle\FirstVector,\SpherePoint\rangle}
+       {\NormSymbol\DualNorm(\SpherePoint)}.
+\]
+We take the
+$\SummableNorm$
+direct sum of these spaces over the local models and let the product
+of the corresponding orthogonal groups act on it.
+Thus we set
+\[
+ \BanachAmbientSpace
+ =\left(\bigoplus_{\CoverIndex\in\NonnegativeIntegers}
+        \BanachAmbientSpace_{\ModelDimension_\CoverIndex}\right)_{\SummableNorm},
+\]
+and
+\[
+ \ActingGroup
+ =\prod_{\CoverIndex\in\NonnegativeIntegers}
+   \OrthogonalGroup(\ModelDimension_\CoverIndex).
+\]
+Each orthogonal group acts on the corresponding space of functions
+by precomposition with inverse orthogonal transformations of the sphere.
+The resulting action of the compact metrizable group
+$\ActingGroup$
+on the separable Banach space
+$\BanachAmbientSpace$
+is continuous and consists of linear isometries.
+Equation~\eqref{eq:dual-equivariance} makes the embeddings compatible
+with orthogonal changes of the local norms and coordinates.
+
+\paraid{p-b04298598a10}
+Let
+$\CompactHyperspace(\BanachAmbientSpace)$
+be the space of nonempty compact subsets of
+$\BanachAmbientSpace$,
+with the Hausdorff metric induced by its norm,
+and set
+\[
+ \AuxiliaryAR=\CompactHyperspace(\BanachAmbientSpace)/\ActingGroup.
+\]
+The absolute retract property of
+$\AuxiliaryAR$
+follows from two results of Antonyan.
+Since
+$\BanachAmbientSpace$
+is connected and locally continuum-connected,
+his equivariant hyperspace theorem
+\cite[Proposition~3.1]{Antonyan2003West},
+with the corrigendum \cite{Antonyan2006Correction},
+implies that
+$\CompactHyperspace(\BanachAmbientSpace)$
+is an equivariant absolute retract,
+or a
+$\ActingGroup$-AR
+(\Cref{thm:equivariant-hyperspace}).
+His theorem on orbit spaces
+\cite[Theorem~8 and Corollary~1]{Antonyan1990}
+then implies that
+$\AuxiliaryAR$
+is an AR because
+$\ActingGroup$
+is compact with a countable basis
+(\Cref{thm:orbit-retract}).
+\Cref{lem:hyperspace-orbit-ar} also proves that
+$\AuxiliaryAR$
+is separable and metrizable.
+In particular,
+$\AuxiliaryAR$
+is the ANR through which we will approximate the identity of
+$\GHSpace$.
+
+\paraid{p-8e3de8ba284c}
+We combine the local point maps using the partition of unity.
+For each compact metric representative
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$,
+define
+$\JointFeatureMap_\ComparisonCarrier\colon
+\ComparisonCarrier\to\BanachAmbientSpace$
+as follows.
+For every
+$\CoverIndex\in\NonnegativeIntegers$
+and
+$\ComparisonPoint\in\ComparisonCarrier$,
+set
+\[
+ \bigl(\JointFeatureMap_\ComparisonCarrier(\ComparisonPoint)\bigr)_\CoverIndex
+ =
+ \begin{cases}
+ \PartitionWeight_\CoverIndex\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}
+ \NormEmbedding_{\NormSymbol_{\CoverIndex,\ComparisonCarrier}}
+   (\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier}(\ComparisonPoint))
+ &\text{if }\PartitionWeight_\CoverIndex
+   \MetricSpace{\ComparisonCarrier}{\ComparisonMetric}>0,\\
+ 0&\text{otherwise}.
+ \end{cases}
+\]
+For fixed
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$,
+only finitely many coordinate maps are nonzero.
+Thus
+$\JointFeatureMap_\ComparisonCarrier$
+is continuous and its image
+$\CompactFeatureImage_\ComparisonCarrier
+ =\JointFeatureMap_\ComparisonCarrier(\ComparisonCarrier)$
+is nonempty and compact.
+Changes of local bases and isometric representatives change
+$\CompactFeatureImage_\ComparisonCarrier$
+by elements of
+$\ActingGroup$.
+Thus its orbit is well defined by the input isometry class.
+This construction applies to both trivial and nontrivial isometry groups,
+although spaces with trivial isometry group are dense in
+$\GHSpace$
+by Rouyer's results
+\cite[arXiv v1, Theorems~2 and~4]{Rouyer2011}.
+Writing
+$\OrbitProjection\colon\CompactHyperspace(\BanachAmbientSpace)\to\AuxiliaryAR$
+for the orbit map,
+we construct in \Cref{thm:global-domination} continuous maps
+\[
+ \GHSpace\xrightarrow{\ \ApproximationMap\ }
+ \AuxiliaryAR
+ \xrightarrow{\ \RealizationMap\ }\GHSpace.
+\]
+For every compact metric representative
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$,
+the first map satisfies
+\[
+ \ApproximationMap\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}
+ =\OrbitProjection(\CompactFeatureImage_\ComparisonCarrier).
+\]
+The second map sends the orbit of a nonempty compact subset
+$K\subset\BanachAmbientSpace$
+to its isometry class with the metric induced by the norm of
+$\BanachAmbientSpace$.
+
+\paraid{p-5e91fc971616}
+\Cref{thm:global-domination} also constructs a continuous homotopy
+\[
+ \ApproximationHomotopy\colon\GHSpace\times\UnitInterval\to\GHSpace.
+\]
+For every compact metric representative
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$,
+its endpoints satisfy
+\[
+ \ApproximationHomotopy(\MetricSpace{\ComparisonCarrier}{\ComparisonMetric},0)
+ =\MetricSpace{\ComparisonCarrier}{\ComparisonMetric},
+ \qquad
+ \ApproximationHomotopy(\MetricSpace{\ComparisonCarrier}{\ComparisonMetric},1)
+ =\RealizationMap\ApproximationMap
+   \MetricSpace{\ComparisonCarrier}{\ComparisonMetric}.
+\]
+For every compact metric representative
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$,
+the point track satisfies
+\begin{equation}\label{eq:part-iii-domination-3}
+ \diam_{\GHDistance}
+ \bigl\{\ApproximationHomotopy(\MetricSpace{\ComparisonCarrier}{\ComparisonMetric},t)
+       \bigm| t\in\UnitInterval\bigr\}
+ <\ErrorControl\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}.
+\end{equation}
+For each
+$\ErrorTolerance>0$,
+we apply this construction with
+$\ErrorControl\equiv\ErrorTolerance$.
+Hanner's domination theorem
+(\Cref{thm:hanner-domination})
+and \eqref{eq:part-iii-domination-3} then imply that
+$\GHSpace$
+is an ANR for all separable metrizable spaces.
+\Cref{thm:anr-category} extends this conclusion to all metrizable spaces.
+Finally,
+scaling the metrics contracts
+$\GHSpace$
+to the one-point space.
+The ANR/ANE and AR/AE equivalences in \Cref{thm:retract-extensor},
+together with \Cref{thm:contractible-ane},
+therefore imply the absolute retract property in
+\Cref{thm:part-iii-main}.
+
+\medskip
+\noindent\textbf{Dependence on the other parts.}
+\paraid{p-065600b3665d}
+\Cref{thm:local-models} is the input from Part~\ref{part:spectral}.
+The continuity assertion \ref{item:model-continuity}
+and the isometry identities \eqref{eq:input-isometry-1} and \eqref{eq:input-isometry-2}
+in \Cref{thm:local-models} are used in the global construction.
+The dependence on Part~\ref{part:measures} is through \Cref{thm:local-models}.
+Part~\ref{part:hilbert} uses the absolute retract property established in
+this part together with an independently constructed discrete
+approximation to identify
+$\GHSpace$
+with Hilbert space.
+
+\medskip
+\noindent\textbf{Organization.}
+\paraid{p-fc2cd8290ce7}
+In Section~\ref{sec:prelim-topology},
+we recall the equivariant hyperspace results and the domination and
+extension theorems used in the proof.
+In Subsection~\ref{subsec:ar-norm-representations},
+we represent varying finite-dimensional norms isometrically
+in a fixed Banach space,
+with compatibility under orthogonal changes of coordinates.
+In Subsection~\ref{subsec:ar-hyperspace-orbits},
+we construct absolute retracts from hyperspaces modulo
+compact group actions and compare their orbit metrics with the
+Gromov--Hausdorff distance.
+In Subsection~\ref{subsec:ar-global-approximation},
+we use a partition of unity to combine local models into
+global approximations with small homotopy tracks.
+In Subsection~\ref{subsec:ar-extension},
+we apply Hanner's
+\Cref{thm:hanner-domination,thm:anr-category}
+and use contractibility to obtain extension from
+closed subsets of arbitrary metrizable spaces,
+proving \Cref{thm:absolute-extensor}.
+
+\medskip
+\noindent\textbf{Conventions and notation.}
+\paraid{p-97bafc9921fd}
+All compact metric spaces are nonempty,
+and Banach and Hilbert spaces are real.
+We identify compact metric spaces with their isometry classes in
+$\GHSpace$.
+An isometry is a surjective isometric embedding.
+For a metric space
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$,
+we write
+$\CompactHyperspace(\BaseCarrier)$
+for its nonempty compact subsets,
+equipped with the Hausdorff metric
+$\HausdorffDistance{\MetricSymbol}$.
+For a compact space with an isometric embedding into an ambient metric space,
+we identify the compact space with its image and use the restricted ambient metric.
+The notation
+$\IdentityMap$
+denotes the identity map on its specified domain.
+Sequences are indexed by
+$\NonnegativeIntegers=\{0,1,2,\ldots\}$.

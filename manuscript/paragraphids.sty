@@ -1,0 +1,74 @@
+\NeedsTeXFormat{LaTeX2e}[2020/10/01]
+\ProvidesPackage{paragraphids}[2026/09/15 v0.4 Stable paragraph review identifiers]
+
+% Display is independent of showkeys. Default: show.
+\newif\ifparagraphids@show
+\paragraphids@showtrue
+\DeclareOption{show}{\paragraphids@showtrue}
+\DeclareOption{hide}{\paragraphids@showfalse}
+\DeclareOption*{\PackageError{paragraphids}{Unknown option `\CurrentOption'}
+  {Use show or hide.}}
+\ProcessOptions*\relax
+\RequirePackage[noadjust,quiet]{marginnote}
+\newcommand*\ParagraphIDsOn{\paragraphids@showtrue}
+\newcommand*\ParagraphIDsOff{\paragraphids@showfalse}
+\newcommand*\paragraphidfont{\normalfont\ttfamily\fontsize{6}{7}\selectfont}
+\newlength\paragraphidwidth
+\setlength\paragraphidwidth{19mm}
+\newcommand*\paragraphids@print[1]{%
+  \begingroup
+    % Keep marginnote page/position calculations; select physical left locally.
+    \let\paragraphids@savedtest\@mn@margintest
+    \def\@mn@margintest{\paragraphids@savedtest\@tempswatrue}%
+    \reversemarginpar
+    \setlength\marginparwidth{\paragraphidwidth}%
+    \renewcommand*\marginfont{\paragraphidfont}%
+    \marginnote{\mbox{#1}}%
+  \endgroup
+}
+
+
+% Numbered editorial notes. Keep each call on its own source line.
+\RequirePackage{color}
+\newlength\paragraphnotewidth
+\setlength\paragraphnotewidth{25mm}
+\newcommand*\paragraphnotefont{\normalfont\fontsize{8}{9.5}\selectfont}
+\NewDocumentCommand\paranote{O{8pt} m +m}{%
+  \ifparagraphids@show
+    \begingroup
+      \let\paragraphids@savedtest\@mn@margintest
+      \def\@mn@margintest{\paragraphids@savedtest\@tempswatrue}%
+      \reversemarginpar
+      \setlength\marginparwidth{\paragraphnotewidth}%
+      \renewcommand*\marginfont{\paragraphnotefont\color{red}}%
+      \renewcommand*\raggedleftmarginnote{\raggedright}%
+      \marginnote{\textbf{#2.}\enspace #3}[#1]%
+    \endgroup
+  \fi
+  \ignorespaces
+}
+
+\ExplSyntaxOn
+\prop_new:N \g_paragraphids_seen_prop
+\msg_new:nnn {paragraphids}{invalid-id}
+  {Invalid~paragraph~ID~'#1'.~Use~p-~followed~by~12~lowercase~hex~digits.}
+\msg_new:nnn {paragraphids}{duplicate-id}
+  {Duplicate~paragraph~ID~'#1'.~Each~paragraph~needs~its~own~permanent~ID.}
+\NewDocumentCommand \paraid {m}
+  {
+    \regex_match:nnTF {\A p\-[0-9a-f]{12}\Z} {#1}
+      {
+        \prop_if_in:NnTF \g_paragraphids_seen_prop {#1}
+          {\msg_error:nnn {paragraphids}{duplicate-id}{#1}}
+          {
+            \prop_gput:Nnn \g_paragraphids_seen_prop {#1} {seen}
+            \ifparagraphids@show
+              \paragraphids@print{#1}
+            \fi
+          }
+      }
+      {\msg_error:nnn {paragraphids}{invalid-id}{#1}}
+    \ignorespaces
+  }
+\ExplSyntaxOff
+\endinput

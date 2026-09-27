@@ -1,0 +1,19 @@
+def PaperN.PartIV.TorunczykRecognitionInput : Prop :=
+∀ (X : Type) [inst : MetricSpace X] [CompleteSpace X] [SeparableSpace X] [Nonempty X],
+  IsAbsoluteRetract X → (Nonempty (X ≃ₜ ↥RealHilbertSpace) ↔ HasHilbertCubeDiscreteApproximation X)
+def PaperN.PartIV.HasHilbertCubeDiscreteApproximation.{u_1} : (X : Type u_1) → [TopologicalSpace X] → Prop :=
+fun X [TopologicalSpace X] =>
+  ∀ (f : ℕ × HilbertCube → X),
+    Continuous f →
+      ∀ (U : Set (Set X)),
+        (∀ V ∈ U, IsOpen V) →
+          (∀ (x : X), ∃ V ∈ U, x ∈ V) →
+            ∃ g,
+              Continuous g ∧
+                (∀ (x : ℕ × HilbertCube), ∃ V ∈ U, f x ∈ V ∧ g x ∈ V) ∧ IsDiscreteFamily fun j => g '' {j} ×ˢ Set.univ
+def PaperN.PartIV.IsDiscreteFamily.{u_1, u_2} : {J : Type u_1} →
+  {X : Type u_2} → [TopologicalSpace X] → (J → Set X) → Prop :=
+fun {J} {X} [TopologicalSpace X] F =>
+  ∀ (x : X), ∃ V ∈ nhds x, ∀ (i j : J), (F i ∩ V).Nonempty → (F j ∩ V).Nonempty → i = j
+'PaperN.PartIV.hilbertCubeDiscreteApproximation_main' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.ghSpace_homeomorphic_hilbert_main' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,1289 @@
+\subsection{Local maps to normed spaces}\label{subsec:spectral-local-models}
+\paraid{p-160c1dd745e3}
+We now turn the spectral subspace into coordinates in
+$\RealNumbers^\ModelDimension $.
+A choice of orthonormal basis determines the coordinates,
+but the resulting pseudometric is independent of this choice.
+
+\paraid{p-643ccba9258d}
+We use the orthogonal group
+\[
+ \OrthogonalGroup(\ModelDimension )=\{\OrthogonalChange \in\RealNumbers^{\ModelDimension \times \ModelDimension }\mid \OrthogonalChange ^{\TransposeSymbol }\OrthogonalChange =\IdentityMatrix _\ModelDimension \},
+\]
+acting on column vectors in
+$\RealNumbers^\ModelDimension $.
+Thus
+$\OrthogonalChange $
+preserves the Euclidean norm and
+$\OrthogonalChange ^{-1}=\OrthogonalChange ^{\TransposeSymbol }$.
+
+\paraid{p-f848e928ba37}
+We consider the equivalence class of a coordinate map and its norm,
+so that a change of orthonormal basis does not change the model.
+
+\begin{definition}\label{def:normed-coordinate-class}
+\paraid{p-49a6a71b7246}
+Let
+$\ComparisonCarrier$
+be a nonempty compact space and let
+$\ModelDimension\geq1$.
+Write
+\[
+ \FiniteNormSpace{\ModelDimension}
+ =\{\NormSymbol\colon\RealNumbers^\ModelDimension\to[0,\infty)
+       \mid\NormSymbol\text{ is a norm}\}.
+\]
+The group
+$\OrthogonalGroup(\ModelDimension)$
+acts on
+$\ContinuousFunctions(\ComparisonCarrier,\RealNumbers^\ModelDimension)
+ \times\FiniteNormSpace{\ModelDimension}$
+by
+\begin{equation}\label{eq:frame-action}
+ \OrthogonalChange\cdot(\FeatureCoordinates,\NormSymbol)
+ =(\OrthogonalChange\circ\FeatureCoordinates,
+   \NormSymbol\circ\OrthogonalChange^{-1}).
+\end{equation}
+We call an element of the quotient set
+\begin{equation}\label{eq:normed-coordinate-class-space}
+ \CoordinateClassSpace{\ModelDimension}{\ComparisonCarrier}
+ =\bigl(\ContinuousFunctions(\ComparisonCarrier,\RealNumbers^\ModelDimension)
+       \times\FiniteNormSpace{\ModelDimension}\bigr)
+       /\OrthogonalGroup(\ModelDimension)
+\end{equation}
+an \emph{$\ModelDimension$-dimensional normed coordinate class on
+$\ComparisonCarrier$}.
+The class of a pair
+$(\FeatureCoordinates,\NormSymbol)$
+is denoted by
+$[\FeatureCoordinates,\NormSymbol]_{\OrthogonalGroup(\ModelDimension)}$.
+\end{definition}
+
+\paraid{p-f230f9fc55e9}
+For an integer
+$\ModelDimension\geq1$,
+a nonempty compact space
+$\ComparisonCarrier$,
+a continuous map
+$\FeatureCoordinates\colon\ComparisonCarrier\to\RealNumbers^\ModelDimension$,
+a norm
+$\NormSymbol\in\FiniteNormSpace{\ModelDimension}$,
+and points
+$\ComparisonPoint,\IntegrationPoint\in\ComparisonCarrier$,
+set
+\[
+ \Pseudometric(\ComparisonPoint,\IntegrationPoint)
+ =\NormSymbol(\FeatureCoordinates(\ComparisonPoint)-\FeatureCoordinates(\IntegrationPoint)).
+\]
+This formula defines a continuous pseudometric on
+$\ComparisonCarrier$.
+The pseudometric is unchanged by \eqref{eq:frame-action}.
+Thus it depends only on the normed coordinate class.
+Coordinate classes are defined on concrete carriers.
+To compare classes on different carriers,
+we use the compatibility with input isometries in \Cref{thm:local-models}.
+That theorem constructs such a class for each compact metric space
+in a neighborhood of a fixed center.
+Representing coordinate pairs can be chosen to converge along each convergent sequence of spaces.
+We use their linear coordinates to combine approximations by a partition of unity
+in Section~\ref{sec:ar}.
+Figure~\ref{fig:orthogonal-coordinate-change} illustrates the invariance
+under \eqref{eq:frame-action}.
+
+\input{figures/orthogonal-coordinate-change}
+
+\begin{lemma}\label{lem:coordinate-pseudometric-estimate}
+\paraid{p-29c8b5705912}
+Let
+$\BaseCarrier,\ComparisonCarrier$
+be nonempty compact spaces,
+let
+$\Correspondence\subset\BaseCarrier\times\ComparisonCarrier$
+be a correspondence,
+and let
+$\ModelDimension\geq1$.
+Let
+$\FeatureCoordinates_0\colon\BaseCarrier\to\RealNumbers^\ModelDimension$
+and
+$\FeatureCoordinates_1\colon\ComparisonCarrier\to\RealNumbers^\ModelDimension$
+be continuous,
+and let
+$\NormSymbol_0,\NormSymbol_1$
+be norms on
+$\RealNumbers^\ModelDimension$.
+Denote the induced pseudometrics by
+$\Pseudometric_0$
+and
+$\Pseudometric_1$,
+respectively.
+Put
+\[
+ \CoefficientBound=\sup_{\BasePoint\in\BaseCarrier}
+       \norm{\FeatureCoordinates_0(\BasePoint)}_2,
+\]
+\[
+ \CoordinateComparisonError
+ =\sup_{(\BasePoint,\ComparisonPoint)\in\Correspondence}
+       \norm{\FeatureCoordinates_0(\BasePoint)-\FeatureCoordinates_1(\ComparisonPoint)}_2,
+\]
+\[
+ \NormComparisonError
+ =\sup_{\substack{\CoefficientVector\in\RealNumbers^\ModelDimension\\\norm{\CoefficientVector}_2=1}}
+       |\NormSymbol_0(\CoefficientVector)-\NormSymbol_1(\CoefficientVector)|,
+\]
+and
+\[
+ \NormComparisonBound
+ =\max_{\substack{\CoefficientVector\in\RealNumbers^\ModelDimension\\\norm{\CoefficientVector}_2=1}}\NormSymbol_1(\CoefficientVector).
+\]
+Then
+\begin{equation}\label{eq:coordinate-pseudometric-estimate}
+ \PseudometricError_\Correspondence(\Pseudometric_0,\Pseudometric_1)
+ \leq2\CoefficientBound\NormComparisonError
+       +2\NormComparisonBound\CoordinateComparisonError.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+\paraid{p-9d7ad7bd9f69}
+Fix
+$(\BasePoint_0,\ComparisonPoint_0),(\BasePoint_1,\ComparisonPoint_1)\in\Correspondence$
+and set
+\[
+ \FirstVector=\FeatureCoordinates_0(\BasePoint_0)-\FeatureCoordinates_0(\BasePoint_1),
+\]
+and
+\[
+ \SecondVector=\FeatureCoordinates_1(\ComparisonPoint_0)-\FeatureCoordinates_1(\ComparisonPoint_1).
+\]
+Then
+$\norm{\FirstVector}_2\leq2\CoefficientBound$
+and
+$\norm{\FirstVector-\SecondVector}_2\leq2\CoordinateComparisonError$.
+Homogeneity and the norm triangle inequality imply
+\[
+ \begin{aligned}
+ |\NormSymbol_0(\FirstVector)-\NormSymbol_1(\SecondVector)|
+ &\leq|\NormSymbol_0(\FirstVector)-\NormSymbol_1(\FirstVector)|
+       +\NormSymbol_1(\FirstVector-\SecondVector)\\
+ &\leq\NormComparisonError\norm{\FirstVector}_2
+       +\NormComparisonBound\norm{\FirstVector-\SecondVector}_2\\
+ &\leq2\CoefficientBound\NormComparisonError
+       +2\NormComparisonBound\CoordinateComparisonError.
+ \end{aligned}
+\]
+Taking the supremum over the two pairs proves
+\eqref{eq:coordinate-pseudometric-estimate}.
+\end{proof}
+
+\paraid{p-03fcd50a02a7}
+When a function is defined on GH isometry classes, its value at
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$ denotes its value at
+$[\ComparisonCarrier,\ComparisonMetric]$, the isometry class of that representative.
+In particular, this convention applies to the error functions.
+
+\begin{theorem}\label{thm:local-models}
+\paraid{p-9559de6c1eef}
+Let
+$\MetricSpace{\BaseCarrier }{\MetricSymbol }\in\GHSpace$
+be a nonempty compact metric space and let
+$\LocalTolerance >0$.
+Then there exist an open subset
+$\ModelNeighborhood\subset\GHSpace$
+with
+$\MetricSpace{\BaseCarrier }{\MetricSymbol }\in\ModelNeighborhood$
+and an integer
+$\ModelDimension \geq1$
+and a continuous function
+$\LocalError\colon\ModelNeighborhood\to[0,\infty)$,
+together with the following simultaneous choices.
+For each concrete compact metric space
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$
+whose isometry class belongs to
+$\ModelNeighborhood$,
+choose a class
+\[
+ \LocalModelClass{\ComparisonCarrier}{\ComparisonMetric}
+ \in\CoordinateClassSpace{\ModelDimension}{\ComparisonCarrier}.
+\]
+These choices satisfy the following properties.
+\begin{enumerate}[label=\textup{(A\arabic*)},ref=\textup{(A\arabic*)}]
+\item\label{item:model-class}
+\paraid{p-578e284641e7}
+For each such compact metric space
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$,
+the assigned class satisfies
+\[
+ \LocalModelClass{\ComparisonCarrier}{\ComparisonMetric}
+ \in\CoordinateClassSpace{\ModelDimension}{\ComparisonCarrier}.
+\]
+In \ref{item:model-bound} and \ref{item:model-pseudometric}--\ref{item:model-center-error},
+$(\FeatureCoordinates_\ComparisonCarrier,\NormSymbol_\ComparisonCarrier)$
+denotes an arbitrary coordinate pair in this class.
+The bound in \ref{item:model-bound} and the pseudometric and error assertions
+in \ref{item:model-pseudometric}--\ref{item:model-center-error} hold for every coordinate pair in this class.
+\item\label{item:model-equivariance}
+\paraid{p-38960d79969a}
+For every isometry
+$\InputIsometry\colon\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}
+ \to\MetricSpace{\ComparisonCarrier_0}{\ComparisonMetric_0}$
+between compact metric spaces whose isometry classes belong to
+$\ModelNeighborhood$
+and every choice of coordinate pairs
+$(\FeatureCoordinates_\ComparisonCarrier,\NormSymbol_\ComparisonCarrier)$
+and
+$(\FeatureCoordinates_{\ComparisonCarrier_0},\NormSymbol_{\ComparisonCarrier_0})$
+of the two assigned coordinate classes,
+there exists
+$\OrthogonalChange\in\OrthogonalGroup(\ModelDimension)$
+such that
+\begin{equation}\label{eq:input-isometry-1}
+ \FeatureCoordinates_{\ComparisonCarrier_0}\circ\InputIsometry
+ =\OrthogonalChange\circ\FeatureCoordinates_\ComparisonCarrier,
+\end{equation}
+and
+\begin{equation}\label{eq:input-isometry-2}
+ \NormSymbol_{\ComparisonCarrier_0}=\NormSymbol_\ComparisonCarrier\circ\OrthogonalChange^{-1}.
+\end{equation}
+\item\label{item:model-bound}
+\paraid{p-ac13929fbe66}
+For every
+$\ComparisonPoint \in \ComparisonCarrier $,
+\[
+ \NormSymbol _\ComparisonCarrier (\FeatureCoordinates _\ComparisonCarrier (\ComparisonPoint ))\leq2\diam\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }.
+\]
+\item\label{item:model-continuity}
+\paraid{p-e36eef01289e}
+Let
+$\{\MetricSpace{\ComparisonCarrier_\SequenceIndex}{\ComparisonMetric_\SequenceIndex}\}_{\SequenceIndex\in\NonnegativeIntegers}$
+be a sequence of compact metric spaces whose isometry classes belong to
+$\ModelNeighborhood$,
+and let
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$
+be a compact metric space whose isometry class belongs to
+$\ModelNeighborhood$.
+Assume that these spaces have isometric embeddings into a compact
+$\MetricSpace{\AmbientCarrier }{\AmbientMetric }$
+with
+$\HausdorffDistance{\AmbientMetric }(\ComparisonCarrier _\SequenceIndex ,\ComparisonCarrier )\to0$.
+Then there exist a coordinate pair
+$(\FeatureCoordinates_\ComparisonCarrier,\NormSymbol_\ComparisonCarrier)$
+and a family of coordinate pairs
+$\{(\FeatureCoordinates_{\ComparisonCarrier_\SequenceIndex},\NormSymbol_{\ComparisonCarrier_\SequenceIndex})\}_{\SequenceIndex\in\NonnegativeIntegers}$
+such that
+\[
+ (\FeatureCoordinates_\ComparisonCarrier,\NormSymbol_\ComparisonCarrier)
+ \in\LocalModelClass{\ComparisonCarrier}{\ComparisonMetric},
+\]
+and
+\[
+ (\FeatureCoordinates_{\ComparisonCarrier_\SequenceIndex},\NormSymbol_{\ComparisonCarrier_\SequenceIndex})
+ \in\LocalModelClass{\ComparisonCarrier_\SequenceIndex}{\ComparisonMetric_\SequenceIndex},
+\]
+and
+\[
+ \sup_{\substack{\CoefficientVector\in\RealNumbers^\ModelDimension\\\norm{\CoefficientVector}_2=1}}|\NormSymbol _{\ComparisonCarrier _\SequenceIndex }(\CoefficientVector )-\NormSymbol _\ComparisonCarrier (\CoefficientVector )|\to0.
+\]
+These coordinate pairs can be chosen using only the prescribed sequence
+and ambient embeddings, independently of any sequence of correspondences with vanishing ambient displacement.
+For every sequence of correspondences
+$\Correspondence _\SequenceIndex \subset \ComparisonCarrier _\SequenceIndex \times \ComparisonCarrier $
+satisfying
+\[
+ \sup_{(\ComparisonPoint _\SequenceIndex ,\ComparisonPoint )\in \Correspondence _\SequenceIndex }\AmbientMetric (\ComparisonPoint _\SequenceIndex ,\ComparisonPoint )\to0,
+\]
+the coordinate maps
+$\FeatureCoordinates_{\ComparisonCarrier_\SequenceIndex}$
+and
+$\FeatureCoordinates_\ComparisonCarrier$
+satisfy
+\begin{equation}\label{eq:local-coordinate-convergence}
+ \sup_{(\ComparisonPoint_\SequenceIndex,\ComparisonPoint)\in\Correspondence_\SequenceIndex}
+ \norm{\FeatureCoordinates_{\ComparisonCarrier_\SequenceIndex}(\ComparisonPoint_\SequenceIndex)
+ -\FeatureCoordinates_\ComparisonCarrier(\ComparisonPoint)}_2\to0.
+\end{equation}
+\item\label{item:model-pseudometric}
+\paraid{p-29f1150553e1}
+For
+$\ComparisonPoint,\IntegrationPoint\in\ComparisonCarrier$,
+the formula
+\begin{equation}\label{eq:local-model-pseudometric}
+ \Pseudometric _\ComparisonCarrier (\ComparisonPoint ,\IntegrationPoint )=\NormSymbol _\ComparisonCarrier (\FeatureCoordinates _\ComparisonCarrier (\ComparisonPoint )-\FeatureCoordinates _\ComparisonCarrier (\IntegrationPoint ))
+\end{equation}
+defines a continuous pseudometric on
+$\ComparisonCarrier $.
+\item\label{item:model-pseudometric-invariance}
+\paraid{p-b7eec021787e}
+For every isometry
+$\InputIsometry\colon\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}
+ \to\MetricSpace{\ComparisonCarrier_0}{\ComparisonMetric_0}$
+between compact metric spaces whose isometry classes belong to
+$\ModelNeighborhood$
+and every
+$\ComparisonPoint,\IntegrationPoint\in\ComparisonCarrier$,
+\[
+ \Pseudometric_{\ComparisonCarrier_0}(\InputIsometry(\ComparisonPoint),\InputIsometry(\IntegrationPoint))
+ =\Pseudometric_\ComparisonCarrier(\ComparisonPoint,\IntegrationPoint).
+\]
+\item\label{item:model-error-definition}
+\paraid{p-702b7e8de607}
+For each compact metric representative
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$
+of a class in
+$\ModelNeighborhood$,
+the error function satisfies
+\[
+ \LocalError \MetricSpace{\ComparisonCarrier }{\ComparisonMetric }=\sup_{\ComparisonPoint ,\IntegrationPoint \in \ComparisonCarrier }|\Pseudometric _\ComparisonCarrier (\ComparisonPoint ,\IntegrationPoint )-\ComparisonMetric (\ComparisonPoint ,\IntegrationPoint )|.
+\]
+By \ref{item:model-pseudometric-invariance}, this value is independent
+of the representative and of the coordinate pair.
+\item\label{item:model-error-continuity}
+\paraid{p-685c2b6e8303}
+The error function
+$\LocalError$
+is continuous.
+\item\label{item:model-center-error}
+\paraid{p-f46126c20706}
+At the center, it satisfies
+$\LocalError \MetricSpace{\BaseCarrier }{\MetricSymbol }<\LocalTolerance $.
+\end{enumerate}
+\end{theorem}
+
+\paraid{p-fc5c3b7ac001}
+Write
+$\mathcal L$
+for the choice rule that associates to each concrete compact metric space
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$
+whose class belongs to
+$\ModelNeighborhood$
+the class
+\[
+ \mathcal L_{\ComparisonCarrier,\ComparisonMetric}
+ =\LocalModelClass{\ComparisonCarrier}{\ComparisonMetric}
+ \in\CoordinateClassSpace{\ModelDimension}{\ComparisonCarrier}.
+\]
+We call the data
+\[
+ \mathfrak M=(\ModelNeighborhood,\ModelDimension,\mathcal L,\LocalError)
+\]
+a \emph{local model}.
+Condition \ref{item:model-equivariance} describes how these values are transported by isometries.
+Condition \ref{item:model-continuity} asserts the existence of a convergent family of coordinate pairs
+for each prescribed sequence and its ambient embeddings.
+These pairs represent the classes of
+$\mathfrak M$.
+By conditions \ref{item:model-pseudometric-invariance}--\ref{item:model-error-continuity},
+the rule
+\[
+ \MetricSpace{\ComparisonCarrier}{\ComparisonMetric}
+ \longmapsto\MetricQuotient{\ComparisonCarrier}{\Pseudometric_\ComparisonCarrier}
+\]
+induces a well-defined map
+$\ModelNeighborhood\to\GHSpace$.
+The error function
+$\LocalError$
+is independently well defined on isometry classes by
+\ref{item:model-error-definition}.
+The map
+$\FeatureCoordinates _\ComparisonCarrier $
+need not be injective,
+which is why
+$\Pseudometric _\ComparisonCarrier $
+is a pseudometric.
+
+\begin{proof}
+\paraid{p-6d8a3f3aa620}
+For the singleton center and each
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}\in\GHSpace$,
+set
+$\ModelDimension =1$,
+$\NormSymbol _\ComparisonCarrier =|\cdot|$,
+and
+$\FeatureCoordinates _\ComparisonCarrier =0$.
+Define
+$\LocalModelClass{\ComparisonCarrier}{\ComparisonMetric}
+ =[(0,|\cdot|)]_{\OrthogonalGroup(1)}$.
+Then
+$\Pseudometric _\ComparisonCarrier =0$
+and
+$\LocalError \MetricSpace{\ComparisonCarrier }{\ComparisonMetric }=\diam\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }$.
+The error is continuous because the diameter is continuous for
+$\GHDistance$.
+For a prescribed
+$\LocalTolerance>0$,
+we may take its domain to be the open neighborhood
+\[
+ \ModelNeighborhood
+ =\{\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}\in\GHSpace
+       \mid\diam\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}<\LocalTolerance\}
+ \ni\SingletonSpace.
+\]
+On this domain the zero maps and fixed norm satisfy
+\ref{item:model-bound}--\ref{item:model-center-error},
+with the error equal to the diameter.
+The coordinate maps
+$\FeatureCoordinates_\ComparisonCarrier$
+vanish and the norm
+$\NormSymbol_\ComparisonCarrier$
+is fixed,
+so the coordinate and isometry identities also hold.
+This proves the theorem when the center is a singleton.
+
+\paraid{p-08d995d825ac}
+Assume henceforth that the center is not a singleton.
+We construct the local data from a single positive real number
+$\SpectralCutoff$,
+prove their continuity first on each carrier and then as the carrier varies,
+and finally verify invariance and the error estimate.
+
+\ProofStep{A neighborhood with constant spectral dimension.}\label{step:local-model-spectral-dimension}
+\paraid{p-3a9b99318187}
+Choose
+$\Radius>0$
+sufficiently small.
+Then choose
+$2\leq\IntegrabilityExponent<\infty$
+sufficiently large.
+Finally,
+choose
+$\SmallError>0$
+sufficiently small and a corresponding positive real number
+$\SpectralCutoff $
+for
+$\MetricSpace{\BaseCarrier }{\MetricSymbol }$
+so that
+\[
+\begin{gathered}
+ \norm{\Pseudometric_\BaseCarrier-\MetricSymbol}_\infty
+ \leq2\SmallError
+      +\DiameterBound(1-\BallMassBound_\Radius^{1/\IntegrabilityExponent})
+      +2\Radius
+ <\LocalTolerance,
+\\
+ \SpectralCutoff,-\SpectralCutoff
+ \notin\spec(\DistanceOperator{\BaseCarrier}{\MetricSymbol}),
+ \qquad
+ \dim\SpectralSubspace{\BaseCarrier}{\SpectralCutoff}
+ =\ModelDimension\geq1.
+\end{gathered}
+\]
+Define
+\[
+ \ModelNeighborhood=
+ \{\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }\in\GHSpace\mid
+     \SpectralCutoff ,-\SpectralCutoff \notin\spec(\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}),\
+     \dim\SpectralSubspace{\ComparisonCarrier }{\SpectralCutoff }=\ModelDimension \}.
+\]
+Then
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}\in\ModelNeighborhood$.
+We prove that
+$\ModelNeighborhood$
+is open.
+Let
+$\MetricSpace{\ComparisonCarrier_\SequenceIndex}{\ComparisonMetric_\SequenceIndex}$
+converge to
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}\in\ModelNeighborhood$
+in
+$\GHSpace$.
+By \Cref{lem:common-gh-embedding},
+we realize the sequence and its limit as compact subsets of a common compact metric space
+$\MetricSpace{\AmbientCarrier}{\AmbientMetric}$
+with
+\[
+ \HausdorffDistance{\AmbientMetric}
+ (\ComparisonCarrier_\SequenceIndex,\ComparisonCarrier)\to0.
+\]
+\Cref{thm:invariant-measures} implies
+\[
+ \SelectedMeasure{\ComparisonCarrier_\SequenceIndex}{\ComparisonMetric_\SequenceIndex}
+ \to\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric}
+ \quad\text{weakly on }\AmbientCarrier.
+\]
+\Cref{lem:spectral-projections} now yields
+$\MetricSpace{\ComparisonCarrier_\SequenceIndex}{\ComparisonMetric_\SequenceIndex}
+ \in\ModelNeighborhood$
+for all sufficiently large
+$\SequenceIndex$.
+Since
+$\GHSpace$
+is metrizable,
+this proves openness.
+
+\ProofStep{Norms and continuous coordinate maps.}\label{step:local-model-coordinates}
+\paraid{p-5e1efa60ac95}
+For
+$\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }\in\ModelNeighborhood$,
+choose a real orthonormal basis
+$\BasisFunction_0,\ldots,\BasisFunction_{\ModelDimension-1}$
+of
+$\SpectralSubspace{\ComparisonCarrier }{\SpectralCutoff }$.
+Define the functional
+$\NormSymbol_\ComparisonCarrier\colon\RealNumbers^\ModelDimension\to[0,\infty)$
+as follows.
+Use
+$\IntegrationPoint\in\ComparisonCarrier$
+as the integration variable in
+\eqref{eq:local-norm} and \eqref{eq:best-approximation-objective}.
+For every
+$\CoefficientVector\in\RealNumbers^\ModelDimension$,
+put
+\begin{equation}\label{eq:local-norm}
+ \NormSymbol _\ComparisonCarrier (\CoefficientVector )=\left(\int_\ComparisonCarrier \left|\sum_{\BasisIndex=0}^{\ModelDimension-1}  \CoefficientVector _\BasisIndex \BasisFunction _\BasisIndex (\IntegrationPoint )\right|^\IntegrabilityExponent
+                                     \IntegrationDifferential \SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric}(\IntegrationPoint )\right)^{1/\IntegrabilityExponent }.
+\end{equation}
+Since
+$\IntegrabilityExponent \geq2$
+and the measure
+$\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric}$
+is a probability,
+orthonormality implies for every
+$\CoefficientVector\in\RealNumbers^\ModelDimension$
+\begin{equation}\label{eq:local-norm-euclidean-lower-bound}
+ \NormSymbol _\ComparisonCarrier (\CoefficientVector )\geq\left\|\sum_{\BasisIndex=0}^{\ModelDimension-1}  \CoefficientVector _\BasisIndex \BasisFunction _\BasisIndex \right\|_2=\norm{\CoefficientVector }_2.
+\end{equation}
+The functional is homogeneous and satisfies the triangle inequality by the
+$\LebesgueSpace^\IntegrabilityExponent$-norm properties.
+The lower bound in \eqref{eq:local-norm-euclidean-lower-bound} proves nondegeneracy,
+so
+$\NormSymbol_\ComparisonCarrier$ is a norm.
+
+\paraid{p-8cbc0bb85af6}
+Define the objective function
+$\ApproximationObjective_\ComparisonCarrier\colon\ComparisonCarrier\times\RealNumbers^\ModelDimension\to[0,\infty)$
+as follows.
+For every
+$\ComparisonPoint\in\ComparisonCarrier$
+and
+$\CoefficientVector\in\RealNumbers^\ModelDimension$,
+put
+\begin{equation}\label{eq:best-approximation-objective}
+ \ApproximationObjective _\ComparisonCarrier (\ComparisonPoint ,\CoefficientVector )
+ =\int_\ComparisonCarrier \left|\ComparisonMetric (\ComparisonPoint ,\IntegrationPoint )-\sum_{\BasisIndex=0}^{\ModelDimension-1}  \CoefficientVector _\BasisIndex \BasisFunction _\BasisIndex (\IntegrationPoint )\right|^\IntegrabilityExponent
+                                      \IntegrationDifferential \SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric}(\IntegrationPoint ).
+\end{equation}
+For each
+$\ComparisonPoint\in\ComparisonCarrier$,
+define
+$\FeatureCoordinates_\ComparisonCarrier(\ComparisonPoint)\in\RealNumbers^\ModelDimension$
+to be the unique minimizer of
+$\CoefficientVector\mapsto\ApproximationObjective_\ComparisonCarrier(\ComparisonPoint,\CoefficientVector)$.
+These minimizers define a map
+$\FeatureCoordinates_\ComparisonCarrier\colon\ComparisonCarrier\to\RealNumbers^\ModelDimension$.
+Existence and uniqueness follow from
+\Cref{thm:best-approximation},
+applied to the finite-dimensional spectral subspace
+$\SpectralSubspace{\ComparisonCarrier}{\SpectralCutoff}$,
+viewed as a subspace of
+$\LebesgueSpace^\IntegrabilityExponent(\ComparisonCarrier,
+\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric})$.
+For each
+$\ComparisonPoint\in\ComparisonCarrier$,
+define the function
+$\BestApproximationFunction_{\ComparisonCarrier,\ComparisonPoint}\colon\ComparisonCarrier\to\RealNumbers$
+by setting, for every
+$\IntegrationPoint\in\ComparisonCarrier$,
+\begin{equation}\label{eq:local-best-approximation-function}
+ \BestApproximationFunction_{\ComparisonCarrier,\ComparisonPoint}(\IntegrationPoint)
+ =\sum_{\BasisIndex=0}^{\ModelDimension-1}
+ (\FeatureCoordinates_\ComparisonCarrier(\ComparisonPoint))_\BasisIndex
+ \BasisFunction_\BasisIndex(\IntegrationPoint).
+\end{equation}
+By \eqref{eq:best-approximation-objective},
+$\BestApproximationFunction_{\ComparisonCarrier,\ComparisonPoint}$
+is the best approximation of
+$\ComparisonMetric(\ComparisonPoint,\cdot)$
+in
+$\SpectralSubspace{\ComparisonCarrier}{\SpectralCutoff}$.
+The components of the vector
+$\FeatureCoordinates_\ComparisonCarrier(\ComparisonPoint)$
+are the coefficients of this best approximation in the chosen orthonormal basis
+$\{\BasisFunction_\BasisIndex\}_{0\leq\BasisIndex<\ModelDimension}$.
+Figure~\ref{fig:local-coordinates} displays this construction of
+$\FeatureCoordinates_\ComparisonCarrier$.
+\input{figures/local-coordinates}
+
+\paraid{p-aa449f741605}
+For each
+$\ComparisonPoint\in\ComparisonCarrier$,
+write
+$\ComparisonMetric_\ComparisonPoint=\ComparisonMetric(\ComparisonPoint,\cdot)
+ \in\ContinuousFunctions(\ComparisonCarrier)$
+for the distance profile at
+$\ComparisonPoint$.
+Since
+$\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric}$
+is a probability and
+$\ComparisonMetric(\ComparisonPoint,\IntegrationPoint)\leq
+\diam\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$
+for every
+$\IntegrationPoint\in\ComparisonCarrier$,
+we have
+\[
+ \norm{\ComparisonMetric_\ComparisonPoint}_\IntegrabilityExponent^{\IntegrabilityExponent}
+ =\int_\ComparisonCarrier
+   |\ComparisonMetric(\ComparisonPoint,\IntegrationPoint)|^{\IntegrabilityExponent}
+   \,\IntegrationDifferential\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric}(\IntegrationPoint)
+ \leq\diam\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}^{\IntegrabilityExponent}
+   \int_\ComparisonCarrier
+   \,\IntegrationDifferential\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric}(\IntegrationPoint)
+ =\diam\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}^{\IntegrabilityExponent}.
+\]
+By minimality of
+$\FeatureCoordinates_\ComparisonCarrier(\ComparisonPoint)$,
+\[
+ \norm{\ComparisonMetric_\ComparisonPoint
+       -\BestApproximationFunction_{\ComparisonCarrier,\ComparisonPoint}}_\IntegrabilityExponent
+ \leq\norm{\ComparisonMetric_\ComparisonPoint}_\IntegrabilityExponent.
+\]
+Therefore, the triangle inequality and the definition of
+$\NormSymbol_\ComparisonCarrier$
+yield
+\[
+ \NormSymbol_\ComparisonCarrier
+   (\FeatureCoordinates_\ComparisonCarrier(\ComparisonPoint))
+ =\norm{\BestApproximationFunction_{\ComparisonCarrier,\ComparisonPoint}}_\IntegrabilityExponent
+ \leq\norm{\ComparisonMetric_\ComparisonPoint}_\IntegrabilityExponent
+    +\norm{\ComparisonMetric_\ComparisonPoint
+           -\BestApproximationFunction_{\ComparisonCarrier,\ComparisonPoint}}_\IntegrabilityExponent
+ \leq2\diam\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}.
+\]
+Together with the lower bound in
+\eqref{eq:local-norm-euclidean-lower-bound},
+this proves
+\begin{equation}\label{eq:coefficient-bounds}
+ \norm{\FeatureCoordinates _\ComparisonCarrier (\ComparisonPoint )}_2\leq \NormSymbol _\ComparisonCarrier (\FeatureCoordinates _\ComparisonCarrier (\ComparisonPoint ))\leq2\diam\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }.
+\end{equation}
+This proves \ref{item:model-bound}.
+In particular,
+the minimizers stay in a fixed compact Euclidean ball when the diameters
+are bounded.
+
+\paraid{p-29af57cad7b7}
+For
+$\CoefficientBound>0$,
+write
+\[
+ \CoefficientBall_\CoefficientBound
+ =\{\CoefficientVector\in\RealNumbers^\ModelDimension
+      \mid\norm{\CoefficientVector}_2\leq\CoefficientBound\}.
+\]
+For fixed
+$\ComparisonCarrier$,
+the function
+$\ApproximationObjective_\ComparisonCarrier$
+is continuous.
+If
+$\ComparisonPoint_\SubsequenceIndex\to\ComparisonPoint$,
+continuity on the product of the compact space
+$\ComparisonCarrier$
+and each
+$\CoefficientBall_\CoefficientBound$
+implies
+\[
+ \sup_{\CoefficientVector\in\CoefficientBall_\CoefficientBound}
+ |\ApproximationObjective_\ComparisonCarrier(\ComparisonPoint_\SubsequenceIndex,\CoefficientVector)
+  -\ApproximationObjective_\ComparisonCarrier(\ComparisonPoint,\CoefficientVector)|\to0.
+\]
+The bound \eqref{eq:coefficient-bounds} and
+\Cref{lem:minimizer-continuity} prove continuity of
+$\FeatureCoordinates_\ComparisonCarrier$.
+
+\ProofStep{Convergence of the objectives and norms.}\label{step:local-model-norm-convergence}
+\paraid{p-4cd36224c006}
+Assume that
+$\HausdorffDistance{\AmbientMetric}(\ComparisonCarrier_\SequenceIndex,\ComparisonCarrier)\to0$
+in the stated compact ambient space.
+Write
+$\ComparisonMetric_\SequenceIndex=\AmbientMetric|_{\ComparisonCarrier_\SequenceIndex\times\ComparisonCarrier_\SequenceIndex}$
+and
+$\ComparisonMetric=\AmbientMetric|_{\ComparisonCarrier\times\ComparisonCarrier}$.
+Let $\iota_\SequenceIndex\colon\ComparisonCarrier_\SequenceIndex\hookrightarrow\AmbientCarrier$
+and $\iota\colon\ComparisonCarrier\hookrightarrow\AmbientCarrier$ be the inclusions.
+Define $\bar\mu_\SequenceIndex=(\iota_\SequenceIndex)_*\SelectedMeasure{\ComparisonCarrier_\SequenceIndex}{\ComparisonMetric_\SequenceIndex}$
+and $\bar\mu=\iota_*\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric}$.
+By \Cref{thm:invariant-measures},
+\[
+ \bar\mu_\SequenceIndex\to\bar\mu
+ \quad\text{weakly on }\AmbientCarrier.
+\]
+Apply \Cref{lem:spectral-continuity} to the basis
+$\{\BasisFunction_\BasisIndex\}_{0\leq\BasisIndex<\ModelDimension}$
+of
+$\SpectralSubspace{\ComparisonCarrier}{\SpectralCutoff}$
+chosen in Step~\ref{step:local-model-coordinates}.
+We obtain real orthonormal bases
+$\{\BasisFunction_{\SequenceIndex,\BasisIndex}\}_{0\leq\BasisIndex<\ModelDimension}$
+of
+$\SpectralSubspace{\ComparisonCarrier_\SequenceIndex}{\SpectralCutoff}$
+and
+continuous functions
+$\ExtendedBasisFunction_{\SequenceIndex,\BasisIndex},\ExtendedBasisFunction_\BasisIndex
+ \colon\AmbientCarrier\to\RealNumbers$
+such that
+\[
+ \ExtendedBasisFunction_{\SequenceIndex,\BasisIndex}|_{\ComparisonCarrier_\SequenceIndex}
+ =\BasisFunction_{\SequenceIndex,\BasisIndex},
+\]
+and
+\[
+ \ExtendedBasisFunction_\BasisIndex|_\ComparisonCarrier=\BasisFunction_\BasisIndex,
+\]
+and
+\[
+ \max_{0\leq\BasisIndex<\ModelDimension}
+ \norm{\ExtendedBasisFunction_{\SequenceIndex,\BasisIndex}-\ExtendedBasisFunction_\BasisIndex}_\infty\to0.
+\]
+Define
+$\ApproximationObjective_\SequenceIndex,\ApproximationObjective
+ \colon\AmbientCarrier\times\RealNumbers^\ModelDimension\to[0,\infty)$
+as follows.
+In both integrals below,
+$\SecondVector$
+ranges over
+$\AmbientCarrier$.
+For every sufficiently large
+$\SequenceIndex\in\NonnegativeIntegers$,
+every
+$\IntegrationPoint\in\AmbientCarrier$,
+and every
+$\CoefficientVector\in\RealNumbers^\ModelDimension$,
+put
+\begin{equation}\label{eq:ambient-approximation-objectives-1}
+ \ApproximationObjective _\SequenceIndex (\IntegrationPoint ,\CoefficientVector )
+ =\int_\AmbientCarrier \left|\AmbientMetric (\IntegrationPoint ,\SecondVector )-\sum_{\BasisIndex=0}^{\ModelDimension-1}  \CoefficientVector _\BasisIndex \ExtendedBasisFunction _{\SequenceIndex ,\BasisIndex }(\SecondVector )\right|^\IntegrabilityExponent
+                                     \IntegrationDifferential \bar\mu_\SequenceIndex(\SecondVector ).
+\end{equation}
+For every
+$\IntegrationPoint\in\AmbientCarrier$
+and
+$\CoefficientVector\in\RealNumbers^\ModelDimension$,
+put
+\begin{equation}\label{eq:ambient-approximation-objectives-2}
+ \ApproximationObjective(\IntegrationPoint,\CoefficientVector)
+ =\int_\AmbientCarrier\left|\AmbientMetric(\IntegrationPoint,\SecondVector)
+       -\sum_{\BasisIndex=0}^{\ModelDimension-1}
+        \CoefficientVector_\BasisIndex\ExtendedBasisFunction_\BasisIndex(\SecondVector)
+       \right|^\IntegrabilityExponent
+       \IntegrationDifferential\bar\mu(\SecondVector).
+\end{equation}
+By \eqref{eq:best-approximation-objective},
+\[
+ \ApproximationObjective_\SequenceIndex
+ |_{\ComparisonCarrier_\SequenceIndex\times\RealNumbers^\ModelDimension}
+ =\ApproximationObjective_{\ComparisonCarrier_\SequenceIndex},
+\]
+and
+\[
+ \ApproximationObjective|_{\ComparisonCarrier\times\RealNumbers^\ModelDimension}
+ =\ApproximationObjective_\ComparisonCarrier.
+\]
+For every
+$\CoefficientBound >0$,
+\begin{equation}\label{eq:uniform-objectives}
+ \sup_{\substack{\IntegrationPoint\in\AmbientCarrier\\\CoefficientVector\in\RealNumbers^\ModelDimension\\\norm{\CoefficientVector}_2\leq\CoefficientBound}}
+       |\ApproximationObjective _\SequenceIndex (\IntegrationPoint ,\CoefficientVector )-\ApproximationObjective (\IntegrationPoint ,\CoefficientVector )|\to0.
+\end{equation}
+Apply \Cref{lem:parameter-integrals} with compact parameter space
+$\AmbientCarrier\times\{\CoefficientVector\in\RealNumbers^\ModelDimension
+ \mid\norm{\CoefficientVector}_2\leq\CoefficientBound\}$.
+Uniform convergence of the extended basis functions
+$\ExtendedBasisFunction_{\SequenceIndex,\BasisIndex}$
+to
+$\ExtendedBasisFunction_\BasisIndex$
+implies uniform convergence of the integrands in \eqref{eq:ambient-approximation-objectives-1} and \eqref{eq:ambient-approximation-objectives-2}
+on this product with
+$\AmbientCarrier$.
+For the norms
+$\NormSymbol_{\ComparisonCarrier_\SequenceIndex},\NormSymbol_\ComparisonCarrier$,
+apply the same lemma with the Euclidean unit sphere
+$\UnitSphere^{\ModelDimension-1}$
+as parameter space and integrands
+$\left|\sum_{\BasisIndex=0}^{\ModelDimension-1}\CoefficientVector_\BasisIndex
+ \ExtendedBasisFunction_{\SequenceIndex,\BasisIndex}(\SecondVector)\right|^\IntegrabilityExponent$.
+It follows that
+\begin{equation}\label{eq:local-norm-power-convergence}
+ \sup_{\substack{\CoefficientVector\in\RealNumbers^\ModelDimension\\\norm{\CoefficientVector}_2=1}}
+ |\NormSymbol_{\ComparisonCarrier_\SequenceIndex}(\CoefficientVector)^\IntegrabilityExponent
+ -\NormSymbol_\ComparisonCarrier(\CoefficientVector)^\IntegrabilityExponent|\to0.
+\end{equation}
+For nonnegative real numbers
+$\FirstLength,\SecondLength$
+and
+$\IntegrabilityExponent\geq1$,
+\begin{equation}\label{eq:root-holder-bound}
+ |\FirstLength^{1/\IntegrabilityExponent}-\SecondLength^{1/\IntegrabilityExponent}|
+ \leq|\FirstLength-\SecondLength|^{1/\IntegrabilityExponent}.
+\end{equation}
+Apply \eqref{eq:root-holder-bound} with
+$\FirstLength=\NormSymbol_{\ComparisonCarrier_\SequenceIndex}(\CoefficientVector)^\IntegrabilityExponent$
+and
+$\SecondLength=\NormSymbol_\ComparisonCarrier(\CoefficientVector)^\IntegrabilityExponent$.
+Taking the supremum and using \eqref{eq:local-norm-power-convergence},
+we obtain
+\begin{equation}\label{eq:local-norm-convergence}
+ \begin{aligned}
+ &\sup_{\substack{\CoefficientVector\in\RealNumbers^\ModelDimension\\\norm{\CoefficientVector}_2=1}}
+ |\NormSymbol_{\ComparisonCarrier_\SequenceIndex}(\CoefficientVector)
+       -\NormSymbol_\ComparisonCarrier(\CoefficientVector)|\\
+ &\quad\leq
+ \left(\sup_{\substack{\CoefficientVector\in\RealNumbers^\ModelDimension\\\norm{\CoefficientVector}_2=1}}
+ |\NormSymbol_{\ComparisonCarrier_\SequenceIndex}(\CoefficientVector)^\IntegrabilityExponent
+       -\NormSymbol_\ComparisonCarrier(\CoefficientVector)^\IntegrabilityExponent|
+ \right)^{1/\IntegrabilityExponent}
+ \longrightarrow0.
+ \end{aligned}
+\end{equation}
+
+\ProofStep{Uniform convergence of the coordinate maps.}\label{step:local-model-coordinate-convergence}
+\paraid{p-5f47a359eb40}
+We now prove the second convergence in \ref{item:model-continuity}
+for the bases
+$\{\BasisFunction_{\SequenceIndex,\BasisIndex}\}_{0\leq\BasisIndex<\ModelDimension}$
+and
+$\{\BasisFunction_\BasisIndex\}_{0\leq\BasisIndex<\ModelDimension}$
+chosen in Step~\ref{step:local-model-norm-convergence}.
+Fix an arbitrary sequence of correspondences
+$\{\Correspondence_\SequenceIndex\}_{\SequenceIndex\in\NonnegativeIntegers}$,
+where
+$\Correspondence_\SequenceIndex\subset\ComparisonCarrier_\SequenceIndex\times\ComparisonCarrier$
+for every
+$\SequenceIndex\in\NonnegativeIntegers$,
+satisfying
+\[
+ \sup_{(\ComparisonPoint_\SequenceIndex,\ComparisonPoint)\in\Correspondence_\SequenceIndex}
+ \AmbientMetric(\ComparisonPoint_\SequenceIndex,\ComparisonPoint)\to0.
+\]
+For the sake of contradiction,
+suppose that \eqref{eq:local-coordinate-convergence} fails.
+Choose
+$\ErrorTolerance>0$,
+a strictly increasing sequence of indices
+$n_k$,
+and for each
+$k\in\NonnegativeIntegers$,
+a pair
+$(\ComparisonPoint _{n_k} ,\ComparisonPoint _{0,{n_k} })\in \Correspondence _{n_k} $
+with
+\begin{equation}\label{eq:nonconvergent-coordinate-separation}
+ \norm{\FeatureCoordinates _{\ComparisonCarrier _{n_k} }(\ComparisonPoint _{n_k} )-\FeatureCoordinates _\ComparisonCarrier (\ComparisonPoint _{0,{n_k} })}_2\geq\ErrorTolerance .
+\end{equation}
+By compactness of
+$\ComparisonCarrier$
+and \eqref{eq:coefficient-bounds},
+pass to a further subsequence and denote its indices again by
+$n_k$.
+For some
+$\ComparisonPoint\in\ComparisonCarrier$
+and
+$\CoefficientVector\in\RealNumbers^\ModelDimension$,
+we then obtain
+\[
+ \ComparisonPoint_{0,{n_k}}\to\ComparisonPoint,
+\]
+and
+\[
+ \FeatureCoordinates_{\ComparisonCarrier_{n_k}}(\ComparisonPoint_{n_k})
+ \to\CoefficientVector.
+\]
+The condition on the correspondences implies
+\[
+ \AmbientMetric(\ComparisonPoint_{n_k},\ComparisonPoint)
+ \leq\AmbientMetric(\ComparisonPoint_{n_k},\ComparisonPoint_{0,{n_k}})
+      +\AmbientMetric(\ComparisonPoint_{0,{n_k}},\ComparisonPoint)
+ \longrightarrow0.
+\]
+Fix an arbitrary
+$\CoefficientBound>0$.
+For every
+$k\in\NonnegativeIntegers$,
+define the uniform objective error by
+\begin{equation}\label{eq:local-uniform-objective-error}
+ a_k=\sup_{\substack{\IntegrationPoint\in\AmbientCarrier\\
+                  \CoefficientVector\in\CoefficientBall_\CoefficientBound}}
+ |\ApproximationObjective_{n_k}(\IntegrationPoint,\CoefficientVector)
+  -\ApproximationObjective(\IntegrationPoint,\CoefficientVector)|.
+\end{equation}
+For every
+$k\in\NonnegativeIntegers$,
+define the error due to the moving evaluation point by
+\begin{equation}\label{eq:local-moving-point-error}
+ b_k=\sup_{\CoefficientVector\in\CoefficientBall_\CoefficientBound}
+ |\ApproximationObjective(\ComparisonPoint_{n_k},\CoefficientVector)
+  -\ApproximationObjective(\ComparisonPoint,\CoefficientVector)|.
+\end{equation}
+By \eqref{eq:uniform-objectives},
+$a_k\to0$.
+Uniform continuity of
+$\ApproximationObjective$
+on the compact set
+$\AmbientCarrier\times\CoefficientBall_\CoefficientBound$
+and convergence of
+$\ComparisonPoint_{n_k}$
+to
+$\ComparisonPoint$
+imply
+$b_k\to0$.
+Thus the triangle inequality yields
+\begin{equation}\label{eq:local-moving-objective-convergence}
+ \sup_{\CoefficientVector\in\CoefficientBall_\CoefficientBound}
+ |\ApproximationObjective_{n_k}(\ComparisonPoint_{n_k},\CoefficientVector)
+  -\ApproximationObjective(\ComparisonPoint,\CoefficientVector)|
+ \leq a_k+b_k\longrightarrow0.
+\end{equation}
+The convergence in \eqref{eq:local-moving-objective-convergence} holds for every fixed
+$\CoefficientBound>0$,
+so the objectives converge uniformly on every compact subset of
+$\RealNumbers^\ModelDimension$.
+For every $k$, the vector
+$\FeatureCoordinates_{\ComparisonCarrier_{n_k}}(\ComparisonPoint_{n_k})$
+minimizes $\ApproximationObjective_{n_k}(\ComparisonPoint_{n_k},\cdot)$.
+By \eqref{eq:coefficient-bounds},
+choose
+$\CoefficientBound>0$
+large enough that
+$\CoefficientBall_\CoefficientBound$
+contains all these minimizers.
+Equation \eqref{eq:local-moving-objective-convergence} proves uniform convergence of the objectives on that ball.
+The limit objective has the unique minimizer
+$\FeatureCoordinates_\ComparisonCarrier(\ComparisonPoint)$.
+\Cref{lem:minimizer-continuity} therefore implies
+$\CoefficientVector=\FeatureCoordinates_\ComparisonCarrier(\ComparisonPoint)$.
+But continuity of
+$\FeatureCoordinates _\ComparisonCarrier $
+also implies
+$\FeatureCoordinates _\ComparisonCarrier (\ComparisonPoint _{0,{n_k} })\to \FeatureCoordinates _\ComparisonCarrier (\ComparisonPoint )$,
+contradicting \eqref{eq:nonconvergent-coordinate-separation}.
+This proves \ref{item:model-continuity}.
+
+\ProofStep{Changes of basis and isometries.}\label{step:local-model-isometries}
+\paraid{p-67fdf3abc74d}
+Let
+$\OrthogonalChange\in\OrthogonalGroup(\ModelDimension)$
+and let
+$\{\widehat\BasisFunction_\BasisIndex\}_{0\leq\BasisIndex<\ModelDimension}$
+be a second orthonormal basis such that for every
+$0\leq\BasisIndex<\ModelDimension$
+we have
+\[
+ \widehat\BasisFunction_\BasisIndex
+ =\sum_{\SubsequenceIndex=0}^{\ModelDimension-1}
+   \OrthogonalChange_{\BasisIndex\SubsequenceIndex}\BasisFunction_\SubsequenceIndex.
+\]
+For every
+$\ComparisonPoint\in\ComparisonCarrier$
+and
+$\CoefficientVector\in\RealNumbers^\ModelDimension$,
+the coordinate map
+$\widehat\FeatureCoordinates_\ComparisonCarrier$
+and the norm
+$\widehat\NormSymbol_\ComparisonCarrier$
+defined using the second basis satisfy
+\[
+ \widehat \FeatureCoordinates _\ComparisonCarrier (\ComparisonPoint )=\OrthogonalChange  \FeatureCoordinates _\ComparisonCarrier (\ComparisonPoint ),
+\]
+and
+\[
+ \widehat \NormSymbol _\ComparisonCarrier (\CoefficientVector )=\NormSymbol _\ComparisonCarrier (\OrthogonalChange ^{-1}\CoefficientVector ).
+\]
+Consequently,
+$[\FeatureCoordinates_\ComparisonCarrier,\NormSymbol_\ComparisonCarrier]_{\OrthogonalGroup(\ModelDimension)}$
+is independent of the orthonormal basis used in Step~\ref{step:local-model-coordinates}.
+Define
+\[
+ \LocalModelClass{\ComparisonCarrier}{\ComparisonMetric}
+ =[\FeatureCoordinates_\ComparisonCarrier,\NormSymbol_\ComparisonCarrier]_{\OrthogonalGroup(\ModelDimension)}.
+\]
+The coordinate pairs
+$(\FeatureCoordinates_{\ComparisonCarrier_\SequenceIndex},
+  \NormSymbol_{\ComparisonCarrier_\SequenceIndex})$
+and
+$(\FeatureCoordinates_\ComparisonCarrier,\NormSymbol_\ComparisonCarrier)$
+constructed using the bases from Step~\ref{step:local-model-norm-convergence} represent
+$\LocalModelClass{\ComparisonCarrier_\SequenceIndex}{\ComparisonMetric_\SequenceIndex}$
+and
+$\LocalModelClass{\ComparisonCarrier}{\ComparisonMetric}$,
+respectively.
+Their convergence in \eqref{eq:local-norm-convergence}
+and \eqref{eq:local-coordinate-convergence}
+proves \ref{item:model-continuity}.
+For an isometry
+$\InputIsometry \colon\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }\to\MetricSpace{\ComparisonCarrier _0}{\ComparisonMetric _0}$,
+define the pullback map
+\[
+ \IsometryPullback\colon
+ \LebesgueSpace^2(\ComparisonCarrier_0,\SelectedMeasure{\ComparisonCarrier_0}{\ComparisonMetric_0})
+ \to
+ \LebesgueSpace^2(\ComparisonCarrier,\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric})
+\]
+as follows.
+For every
+$\HilbertFunction\in\LebesgueSpace^2(\ComparisonCarrier_0,\SelectedMeasure{\ComparisonCarrier_0}{\ComparisonMetric_0})$,
+set
+\[
+ \IsometryPullback\HilbertFunction=\HilbertFunction\circ\InputIsometry.
+\]
+The map
+$\IsometryPullback$
+is unitary because
+$\InputIsometry \Pushforward\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric}=\SelectedMeasure{\ComparisonCarrier _0}{\ComparisonMetric _0}$.
+It intertwines the distance operators,
+\[
+ \DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}(\HilbertFunction \circ \InputIsometry )
+       =(\DistanceOperator{\ComparisonCarrier _0}{\ComparisonMetric _0}\HilbertFunction )\circ \InputIsometry .
+\]
+Thus
+\[
+ \IsometryPullback\bigl(\SpectralSubspace{\ComparisonCarrier_0}{\SpectralCutoff}\bigr)
+ =\SpectralSubspace{\ComparisonCarrier}{\SpectralCutoff}.
+\]
+Let
+$\{\BasisFunction_{0,\BasisIndex}\}_{0\leq\BasisIndex<\ModelDimension}$
+be the orthonormal basis chosen on
+$\ComparisonCarrier_0$.
+Since both
+$\{\BasisFunction_{0,\BasisIndex}\circ\InputIsometry\}_{\BasisIndex}$
+and
+$\{\BasisFunction_\BasisIndex\}_{\BasisIndex}$
+are orthonormal bases of
+$\SpectralSubspace{\ComparisonCarrier}{\SpectralCutoff}$,
+there is
+$\OrthogonalChange\in\OrthogonalGroup(\ModelDimension)$
+such that for every
+$0\leq\BasisIndex<\ModelDimension$
+we have
+\begin{equation}\label{eq:isometry-pullback-basis}
+ \BasisFunction_{0,\BasisIndex}\circ\InputIsometry
+ =\sum_{\SecondBasisIndex=0}^{\ModelDimension-1}
+   \OrthogonalChange_{\BasisIndex\SecondBasisIndex}\BasisFunction_\SecondBasisIndex.
+\end{equation}
+Using \eqref{eq:isometry-pullback-basis} and
+$\InputIsometry\Pushforward\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric}
+ =\SelectedMeasure{\ComparisonCarrier_0}{\ComparisonMetric_0}$,
+we obtain,
+for every
+$\ComparisonPoint\in\ComparisonCarrier$
+and
+$\CoefficientVector\in\RealNumbers^\ModelDimension$,
+\begin{equation}\label{eq:isometry-objective-transform-1}
+ \NormSymbol_{\ComparisonCarrier_0}(\CoefficientVector)
+ =\NormSymbol_\ComparisonCarrier(\OrthogonalChange^{-1}\CoefficientVector),
+\end{equation}
+and
+\begin{equation}\label{eq:isometry-objective-transform-2}
+ \ApproximationObjective_{\ComparisonCarrier_0}
+   (\InputIsometry(\ComparisonPoint),\CoefficientVector)
+ =\ApproximationObjective_\ComparisonCarrier
+   (\ComparisonPoint,\OrthogonalChange^{-1}\CoefficientVector).
+\end{equation}
+The identity \eqref{eq:isometry-objective-transform-2}
+and uniqueness of the minimizers imply
+\[
+ \FeatureCoordinates_{\ComparisonCarrier_0}(\InputIsometry(\ComparisonPoint))
+ =\OrthogonalChange\FeatureCoordinates_\ComparisonCarrier(\ComparisonPoint).
+\]
+This proves both identities in \eqref{eq:input-isometry-1} and \eqref{eq:input-isometry-2}.
+Consequently,
+for every
+$\ComparisonPoint,\IntegrationPoint\in\ComparisonCarrier$,
+\[
+ \begin{aligned}
+ \Pseudometric_{\ComparisonCarrier_0}
+   (\InputIsometry(\ComparisonPoint),\InputIsometry(\IntegrationPoint))
+ &=\NormSymbol_{\ComparisonCarrier_0}
+   \bigl(\OrthogonalChange(\FeatureCoordinates_\ComparisonCarrier(\ComparisonPoint)
+                         -\FeatureCoordinates_\ComparisonCarrier(\IntegrationPoint))\bigr)\\
+ &=\Pseudometric_\ComparisonCarrier(\ComparisonPoint,\IntegrationPoint).
+ \end{aligned}
+\]
+Thus the pseudometric
+$\Pseudometric_\ComparisonCarrier$
+is independent of the coordinates and is invariant under isometries of
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$.
+
+\ProofStep{Continuity of the approximation error.}\label{step:local-model-error-continuity}
+\paraid{p-2d2c5d189dec}
+Equation \eqref{eq:local-model-pseudometric} defines a continuous pseudometric
+because it pulls back the distance of a normed space by the continuous map
+$\FeatureCoordinates_\ComparisonCarrier$.
+Step~\ref{step:local-model-isometries} proves its invariance.
+Set
+\[
+ \NormComparisonError_\SequenceIndex
+ =\sup_{\substack{\CoefficientVector\in\RealNumbers^\ModelDimension\\\norm{\CoefficientVector}_2=1}}
+       |\NormSymbol_{\ComparisonCarrier_\SequenceIndex}(\CoefficientVector)
+          -\NormSymbol_\ComparisonCarrier(\CoefficientVector)|,
+\]
+and
+\[
+ \CoordinateComparisonError_\SequenceIndex
+ =\sup_{(\ComparisonPoint_\SequenceIndex,\ComparisonPoint)\in\Correspondence_\SequenceIndex}
+       \norm{\FeatureCoordinates_{\ComparisonCarrier_\SequenceIndex}(\ComparisonPoint_\SequenceIndex)
+               -\FeatureCoordinates_\ComparisonCarrier(\ComparisonPoint)}_2.
+\]
+Steps~\ref{step:local-model-norm-convergence} and~\ref{step:local-model-coordinate-convergence} show that both numbers tend to
+$0$.
+Choose
+$\CoefficientBound>0$
+which bounds all the coordinate norms in \eqref{eq:coefficient-bounds}
+along the sequence and on the limit space.
+Such a bound exists because the diameters converge.
+By \Cref{lem:coordinate-pseudometric-estimate},
+\begin{equation}\label{eq:local-norm-pair-estimate}
+ \PseudometricError_{\Correspondence_\SequenceIndex}
+   (\Pseudometric_{\ComparisonCarrier_\SequenceIndex},\Pseudometric_\ComparisonCarrier)
+ \leq2\CoefficientBound\NormComparisonError_\SequenceIndex
+       +2\CoordinateComparisonError_\SequenceIndex
+          \max_{\substack{\CoefficientVector\in\RealNumbers^\ModelDimension\\\norm{\CoefficientVector}_2=1}}\NormSymbol_\ComparisonCarrier(\CoefficientVector).
+\end{equation}
+The right-hand side tends to
+$0$.
+Thus
+\begin{equation}\label{eq:local-pseudometric-convergence}
+ \PseudometricError_{\Correspondence_\SequenceIndex}
+ (\Pseudometric_{\ComparisonCarrier_\SequenceIndex},\Pseudometric_\ComparisonCarrier)\to0.
+\end{equation}
+If
+$\AmbientDisplacement _\SequenceIndex =\sup_{(\ComparisonPoint_\SequenceIndex,\ComparisonPoint)\in\Correspondence_\SequenceIndex}\AmbientMetric (\ComparisonPoint _\SequenceIndex ,\ComparisonPoint )$,
+then for every
+$(\ComparisonPoint_\SequenceIndex,\ComparisonPoint),
+ (\IntegrationPoint_\SequenceIndex,\IntegrationPoint)\in\Correspondence_\SequenceIndex$,
+\[
+ |\ComparisonMetric _\SequenceIndex(\ComparisonPoint _\SequenceIndex ,\IntegrationPoint _\SequenceIndex )-\ComparisonMetric (\ComparisonPoint ,\IntegrationPoint )|\leq2\AmbientDisplacement _\SequenceIndex .
+\]
+By \eqref{eq:pseudometric-uniform-comparison}
+and \eqref{eq:local-pseudometric-convergence},
+we obtain
+\[
+ |\LocalError \MetricSpace{\ComparisonCarrier _\SequenceIndex }{\ComparisonMetric _\SequenceIndex}-\LocalError \MetricSpace{\ComparisonCarrier }{\ComparisonMetric }|
+ \leq\PseudometricError_{\Correspondence_\SequenceIndex}
+ (\Pseudometric_{\ComparisonCarrier_\SequenceIndex},\Pseudometric_\ComparisonCarrier)
+ +2\AmbientDisplacement _\SequenceIndex \to0.
+\]
+The bound at
+$\MetricSpace{\BaseCarrier }{\MetricSymbol }$
+was arranged in Step~\ref{step:local-model-spectral-dimension} by \eqref{eq:finite-spectral-error}.
+This proves \ref{item:model-pseudometric}--\ref{item:model-center-error}.
+\end{proof}
+
+\paraid{p-ec88a14da3e5}
+The construction also represents the isometries of each input space by
+orthogonal matrices.
+
+\begin{remark}\label{rem:local-isometry-representation}
+\paraid{p-a393c40d9c5a}
+Fix a local model from \Cref{thm:local-models} and a representative
+$(\FeatureCoordinates_\ComparisonCarrier,\NormSymbol_\ComparisonCarrier)$
+constructed from the real orthonormal basis
+$\{\BasisFunction_\BasisIndex\}_{0\leq\BasisIndex<\ModelDimension}$
+of
+$\SpectralSubspace{\ComparisonCarrier}{\SpectralCutoff}$.
+Then the construction induces a continuous group homomorphism
+\begin{equation}\label{eq:local-isometry-representation-1}
+ \IsometryRepresentation{\ComparisonCarrier}{\ComparisonMetric}
+ \colon\Isom\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}
+       \to\OrthogonalGroup(\ModelDimension),
+\end{equation}
+with the following matrix entries.
+For every
+$\FirstIsometry\in\Isom\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$
+and integers
+$0\leq\BasisIndex,\SecondBasisIndex<\ModelDimension$,
+set
+\begin{equation}\label{eq:local-isometry-representation-2}
+ \bigl(\IsometryRepresentation{\ComparisonCarrier}{\ComparisonMetric}(\FirstIsometry)\bigr)_{\BasisIndex\SecondBasisIndex}
+ =\int_\ComparisonCarrier
+   \BasisFunction_\BasisIndex(\FirstIsometry\ComparisonPoint)
+   \BasisFunction_\SecondBasisIndex(\ComparisonPoint)
+   \,\IntegrationDifferential\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric}(\ComparisonPoint).
+\end{equation}
+Indeed,
+Step~\ref{step:local-model-isometries} of the proof shows that composition with
+$\FirstIsometry$
+preserves the spectral subspace and its inner product.
+Hence
+\begin{equation}\label{eq:isometry-basis-action}
+ \BasisFunction_\BasisIndex\circ\FirstIsometry
+ =\sum_{\SecondBasisIndex=0}^{\ModelDimension-1}
+  \bigl(\IsometryRepresentation{\ComparisonCarrier}{\ComparisonMetric}(\FirstIsometry)\bigr)_{\BasisIndex\SecondBasisIndex}
+  \BasisFunction_\SecondBasisIndex.
+\end{equation}
+For every
+$\FirstIsometry,\SecondIsometry\in\Isom\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$,
+applying \eqref{eq:isometry-basis-action} successively to
+$\FirstIsometry$
+and
+$\SecondIsometry$
+and using uniqueness of basis coefficients proves
+\[
+ \IsometryRepresentation{\ComparisonCarrier}{\ComparisonMetric}(\FirstIsometry\circ\SecondIsometry)
+ =\IsometryRepresentation{\ComparisonCarrier}{\ComparisonMetric}(\FirstIsometry)
+  \IsometryRepresentation{\ComparisonCarrier}{\ComparisonMetric}(\SecondIsometry).
+\]
+The matrix entries in \eqref{eq:local-isometry-representation-2} are continuous
+for the uniform topology on the isometry group.
+By \eqref{eq:input-isometry-1},
+\eqref{eq:input-isometry-2} and uniqueness of the best approximations,
+we obtain the equivariance identity \eqref{eq:local-model-equivariance-1}
+and the norm preservation identity \eqref{eq:local-model-equivariance-2}.
+For every
+$\FirstIsometry\in\Isom\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$
+and
+$\ComparisonPoint\in\ComparisonCarrier$,
+\begin{equation}\label{eq:local-model-equivariance-1}
+ \FeatureCoordinates_\ComparisonCarrier(\FirstIsometry\ComparisonPoint)
+ =\IsometryRepresentation{\ComparisonCarrier}{\ComparisonMetric}(\FirstIsometry)
+   \FeatureCoordinates_\ComparisonCarrier(\ComparisonPoint).
+\end{equation}
+For every
+$\FirstIsometry\in\Isom\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$
+and
+$\CoefficientVector\in\RealNumbers^\ModelDimension$,
+\begin{equation}\label{eq:local-model-equivariance-2}
+ \NormSymbol_\ComparisonCarrier
+   \bigl(\IsometryRepresentation{\ComparisonCarrier}{\ComparisonMetric}(\FirstIsometry)\CoefficientVector\bigr)
+ =\NormSymbol_\ComparisonCarrier(\CoefficientVector).
+\end{equation}
+A change of basis by
+$\OrthogonalChange\in\OrthogonalGroup(\ModelDimension)$
+replaces this representation by
+$\FirstIsometry\mapsto\OrthogonalChange
+ \IsometryRepresentation{\ComparisonCarrier}{\ComparisonMetric}(\FirstIsometry)
+ \OrthogonalChange^{-1}$.
+For the constant model used at a singleton center,
+take the trivial homomorphism into
+$\OrthogonalGroup(1)$.
+For a compact group
+$\ActingGroup$,
+the Peter--Weyl theorem asserts that the matrix coefficients of finite-dimensional
+continuous unitary representations have dense linear span in
+$\ContinuousFunctions(\ActingGroup,\ComplexNumbers)$
+\cite[Chapter~6, Section~2, pp.~165--167]{DiestelSpalsbury2014}.
+In that proof,
+convolution operators commute with left translations,
+and their nonzero eigenspaces carry finite-dimensional unitary representations.
+Here the distance operator commutes with the action of
+$\Isom\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$,
+so its invariant spectral subspace defines
+$\IsometryRepresentation{\ComparisonCarrier}{\ComparisonMetric}$.
+\Cref{lem:spectral-continuity} permits comparison of these subspaces as the compact
+metric space varies.
+\end{remark}
+
+\begin{remark}\label{rem:mds-comparison}
+\paraid{p-1384428ed1f6}
+For compact metric measure spaces,
+Kroshnin,
+Stepanov,
+and Trevisan
+\cite[arXiv v2, Theorem~5.4 and Remark~5.5]{KroshninStepanovTrevisan2022}
+prove stability of multidimensional scaling coordinates in
+$\LebesgueSpace^2$
+using optimal couplings for the Gromov--Wasserstein distance of order four
+and minimizing over orthogonal transformations,
+assuming convergence for that distance and a gap
+after the last retained positive eigenvalue.
+\Cref{thm:local-models} uses best
+$\LebesgueSpace^\IntegrabilityExponent$
+approximations of distance functions and varying norms to approximate
+the metric uniformly.
+\end{remark}

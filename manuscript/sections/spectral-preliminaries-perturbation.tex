@@ -1,0 +1,250 @@
+\subsection{Spectral perturbation and generalized eigenspaces}\label{subsec:spectral-preliminaries-perturbation}
+\paraid{p-f87a26fde631}
+Let
+$\BanachAmbientSpace$
+be a complex Banach space.
+Write
+\[
+ \ClosedUnitBall=\{\FirstVector\in\BanachAmbientSpace\mid\norm{\FirstVector}\leq1\}
+\]
+for its closed unit ball.
+A family of bounded linear operators
+$\{\AmbientOperator_\SequenceIndex\colon\BanachAmbientSpace\to\BanachAmbientSpace\}_{\SequenceIndex\in\NonnegativeIntegers}$
+is \emph{collectively compact} if
+\[
+ \overline{\bigcup_{\SequenceIndex\in\NonnegativeIntegers}
+ \AmbientOperator_\SequenceIndex(\ClosedUnitBall)}
+ \text{ is compact}.
+\]
+Strong convergence to a bounded linear operator
+$\AmbientOperator\colon\BanachAmbientSpace\to\BanachAmbientSpace$
+means that for every
+$\FirstVector\in\BanachAmbientSpace$
+we have
+$\norm{\AmbientOperator_\SequenceIndex\FirstVector-\AmbientOperator\FirstVector}\to0$.
+
+\begin{theorem}[{Riesz--Schauder, \cite[Theorem~14.19]{Muscat2024}}]\label{thm:compact-spectrum}
+\paraid{p-1b1391ae5587}
+Let
+$\CompactOperator\colon\BanachAmbientSpace\to\BanachAmbientSpace$
+be a compact linear operator on a complex Banach space.
+Then every
+$\Eigenvalue\in\spec(\CompactOperator)\setminus\{0\}$
+is an eigenvalue,
+and
+\[
+ 0<\dim\ker(\CompactOperator-\Eigenvalue\IdentityMap)<\infty.
+\]
+The nonzero spectrum is at most countable and has no accumulation point
+other than possibly zero.
+\end{theorem}
+
+\begin{theorem}[{Spectral inclusion, \cite[Theorem~5.3]{AnselonePalmer1968}}]\label{thm:spectral-inclusion}
+\paraid{p-73a5ad7d4740}
+Let
+$\AmbientOperator_\SequenceIndex,\AmbientOperator\colon\BanachAmbientSpace\to\BanachAmbientSpace$
+be bounded linear operators on a complex Banach space.
+Assume that
+$\AmbientOperator_\SequenceIndex\to\AmbientOperator$
+strongly and that
+$\{\AmbientOperator_\SequenceIndex-\AmbientOperator\}_{\SequenceIndex\in\NonnegativeIntegers}$
+is collectively compact.
+Then for every open set
+$\SpectralNeighborhood\subset\ComplexNumbers$
+containing
+$\spec(\AmbientOperator)$,
+there is
+$\SequenceIndex_0\in\NonnegativeIntegers$
+such that for every
+$\SequenceIndex\geq\SequenceIndex_0$
+we have
+\[
+ \spec(\AmbientOperator_\SequenceIndex)\subset\SpectralNeighborhood.
+\]
+\end{theorem}
+
+\begin{definition}[{Riesz projection, \cite[Definition~14.23 and Proposition~14.28]{Muscat2024}}]\label{def:riesz-projection}
+\paraid{p-52d4e9265055}
+Let
+$\CompactOperator\colon\BanachAmbientSpace\to\BanachAmbientSpace$
+be a bounded linear operator on a complex Banach space.
+Let
+$\SpectralContour$
+be a positively oriented finite union of rectifiable Jordan curves
+avoiding
+$\spec(\CompactOperator)$
+and having winding number either
+$0$
+or
+$1$
+at every point of
+$\spec(\CompactOperator)$.
+The \emph{Riesz projection} of
+$\CompactOperator$
+is the bounded linear operator
+$\RieszProjection{\CompactOperator}{\SpectralContour}\colon\BanachAmbientSpace\to\BanachAmbientSpace$
+defined by
+\[
+ \RieszProjection{\CompactOperator}{\SpectralContour}
+ =\frac{1}{2\CircleConstant\ImaginaryUnit}
+ \int_{\SpectralContour}(\ResolventParameter\IdentityMap-\CompactOperator)^{-1}
+ \,\IntegrationDifferential\ResolventParameter,
+\]
+where the line integral is taken in the operator norm.
+If
+$\Eigenvalue\in\spec(\CompactOperator)$
+and
+$\SpectralContour$
+has winding number
+$1$
+at
+$\Eigenvalue$
+and
+$0$
+at every point of
+$\spec(\CompactOperator)\setminus\{\Eigenvalue\}$,
+then we call
+$\RieszProjection{\CompactOperator}{\SpectralContour}$
+the \emph{Riesz projection associated with
+$\Eigenvalue$}.
+\end{definition}
+
+\begin{lemma}[{\cite[Examples~14.24(1) and Proposition~14.28]{Muscat2024}}]\label{lem:riesz-projection-properties}
+\paraid{p-b805e4feeaaf}
+Let
+$\CompactOperator$
+and
+$\SpectralContour$
+be as in Definition~\ref{def:riesz-projection}.
+Then we have
+\[
+ \RieszProjection{\CompactOperator}{\SpectralContour}^2
+ =\RieszProjection{\CompactOperator}{\SpectralContour},
+\]
+and
+\[
+ \CompactOperator\RieszProjection{\CompactOperator}{\SpectralContour}
+ =\RieszProjection{\CompactOperator}{\SpectralContour}\CompactOperator.
+\]
+Moreover,
+$\RieszProjection{\CompactOperator}{\SpectralContour}$
+depends only on the subset of
+$\spec(\CompactOperator)$
+at which
+$\SpectralContour$
+has winding number
+$1$.
+\end{lemma}
+
+\begin{theorem}[{Convergence of spectral projections, \cite[Proposition~6.3]{AnselonePalmer1968}}]\label{thm:riesz-convergence}
+\paraid{p-ab1c2cec6e08}
+Let
+$\AmbientOperator_\SequenceIndex,\AmbientOperator\colon\BanachAmbientSpace\to\BanachAmbientSpace$
+satisfy the operator hypotheses of
+\Cref{thm:spectral-inclusion}.
+Let
+$\SpectralContour$
+be as in Definition~\ref{def:riesz-projection} for
+$\AmbientOperator$,
+and put
+\[
+ \AmbientProjection=\RieszProjection{\AmbientOperator}{\SpectralContour}.
+\]
+Then for all sufficiently large
+$\SequenceIndex$,
+$\SpectralContour$
+satisfies the conditions of Definition~\ref{def:riesz-projection} for
+$\AmbientOperator_\SequenceIndex$,
+and the projections
+$\AmbientProjection_\SequenceIndex\colon\BanachAmbientSpace\to\BanachAmbientSpace$
+defined by
+\[
+ \AmbientProjection_\SequenceIndex
+ =\RieszProjection{\AmbientOperator_\SequenceIndex}{\SpectralContour}
+\]
+satisfy
+\[
+ \dim\range\AmbientProjection_\SequenceIndex=\dim\range\AmbientProjection.
+\]
+For every
+$\FirstVector\in\BanachAmbientSpace$,
+we also have
+\[
+ \norm{\AmbientProjection_\SequenceIndex\FirstVector-\AmbientProjection\FirstVector}\to0.
+\]
+If
+$\AmbientOperator_\SequenceIndex$
+and
+$\AmbientOperator$
+are compact and
+$\SpectralContour$
+has winding number
+$0$
+at
+$0$,
+then
+$\dim\range\AmbientProjection_\SequenceIndex$
+and
+$\dim\range\AmbientProjection$
+are finite.
+\end{theorem}
+
+\paraid{p-90dc1dadcd0a}
+For a bounded linear operator
+$\CompactOperator\colon\BanachAmbientSpace\to\BanachAmbientSpace$
+on a complex Banach space and
+$\Eigenvalue\in\ComplexNumbers$,
+we write
+\[
+ \GeneralizedEigenspace{\CompactOperator}{\Eigenvalue}
+ =\bigcup_{\RootOrder\geq1}
+  \ker\bigl((\CompactOperator-\Eigenvalue\IdentityMap)^\RootOrder\bigr)
+\]
+for the generalized eigenspace at
+$\Eigenvalue$.
+
+\begin{theorem}[{\cite[Section~7, p.~429]{AnselonePalmer1968}, \cite[Proposition~14.28 and Examples~14.29]{Muscat2024}}]\label{lem:riesz-range-generalized-eigenspace}
+\paraid{p-99a6a24b0cfc}
+Let
+$\CompactOperator\colon\BanachAmbientSpace\to\BanachAmbientSpace$
+be a compact linear operator on a complex Banach space.
+For every
+$\Eigenvalue\in\spec(\CompactOperator)\setminus\{0\}$,
+write
+$\EigenvalueProjection{\CompactOperator}{\Eigenvalue}$
+for the Riesz projection associated with
+$\Eigenvalue$.
+Then
+\[
+ \range\EigenvalueProjection{\CompactOperator}{\Eigenvalue}
+ =\GeneralizedEigenspace{\CompactOperator}{\Eigenvalue}.
+\]
+More generally, let
+$\SelectedEigenvalues\subset\spec(\CompactOperator)\setminus\{0\}$
+be a finite set and let
+$\SpectralContour$
+be as in Definition~\ref{def:riesz-projection} for
+$\CompactOperator$.
+Assume that
+$\SpectralContour$
+has winding number
+$1$
+at every point of
+$\SelectedEigenvalues$
+and
+$0$
+at every point of
+$\spec(\CompactOperator)\setminus\SelectedEigenvalues$.
+Then we have
+\[
+ \RieszProjection{\CompactOperator}{\SpectralContour}
+ =\sum_{\Eigenvalue\in\SelectedEigenvalues}
+   \EigenvalueProjection{\CompactOperator}{\Eigenvalue},
+\]
+and
+\[
+ \range\RieszProjection{\CompactOperator}{\SpectralContour}
+ =\bigoplus_{\Eigenvalue\in\SelectedEigenvalues}
+   \GeneralizedEigenspace{\CompactOperator}{\Eigenvalue}.
+\]
+\end{theorem}

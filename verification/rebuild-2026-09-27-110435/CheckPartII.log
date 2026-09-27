@@ -1,0 +1,1701 @@
+def PaperN.PartII.DistanceKernelSpectralInput.{u} : Prop :=
+∀ (X : Type u) [inst : MetricSpace X] [inst_1 : CompactSpace X] [Nonempty X] [inst_3 : MeasurableSpace X]
+  [inst_4 : BorelSpace X] (μ : MeasureTheory.Measure X) [inst_5 : MeasureTheory.IsProbabilityMeasure μ],
+  IsCompactOperator ⇑(PaperN.PartII.distanceOperator μ) ∧ IsSelfAdjoint (PaperN.PartII.distanceOperator μ)
+def PaperN.PartII.DistanceOperatorStatement.{u} : Prop :=
+∀ (X : Type u) [inst : MetricSpace X] [inst_1 : CompactSpace X] [Nonempty X] [inst_3 : MeasurableSpace X]
+  [inst_4 : BorelSpace X] (μ : MeasureTheory.Measure X) [inst_5 : MeasureTheory.IsProbabilityMeasure μ]
+  [μ.IsOpenPosMeasure],
+  IsCompactOperator ⇑(PaperN.PartII.distanceOperator μ) ∧
+    IsSelfAdjoint (PaperN.PartII.distanceOperator μ) ∧
+      (∀ (f : ↥(MeasureTheory.Lp ℝ 2 μ)),
+          (PaperN.PartII.continuousToL2 μ) ((PaperN.PartII.distanceToContinuous μ) f) =
+              (PaperN.PartII.distanceOperator μ) f ∧
+            (∀ (x : X), ((PaperN.PartII.distanceToContinuous μ) f) x = ∫ (y : X), dist x y * ↑↑f y ∂μ) ∧
+              ‖(PaperN.PartII.distanceToContinuous μ) f‖ ≤ Metric.diam Set.univ * ‖f‖ ∧
+                ∀ (x y : X),
+                  |((PaperN.PartII.distanceToContinuous μ) f) x - ((PaperN.PartII.distanceToContinuous μ) f) y| ≤
+                    dist x y * ‖f‖) ∧
+        ∀ (f : ↥(MeasureTheory.Lp ℝ 2 μ)) (a : ℝ),
+          a ≠ 0 → (PaperN.PartII.distanceOperator μ) f = a • f → ∃! g, (PaperN.PartII.continuousToL2 μ) g = f
+'PaperN.PartII.distanceProfile_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceProfile_sub_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuousToL2_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceProfileL2_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceProfileL2_sub_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceValue_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceValue_sub_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceValue_lipschitz' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceContinuous_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceValue_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceIntegrand_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceValue_integral_of_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceOperator_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceOperator_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuousToL2_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.eigenfunction_continuousRepresentative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceOperator_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.selectedDistanceOperator_spectral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.selectedDistanceOperator_continuousRepresentative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.distanceProfile_sub_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceProfile_isometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distance_bump_approximation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.exists_distance_range_approximation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceProfile_mem_closure_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_kernel_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceToContinuous_eigen_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceToContinuous_mem_uniformSpectralSpan' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceProfile_mem_uniformSpectralSpan' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.finite_eigenfunction_approximation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.finite_uniform_spectral_approximation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.finite_spectral_approximation_positive_dim' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.uniformSpectralSpan_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.finiteEigenfunctionApproximation_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+def PaperN.PartII.UniformSpectralSpanStatement.{u} : Prop :=
+∀ (X : Type u) [inst : MetricSpace X] [inst_1 : CompactSpace X] [inst_2 : MeasurableSpace X] [inst_3 : BorelSpace X]
+  (μ : MeasureTheory.Measure X) [inst_4 : MeasureTheory.IsProbabilityMeasure μ] [μ.IsOpenPosMeasure],
+  IsCompactOperator ⇑(PaperN.PartII.distanceOperator μ) →
+    IsSelfAdjoint (PaperN.PartII.distanceOperator μ) →
+      ∀ (x : X), PaperN.PartII.distanceProfile x ∈ PaperN.PartII.uniformSpectralSpan μ
+def PaperN.PartII.FiniteEigenfunctionApproximationStatement.{u} : Prop :=
+∀ (X : Type u) [inst : MetricSpace X] [inst_1 : CompactSpace X] [Nonempty X] [inst_3 : MeasurableSpace X]
+  [inst_4 : BorelSpace X] (μ : MeasureTheory.Measure X) [inst_5 : MeasureTheory.IsProbabilityMeasure μ]
+  [μ.IsOpenPosMeasure],
+  IsCompactOperator ⇑(PaperN.PartII.distanceOperator μ) →
+    IsSelfAdjoint (PaperN.PartII.distanceOperator μ) →
+      ∀ ε > 0,
+        ∃ S,
+          ↑S ⊆ PaperN.PartII.continuousEigenvectors μ ∧
+            ⨆ x, Metric.infDist (PaperN.PartII.distanceProfile x) ↑(Submodule.span ℝ ↑S) < ε
+'PaperN.PartII.spectralCutoff_antitone' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.finite_eigenfunctions_le_cutoff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralCutoff_uniform_approximation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralCutoff_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound]
+def PaperN.PartII.CompactEigenvalueFinitenessInput.{u} : Prop :=
+∀ (H : Type u) [inst : NormedAddCommGroup H] [inst_1 : InnerProductSpace ℝ H] [inst_2 : CompleteSpace H]
+  (T : H →L[ℝ] H),
+  IsCompactOperator ⇑T → IsSelfAdjoint T → ∀ (η : ℝ), 0 < η → {a | η < |a| ∧ Module.End.HasEigenvalue (↑T) a}.Finite
+'PaperN.PartII.spectralCutoff_map_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralCutoffEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.l2SpectralCutoff_finiteDimensional_of_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralCutoff_finiteDimensional_of_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralCutoff_finrank_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralCutoff_finiteDimensional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralCutoff_positive_finrank' depends on axioms: [propext, Classical.choice, Quot.sound]
+def PaperN.PartII.complexifiedSpectrum.{u} : {H : Type u} →
+  [inst : NormedAddCommGroup H] → [inst_1 : NormedSpace ℝ H] → (H →L[ℝ] H) → Set ℂ :=
+fun {H} [NormedAddCommGroup H] [NormedSpace ℝ H] T =>
+  {z |
+    ¬∃ S,
+        S * PaperN.PartII.complexResolventBlock T z = 1 ∧
+          PaperN.PartII.complexResolventBlock T z * S = 1 ∧
+            S * PaperN.PartII.complexStructure = PaperN.PartII.complexStructure * S}
+def PaperN.PartII.SpectralDensityStatement.{u} : Prop :=
+∀ (X : Type u) [inst : MetricSpace X] [inst_1 : CompactSpace X] [Nonempty X] [inst_3 : MeasurableSpace X]
+  [inst_4 : BorelSpace X] (μ : MeasureTheory.Measure X) [inst_5 : MeasureTheory.IsProbabilityMeasure μ]
+  [μ.IsOpenPosMeasure] (ε : ℝ),
+  0 < ε →
+    ∃ η,
+      0 < η ∧
+        ↑η ∉ PaperN.PartII.complexifiedSpectrum (PaperN.PartII.distanceOperator μ) ∧
+          ↑(-η) ∉ PaperN.PartII.complexifiedSpectrum (PaperN.PartII.distanceOperator μ) ∧
+            FiniteDimensional ℝ ↥(PaperN.PartII.spectralCutoff μ η) ∧
+              ⨆ x, Metric.infDist (PaperN.PartII.distanceProfile x) ↑(PaperN.PartII.spectralCutoff μ η) < ε ∧
+                (Nontrivial X → 0 < Module.finrank ℝ ↥(PaperN.PartII.spectralCutoff μ η))
+'PaperN.PartII.ofReal_not_mem_complexifiedSpectrum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.complexScalar_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.commutes_complexStructure_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.not_mem_complexifiedSpectrum_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.complexResolventBlock_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.exists_complexified_spectral_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectral_density' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralDensity_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.selectedSpectralDensity' depends on axioms: [propext, Classical.choice, Quot.sound]
+def PaperN.PartII.MinimizerContinuityStatement : Prop :=
+∀ (n : ℕ),
+  1 ≤ n →
+    ∀ (F : ℕ → EuclideanSpace ℝ (Fin n) → ℝ) (f : EuclideanSpace ℝ (Fin n) → ℝ) (u : ℕ → EuclideanSpace ℝ (Fin n))
+      (a : EuclideanSpace ℝ (Fin n)),
+      (∀ (k : ℕ), Continuous (F k)) →
+        Continuous f →
+          (∀ (K : Set (EuclideanSpace ℝ (Fin n))), IsCompact K → TendstoUniformlyOn F f Filter.atTop K) →
+            Bornology.IsBounded (Set.range u) →
+              (∀ (k : ℕ) (x : EuclideanSpace ℝ (Fin n)), F k (u k) ≤ F k x) →
+                (∀ (y : EuclideanSpace ℝ (Fin n)), f a ≤ f y) →
+                  (∀ (x : EuclideanSpace ℝ (Fin n)), (∀ (y : EuclideanSpace ℝ (Fin n)), f x ≤ f y) → x = a) →
+                    Filter.Tendsto u Filter.atTop (nhds a)
+'PaperN.PartII.minimizer_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.minimizerContinuity_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.exists_uniform_ball_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.uniform_ball_mass_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+def PaperN.PartII.LpDistanceStatement.{u} : Prop :=
+∀ (X : Type u) [inst : MetricSpace X] [inst_1 : CompactSpace X] [Nonempty X] [inst_3 : MeasurableSpace X]
+  [inst_4 : BorelSpace X] (μ : MeasureTheory.Measure X) [inst_5 : MeasureTheory.IsProbabilityMeasure μ]
+  [μ.IsOpenPosMeasure] (r : ℝ),
+  0 < r →
+    0 < ⨅ z, μ.real (Metric.ball z r) ∧
+      ∀ (p : ℝ) (hp : 2 ≤ p) (x y : X),
+        0 ≤ dist x y - ‖PaperN.PartII.distanceDifferenceLp μ (ENNReal.ofReal p) x y‖ ∧
+          dist x y - ‖PaperN.PartII.distanceDifferenceLp μ (ENNReal.ofReal p) x y‖ ≤
+            Metric.diam Set.univ * (1 - (⨅ z, μ.real (Metric.ball z r)) ^ (1 / p)) + 2 * r
+'PaperN.PartII.distanceDifferenceLp_eq_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceDifferenceLp_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceDifferenceLp_norm_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceDifferenceLp_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.lpDistance_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.selectedLpDistance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.factor_shift_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.factor_shift_pow_of_restrict_zero' depends on axioms: [propext, Quot.sound]
+'PaperN.PartII.factor_power_kernel_restrict_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.factorEigenspaceEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.factorEigenspaceEquiv_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.factorEigenspaceEquiv_symm_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.factor_power_kernel_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.factor_hasEigenvalue_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.factor_maxGenEigenspace_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.symmetric_power_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.factor_mem_spectrum_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.factor_nonzero_spectrum_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.factor_symmetric_power_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.factor_symmetric_maxGenEigenspace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.factorGeneralizedEigenspaceEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.factorGeneralizedEigenspaceEquiv_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.factorGeneralizedEigenspaceEquiv_symm_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distanceProfile_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distanceProfile_sub_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.continuousToL2_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distanceProfileL2_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distanceProfileL2_sub_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distanceValue_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distanceValue_sub_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distanceValue_lipschitz' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distanceContinuous_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distanceValue_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distanceIntegrand_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distanceValue_integral_of_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distanceOperator_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distanceOperator_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.continuousToL2_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.eigenfunction_continuousRepresentative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.ComplexKernel.continuousDistanceOperator_integral' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.ComplexKernel.distanceOperator_intertwine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.distanceProfile_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.distanceProfile_sub_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.distanceProfileL2_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.distanceProfileL2_sub_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.distanceValue_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.distanceValue_sub_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.distanceValue_lipschitz' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.distanceContinuous_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.distanceValue_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.distanceIntegrand_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.distanceValue_integral_of_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restrictionContinuous_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restriction_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restriction_extension' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restriction_intertwine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.ambientOperator_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.ambient_hasEigenvalue_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.distanceToContinuous_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.ambientOperator_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.distanceOperator_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.ambient_nonzero_spectrum_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distancePair_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distanceOperator_symmetric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distanceOperator_selfAdjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distanceOperator_opNorm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distanceOperator_spectrum_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restriction_extension_symmetric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.ambient_power_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.ambient_maxGenEigenspace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.ambient_spectrum_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.distance_maxGenEigenspace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.distance_power_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restrictionGeneralizedEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restrictionGeneralizedEquiv_apply' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.restrictionGeneralizedEquiv_symm_apply' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.ambientEigenspaces_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.selectedAmbientEigenspaces' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.inverse_intertwine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.resolvent_intertwine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.integral_resolvent_intertwine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restriction_resolvent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.nonzero_resolventSet_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restriction_resolvent_of_nonzero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.integratedResolvent_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.integratedResolvent_intertwine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.integratedResolvent_range_map_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restriction_integratedResolvent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_weighted_resolvent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.integrable_weighted_resolvent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compact_integratedResolvent_intertwine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restriction_compact_integratedResolvent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.segmentResolvent_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.segmentResolvent_intertwine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.quadrilateralResolvent_intertwine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.mem_resolvent_of_im_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.mem_resolvent_of_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.rectangle_edges_resolvent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.rectangleResolvent_intertwine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.cutoffRectangles_spectral_selection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.cutoffOuter_gt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.cutoffOuter_resolvent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.cutoffContourOperator_intertwine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.cutoffContour_spectral_selection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.zero_not_mem_closure_cutoffRectangles' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.resolvent_apply_eigenvector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.segmentResolvent_apply_eigenvector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.quadrilateralResolvent_apply_eigenvector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.quadrilateralResolvent_fixes_eigenvector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.quadrilateralResolvent_kills_eigenvector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.rectangleResolvent_apply_eigenvector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.cutoffContourOperator_apply_eigenvector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.scalarCircle_inside' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.scalarCircle_outside' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.scalarCircle_real_interval_inside' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.scalarCircle_real_interval_outside' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.scalarCircle_cutoff_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.circleResolvent_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.circleResolvent_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.circleResolvent_apply_eigenvector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.circleResolvent_fixes_inside' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.circleResolvent_kills_outside' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.idempotent_of_dense_eigenspaces' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.circleResolvent_idempotent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.circleResolvent_idempotent_of_compact_symmetric' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.ComplexKernel.distance_circleResolvent_idempotent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.range_eq_closedEigenSpan' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ker_eq_closedEigenSpan_compl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.circleResolvent_kills_not_inside' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.circleResolvent_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.circleResolvent_ker' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.circleResolvent_range_of_compact_symmetric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.circleResolvent_ker_of_compact_symmetric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.closedEigenSpan_compl_le_orthogonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.circleResolvent_eq_starProjection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distance_circleResolvent_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distance_circleResolvent_ker' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distance_circleResolvent_eq_starProjection' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.selector_eq_starProjection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.twoCircleResolvent_fixes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.twoCircleResolvent_kills' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.twoCircleResolvent_eq_starProjection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.circle_real_interval_resolvent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.real_mem_interval_ball' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.cutoffCircle_balls_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.cutoffCircle_real_selection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.cutoffCircle_apply_eigenvector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.cutoffCircle_eq_starProjection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distance_cutoffCircle_eq_starProjection' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.ComplexKernel.distance_cutoffCircle_explicit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.complex_cutoff_eigenvalues_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.complexAlgebraicCutoff_finiteDimensional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.closedEigenSpan_cutoff_eq_algebraic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.cutoffCircle_range_eq_algebraic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.cutoffCircle_range_finiteDimensional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distance_cutoffCircle_range_eq_algebraic' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.ComplexKernel.distance_complexAlgebraicCutoff_finiteDimensional' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.circleResolvent_intertwine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.twoCircleResolvent_intertwine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.cutoffCircle_spheres_resolvent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.cutoffCircle_intertwine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restriction_cutoffCircle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restriction_cutoffCircle_explicit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.seminorm_continuous_finiteDimensional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.seminorm_le_of_unit_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.seminorm_difference_le_of_unit_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinate_pair_estimate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinate_correspondence_estimate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinate_correspondence_sup_estimate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.unitNormBound_attained' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinate_pseudometric_estimate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinatePseudometricEstimate_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.factor_map_eigenspace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.factor_map_selectedEigenspaces' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.factor_selected_restrict_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.factorSelectedEigenspacesEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.factorSelectedEigenspacesEquiv_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restriction_map_selected' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restriction_selected_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restrictionSelectedEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restrictionSelectedEquiv_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restrictionCutoffEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restrictionCutoffEquiv_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.ambientCutoff_finiteDimensional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.ambient_cutoff_generalized_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.ambient_cutoffCircle_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restrictionCircleRangeEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restrictionCircleRangeEquiv_apply' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.ambient_cutoffCircle_idempotent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.realPart_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.imagPart_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.realEmbed_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.realEmbed_parts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.realPart_realEmbed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.realEmbed_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.imagPart_realEmbed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.realPart_complex_smul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.imagPart_complex_smul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distanceOperator_realPart' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distanceOperator_imagPart' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distanceOperator_realEmbed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.realPart_eigenvector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.imagPart_eigenvector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.realEmbed_eigenvector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.realEmbed_mem_complexCutoff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.complexCutoff_eq_complexification' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.ComplexKernel.parts_mem_of_mem_complexification' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.ComplexKernel.mem_complexCutoff_iff_real_imag' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.mem_complexCutoff_iff_continuous_real_imag' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.ComplexKernel.inner_realEmbed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.cutoff_starProjection_realEmbed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.cutoff_starProjection_real_imag' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.realCutoff_finiteDimensional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.realCutoffProjection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distance_cutoffCircle_realEmbed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distance_cutoffCircle_real_imag' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.distance_cutoffCircle_preserves_real' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.restriction_cutoffCircle_real_imag' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.ComplexKernel.continuousRealEmbed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.continuousToL2_realEmbed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.realProjectionRepresentative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.realProjectionRepresentative_toL2' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.ComplexKernel.continuousCutoffProjection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.continuousCutoffProjection_toL2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restriction_cutoffCircle_continuous' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.restriction_cutoffCircle_pointwise' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.ambientOperator_star' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restriction_star' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.star_mem_ambientCutoff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.ambientCutoff_real_of_restriction_real' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.ComplexKernel.star_realEmbed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restriction_continuousRealEmbed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.ambient_cutoffCircle_preserves_real' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.ambient_cutoffCircle_real_pointwise' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.ComplexKernel.continuousComplexCutoff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.mem_continuousComplexCutoff_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.continuousCutoffEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.continuousCutoffEquiv_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.continuousCutoffEquiv_symm_toL2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restrictionContinuousCircleRangeEquiv' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.restrictionContinuousCircleRangeEquiv_apply' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.CircularProjectionRestrictionStatement' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.circularProjectionRestriction_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.circularProjectionRestriction_explicit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.RectangleCircleResolventInput' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.cutoffContour_eq_circle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.ambient_spectrum_bound_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.ambient_cutoffContour_eq_circle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.ProjectionRestrictionStatement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.projectionRestriction_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.measureOperator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.measureOperator_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.measureOperator_strong' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.measureOperator_collectivelyCompact' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.measureOperator_differences_collectivelyCompact' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.ambientOperator_eq_measureOperator' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.ambientOperator_strong_of_pushforward' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.ambientOperator_collectivelyCompact' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.selectedSequenceOperator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.selectedLimitOperator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.selectedSequenceOperator_strong' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.selectedSequenceOperator_collectivelyCompact' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.selectedSequenceOperator_differences_collectivelyCompact' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.selectedLimitOperator_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.CollectivelyCompactSpectralInclusionInput' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.selectedSequenceOperator_eventually_resolvent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.selectedDistanceOperator_eventually_cutoff_resolvent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.CutoffProjectionConvergenceInput' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.selectedLimitOperator_spectrum_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.selectedCutoffProjection_convergence' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.selectedLimitProjection_finiteDimensional' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.selectedCutoffProjection_eventual_rank' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.ComplexKernel.cutoffRealPairEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.complexCutoff_finrank_eq_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.complexCutoff_finrank_eq_continuous_real' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.ambientProjection_finrank_eq_realCutoff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.selectedCutoff_eventual_real_dimension' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.SpectralProjectionProperties' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.ambient_commonContour_properties' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.SpectralProjectionsStatement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.spectralProjections_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.ambient_cutoff_spectrum_iSup' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.varying_integral_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuousGram' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuousGram_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuousGram_eventually_isUnit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.transformContinuousBasis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.transformContinuousBasis_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.transformContinuousBasis_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.transformContinuousBasis_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.transformContinuousBasis_tendsto_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuousGram_transform' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuousGram_isHermitian' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuousGram_quadratic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuousGram_posSemidef' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuousGram_eventually_posDef' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.gramNormalizer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.gramNormalizer_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.gramNormalizer_tendsto_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.normalizeContinuousFamily' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.normalizeContinuousFamily_gram' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.normalizeContinuousFamily_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.normalizeContinuousFamily_eventually_gram' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.continuousRealPart' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.continuousRealPart_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.continuousRealPart_embed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.continuousRealEmbed_realPart' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.realProjectedFunction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.realProjectedFunction_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.continuousRealPart_mem_cutoff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.realPart_restrict_mem_cutoff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.realProjectedFunction_mem_cutoff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.exists_real_cutoff_extension' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.realProjectedFunction_eq_of_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.exists_real_projected_extension' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.exists_convergent_projected_extensions' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.continuousToL2_inner' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuousGram_map' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuousGram_eq_one_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuousGram_map_eq_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.normalized_restrictions_orthonormal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.orthonormal_continuousFamily_span' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.uniform_function_nearby_convergence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.finite_family_nearby_convergence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.nearby_family_sup_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.normalize_restrict_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.selected_spectral_basis_extensions' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.finite_family_norm_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.spectralContinuity_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.NormedCoordinatePair.equivalent_refl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.NormedCoordinatePair.equivalent_symm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.NormedCoordinatePair.equivalent_trans' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.NormedCoordinatePair.pseudometric_eq_of_equivalent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.NormedCoordinatePair.norm_coordinates_eq_of_equivalent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.NormedCoordinateClass.pseudometric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.NormedCoordinateClass.value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.NormedCoordinateClass.value_mk' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.NormedCoordinateClass.pseudometric_mk' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateSynthesis_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateLpNorm_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateLpNorm_definite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateLpPair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateLpNorm_le_two_diam' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.exists_bestApproximation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.bestApproximation_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.exists_coordinateLp_minimizer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateLp_minimizer_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateLpMinimizer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateLpMinimizer_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateLpMinimizer_norm_le_two_diam' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.bestApproximation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.bestApproximation_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.bestApproximation_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.bestApproximation_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_bestApproximation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_coordinateLpMinimizer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.bestApproximationCoordinates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.bestApproximation_isometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateLpMinimizer_change_basis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateLpNorm_change_basis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.bestApproximationCoordinatePair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.bestApproximationCoordinatePair_equivalent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.bestApproximationCoordinatePair_class_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.orthonormalCoordinateChange' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.synthesis_toLp_basis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateSynthesis_change_basis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateLpMap_change_orthonormal_basis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.bestApproximationCoordinatePair_class_eq_of_orthonormal_bases' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.continuousSubspaceL2Equiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuousFamilyL2_orthonormal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuousFamilyOrthonormalBasis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuousFamilyOrthonormalBasis_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinate_class_independent_of_full_orthonormal_family' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.norm_sub_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.bestApproximation_pseudometric_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.bestApproximation_pseudometric_dist_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.bestApproximation_pseudometric_error_of_uniform_competitors' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.bestApproximation_pseudometric_ball_mass_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.bestApproximation_pseudometric_uniform_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.exists_large_exponent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.exists_local_error_parameters' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.exists_uniform_subspace_competitor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.exists_spectral_competitors' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.exists_coordinateSynthesis_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.exists_uniform_coefficient_competitor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.based_subspace_uniform_model_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.exists_center_approximation_parameters' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.exists_continuous_orthonormal_basis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.exists_center_coordinates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateSynthesis_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateSynthesis_uniform_on_ball' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuousAbsPower_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.varying_absPower_integral_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.varying_absPower_integral_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.parameterizedSynthesis_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.synthesis_power_integrals_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.residual_power_integrals_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceObjective_uniform_on_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceObjective_uniform_on_ball' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceObjective_sup_error_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_distanceObjective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceObjective_moving_uniform_on_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceObjective_minimizers_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_toLp_norm_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coefficient_norm_le_coordinateLpNorm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateLpMinimizer_coefficient_norm_le_two_diam' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.continuous_toLp_norm_rpow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceObjective_eq_norm_rpow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceObjective_le_iff_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateLpMinimizer_objective_minimal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceObjective_minimizer_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceObjective_map_isometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateLpMinimizer_mapped_objective_minimal' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.mapped_distanceObjective_minimizer_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.embedded_coordinateLpMinimizer_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.embedded_coordinateLpMinimizer_bounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.embedded_orthonormal_coordinateLpMinimizer_tendsto' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.isBounded_range_of_eventually_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.embedded_eventually_orthonormal_coordinateLpMinimizer_tendsto' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.exists_orthonormalBasis_of_orthonormal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.embedded_orthonormal_family_coefficient_tendsto' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.selected_spectral_coefficients_tendsto' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.varying_continuous_Lp_norm_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateLpNorm_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateLpNorm_uniform_on_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateLpNorm_uniform_on_ball' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateLpNorm_map' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.intrinsic_coordinateLpNorm_uniform_on_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.selected_spectral_coordinates_and_norms_tendsto' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.intrinsic_coordinateLpNorm_sub_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.uniform_relation_of_sequential' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.uniform_nearby_of_sequential' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.embedded_coefficient_uniform_nearby' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.selected_spectral_coordinates_uniform_nearby' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.varying_sup_dist_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.nearby_pair_sup_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateLpNorm_unitNormError_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.selected_spectral_model_sup_convergence' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.exists_continuous_orthonormal_basis_fin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.subspaceOrthonormalBasis_orthonormal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.subspaceCoordinateClass_eq_of_orthonormal_family' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.repair_coordinate_class_representatives' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinate_class_repair_preserves_suprema' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.exists_subspace_class_representative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.repair_subspace_class_families' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.exists_spectral_class_representative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.exists_convergent_subspace_representatives' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.selectedSpectralCoordinateClass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.selected_spectral_class_representatives_converge' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.exists_spectral_rank_gap_ball' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.exists_spectralModelNeighborhood' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.SpectralModelNeighborhood.coordinateClass' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.SpectralModelNeighborhood.representatives_converge' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.subspaceCoordinateClass_value_le_two_diam' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.subspaceCoordinateClass_representative_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.SpectralModelNeighborhood.representative_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.exists_center_class_approximation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.complexResolventBlock_injective_of_not_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ComplexKernel.ofReal_mem_resolventSet_of_not_mem_complexifiedSpectrum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.exists_center_class_approximation_resolvent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.exists_approximating_spectral_neighborhood' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.uniform_metric_error_eq_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.uniform_metric_error_comparison' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.uniform_metric_error_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinate_metric_error_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateBound_le_error_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateBound_eventually_le_of_error_tendsto' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.coordinate_metric_error_tendsto_of_errors' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CommonRealization.exists_correspondences_tendsto' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.SpectralModelNeighborhood.metric_error_tendsto' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.SpectralModelNeighborhood.metricError' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.SpectralModelNeighborhood.exists_metric_error_ball' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.NormedCoordinatePair.comap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.NormedCoordinatePair.equivalent_comap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.NormedCoordinateClass.comap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.NormedCoordinateClass.comap_mk' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.NormedCoordinateClass.value_comap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.NormedCoordinateClass.pseudometric_comap_apply' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.NormedCoordinateClass.comap_id' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.NormedCoordinateClass.comap_comp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.NormedCoordinateClass.comapEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateLpMinimizer_map_isometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.bestApproximationCoordinatePair_comap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.orthonormal_continuousFamily_comap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.subspaceCoordinateClass_comap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceToContinuous_toL2_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceToContinuous_toL2_comap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuousEigenfunction_comap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralCutoff_comap_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.probability_map_isometryEquiv_symm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralCutoffPullbackEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralCutoff_finrank_eq_of_isometryEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.selectedSpectralCoordinateClass_comap' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.zeroCoordinatePair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.zeroCoordinatePair_comap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.zeroCoordinatePair_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.zeroCoordinatePair_pseudometric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.zeroCoordinatePair_unitNormError' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.zeroCoordinatePair_coordinateError' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.zeroCoordinatePair_metric_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.zeroCoordinatePair_metric_error_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.diameter_sub_le_distortion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.diameter_tendsto_of_distortion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.diameter_tendsto_of_commonRealization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ghDiameter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ghDiameter_toGHSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_ghDiameter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.singletonModelDomain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.isOpen_singletonModelDomain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.singleton_mem_singletonModelDomain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.zeroCoordinatePair_error_on_singletonModelDomain' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.singletonModelDomain_mem_nhds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.zeroCoordinatePair_metric_error_eq_ghDiameter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.zeroCoordinateClass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.zeroCoordinateClass_comap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.zeroCoordinateClass_representative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.zeroCoordinateClass_equivariance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.zeroCoordinateClass_pseudometric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.zeroCoordinateClass_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.zeroCoordinateClass_metric_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.zeroCoordinateClass_representatives_converge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel.pseudometric_invariant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.singletonLocalModel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.exists_localModel_of_subsingleton' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinate_equivariance_of_comap_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinate_metric_error_eq_of_comap_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.SpectralModelNeighborhood.coordinateClass_comap' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.SpectralModelNeighborhood.representative_equivariance' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.SpectralModelNeighborhood.ghError' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.SpectralModelNeighborhood.ghError_toGHSpace' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.SpectralModelNeighborhood.ghError_nonneg' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.SpectralModelNeighborhood.continuous_ghError' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.SpectralModelNeighborhood.toLocalModel' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.exists_localModel_of_strictConvex' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.abs_midpoint_rpow_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.abs_midpoint_rpow_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.abs_midpoint_rpow_eq_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.integral_abs_midpoint_rpow_eq_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.lp_norm_rpow_eq_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.lp_strictConvexSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.exists_localModel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel.restrict' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel.shrink' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel.shrink_error_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel.shrink_representative_error_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.exists_uniformly_approximating_localModel' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.pseudometric_gh_eq_of_equiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ofMetric_gh' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel.ghMap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel.ghMap_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel.ghMap_dist_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinate_gh_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel.continuous_ghMap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.exists_continuous_local_approximation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.CoordinateNormCarrier' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.CoordinateNormCarrier.norm_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.CoordinateNormCarrier.linearEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.CoordinateNormCarrier.continuousLinearEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.NormedCoordinatePair.normedCoordinates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.NormedCoordinatePair.dist_normedCoordinates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.NormedCoordinatePair.normedImage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.NormedCoordinatePair.quotient_isometry_normedImage' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.coordinateDualFunctional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateDualFunctional_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateDualNorm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_coordinateDualNorm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateDualNorm_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.abs_inner_le_coordinateDualNorm_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateDualNorm_eq_sSup' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateDualEmbedding' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateDualFunctional_surjective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.exists_coordinateDual_norming' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateDualEmbeddingLinear' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateDualEmbedding_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateDualEmbedding_norm_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateDualLinearIsometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateDualEmbedding_norm_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateDualNorm_orthogonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.orthogonalSphereEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.orthogonalSpherePullback' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.orthogonalSphereAction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateDualEmbedding_equivariant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.orthogonalSphereAction_refl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.orthogonalSphereAction_trans' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.orthogonalSphereAction_surjective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.orthogonalSphereActionEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_orthogonal_inverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_orthogonalSphereAction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.orthogonalOperatorTopology' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_orthogonalSphereAction_operatorTopology' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.coordinateDualNorm_le_mul_of_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateDualNorm_inv_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateDualNorm_inv_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateDualEmbedding_sub_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.exists_norm_le_coordinateNorm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateNorm_relative_of_sphere_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateDualEmbedding_tendsto_of_sphere_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.coordinateDualEmbedding_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateDualEmbedding_uniformOn_ball_of_sphere_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.coordinateDualEmbedding_uniformOn_ball' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel.shrinkBelow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel.shrinkBelow_error_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.exists_variable_error_localModel' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.exists_variable_error_model_cover' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.exists_countable_subordinate_partition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.partition_finite_common_neighborhood' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.exists_localModel_partition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.blockSum_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.blockSum_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.blockSumAction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.blockSumAction_surjective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.blockSumAction_refl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.blockSumAction_trans' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.blockSumActionEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.SphereBlockSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.sphereBlockSum_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.sphereBlockSumAction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_blockSum_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.dense_blockSum_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.blockSum_separable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.sphereBlockSum_separable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.blockSumAction_single' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.blockSum_tail_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.blockSumAction_difference_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_blockSumAction_orbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_blockSumAction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_sphereBlockSumAction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_sphereBlockSumAction_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.isCompact_normPreservingOperators' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.range_orthogonalOperators' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.orthogonalOperator_compactSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.orthogonalProduct_compactSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_orthogonal_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_orthogonal_inv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.orthogonalOperator_isTopologicalGroup' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.orthogonalProduct_isTopologicalGroup' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compactSetIsometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compactSetIsometry_dist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_compactSetIsometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_sphereCompactAction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.isCompact_sphereCompactOrbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compactOrbitDist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compactOrbitDist_attained' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compactOrbitDist_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compactOrbitDist_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compactOrbitDist_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compactOrbitDist_symm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compactOrbitDist_triangle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compactOrbitSetoid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compactOrbitDist_congr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.CompactOrbitQuotient' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compactOrbitQuotientMetric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compactOrbitQuotient_dist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compactOrbitQuotient_eq_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compactOrbitQuotient_lipschitz' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compactOrbitQuotient_image_ball' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compactOrbitQuotient_isOpenMap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compactOrbitQuotient_isQuotientMap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compactOrbitQuotient_topology_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.sphereBlockSumAction_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.sphereBlockSumAction_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compactSetIsometry_refl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compactSetIsometry_trans' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.sphereBlockRepresentation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.sphereCompactMulAction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.SphereOrbit.GroupType' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.SphereOrbit.continuousSMul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.SphereOrbit.isIsometricSMul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.SphereOrbit.Space' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.SphereOrbit.metricSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.SphereOrbit.projection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.SphereOrbit.projection_lipschitz' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.SphereOrbit.projection_isQuotientMap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.SphereOrbit.projection_eq_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.SphereOrbit.dist_projection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.SphereOrbit.separableSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compactSetIsometry_toGHSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.SphereOrbit.realization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.SphereOrbit.realization_projection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.SphereOrbit.realization_lipschitz' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.finiteBlockFeature' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.finiteBlockFeature_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.finiteBlockFeature_dist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.finiteBlockFeature_equivariant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_finiteBlockFeature' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.finiteDualFeature_dist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_finiteBlockFeature_variable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.finiteBlockFeature_eq_of_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.weightedPseudometric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.weightedPseudometric_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.weightedPseudometric_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.weightedPseudometric_error_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.weightedPseudometric_ghDist_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.weightedPseudometric_ghDist_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.finiteBlockFeature_dist_eq_weighted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.featureImage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.featureImage_gh_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.featureImage_quotient_isometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.finiteFeatureImage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.finiteFeatureImage_gh_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.finiteFeatureImage_ghDist_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.featureImage_transport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.finiteFeatureImage_transport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.sphereFeatureImage_orbit_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.NormedCoordinatePair.dualFeature' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.NormedCoordinatePair.dualFeature_dist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.NormedCoordinatePair.dualFeature_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.NormedCoordinatePair.dualFeature_equivariant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel.dualFeature_equivariance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel.dualFeature_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel.chosenPair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel.chosenPair_class' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelFeatureImage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelFeature_active_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelFeature_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelFeatureImage_ghDist_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelApproximation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelApproximation_realization_dist_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelFeatureImage_orbit_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelApproximation_eq_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.finiteFeatureImage_eq_of_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelApproximation_eq_representatives' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelApproximation_eq_representatives_on_superset' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.featureImage_dist_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.finiteBlockFeature_dist_le_variable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.finiteFeatureImage_dist_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.finiteFeatureImage_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateError_bddAbove' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateError_apply_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateError_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.dualFeature_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.dualFeature_error_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.finiteDualFeatureImage_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelApproximation_tendsto_of_representatives' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelApproximation_tendsto_on_common_domains' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_modelApproximation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.exists_continuous_orbit_approximation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.uniform_metric_error_isometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelPseudometric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelPseudometric_equivariant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelUniformError' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelUniformError_invariant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelError' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelError_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelError_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelFeatureImage_gh_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelError_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelApproximation_dist_le_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.feature_pseudometric_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.feature_uniform_error_comparison' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.feature_uniform_error_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelPseudometric_eq_representative_feature' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelError_tendsto_of_representatives' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelError_tendsto_on_common_domains' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_modelError' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.blend_kernel_sub_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.blend_gh_dist_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelInterpolation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelInterpolation_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelInterpolation_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelInterpolation_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelInterpolation_track_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelInterpolation_track_lipschitz' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelInterpolation_tendsto_of_representatives' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelInterpolation_tendsto_on_common_domains' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_modelInterpolation_fixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_modelInterpolation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.Shared.ContinuousPseudometric.blend_ofMetric_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.Shared.ContinuousPseudometric.blend_ofMetric_eq_zero_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.Shared.ContinuousPseudometric.blendOfMetricHomeomorph' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.Shared.ContinuousPseudometric.blendOfMetricHomeomorph_dist' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.modelInterpolation_compatible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.orthogonalOperator_secondCountable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.orthogonalProduct_secondCountable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.normedSpace_connected' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ball_contains_continuum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.normedSpace_local_continua' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.sphereBlockSum_local_continua' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.IsAbsoluteRetract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.IsEquivariantAbsoluteRetract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.IsAbsoluteRetract.of_homeomorph' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.isAbsoluteRetract_homeomorph_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.HasContinuumConnectedBasis' depends on axioms: [propext, Quot.sound]
+'PaperN.PartII.normedSpace_continuumConnectedBasis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.EquivariantHyperspaceARInput' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.OrbitARInput' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.orthogonalOperator_t2Space' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.SphereOrbit.hyperspace_equivariantAR' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.SphereOrbit.absoluteRetract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelInterpolation_track_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.modelInterpolation_track_diam_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.exists_AR_domination' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.IsAbsoluteNeighborhoodRetract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.IsSeparableAbsoluteNeighborhoodRetract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.IsAbsoluteRetract.isAbsoluteNeighborhoodRetract' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.IsAbsoluteNeighborhoodRetract.separable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.HasSmallANRDomination' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.HannerDominationInput' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.HannerANRCategoryInput' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.ghSpace_hasSmallANRDomination' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.ghSpace_absoluteNeighborhoodRetract' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.IsAbsoluteExtensor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.IsAbsoluteNeighborhoodExtensor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.IsAbsoluteExtensor.isAbsoluteRetract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.IsAbsoluteNeighborhoodExtensor.isAbsoluteNeighborhoodRetract' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.ANRToANEInput' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ContractibleANEToAEInput' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.ghSpace_absoluteExtensor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.ghSpace_absoluteRetract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.productCorrespondence' does not depend on any axioms
+'PaperN.PartIV.productCorrespondence_distortionLE' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.ghDist_prod_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.productGH' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.productGH_dist_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.productGH_lipschitz' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.productGH_toGHSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.Equilateral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.equilateralMetric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.equilateral_dist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.equilateral_ghDist_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.equilateralProduct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.equilateralProduct_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.equilateralProduct_dist_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.equilateralProduct_lipschitz' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.equilateralProduct_fiber_dist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.coverClearance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.coverClearance_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.coverClearance_lipschitz' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.coverClearance_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.mem_of_dist_lt_coverClearance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.coverScale' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.coverClearance_bddAbove' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.coverScale_pos_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.coverScale_lipschitz' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.coverScale_subordinate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.positiveCoverScale' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.positiveCoverScale_lipschitz' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.coverProduct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.coverProduct_lipschitz' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.coverProduct_close' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.separated_range_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.packing_forces_ghDist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.equilateralProduct_rep_fiber' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.equilateralProduct_rep_packing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.equilateralProduct_separated_from_packing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.compactFamily_packing_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.compactFamily_avoided_by_products' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.compactDomain_product_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.cardApprox' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.cardApprox_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.exists_next_cardinality' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.exists_recursive_cardinalities' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.exists_disjoint_product_approximations' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.cardApprox_scale_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.cardApprox_local_card_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.cardApprox_locallyFinite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.IsDiscreteFamily' depends on axioms: [propext, Quot.sound]
+'PaperN.PartIV.isDiscreteFamily_of_locallyFinite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.exists_discrete_approximations' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.HilbertCube' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.HasHilbertCubeDiscreteApproximation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.image_index_slice' depends on axioms: [propext, Quot.sound]
+'PaperN.PartIV.ghSpace_hilbertCubeDiscreteApproximation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.RealHilbertSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.TorunczykRecognitionInput' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.ghSpace_homeomorphic_hilbert_of_absoluteRetract' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartIV.ghSpace_homeomorphic_hilbert' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.ghDiameter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.ghDiameter_toGHSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.diameter_le_of_distortion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.ghDiameter_lipschitz' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.diam_prod_eq_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.cardApprox_diameter_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.UnitDiameterSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.instMetricSpaceUnitDiameterSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.unitDiameter_isClosed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.instCompleteSpaceUnitDiameterSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.closed_subspace_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.isDiscreteFamily_subtype_ranges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.unitDiameter_hilbertCubeDiscreteApproximation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.ghDiameter_scaledGH' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.ghDiameter_scaleGH' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.positiveDiameter_isOpen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.diameterNormalize' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.diameterNormalize_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.diameterNormalize_retract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.diam_univ_prod' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.ghDiameter_productGH' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.productGH_point_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.productGH_point_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.unitDiameter_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.unitDiameter_product_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.unitDiameterContraction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.unitDiameterContraction_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.unitDiameterContraction_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.unitDiameterContraction_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.unitDiameter_contractible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.ane_of_open_retract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.unitDiameter_absoluteNeighborhoodExtensor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.unitDiameter_absoluteExtensor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.unitDiameter_absoluteRetract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.unitDiameter_homeomorphic_hilbert_of_absoluteExtensor' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartIV.unitDiameter_homeomorphic_hilbert' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.HasStrongLocalContractions' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.strongLocalContractions_of_homeomorph' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.ghSpace_strongLocalContractions_of_homeomorph' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.ghSpace_strongLocalContractions' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.KadetsHomeomorphismInput' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.ghSpace_homeomorphic_banach_of_homeomorph' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.ghSpace_homeomorphic_banach' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.RealSequenceSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.realSequence_units_independent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.realSequence_not_finiteDimensional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.realSequence_separable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.ghSpace_homeomorphic_realSequence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.realHilbert_separable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.realHilbert_not_finiteDimensional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.IntervalFunctionSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.interval_polynomial_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.interval_monomials_independent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.intervalFunction_not_finiteDimensional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.intervalFunction_separable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.intervalFunction_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.ghSpace_homeomorphic_intervalFunctions' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isClosed_invariantProbabilities' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.barycenter_invariant_of_mass_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CurrentBarycenterStatement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.currentBarycenter_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CurrentInvariantAssignmentStatement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.currentInvariantAssignment_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.TotallyAnisometric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isometry_eq_id_of_totallyAnisometric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isometry_eq_id_of_infinite_totallyAnisometric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.subsingleton_isometryEquiv_of_infinite_totallyAnisometric' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartI.not_continuousAt_of_dense_constant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isometryGroupConjugacy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isometryGroupGH' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isometryGroupGH_toGHSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isometryGroupGH_eq_point_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isometryGroupGH_not_continuousAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.infinite_of_perfect_metric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.RouyerGenericInput' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.dense_rigid_of_rouyer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isometryGroupGH_discontinuous_of_rouyer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.equilateralPermutation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.twoPoint_isometryGroup_nontrivial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isometryGroupGH_not_continuousAt_concrete' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isometryGroupGH_not_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIII.CurtisSchoriHyperspaceInput' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIII.peano_closed_iff_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIII.peano_hyperspace_dist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIII.peano_hyperspace_homeomorphic_cube' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralIsometryAction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralIsometryAction_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_spectralIsometryAction_orbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralIsometryAction_integral_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_spectralIsometryAction_coefficient' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.selectedSpectralIsometryAction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralIsometryMatrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralIsometryMatrix_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralIsometryMatrix_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralIsometryMatrix_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralIsometryMatrixHom' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_spectralIsometryMatrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralIsometryMatrix_inv_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralIsometryMatrix_basis_expansion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.SpectralBasisIntegralOrthonormal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralBasis_coefficient_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralIsometryMatrix_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralIsometryMatrix_inverse_transpose' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralIsometryMatrix_orthogonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralIsometryMatrix_direct_basis_expansion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralOrthogonalRepresentation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_spectralOrthogonalRepresentation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralBasis_integralOrthonormal_of_L2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.chosenSpectralBasis_integralOrthonormal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.chosenSpectralRepresentation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_chosenSpectralRepresentation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.selected_exists_orthogonalRepresentation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.spectral_coordinateSynthesis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectral_coordinateLpNorm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectral_matrix_surjective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectral_distanceObjective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectral_coordinateLpMinimizer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectral_bestApproximationCoordinates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralBasisTransition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralBasisTransition_inverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectralIsometryMatrix_conjugacy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectral_coordinateChange_intertwines' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectral_coordinateChange_conjugacy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.spectral_orthonormalCoordinateChange_conjugacy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.selected_spectral_equivariant_representative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.zeroCoordinateClass_equivariant_representative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartIV.UrysohnFunction.ext' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.UrysohnFunction.finite_disagreement_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.UrysohnFunction.exists_greatest_disagreement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.UrysohnFunction.distance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.UrysohnFunction.distance_self' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.UrysohnFunction.distance_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.UrysohnFunction.le_distance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.UrysohnFunction.distance_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.UrysohnFunction.distance_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.UrysohnFunction.distance_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.UrysohnFunction.distance_ultrametric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.UrysohnFunction.metricSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.UrysohnFunction.dist_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.UrysohnFunction.isUltrametricDist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.UrysohnFunction.distance_le_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.UrysohnFunction.distance_lt_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.UrysohnFunction.mem_ball_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.ultrametric_of_isometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.ultrametric_iff_isometryEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.UltrametricGH' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.UltrametricGH.ext' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.ultrametric_toGHSpace_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.toUltrametricGH' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.toUltrametricGH_eq_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.toUltrametricGH_rep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.ghSpace_homeomorphic_hilbert_from_selection_inputs' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.distanceOperator_real_factorization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceOperator_compact_proved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.realEmbed_inner' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceOperator_selfAdjoint_proved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.distanceKernelSpectralInput_proved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.ghSpace_homeomorphic_hilbert_main' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compact_selfAdjoint_finite_large_eigenvalues' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compactEigenvalueFinitenessInput_proved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.ghSpace_homeomorphic_hilbert_of_eigenvalue_finiteness' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.LocalModel.coordinateClass_comap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel.universalClass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel.universalClass_eq_comap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel.universalClass_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel.universalClass_comap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel.universalClass_equivariance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel.universalClass_error_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.Shared.Correspondence.comapEquiv' depends on axioms: [Quot.sound]
+'PaperN.Shared.Correspondence.comapEquivRel' depends on axioms: [propext, Quot.sound]
+'PaperN.Shared.Correspondence.iSup_comapEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.coordinateError_comapEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel.universal_representatives_converge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel.universalClass_pseudometric_invariant' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.LocalModel.universalClass_representative_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.IsAbsoluteRetract.retraction_of_small' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.IsAbsoluteNeighborhoodRetract.retraction_of_small' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.small_separable_metric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.IsAbsoluteNeighborhoodRetract.separable_allUniverses' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.closedEmbedding_into_factor_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.IsAbsoluteRetract.retraction_of_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.IsAbsoluteRetract.allUniverses' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.ghSpace_absoluteRetract_allUniverses' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.ghSpace_absoluteNeighborhoodRetract_allUniverses' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.IsSeparableAbsoluteNeighborhoodRetract.retraction_of_factor' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.IsSeparableAbsoluteNeighborhoodRetract.allUniverses' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.hannerANRCategoryInput_proved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.IsAbsoluteNeighborhoodExtensor.of_contractible' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.contractibleANEToAEInput_proved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.levyProkhorovDist_map_le_of_dist_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.levyProkhorovDist_map_tendsto_of_dist_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.exists_measurable_near_map' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.exists_measurable_map_of_hausdorffDist_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.probabilityApproximationInput_proved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.BasedAmbient.attach_hausdorffDist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.BasedAmbient.towerStep_isometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.BasedAmbient.towerStep_base' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.BasedAmbient.jointBase_at' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.BasedAmbient.jointBase_isometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.BasedAmbient.jointMap_isometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.BasedAmbient.joint_hausdorffDist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.BasedAmbient.joint_hausdorffConverges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ghCommonEmbeddingInput_proved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.invariantFiberLawSelection_main' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.currentInvariantAssignment_main' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_differences_norm_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.strong_tendsto_apply_of_norm_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.strong_eventually_uniform_on_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_difference_square_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.isUnit_one_sub_of_square_norm_lt_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_eventually_isUnit_one_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_eventually_isUnit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_eventually_mem_resolvent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_eventually_finite_resolvent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.norm_le_one_sub_of_square_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_eventually_one_sub_lowerBound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.tendsto_solutions_of_uniform_lowerBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_eventually_lowerBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_inverse_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.inverse_norm_le_of_lowerBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_eventually_inverse_norm_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.collectivelyCompact_resolvent_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.isUnit_and_inverse_norm_le_of_near' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.norm_shift_sub_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.resolvent_near_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_eventually_resolvent_neighborhood' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.collectivelyCompact_eventually_compact_resolvent_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.collectivelyCompactSpectralInclusionInput_proved' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.inverse_apply_sub_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.resolvent_apply_sub_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_resolvent_uniform_of_compact_image' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.collectivelyCompact_resolvent_uniform_on_compact' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.segmentResolvent_apply_sub_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_segmentResolvent_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_quadrilateralResolvent_tendsto' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.collectivelyCompact_rectangleResolvent_tendsto' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.collectivelyCompact_cutoffContourOperator_tendsto' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.eventually_injective_on_finite_subspace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.projection_injective_on_range_of_square_norm_lt_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.projection_finite_rank_eq_of_square_norm_lt_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.collectivelyCompact_projection_rank_stable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.segmentResolvent_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_segmentResolvent_eventually_norm_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.collectivelyCompact_segmentResolvent_norm_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.selectedCutoffProjection_strong' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.strong_compact_images_contained' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_comp_of_strong' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_comp_of_norm_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_sandwich' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compact_probability_integral_container' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.compact_unit_interval_integral_container' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_intervalIntegral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_segmentResolvent_difference' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.parameter_strong_uniform_on_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.parameter_strong_compact_images_contained' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_resolvent_compact_images' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_resolvent_tail_compact_images' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.resolvent_apply_sub_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_bounded_images' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_resolvent_difference_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_segmentResolvent_difference_tail' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.CollectivelyCompactTail.add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.CollectivelyCompactTail.smul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_quadrilateral_difference_tail' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.collectivelyCompact_rectangle_difference_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.collectivelyCompact_cutoffContour_difference_tail' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.collectivelyCompactTail_projection_rank_stable' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.collectivelyCompact_cutoffContour_rank_stable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.selectedCutoffProjection_rank_proved' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.operator_apply_resolvent_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.resolvent_apply_eq_scalar_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.weightedResolvent_circleIntegrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.map_circleIntegral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.circleResolvent_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.circleResolvent_range_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.cutoffCircle_disks_avoid_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.cutoffCircle_range_le_operator_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.circleResolvent_isCompactOperator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.cutoffCircle_isCompactOperator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.finiteDimensional_of_compact_fixes_subspace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.closedEigenSpan_cutoff_finiteDimensional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.cutoffCircle_range_eq_eigenspaces' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.symmetric_apply_apply_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.factor_restriction_zero_on_square_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.restriction_zero_on_ambient_square_range' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.weightedCircleOperator_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.circleResolvent_square_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.circleResolvent_range_le_square_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.cutoffCircle_range_le_square_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.selectedEigenspaces_le_square_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.ambient_cutoffCircle_range_proved' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.horizontal_segment_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.vertical_segment_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.rectangleResolvent_eq_zero_of_closed_rectangle' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.boxResolvent_eq_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.boxResolvent_eq_zero_of_closed_box' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.boxResolvent_eq_zero_of_im_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.boxResolvent_split_vertical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.vertical_resolvent_intervalIntegrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.rectangleResolvent_height_independent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.horizontal_resolvent_intervalIntegrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.rectangleResolvent_split_horizontal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.rectangleResolvent_eq_zero_of_real_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.rectangleResolvent_move_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.rectangleResolvent_move_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.rectangleResolvent_deformation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.scalarRectangle_outside' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.scalarRectangle_real_outside' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.rectangleResolvent_kills_outside_eigenvector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.rectangleEigenCondition_of_mem_spectrum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.rectangleResolvent_apply_outside' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.scalarSegment_eq_rotated_log' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.scalarRectangle_real_inside' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.rectangleResolvent_apply_inside' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.rectangleResolvent_apply_eigenvector_ite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.rectangleResolvent_eq_starProjection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.circleResolvent_realInterval_apply_eigenvector' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.rectangleResolvent_eq_circle_of_compact_symmetric' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.resolvent_apply_eq_second_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.segment_inverse_square_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.quadrilateral_inverse_square_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.segmentResolvent_second_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.quadrilateralResolvent_second_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.quadrilateralResolvent_square_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.rectangle_zero_edge_condition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.rectangleResolvent_range_le_square_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.AmbientKernel.ambient_rectangle_eq_circle_proved' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.ambient_cutoffContour_eq_circle_proved' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.AmbientKernel.ambient_cutoffContour_eq_circle_of_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.IsAbsoluteNeighborhoodRetract.extension_of_factor' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartII.IsAbsoluteNeighborhoodRetract.isAbsoluteNeighborhoodExtensor_of_separable' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartI.CompactCoupling.glue_commute' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CompactCoupling.cost_trans_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ghpEDist_triangle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ghpDist_triangle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.MeasuredGHSpace.distance_triangle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ghpMetricInput_of_separation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ghpMetricInput_iff_separation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ghpMetricInput_of_separation_dist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.MeasuredGHSpace.pseudoMetricSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.GHPMetricInput.toPseudoMetricSpace_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CompactCoupling.isomorphic_of_cost_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isometryEquiv_of_ghpDist_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.exists_coupling_cost_lt_of_ghpDist_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.exists_couplings_tendsto_zero_of_ghpDist_eq_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartI.BasedAmbient.couplingJointMap_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.BasedAmbient.couplingJoint_hausdorffEDist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.BasedAmbient.couplingJoint_levyProkhorovEDist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.zero_ghp_common_ambient' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.compactRealization_of_common_ambient' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.zero_ghp_compact_common_realization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isCompact_isometry_embeddings' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isometry_embeddings_subsequence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.hausdorffDist_range_tendsto_of_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.prokhorov_map_tendsto_of_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isomorphic_of_ghpDist_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ghpSeparation_proved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ghpMetricInput_proved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.exists_coupling_cost_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.exists_couplings_cost_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ghpCommonEmbeddingInput_proved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.measuredForget_lipschitz' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ghpCauchy_common_underlying' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ghp_completeSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.exists_probabilities_ghp_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.denseRange_probabilityClasses' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ghp_separableSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ghpPolishInput_proved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.localModel_main' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ghSpace_absoluteRetract_main' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.localModel_concrete_main' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel.errorMap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.LocalModel.errorMap_center_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.discreteApproximation_main' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartIV.hilbertCubeDiscreteApproximation_main' depends on axioms: [propext, Classical.choice, Quot.sound]

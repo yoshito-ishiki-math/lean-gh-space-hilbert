@@ -1,0 +1,41 @@
+\subsection{Discrete families and close maps}\label{subsec:hilbert-preliminaries-discrete}
+\paraid{p-0e8bda81dbda}
+To state the approximation condition in \Cref{thm:torunczyk},
+we recall discreteness of a family of subsets and closeness of maps
+with respect to an open cover.
+
+\begin{definition}\label{def:discrete-family}
+\paraid{p-360939bb32bd}
+A family
+$\{\ClosedDomain _\FamilyIndex \}_{\FamilyIndex \in \DomainIndexSet }$
+of subsets of a space
+$\RecognitionTarget $
+is \emph{discrete in}
+$\RecognitionTarget $
+if every point of
+$\RecognitionTarget $
+has a neighborhood meeting at most one member of the family
+$\{\ClosedDomain_\FamilyIndex\}_{\FamilyIndex\in\DomainIndexSet}$.
+We call the family
+$\{\ClosedDomain_\FamilyIndex\}_{\FamilyIndex\in\DomainIndexSet}$
+\emph{locally finite} if every point of
+$\RecognitionTarget$
+has a neighborhood meeting only finitely many members.
+These requirements apply also at points outside the union.
+For an open cover
+$\OpenCover$
+of
+$\RecognitionTarget $,
+two maps
+$\InputMap ,\ApproximatingMap \colon \CommonMapDomain \to \RecognitionTarget $
+are
+\emph{$\OpenCover$-close}
+if for each
+$\DomainPoint \in \CommonMapDomain $
+there exists
+$U\in\OpenCover$
+such that
+\[
+ \{\InputMap(\DomainPoint),\ApproximatingMap(\DomainPoint)\}\subset U.
+\]
+\end{definition}

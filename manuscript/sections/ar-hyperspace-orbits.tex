@@ -1,0 +1,190 @@
+\subsection{Absolute retracts from hyperspace orbits}\label{subsec:ar-hyperspace-orbits}
+\paraid{p-bb0d31d746c9}
+Equation \eqref{eq:dual-equivariance} converts a change of coordinates into an
+isometry of a fixed Banach space.
+The global approximation will use compact subsets of such a space
+modulo this action.
+We apply \Cref{thm:equivariant-hyperspace,thm:orbit-retract} to prove that the resulting hyperspace orbit is
+an absolute retract.
+
+\begin{theorem}\label{lem:hyperspace-orbit-ar}
+\paraid{p-4a30396f26c4}
+Let
+$(\BanachAmbientSpace ,\norm{\cdot}_\BanachAmbientSpace )$
+be a separable Banach space,
+and let a compact metrizable group
+$\ActingGroup $
+act continuously on
+$\BanachAmbientSpace $
+by linear isometries.
+Equip $\BanachAmbientSpace$ with its induced metric
+$\BanachMetric\colon\BanachAmbientSpace\times\BanachAmbientSpace\to[0,\infty)$.
+For every $\FirstVector,\SecondVector\in\BanachAmbientSpace$, it satisfies
+$\BanachMetric(\FirstVector,\SecondVector)=\norm{\FirstVector-\SecondVector}_\BanachAmbientSpace$.
+Then the orbit space
+$\CompactHyperspace(\BanachAmbientSpace )/\ActingGroup $
+is a separable metrizable AR.
+For nonempty compact subsets
+$\FirstCompactSet,\SecondCompactSet\subset\BanachAmbientSpace$,
+the formula
+\begin{equation}\label{eq:orbit-metric}
+  \OrbitMetric([\FirstCompactSet ],[\SecondCompactSet ])=\min_{\GroupElement \in \ActingGroup }\HausdorffDistance{\BanachMetric }(\FirstCompactSet ,\GroupElement \SecondCompactSet )
+\end{equation}
+defines a metric that induces the quotient topology.
+\end{theorem}
+
+\begin{proof}
+\textbf{Step 1. The absolute retract property.}
+\paraid{p-55569123ecd5}
+The induced action on
+$\CompactHyperspace(\BanachAmbientSpace )$
+is continuous.
+To see this,
+assume that
+$\GroupElement _\SequenceIndex \to \GroupElement $
+and
+$\HausdorffDistance{\BanachMetric }(\FirstCompactSet _\SequenceIndex ,\FirstCompactSet )\to0$.
+Then
+\[
+ \HausdorffDistance{\BanachMetric }(\GroupElement _\SequenceIndex \FirstCompactSet _\SequenceIndex ,\GroupElement \FirstCompactSet )
+ \leq\HausdorffDistance{\BanachMetric }(\FirstCompactSet _\SequenceIndex ,\FirstCompactSet )+\sup_{\CompactSetPoint \in \FirstCompactSet }\norm{\GroupElement _\SequenceIndex \CompactSetPoint -\GroupElement \CompactSetPoint }_\BanachAmbientSpace \to0.
+\]
+The last supremum tends to
+$0$
+because the action is continuous and
+$\FirstCompactSet $
+is compact.
+Each group element acts isometrically on the hyperspace
+$\CompactHyperspace(\BanachAmbientSpace)$.
+By \Cref{thm:compact-hyperspace-topology},
+the Hausdorff distance induces the Vietoris topology on
+$\CompactHyperspace(\BanachAmbientSpace)$.
+\Cref{thm:equivariant-hyperspace} therefore applies because
+$\BanachAmbientSpace $
+is connected and locally continuum-connected.
+Thus
+$\CompactHyperspace(\BanachAmbientSpace )$
+is a
+$\ActingGroup $-AR.
+The compact metrizable group
+$\ActingGroup $
+has a countable basis,
+so \Cref{thm:orbit-retract} implies that
+$\CompactHyperspace(\BanachAmbientSpace )/\ActingGroup $
+is an AR in the metrizable category.
+
+\textbf{Step 2. The orbit metric and quotient topology.}
+\paraid{p-154b529a9133}
+Let
+$\FirstCompactSet,\SecondCompactSet\subset\BanachAmbientSpace$
+be nonempty compact subsets.
+The minimum in \eqref{eq:orbit-metric} exists because
+$\GroupElement \mapsto\HausdorffDistance{\BanachMetric }(\FirstCompactSet ,\GroupElement \SecondCompactSet )$
+is continuous on the compact group
+$\ActingGroup$.
+
+\paraid{p-fe18da324b94}
+The Hausdorff distance on
+$\CompactHyperspace(\BanachAmbientSpace)$
+is
+$\ActingGroup$-invariant,
+and every orbit is compact and hence closed.
+The argument in
+\cite[proof of Theorem~4.3.4, p.~319]{Palais1961}
+(see also \cite[p.~4, (2.1) and the preceding paragraph]{Antonyan2020Euclidean})
+shows that \eqref{eq:orbit-metric} defines a metric inducing the quotient topology.
+Let
+$\OrbitProjection \colon\CompactHyperspace(\BanachAmbientSpace )\to\CompactHyperspace(\BanachAmbientSpace )/\ActingGroup $
+be the orbit map.
+
+\paraid{p-1e603606de4c}
+Since
+$\BanachAmbientSpace$
+is separable,
+\Cref{thm:compact-hyperspace-topology} implies that
+$\CompactHyperspace(\BanachAmbientSpace)$
+is separable.
+Its continuous image under
+$\OrbitProjection$
+is therefore separable as well.
+\end{proof}
+
+\begin{lemma}\label{lem:hyperspace-orbit-realization}
+\paraid{p-0459ff3d5b20}
+Let
+$(\BanachAmbientSpace ,\norm{\cdot}_\BanachAmbientSpace )$
+be a separable Banach space,
+and let a compact metrizable group
+$\ActingGroup $
+act continuously on
+$\BanachAmbientSpace $
+by linear isometries.
+Equip $\BanachAmbientSpace$ with its induced metric
+$\BanachMetric\colon\BanachAmbientSpace\times\BanachAmbientSpace\to[0,\infty)$.
+For every $\FirstVector,\SecondVector\in\BanachAmbientSpace$, it satisfies
+$\BanachMetric(\FirstVector,\SecondVector)=\norm{\FirstVector-\SecondVector}_\BanachAmbientSpace$.
+Equip
+$\CompactHyperspace(\BanachAmbientSpace)/\ActingGroup$
+with the metric in \eqref{eq:orbit-metric}.
+Then the map
+\[
+ \RealizationMap\colon\CompactHyperspace(\BanachAmbientSpace )/\ActingGroup \to\GHSpace
+\]
+defined by
+\[
+ \RealizationMap([\FirstCompactSet ])=\MetricSpace{\FirstCompactSet }{\RestrictedMetric{\BanachMetric }{\FirstCompactSet }},
+\]
+is well-defined and
+$1$-Lipschitz.
+\end{lemma}
+
+\begin{proof}
+\paraid{p-0ad0a6a4a958}
+For each
+$\GroupElement \in \ActingGroup $,
+the map
+$\SecondCompactSet \to \GroupElement \SecondCompactSet $
+obtained by restricting
+$\GroupElement$
+is an isometry.
+Consequently
+$\RealizationMap$
+is independent of the representative of an orbit.
+For every
+$\GroupElement\in\ActingGroup$,
+we also have
+\[
+ \begin{aligned}
+ \GHDistance(\RealizationMap([\FirstCompactSet ]),\RealizationMap([\SecondCompactSet ]))
+ &=\GHDistance(\MetricSpace{\FirstCompactSet }{\BanachMetric |_{\FirstCompactSet \times \FirstCompactSet }},
+         \MetricSpace{\GroupElement \SecondCompactSet }{\BanachMetric |_{\GroupElement \SecondCompactSet \times \GroupElement \SecondCompactSet }})\\
+ &\leq\HausdorffDistance{\BanachMetric }(\FirstCompactSet ,\GroupElement \SecondCompactSet ).
+ \end{aligned}
+\]
+Taking the minimum over
+$\GroupElement\in\ActingGroup$
+proves that
+$\RealizationMap$
+is
+$1$-Lipschitz.
+\end{proof}
+
+\begin{remark}\label{rem:peano-hyperspace}
+\paraid{p-15a612ab8c6c}
+A classical hyperspace theorem also relates compact subsets to the Hilbert cube.
+Let
+$(X,d)$
+be a nondegenerate Peano continuum,
+that is,
+a compact connected locally connected metric space with at least two points.
+Curtis and Schori \cite[Theorem~3.2]{CurtisSchori1978}
+prove that
+\[
+ \bigl(\CompactHyperspace(X),\HausdorffDistance{d}\bigr)
+ \text{ is homeomorphic to }\HilbertCube=[0,1]^{\NonnegativeIntegers}.
+\]
+This hyperspace consists of all nonempty compact subsets of the fixed space
+$X$.
+The space in \Cref{lem:hyperspace-orbit-ar}
+instead consists of compact subsets of a Banach space modulo a compact group.
+\end{remark}

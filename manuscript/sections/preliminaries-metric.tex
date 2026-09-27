@@ -1,0 +1,422 @@
+\subsection{Gromov--Hausdorff convergence and compactness}\label{subsec:preliminaries-metric}
+\paraid{p-9622f56720d9}
+We begin with the correspondence formula for the distance and compactness criteria.
+
+\paraid{p-f7c8be172ef5}
+For a metric space
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$,
+a point
+$\BasePoint\in\BaseCarrier$,
+and a radius
+$\Radius>0$,
+we write
+\[
+ \MetricBall(\BasePoint,\Radius;\MetricSymbol)
+ =\{\ComparisonPoint\in\BaseCarrier\mid\MetricSymbol(\BasePoint,\ComparisonPoint)<\Radius\}.
+\]
+For a subset
+$\BorelSubset\subset\BaseCarrier$,
+we put
+\[
+ \dist_{\MetricSymbol}(\BasePoint,\BorelSubset)
+ =\inf_{\ComparisonPoint\in\BorelSubset}\MetricSymbol(\BasePoint,\ComparisonPoint),
+ \qquad \dist_{\MetricSymbol}(\BasePoint,\emptyset)=\infty.
+\]
+We denote by
+$\CompactHyperspace(\BaseCarrier)$
+the set of all nonempty compact subsets of
+$\BaseCarrier$.
+The \emph{Hausdorff distance} on this set is defined by
+\[
+ \HausdorffDistance{\MetricSymbol}\colon
+ \CompactHyperspace(\BaseCarrier)\times\CompactHyperspace(\BaseCarrier)\to[0,\infty).
+\]
+For every
+$\FirstCompactSet,\SecondCompactSet\in\CompactHyperspace(\BaseCarrier)$,
+put
+\[
+ \HausdorffDistance{\MetricSymbol}(\FirstCompactSet,\SecondCompactSet)
+ =\max\left\{
+   \sup_{\BasePoint\in\FirstCompactSet}\dist_{\MetricSymbol}(\BasePoint,\SecondCompactSet),
+   \sup_{\ComparisonPoint\in\SecondCompactSet}\dist_{\MetricSymbol}(\ComparisonPoint,\FirstCompactSet)
+ \right\}.
+\]
+The \emph{Vietoris topology} on
+$\CompactHyperspace(\BaseCarrier)$
+has a basis consisting of the sets obtained as follows.
+For an integer
+$m\geq1$
+and open subsets
+$U_1,\ldots,U_m$
+of
+$\BaseCarrier$,
+take
+\[
+ \left\{\FirstCompactSet\in\CompactHyperspace(\BaseCarrier)\;\middle|\;
+ \FirstCompactSet\subset\bigcup_{i=1}^{m}U_i,
+ \quad \FirstCompactSet\cap U_i\ne\emptyset\ (1\leq i\leq m)\right\}.
+\]
+
+\begin{theorem}[{\cite[Exercises~2.2.11(a),(b) and~3.2.9]{Beer1993}}]\label{thm:compact-hyperspace-topology}
+\paraid{p-974030144cf7}
+Let
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+be a metric space.
+Then the Hausdorff distance induces the Vietoris topology on
+$\CompactHyperspace(\BaseCarrier)$.
+If
+$\BaseCarrier$
+is separable,
+then
+$\CompactHyperspace(\BaseCarrier)$
+is separable.
+\end{theorem}
+
+\begin{lemma}[{\cite[Chapter~2, Proposition~5.3, p.~40]{Wicks1991}}]\label{lem:hausdorff-lipschitz-images}
+\paraid{p-eb3ed5b8a76b}
+Let
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+and
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$
+be metric spaces,
+let
+$L\geq0$,
+and let
+$\Mapping\colon\BaseCarrier\to\ComparisonCarrier$
+be
+$L$-Lipschitz.
+Then for all
+$\FirstCompactSet,\SecondCompactSet\in\CompactHyperspace(\BaseCarrier)$,
+we have
+$\HausdorffDistance{\ComparisonMetric}
+ (\Mapping(\FirstCompactSet),\Mapping(\SecondCompactSet))
+ \leq L\cdot \HausdorffDistance{\MetricSymbol}(\FirstCompactSet,\SecondCompactSet)$.
+\end{lemma}
+
+% \paraid{p-109cc338209b}
+
+\paraid{p-0a1ce4229ada}
+For
+$\ErrorTolerance>0$,
+a subset
+$\NetSet\subset\BaseCarrier$
+is an
+\emph{$\ErrorTolerance$-net}
+if
+\[
+ \forall\BasePoint\in\BaseCarrier\quad
+ \exists\NetPoint\in\NetSet\quad
+ \MetricSymbol(\BasePoint,\NetPoint)<\ErrorTolerance.
+\]
+Every compact metric space admits a finite
+$\ErrorTolerance$-net
+for every
+$\ErrorTolerance>0$.
+
+\paraid{p-d7c66dfce89f}
+A \emph{correspondence} between nonempty sets
+$\BaseCarrier $
+and
+$\ComparisonCarrier $
+is a subset of
+$\BaseCarrier \times \ComparisonCarrier $
+whose two coordinate projections are surjective.
+We denote by
+$\Cor(\BaseCarrier,\ComparisonCarrier)$
+the set of all correspondences between
+$\BaseCarrier$
+and
+$\ComparisonCarrier$.
+For metric spaces
+$\MetricSpace{\BaseCarrier }{\MetricSymbol }$
+and
+$\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }$,
+the distortion of a correspondence
+$\Correspondence\in\Cor(\BaseCarrier,\ComparisonCarrier)$
+is
+\[
+ \dis(\Correspondence )=
+ \sup\left\{
+   \abs{\MetricSymbol (\BasePoint _0,\BasePoint _1)-\ComparisonMetric (\ComparisonPoint _0,\ComparisonPoint _1)}
+   \,\middle|\,
+   (\BasePoint _0,\ComparisonPoint _0),(\BasePoint _1,\ComparisonPoint _1)\in \Correspondence
+ \right\}.
+\]
+\begin{theorem}[{\cite[Theorem~7.3.25]{BuragoBuragoIvanov2001} and \cite[arXiv v1, Theorem~6.12]{Tuzhilin2020}}]\label{thm:gh-correspondence}
+\paraid{p-fc061a808065}
+For nonempty compact metric spaces
+$\MetricSpace{\BaseCarrier }{\MetricSymbol }$
+and
+$\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }$,
+the Gromov--Hausdorff distance satisfies
+\begin{equation}\label{eq:correspondence}
+ \GHDistance(\MetricSpace{\BaseCarrier }{\MetricSymbol },\MetricSpace{\ComparisonCarrier }{\ComparisonMetric })=\frac12\inf_{\Correspondence\in\Cor(\BaseCarrier,\ComparisonCarrier)}\dis(\Correspondence).
+\end{equation}
+Equivalently,
+it is the infimum of the Hausdorff distances between isometric copies
+of
+$\MetricSpace{\BaseCarrier }{\MetricSymbol }$
+and
+$\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }$
+in a common metric space.
+
+\end{theorem}
+
+\paraid{p-c3f214f2a9fe}
+The next lemma realizes a prescribed correspondence in a common metric space
+with a bound on the distances between corresponding points.
+We use \Cref{lem:correspondence-embedding} in the proof of
+\Cref{lem:common-gh-embedding}
+to embed a convergent sequence of compact metric spaces into one compact metric space.
+
+\begin{lemma}\label{lem:correspondence-embedding}
+\paraid{p-77a82a051441}
+Let
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+and
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$
+be nonempty compact metric spaces,
+let
+$\Correspondence\subset\BaseCarrier\times\ComparisonCarrier$
+be a correspondence,
+and let
+$\SmallError>0$
+satisfy
+$\dis(\Correspondence)\leq2\SmallError$.
+Then there is a metric
+$\AmbientMetric$
+on the disjoint union
+$\BaseCarrier\sqcup\ComparisonCarrier$
+extending both metrics such that for every
+$(\BasePoint,\ComparisonPoint)\in\Correspondence$
+we have
+\[
+ \AmbientMetric(\BasePoint,\ComparisonPoint)\leq\SmallError.
+\]
+In particular,
+$\HausdorffDistance{\AmbientMetric}(\BaseCarrier,\ComparisonCarrier)\leq\SmallError$.
+\end{lemma}
+
+\begin{proof}
+\paraid{p-1dc4840c170b}
+This follows from
+\cite[proof of Theorem~7.3.25, pp.~257--258]{BuragoBuragoIvanov2001}.
+\end{proof}
+
+\begin{theorem}[{Consequence of \cite[arXiv v1, Theorem~7.18]{Tuzhilin2020}}]\label{thm:uniform-nets}
+\paraid{p-b1b76db6a357}
+If
+$\MetricSpace{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex}
+ \to\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+in
+$\GHSpace$,
+then for every
+$\ErrorTolerance>0$
+there is a positive integer
+$\NetSize$
+such that each
+$\BaseCarrier_\SequenceIndex$
+admits an
+$\ErrorTolerance$-net
+of cardinality at most
+$\NetSize$.
+\end{theorem}
+
+\paraid{p-e041a46858f0}
+Let
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+be a metric space, and let
+$\SeparationScale>0$.
+A subset
+$S\subset\BaseCarrier$
+is called
+\emph{$\SeparationScale$-separated}
+if
+\[
+ \forall x,y\in S,\qquad
+ x\ne y\Longrightarrow\MetricSymbol(x,y)\ge\SeparationScale.
+\]
+
+\begin{corollary}\label{cor:uniform-separated-sets}
+\paraid{p-f9bb5a038d1d}
+Let
+$\MetricSpace{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex}
+ \to\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+in
+$\GHSpace$,
+and let
+$\SeparationScale>0$.
+Then there is a positive integer
+$\NetSize$
+such that every
+$\SeparationScale$-separated
+subset of every
+$\BaseCarrier_\SequenceIndex$
+has cardinality at most
+$\NetSize$.
+\end{corollary}
+
+\begin{proof}
+\paraid{p-0e6ff4e87f94}
+By \Cref{thm:uniform-nets},
+choose
+$\SeparationScale/3$-nets
+$\mathcal{N}_\SequenceIndex\subset\BaseCarrier_\SequenceIndex$
+in all
+$\BaseCarrier_\SequenceIndex$
+with
+$\Card(\mathcal{N}_\SequenceIndex)\leq\NetSize$.
+For an arbitrary
+$\SeparationScale$-separated subset
+$S_\SequenceIndex\subset\BaseCarrier_\SequenceIndex$,
+choose for each point of
+$S_\SequenceIndex$
+a point of
+$\mathcal{N}_\SequenceIndex$
+within distance
+$\SeparationScale/3$.
+This assignment is injective,
+because two points with the same image would have distance less than
+$2\SeparationScale/3$.
+Consequently,
+$\Card(S_\SequenceIndex)
+ \leq \Card(\mathcal{N}_\SequenceIndex)\leq \NetSize$.
+This proves the uniform cardinality bound.
+\end{proof}
+
+\paraid{p-47d23e54815b}
+We use completeness and separability of the Gromov--Hausdorff space
+$\GHSpace$.
+
+\begin{theorem}[{\cite[arXiv v1, Corollary~7.24]{Tuzhilin2020}}]\label{lem:gh-basics}
+\paraid{p-fa3b1c89e980}
+The metric space
+$\MetricSpace{\GHSpace}{\GHDistance}$
+is complete and separable.
+\end{theorem}
+
+\paraid{p-2215668b1fa1}
+Gromov constructs a common compact metric space admitting isometric embeddings
+of every member of a family of compact metric spaces with uniformly bounded
+diameters and uniformly bounded covering numbers at each positive radius
+\cite[Section~6, pp.~64--65]{Gromov1981}.
+See also \cite[arXiv v1, Theorem~7.19]{Tuzhilin2020}.
+In the next theorem,
+we also arrange Hausdorff convergence of the embedded spaces.
+
+\begin{theorem}\label{lem:common-gh-embedding}
+\paraid{p-fc625e3c11fb}
+Every Cauchy sequence
+$\{\MetricSpace{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex}\}_{\SequenceIndex\in\NonnegativeIntegers}$
+in
+$\GHSpace$
+admits isometric embeddings into a compact metric space
+$\MetricSpace{\AmbientCarrier}{\AmbientMetric}$
+whose images converge in Hausdorff distance to a nonempty compact subset.
+If its Gromov--Hausdorff limit is
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$,
+then we may also embed
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+into the same ambient space.
+Identifying these spaces with their images, we obtain
+\[
+ \HausdorffDistance{\AmbientMetric}(\BaseCarrier_\SequenceIndex,\BaseCarrier)\longrightarrow0.
+\]
+\end{theorem}
+
+\begin{proof}
+\paraid{p-0e319197acba}
+By \Cref{lem:gh-basics},
+let
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+be the limit and put
+\[
+ \ErrorTolerance_\SequenceIndex
+ =\GHDistance(\MetricSpace{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex},
+              \MetricSpace{\BaseCarrier}{\MetricSymbol})+2^{-\SequenceIndex}.
+\]
+Using \Cref{thm:gh-correspondence,lem:correspondence-embedding}
+and gluing along the common copy of
+$\BaseCarrier$
+\cite[author's manuscript, Theorem~27.2]{Villani2009},
+we obtain a metric
+$\AmbientMetric$
+on the union of
+$\BaseCarrier$
+and all
+$\BaseCarrier_\SequenceIndex$
+extending their metrics and satisfying
+\[
+ \HausdorffDistance{\AmbientMetric}
+ (\BaseCarrier_\SequenceIndex,\BaseCarrier)
+ \leq\ErrorTolerance_\SequenceIndex\longrightarrow0.
+\]
+
+\paraid{p-82732ff2ca3f}
+For every
+$\SmallError>0$,
+the tail lies in the
+$\SmallError/2$-neighborhood of
+$\BaseCarrier$.
+A finite
+$\SmallError/2$-net in
+$\BaseCarrier$,
+together with finite
+$\SmallError$-nets in the finitely many remaining spaces,
+forms a finite
+$\SmallError$-net for the union.
+The completion of this union is therefore compact and retains the displayed
+Hausdorff bounds.
+\end{proof}
+
+\paraid{p-159a1141fda7}
+We also recall the compactness criterion used for families of functions.
+
+\begin{theorem}[{Arzel\`a--Ascoli, \cite[Theorem~6.26]{Muscat2024}}]\label{thm:arzela-ascoli}
+\paraid{p-017c33e53ae1}
+Let
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+be nonempty and compact,
+and let
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$
+be complete.
+Equip the set
+$\ContinuousFunctions(\BaseCarrier,\ComparisonCarrier)$
+of continuous maps with the uniform metric
+\[
+ \UniformMetric(\Mapping,\SecondMapping)
+ =\sup_{\BasePoint\in\BaseCarrier}
+   \ComparisonMetric(\Mapping(\BasePoint),\SecondMapping(\BasePoint)).
+\]
+Then a family
+$\FunctionFamily\subset\ContinuousFunctions(\BaseCarrier,\ComparisonCarrier)$
+has compact closure if and only if its combined image
+$\bigcup_{\Mapping\in\FunctionFamily}\Mapping(\BaseCarrier)$
+is totally bounded and the family
+$\FunctionFamily$
+is equicontinuous.
+Here equicontinuity means that for every
+$\ErrorTolerance>0$
+there is
+$\SmallError>0$
+such that for every
+$\Mapping\in\FunctionFamily$
+and every
+$\BasePoint,\ComparisonPoint\in\BaseCarrier$
+with
+$\MetricSymbol(\BasePoint,\ComparisonPoint)<\SmallError$,
+we have
+\[
+ \ComparisonMetric(\Mapping(\BasePoint),\Mapping(\ComparisonPoint))<\ErrorTolerance.
+\]
+\end{theorem}
+
+\paraid{p-f1481eeb5719}
+The cited theorem characterizes total boundedness in the uniform metric.
+Completeness of the target
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$
+implies completeness of the function space
+$\ContinuousFunctions(\BaseCarrier,\ComparisonCarrier)$
+with the uniform metric
+$\UniformMetric$,
+which yields the formulation in terms of compact closure above.

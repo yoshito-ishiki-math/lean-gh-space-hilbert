@@ -1,0 +1,487 @@
+\subsection{Discrete approximation for compact domains}\label{subsec:approximation-discrete}
+\paraid{p-39f5655ab8f2}
+We now construct the approximating maps and prove discreteness at
+every point of the ambient Gromov--Hausdorff space.
+
+\paraid{p-db4cf11c2a9d}
+We first choose a positive Lipschitz scale adapted to an open cover.
+
+\begin{lemma}\label{lem:cover-adapted-scale}
+\paraid{p-90d3aa515184}
+Let
+$\OpenCover$
+be an open cover of
+$\GHSpace$.
+Then there exists a
+$1/16$-Lipschitz function
+$\CoverScale\colon\GHSpace\to(0,1/16]$
+with the following property.
+For every
+$\MetricSpace{\BaseCarrier}{\MetricSymbol},
+ \MetricSpace{\ComparisonCarrier}{\ComparisonMetric}\in\GHSpace$,
+if
+\[
+ \GHDistance(\MetricSpace{\BaseCarrier}{\MetricSymbol},
+             \MetricSpace{\ComparisonCarrier}{\ComparisonMetric})
+ <\CoverScale\MetricSpace{\BaseCarrier}{\MetricSymbol},
+\]
+then there exists
+$U\in\OpenCover$
+with
+\[
+ \{\MetricSpace{\BaseCarrier}{\MetricSymbol},
+   \MetricSpace{\ComparisonCarrier}{\ComparisonMetric}\}\subset U.
+\]
+\end{lemma}
+
+\begin{proof}
+\paraid{p-8da60d9b543c}
+Use the convention that distance to the empty set is
+$\infty$.
+For every
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}\in\GHSpace$,
+put
+\begin{equation}\label{eq:cover-scale-2}
+ \CoverScale\MetricSpace{\BaseCarrier}{\MetricSymbol}
+ =\frac1{16}\sup_{\OpenSubset\in\OpenCover}
+   \min\left\{1,\dist_{\GHDistance}
+       \bigl(\MetricSpace{\BaseCarrier}{\MetricSymbol},\GHSpace\setminus\OpenSubset\bigr)\right\}.
+\end{equation}
+Each truncated distance function is
+$1$-Lipschitz,
+and their supremum is positive because
+$\OpenCover$
+is an open cover.
+Thus,
+for every
+$\MetricSpace{\BaseCarrier}{\MetricSymbol},
+ \MetricSpace{\ComparisonCarrier}{\ComparisonMetric}\in\GHSpace$,
+we have
+\begin{equation}\label{eq:scale-lipschitz-1}
+ 0<\CoverScale\MetricSpace{\BaseCarrier}{\MetricSymbol}\leq\frac1{16},
+\end{equation}
+and
+\begin{equation}\label{eq:scale-lipschitz-2}
+ \abs{\CoverScale\MetricSpace{\BaseCarrier}{\MetricSymbol}
+      -\CoverScale\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}}
+ \leq\frac1{16}\GHDistance(\MetricSpace{\BaseCarrier}{\MetricSymbol},
+                          \MetricSpace{\ComparisonCarrier}{\ComparisonMetric}).
+\end{equation}
+Now let
+$\MetricSpace{\BaseCarrier}{\MetricSymbol},
+ \MetricSpace{\ComparisonCarrier}{\ComparisonMetric}\in\GHSpace$
+satisfy
+$\GHDistance(\MetricSpace{\BaseCarrier}{\MetricSymbol},
+             \MetricSpace{\ComparisonCarrier}{\ComparisonMetric})
+ <\CoverScale\MetricSpace{\BaseCarrier}{\MetricSymbol}$.
+By \eqref{eq:cover-scale-2},
+there exists
+$\mathscr O\in\OpenCover$
+such that
+\[
+ \GHDistance(\MetricSpace{\BaseCarrier}{\MetricSymbol},
+             \MetricSpace{\ComparisonCarrier}{\ComparisonMetric})
+ <\CoverScale\MetricSpace{\BaseCarrier}{\MetricSymbol}
+ <\dist_{\GHDistance}
+   \bigl(\MetricSpace{\BaseCarrier}{\MetricSymbol},\GHSpace\setminus\mathscr O\bigr).
+\]
+Both spaces therefore belong to
+$\mathscr O$.
+\end{proof}
+
+\begin{theorem}\label{thm:discrete-approximation}
+\paraid{p-07c6df8fb234}
+Let
+$\{\ApproximationDomain _\FamilyIndex \}_{\FamilyIndex \in\NonnegativeIntegers}$
+be a sequence of compact metrizable spaces.
+For each
+$\FamilyIndex\in\NonnegativeIntegers$,
+let
+$\InputMap _\FamilyIndex \colon \ApproximationDomain _\FamilyIndex \to\GHSpace$
+be continuous.
+Let
+$\OpenCover$
+be an open cover of
+$\GHSpace$.
+Then there exist continuous maps
+$\ApproximatingMap _\FamilyIndex \colon \ApproximationDomain _\FamilyIndex \to\GHSpace$
+such that each
+$\ApproximatingMap _\FamilyIndex $
+is
+$\OpenCover$-close
+to
+$\InputMap _\FamilyIndex $
+and the family
+$\{\ApproximatingMap _\FamilyIndex (\ApproximationDomain _\FamilyIndex )\}_{\FamilyIndex \in\NonnegativeIntegers}$
+is discrete in
+$\GHSpace$.
+\end{theorem}
+
+\begin{proof}
+\paraid{p-bce29ad7f159}
+We first dispose of the empty domains.
+For each empty domain
+$\ApproximationDomain_\FamilyIndex$,
+choose
+$\ApproximatingMap_\FamilyIndex$
+to be the unique empty map.
+Empty images do not affect closeness or discreteness,
+so the assertion holds if every domain
+$\ApproximationDomain_\FamilyIndex$
+is empty.
+We now consider only the nonempty domains and put
+$\DomainIndexSet
+ =\{\FamilyIndex\in\NonnegativeIntegers\mid
+    \ApproximationDomain_\FamilyIndex\ne\emptyset\}$.
+For each
+$\FamilyIndex\in\DomainIndexSet$,
+we define
+a positive integer
+$\EquilateralSize_{\FamilyIndex}$
+recursively,
+and
+for
+$\DomainPoint\in\ApproximationDomain_{\FamilyIndex}$,
+we construct the approximating map
+$\ApproximatingMap_{\FamilyIndex}(z)$
+by taking the product of each value
+$\InputMap_{\FamilyIndex}(\DomainPoint)$
+with finite equilateral spaces of cardinality
+$\EquilateralSize_{\FamilyIndex}$.
+We then prove that the resulting family of images is locally finite and discrete.
+
+\ProofStep{Product approximations.}\label{step:discrete-products}
+\paraid{p-021b6255b9ed}
+By \Cref{lem:cover-adapted-scale},
+choose
+$\CoverScale\colon\GHSpace\to(0,1/16]$
+satisfying \eqref{eq:scale-lipschitz-2} and the cover condition in that lemma.
+
+\paraid{p-71bd13b39f7a}
+For an integer
+$\EquilateralSize\geq2$,
+let
+$\EquilateralCarrier_{\EquilateralSize}=\{0,\ldots,\EquilateralSize-1\}$.
+For
+$\ProductScale>0$,
+let
+$\EquilateralMetric_{\EquilateralSize,\ProductScale}$
+be the equilateral metric on
+$\EquilateralCarrier_{\EquilateralSize}$
+with off-diagonal distance
+$\ProductScale$.
+For each integer
+$\EquilateralSize\geq2$,
+define
+$\ProductApproximation_{\EquilateralSize}\colon\GHSpace\to\GHSpace$
+as follows.
+For
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}\in\GHSpace$,
+put
+\begin{equation}\label{eq:product-approximation-2}
+ \ProductScale=\CoverScale\MetricSpace{\BaseCarrier}{\MetricSymbol}
+\end{equation}
+and
+\begin{equation}\label{eq:product-approximation-1}
+ \ProductApproximation_{\EquilateralSize}\MetricSpace{\BaseCarrier}{\MetricSymbol}
+ =\MetricSpace{\BaseCarrier\times\EquilateralCarrier_{\EquilateralSize}}
+              {\MetricSymbol\vee\EquilateralMetric_{\EquilateralSize,\ProductScale}}.
+\end{equation}
+The graph of the projection onto
+$\BaseCarrier$
+is a correspondence of distortion at most
+$\ProductScale$.
+Hence
+we have
+\begin{equation}\label{eq:product-error}
+ \GHDistance(\ProductApproximation_{\EquilateralSize}\MetricSpace{\BaseCarrier}{\MetricSymbol},
+             \MetricSpace{\BaseCarrier}{\MetricSymbol})
+ \leq\frac12\CoverScale\MetricSpace{\BaseCarrier}{\MetricSymbol}.
+\end{equation}
+
+\paraid{p-7490df62137b}
+For an integer
+$\EquilateralSize\geq2$
+and spaces
+$\MetricSpace{\BaseCarrier}{\MetricSymbol},
+ \MetricSpace{\ComparisonCarrier}{\ComparisonMetric}\in\GHSpace$,
+pair equal labels in the two equilateral factors.
+As in the proof of
+\cite[Proposition~5.3]{Ishiki2022Branching},
+the product correspondence and \eqref{eq:scale-lipschitz-2} imply
+\begin{equation}\label{eq:equilateral-product-lipschitz}
+ \begin{aligned}
+ &\GHDistance(\ProductApproximation_{\EquilateralSize}\MetricSpace{\BaseCarrier}{\MetricSymbol},
+              \ProductApproximation_{\EquilateralSize}\MetricSpace{\ComparisonCarrier}{\ComparisonMetric})\\
+ &\quad\leq\max\left\{
+     \GHDistance(\MetricSpace{\BaseCarrier}{\MetricSymbol},
+                 \MetricSpace{\ComparisonCarrier}{\ComparisonMetric}),
+     \frac12\left|\CoverScale\MetricSpace{\BaseCarrier}{\MetricSymbol}
+                 -\CoverScale\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}\right|
+                  \right\}\\
+ &\quad\leq\GHDistance(\MetricSpace{\BaseCarrier}{\MetricSymbol},
+                      \MetricSpace{\ComparisonCarrier}{\ComparisonMetric}).
+ \end{aligned}
+\end{equation}
+Thus every map
+$\ProductApproximation_{\EquilateralSize}$
+is
+$1$-Lipschitz.
+
+\ProofStep{Choice of the cardinalities and separation of the images.}\label{step:discrete-separation}
+\paraid{p-04700bc9ef5a}
+We choose the positive integers
+$\EquilateralSize_{\FamilyIndex}$
+and the maps
+$\ApproximatingMap_{\FamilyIndex}$
+recursively over
+$\FamilyIndex\in\DomainIndexSet$.
+Fix
+$\FamilyIndex\in\DomainIndexSet$
+and assume that the maps with smaller indices have been constructed
+and have compact images.
+Put
+\begin{equation}\label{eq:previous-approximation-images}
+ \PreviousApproximationImages_{\FamilyIndex}
+ =\bigcup_{\substack{k\in\DomainIndexSet\\k<\FamilyIndex}}
+       \ApproximatingMap_k(\ApproximationDomain_k).
+\end{equation}
+This set is compact,
+and
+$\PreviousApproximationImages_0=\emptyset$.
+Since
+$\ApproximationDomain_{\FamilyIndex}$
+is nonempty and compact,
+the number
+\begin{equation}\label{eq:minimum-product-scale}
+ \ProductScale_{\FamilyIndex}
+ =\min_{\DomainPoint\in\ApproximationDomain_{\FamilyIndex}}
+       \CoverScale(\InputMap_{\FamilyIndex}(\DomainPoint))
+\end{equation}
+is positive.
+
+\paraid{p-5bd0a1e059c4}
+Compactness of
+$\PreviousApproximationImages_{\FamilyIndex}$
+and Corollary~\ref{cor:uniform-separated-sets}
+imply that there is an integer
+$\PackingBound_{\FamilyIndex}\geq0$
+such that every
+$\ProductScale_{\FamilyIndex}/2$-separated
+subset of every space in
+$\PreviousApproximationImages_{\FamilyIndex}$
+has cardinality at most
+$\PackingBound_{\FamilyIndex}$.
+If
+$\PreviousApproximationImages_{\FamilyIndex}=\emptyset$,
+take
+$\PackingBound_{\FamilyIndex}=0$.
+
+\paraid{p-82b288935ffb}
+Choose an integer
+$\EquilateralSize_{\FamilyIndex}$
+larger than all previously chosen cardinalities and satisfying
+\begin{equation}\label{eq:equilateral-cardinality-choice}
+ \EquilateralSize_{\FamilyIndex}
+ >\max\{\FamilyIndex+1,\PackingBound_{\FamilyIndex}\}.
+\end{equation}
+Define
+$\ApproximatingMap_{\FamilyIndex}\colon\ApproximationDomain_{\FamilyIndex}\to\GHSpace$
+by
+\begin{equation}\label{eq:discrete-maps}
+ \ApproximatingMap_{\FamilyIndex}
+ =\ProductApproximation_{\EquilateralSize_{\FamilyIndex}}\circ\InputMap_{\FamilyIndex}.
+\end{equation}
+The map
+$\ApproximatingMap_{\FamilyIndex}$
+is continuous by \eqref{eq:equilateral-product-lipschitz},
+and its image is compact.
+For every
+$\DomainPoint\in\ApproximationDomain_{\FamilyIndex}$,
+equation \eqref{eq:product-error} implies
+\begin{equation}\label{eq:approximation-error}
+ \GHDistance(\ApproximatingMap_{\FamilyIndex}(\DomainPoint),
+             \InputMap_{\FamilyIndex}(\DomainPoint))
+ \leq\frac12\CoverScale(\InputMap_{\FamilyIndex}(\DomainPoint))
+ <\CoverScale(\InputMap_{\FamilyIndex}(\DomainPoint)).
+\end{equation}
+Thus
+$\ApproximatingMap_{\FamilyIndex}$
+and
+$\InputMap_{\FamilyIndex}$
+are
+$\OpenCover$-close.
+
+\paraid{p-dbde286ff7a5}
+Every product in
+$\ApproximatingMap_{\FamilyIndex}(\ApproximationDomain_{\FamilyIndex})$
+contains a copy of its equilateral factor,
+obtained by fixing a point in its first factor.
+By \eqref{eq:minimum-product-scale},
+this copy has
+$\EquilateralSize_{\FamilyIndex}$
+points separated by at least
+$\ProductScale_{\FamilyIndex}$.
+If the GH distance from such a product to a space in
+$\PreviousApproximationImages_{\FamilyIndex}$
+were less than
+$\ProductScale_{\FamilyIndex}/4$,
+a correspondence of distortion less than
+$\ProductScale_{\FamilyIndex}/2$
+would send these points to distinct points separated by more than
+$\ProductScale_{\FamilyIndex}/2$
+in that space.
+This would imply
+$\EquilateralSize_{\FamilyIndex}\leq\PackingBound_{\FamilyIndex}$,
+contrary to \eqref{eq:equilateral-cardinality-choice}.
+Consequently,
+for every
+$\DomainPoint\in\ApproximationDomain_{\FamilyIndex}$
+and every
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}\in\PreviousApproximationImages_{\FamilyIndex}$,
+we have
+\begin{equation}\label{eq:recursive-image-separation}
+ \GHDistance(\ApproximatingMap_{\FamilyIndex}(\DomainPoint),
+             \MetricSpace{\ComparisonCarrier}{\ComparisonMetric})
+ \geq\frac{\ProductScale_{\FamilyIndex}}4.
+\end{equation}
+This completes the recursive construction and proves that the images are pairwise disjoint.
+
+\paraid{p-4a46362ad0ff}
+Figure~\ref{fig:discrete-approximation} shows how the scales and cardinalities
+control the approximation and the separation of the images.
+\input{figures/discrete-approximation}
+
+\ProofStep{Local finiteness.}\label{step:discrete-local-finiteness}
+\paraid{p-86b6e1b5bb9e}
+For the sake of contradiction,
+suppose that the family
+$\{\ApproximatingMap_{\FamilyIndex}(\ApproximationDomain_{\FamilyIndex})\}_{\FamilyIndex\in\DomainIndexSet}$
+is not locally finite at some
+$\MetricSpace{\LimitCarrier}{\LimitMetric}\in\GHSpace$.
+Then every neighborhood of this point meets infinitely many images.
+For each
+$\SequenceIndex\in\NonnegativeIntegers$,
+choose an index
+$\FamilyIndex_{\SequenceIndex}$
+larger than all previously chosen indices and a point
+$\DomainPoint_{\SequenceIndex}\in\ApproximationDomain_{\FamilyIndex_{\SequenceIndex}}$
+whose image lies in the GH ball of radius
+$2^{-\SequenceIndex}$
+about
+$\MetricSpace{\LimitCarrier}{\LimitMetric}$.
+For each
+$\SequenceIndex\in\NonnegativeIntegers$,
+put
+$\InputMap_{\FamilyIndex_{\SequenceIndex}}(\DomainPoint_{\SequenceIndex})
+=\MetricSpace{\BaseCarrier_{\SequenceIndex}}{\MetricSymbol_{\SequenceIndex}}$,
+and
+$\ApproximatingMap_{\FamilyIndex_{\SequenceIndex}}(\DomainPoint_{\SequenceIndex})
+=\MetricSpace{\ComparisonCarrier_{\SequenceIndex}}{\ComparisonMetric_{\SequenceIndex}}$,
+given by \eqref{eq:product-approximation-1} and \eqref{eq:discrete-maps}.
+Then
+\begin{equation}\label{eq:equilateral-image-convergence}
+ \MetricSpace{\ComparisonCarrier_{\SequenceIndex}}{\ComparisonMetric_{\SequenceIndex}}
+ \to\MetricSpace{\LimitCarrier}{\LimitMetric}.
+\end{equation}
+For each
+$\SequenceIndex\in\NonnegativeIntegers$,
+put
+$\CoverScale_{\SequenceIndex}
+ =\CoverScale\MetricSpace{\BaseCarrier_{\SequenceIndex}}{\MetricSymbol_{\SequenceIndex}}$.
+For every
+$\SequenceIndex\in\NonnegativeIntegers$,
+equations \eqref{eq:scale-lipschitz-2} and \eqref{eq:approximation-error} imply
+\begin{equation}\label{eq:scale-lower-bound}
+ \begin{aligned}
+ \CoverScale\MetricSpace{\LimitCarrier}{\LimitMetric}
+ &\leq\CoverScale_{\SequenceIndex}
+      +\frac1{16}\GHDistance(
+         \MetricSpace{\BaseCarrier_{\SequenceIndex}}{\MetricSymbol_{\SequenceIndex}},
+         \MetricSpace{\LimitCarrier}{\LimitMetric})\\
+ &\leq\CoverScale_{\SequenceIndex}
+      +\frac1{16}\Bigl(\GHDistance(
+         \MetricSpace{\BaseCarrier_{\SequenceIndex}}{\MetricSymbol_{\SequenceIndex}},
+         \MetricSpace{\ComparisonCarrier_{\SequenceIndex}}{\ComparisonMetric_{\SequenceIndex}})
+         +\GHDistance(
+         \MetricSpace{\ComparisonCarrier_{\SequenceIndex}}{\ComparisonMetric_{\SequenceIndex}},
+         \MetricSpace{\LimitCarrier}{\LimitMetric})\Bigr)\\
+ &\leq\CoverScale_{\SequenceIndex}
+      +\frac1{16}\Bigl(\frac12\CoverScale_{\SequenceIndex}
+         +\GHDistance(
+         \MetricSpace{\ComparisonCarrier_{\SequenceIndex}}{\ComparisonMetric_{\SequenceIndex}},
+         \MetricSpace{\LimitCarrier}{\LimitMetric})\Bigr)\\
+ &\leq\frac{33}{32}\CoverScale_{\SequenceIndex}
+      +\frac1{16}\GHDistance(
+         \MetricSpace{\ComparisonCarrier_{\SequenceIndex}}{\ComparisonMetric_{\SequenceIndex}},
+         \MetricSpace{\LimitCarrier}{\LimitMetric}).
+ \end{aligned}
+\end{equation}
+Put
+$\SeparationScale=\frac12\CoverScale\MetricSpace{\LimitCarrier}{\LimitMetric}>0$.
+By \eqref{eq:equilateral-image-convergence} and \eqref{eq:scale-lower-bound},
+for all sufficiently large
+$\SequenceIndex$
+we have
+\begin{equation}\label{eq:equilateral-positive-scale}
+ \CoverScale_{\SequenceIndex}\geq\SeparationScale.
+\end{equation}
+
+\paraid{p-866cf4c6571b}
+For every
+$\SequenceIndex\in\NonnegativeIntegers$,
+choose
+$\BasePoint_{\SequenceIndex}\in\BaseCarrier_{\SequenceIndex}$
+and define
+\[
+ \SeparatedSet_{\SequenceIndex}
+ =\{(\BasePoint_{\SequenceIndex},\EquilateralPoint)\mid
+     \EquilateralPoint\in\EquilateralCarrier_{\EquilateralSize_{\FamilyIndex_{\SequenceIndex}}}\}
+ \subset\ComparisonCarrier_{\SequenceIndex}.
+\]
+For all sufficiently large
+$\SequenceIndex$
+and all distinct
+$\EquilateralPoint_0,\EquilateralPoint_1
+ \in\EquilateralCarrier_{\EquilateralSize_{\FamilyIndex_{\SequenceIndex}}}$,
+equation \eqref{eq:equilateral-positive-scale} implies
+\[
+ \ComparisonMetric_{\SequenceIndex}
+ ((\BasePoint_{\SequenceIndex},\EquilateralPoint_0),
+  (\BasePoint_{\SequenceIndex},\EquilateralPoint_1))
+ =\max\{0,\CoverScale_{\SequenceIndex}\}
+ =\CoverScale_{\SequenceIndex}\geq\SeparationScale.
+\]
+Thus
+$\SeparatedSet_{\SequenceIndex}$
+is
+$\SeparationScale$-separated
+for all sufficiently large
+$\SequenceIndex$.
+By \eqref{eq:equilateral-image-convergence}
+and Corollary~\ref{cor:uniform-separated-sets},
+the cardinalities
+$\Card(\SeparatedSet_{\SequenceIndex})$
+are uniformly bounded.
+This contradicts \eqref{eq:equilateral-cardinality-choice},
+since
+\[
+ \Card(\SeparatedSet_{\SequenceIndex})
+ =\EquilateralSize_{\FamilyIndex_{\SequenceIndex}}
+ >\FamilyIndex_{\SequenceIndex}+1\longrightarrow\infty.
+\]
+
+\paraid{p-eb900edd6e7c}
+Therefore the family
+$\{\ApproximatingMap_{\FamilyIndex}(\ApproximationDomain_{\FamilyIndex})\}_{\FamilyIndex\in\DomainIndexSet}$
+is locally finite.
+
+\ProofStep{Discreteness.}\label{step:discrete-discreteness}
+\paraid{p-0f7257809982}
+A locally finite family of pairwise disjoint closed sets is discrete.
+By Steps~\ref{step:discrete-separation} and~\ref{step:discrete-local-finiteness},
+this fact applies to our compact images.
+Local finiteness is automatic when
+$\DomainIndexSet$
+is finite.
+\end{proof}

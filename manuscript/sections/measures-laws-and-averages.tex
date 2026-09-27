@@ -1,0 +1,740 @@
+\subsection{Continuous laws and their averages}\label{subsec:measures-laws-and-averages}
+\paraid{p-e99b54a5841a}
+We now select probability laws on the fibers of the forgetful map
+and average the invariant measures with respect to these laws.
+
+\paraid{p-f921de5bf828}
+The averaging map in \Cref{lem:continuous-barycenter} is the standard
+barycenter map on the space of probability measures.
+Its construction and weak continuity appear in
+\cite[proof of Theorem~8.10.5, p.~218]{Bogachev2007II}.
+We include a proof using the Riesz--Markov--Kakutani theorem
+(\Cref{thm:riesz-markov-kakutani}),
+together with the full-support and invariance properties needed below.
+We then prove continuity as the compact metric space varies by comparing
+integrals in a common compact ambient space.
+
+\begin{proposition}\label{lem:continuous-barycenter}
+\paraid{p-ee76895903f0}
+Let
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+be a nonempty compact metric space.
+There exists a unique map
+\[
+ \operatorname{bar}_\BaseCarrier\colon
+ \ProbabilityMeasures(\ProbabilityMeasures(\BaseCarrier))
+ \to\ProbabilityMeasures(\BaseCarrier)
+\]
+such that for every
+$\FirstProbabilityLaw\in\ProbabilityMeasures(\ProbabilityMeasures(\BaseCarrier))$
+and every
+$\TestFunction\in\ContinuousFunctions(\BaseCarrier)$,
+\begin{equation}\label{eq:continuous-barycenter}
+ \int_\BaseCarrier\TestFunction\,
+       \IntegrationDifferential\operatorname{bar}_\BaseCarrier(\FirstProbabilityLaw)
+ =\int_{\ProbabilityMeasures(\BaseCarrier)}
+       \left(\int_\BaseCarrier\TestFunction\,\IntegrationDifferential\FirstMeasure\right)
+       \,\IntegrationDifferential\FirstProbabilityLaw(\FirstMeasure).
+\end{equation}
+This map is continuous for the weak topologies.
+If
+$\FirstProbabilityLaw$
+is concentrated on a Borel set of full-support measures,
+then
+$\operatorname{bar}_\BaseCarrier(\FirstProbabilityLaw)$
+has full support.
+For each
+$\GroupElement\in\Isom\MetricSpace{\BaseCarrier}{\MetricSymbol}$,
+assume that
+\begin{equation}\label{eq:barycenter-invariant-law}
+ \FirstProbabilityLaw\left(
+ \left\{\FirstMeasure\in\ProbabilityMeasures(\BaseCarrier)
+ \,\middle|\,
+ \GroupElement\Pushforward\FirstMeasure=\FirstMeasure\right\}
+ \right)=1.
+\end{equation}
+Then
+\[
+ \GroupElement\Pushforward\operatorname{bar}_\BaseCarrier(\FirstProbabilityLaw)
+ =\operatorname{bar}_\BaseCarrier(\FirstProbabilityLaw).
+\]
+\end{proposition}
+
+\begin{proof}
+\paraid{p-11561faad095}
+For
+$\TestFunction\in\ContinuousFunctions(\BaseCarrier)$,
+define
+$\widehat\TestFunction\colon\ProbabilityMeasures(\BaseCarrier)\to\RealNumbers$
+as follows.
+For every
+$\FirstMeasure\in\ProbabilityMeasures(\BaseCarrier)$,
+set
+\[
+ \widehat\TestFunction(\FirstMeasure)
+ =\int_\BaseCarrier\TestFunction\,\IntegrationDifferential\FirstMeasure.
+\]
+This function is continuous and bounded in absolute value by
+$\norm{\TestFunction}_\infty$.
+Fix
+$\FirstProbabilityLaw\in\ProbabilityMeasures(\ProbabilityMeasures(\BaseCarrier))$.
+Define the functional
+$\RepresentingFunctional\colon\ContinuousFunctions(\BaseCarrier)\to\RealNumbers$
+by integrating these functions,
+\[
+ \RepresentingFunctional(\TestFunction)
+ =\int_{\ProbabilityMeasures(\BaseCarrier)}\widehat\TestFunction
+       \,\IntegrationDifferential\FirstProbabilityLaw.
+\]
+This functional is positive and linear,
+and
+$\RepresentingFunctional(1)=1$.
+\Cref{thm:riesz-markov-kakutani} therefore yields a unique representing
+probability satisfying \eqref{eq:continuous-barycenter}.
+If
+$\FirstProbabilityLaw_\SequenceIndex\to\FirstProbabilityLaw$
+weakly in
+$\ProbabilityMeasures(\ProbabilityMeasures(\BaseCarrier))$,
+then for every
+$\TestFunction\in\ContinuousFunctions(\BaseCarrier)$,
+\[
+ \int_{\ProbabilityMeasures(\BaseCarrier)}\widehat\TestFunction
+       \,\IntegrationDifferential\FirstProbabilityLaw_\SequenceIndex
+ \longrightarrow
+ \int_{\ProbabilityMeasures(\BaseCarrier)}\widehat\TestFunction
+       \,\IntegrationDifferential\FirstProbabilityLaw.
+\]
+Thus the barycenters converge weakly.
+Since both probability spaces are metrizable in their weak topologies,
+this proves continuity.
+
+\paraid{p-055551975ef9}
+Assume that
+$\FirstProbabilityLaw$
+is concentrated on a Borel set of full-support measures.
+For a nonempty open subset
+$\OpenSubset\subset\BaseCarrier$,
+choose a continuous function
+$\TestFunction\colon\BaseCarrier\to[0,1]$
+that is nonzero and vanishes outside
+$\OpenSubset$.
+For every
+$\FirstMeasure\in\ProbabilityMeasures(\BaseCarrier)$
+with
+$\supp(\FirstMeasure)=\BaseCarrier$,
+we have
+$\widehat\TestFunction(\FirstMeasure)>0$.
+By the hypothesis and \eqref{eq:continuous-barycenter},
+\[
+ \operatorname{bar}_\BaseCarrier(\FirstProbabilityLaw)(\OpenSubset)
+ \geq\int_{\ProbabilityMeasures(\BaseCarrier)}
+       \widehat\TestFunction(\FirstMeasure)
+       \,\IntegrationDifferential\FirstProbabilityLaw(\FirstMeasure)>0.
+\]
+This proves full support.
+
+\paraid{p-5cc5a2ea18dd}
+Fix an isometry
+$\GroupElement\in\Isom\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+for which \eqref{eq:barycenter-invariant-law} holds.
+For every
+$\TestFunction\in\ContinuousFunctions(\BaseCarrier)$
+and every
+$\FirstMeasure\in\ProbabilityMeasures(\BaseCarrier)$
+with
+$\GroupElement\Pushforward\FirstMeasure=\FirstMeasure$,
+we have
+\begin{equation}\label{eq:fiber-invariant-integrals}
+ \int_\BaseCarrier\TestFunction\circ\GroupElement\,
+       \IntegrationDifferential\FirstMeasure
+ =\int_\BaseCarrier\TestFunction\,
+       \IntegrationDifferential\FirstMeasure.
+\end{equation}
+By \eqref{eq:barycenter-invariant-law},
+integrating \eqref{eq:fiber-invariant-integrals} against
+$\FirstProbabilityLaw$
+and using \eqref{eq:continuous-barycenter} proves invariance of
+$\operatorname{bar}_\BaseCarrier(\FirstProbabilityLaw)$
+under
+$\GroupElement$.
+\end{proof}
+
+\begin{theorem}\label{thm:invariant-measures}
+\paraid{p-b7a56605e33d}
+For every nonempty compact metric space
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$,
+there exists a probability measure
+$\SelectedMeasure{\BaseCarrier}{\MetricSymbol}\in\ProbabilityMeasures(\BaseCarrier)$.
+These measures can be chosen simultaneously to satisfy the three properties below.
+\begin{enumerate}[label=\textup{(M\arabic*)},ref=\textup{(M\arabic*)}]
+\item
+\paraid{p-09630bcb2594}
+For every
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$,
+we have
+$\supp(\SelectedMeasure{\BaseCarrier}{\MetricSymbol})=\BaseCarrier$.
+\item
+\paraid{p-1eec8fcfc366}
+For every pair of nonempty compact metric spaces
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+and
+$\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }$
+and every isometry
+$\IdentifyingIsometry \colon\MetricSpace{\BaseCarrier }{\MetricSymbol }\to\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }$,
+we have
+\[
+ \IdentifyingIsometry \Pushforward\SelectedMeasure{\BaseCarrier}{\MetricSymbol}=\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric}.
+\]
+\item\label{item:invariant-measures-continuity}
+\paraid{p-4f2c8f1817cc}
+Let
+$\MetricSpace{\BaseCarrier _\SequenceIndex }{\MetricSymbol _\SequenceIndex }$
+and
+$\MetricSpace{\BaseCarrier }{\MetricSymbol }$
+be nonempty compact metric spaces.
+Let
+$\MetricSpace{\AmbientCarrier}{\AmbientMetric}$
+be any compact metric space and let
+$\FirstEmbedding _\SequenceIndex \colon\MetricSpace{\BaseCarrier _\SequenceIndex }{\MetricSymbol _\SequenceIndex }\to\MetricSpace{\AmbientCarrier }{\AmbientMetric }$
+and
+$\FirstEmbedding \colon\MetricSpace{\BaseCarrier }{\MetricSymbol }\to\MetricSpace{\AmbientCarrier }{\AmbientMetric }$
+be isometric embeddings.
+Then
+\[
+ \HausdorffDistance{\AmbientMetric }(\FirstEmbedding _\SequenceIndex (\BaseCarrier _\SequenceIndex ),\FirstEmbedding (\BaseCarrier ))\to0
+ \quad\Longrightarrow\quad
+ (\FirstEmbedding _\SequenceIndex )\Pushforward\SelectedMeasure{\BaseCarrier _\SequenceIndex}{\MetricSymbol _\SequenceIndex}\to\FirstEmbedding \Pushforward\SelectedMeasure{\BaseCarrier}{\MetricSymbol}
+ \quad\text{weakly in }\ProbabilityMeasures(\AmbientCarrier ).
+\]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\paraid{p-941b13a492c1}
+By \Cref{prop:invariant-measured-polish,prop:open-invariant-projection},
+the map
+$\MeasureProjection\colon\InvariantMeasuredSpaces\to\GHSpace$
+is an open continuous surjection between Polish spaces.
+By Valov's theorem (\Cref{thm:valov}),
+we obtain a continuous map
+$\LawSection\colon\GHSpace\to\ProbabilityMeasures(\InvariantMeasuredSpaces)$
+such that for every
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}\in\GHSpace$
+we have
+$\MeasureProjection\Pushforward\LawSection\MetricSpace{\BaseCarrier }{\MetricSymbol }=\DiracProbability _{\MetricSpace{\BaseCarrier }{\MetricSymbol }}$.
+Fix a representative
+$\MetricSpace{\BaseCarrier }{\MetricSymbol }$
+and set
+\[
+ \MeasureFiber{\BaseCarrier }=\MeasureProjection^{-1}(\MetricSpace{\BaseCarrier }{\MetricSymbol }).
+\]
+This is a closed Polish subspace of
+$\InvariantMeasuredSpaces$,
+and
+$\LawSection\MetricSpace{\BaseCarrier }{\MetricSymbol }(\MeasureFiber{\BaseCarrier })=1$.
+We construct a map
+$\FiberMeasureMap{\BaseCarrier}\colon\MeasureFiber{\BaseCarrier}\to\ProbabilityMeasures(\BaseCarrier)$
+on the fixed carrier as follows.
+For each class
+$\FiberPoint\in\MeasureFiber{\BaseCarrier}$,
+choose a representative
+$\MeasuredSpace{\ComparisonCarrier}{\ComparisonMetric}{\SecondMeasure}$
+of $\FiberPoint$ and an isometry
+$\IdentifyingIsometry \colon\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }\to\MetricSpace{\BaseCarrier }{\MetricSymbol }$.
+We denote the pushforward measure on this fixed representative by
+\[
+ \FiberMeasure{\BaseCarrier}{\FiberPoint}=\IdentifyingIsometry\Pushforward\SecondMeasure.
+\]
+For every
+$\BorelSubset\in\BorelSets(\BaseCarrier)$,
+this means that
+\[
+ \FiberMeasure{\BaseCarrier}{\FiberPoint}(\BorelSubset)
+ =\SecondMeasure(\IdentifyingIsometry^{-1}(\BorelSubset)).
+\]
+Set
+$\FiberMeasureMap{\BaseCarrier}(\FiberPoint)=\FiberMeasure{\BaseCarrier}{\FiberPoint}$.
+If
+$\SecondIdentifyingIsometry \colon\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }\to\MetricSpace{\BaseCarrier }{\MetricSymbol }$
+is another isometry,
+then
+$\SecondIdentifyingIsometry ^{-1}\IdentifyingIsometry \in\Isom\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }$
+and
+\[
+ \IdentifyingIsometry \Pushforward\SecondMeasure
+ =\SecondIdentifyingIsometry \Pushforward\bigl((\SecondIdentifyingIsometry ^{-1}\IdentifyingIsometry )\Pushforward\SecondMeasure \bigr)
+ =\SecondIdentifyingIsometry \Pushforward\SecondMeasure .
+\]
+Thus the measure is independent of the chosen isometry from this representative.
+Now let $(Y_0,e_0,\nu_0)$ be another representative of $\FiberPoint$.
+Choose a measure-preserving isometry
+$h\colon\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}\to(Y_0,e_0)$,
+so that $h_*\SecondMeasure=\nu_0$,
+and an isometry $k\colon(Y_0,e_0)\to\MetricSpace{\BaseCarrier}{\MetricSymbol}$.
+Independence of the transport isometry on $\ComparisonCarrier$ implies
+\[
+ k_*\nu_0=(k\circ h)_*\SecondMeasure
+ =\IdentifyingIsometry_*\SecondMeasure.
+\]
+Hence the measure is also independent of the representative of $\FiberPoint$.
+
+\paraid{p-218d0d8ad567}
+We first prove continuity of this assignment of measures under the hypotheses of \ref{item:invariant-measures-continuity}.
+Fix a sequence
+$\{\MetricSpace{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex}\}_{\SequenceIndex\in\NonnegativeIntegers}$,
+a nonempty compact metric space
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$,
+a compact metric space
+$\MetricSpace{\AmbientCarrier}{\AmbientMetric}$,
+and prescribed isometric embeddings
+$\FirstEmbedding_\SequenceIndex$
+and
+$\FirstEmbedding$
+as in \ref{item:invariant-measures-continuity}, with
+\[
+ \HausdorffDistance{\AmbientMetric}(\FirstEmbedding_\SequenceIndex(\BaseCarrier_\SequenceIndex),\FirstEmbedding(\BaseCarrier))\to0.
+\]
+Identify
+$\BaseCarrier_\SequenceIndex$
+and
+$\BaseCarrier$
+with their images under the isometric embeddings into
+$\AmbientCarrier$.
+If
+$\FiberPoint _\SequenceIndex \in\MeasureFiber{\BaseCarrier _\SequenceIndex }$
+and
+$\FiberPoint \in\MeasureFiber{\BaseCarrier }$
+satisfy
+$\FiberPoint _\SequenceIndex \to\FiberPoint $
+in
+$\InvariantMeasuredSpaces$,
+then
+\begin{equation}\label{eq:fiber-pullbacks}
+ \FiberMeasure{\BaseCarrier _\SequenceIndex}{\FiberPoint _\SequenceIndex}\longrightarrow\FiberMeasure{\BaseCarrier}{\FiberPoint}
+ \quad\text{weakly in }\ProbabilityMeasures(\AmbientCarrier ).
+\end{equation}
+Indeed,
+let
+$\SecondMeasure$
+be the limit of any weakly convergent subsequence
+\[
+ \{\FiberMeasure{\BaseCarrier_{n_k}}{\FiberPoint_{n_k}}\}_{k\in\NonnegativeIntegers}.
+\]
+Such subsequences exist by compactness of
+$\ProbabilityMeasures(\AmbientCarrier)$.
+The limit is concentrated on
+$\BaseCarrier $,
+by \Cref{lem:limit-support}.
+By the definition of
+$\GHPDistance$
+and weak convergence on
+$\AmbientCarrier $,
+we obtain
+\[
+ \FiberPoint _{n_k} \longrightarrow\MeasuredSpace{\BaseCarrier }{\MetricSymbol }{\SecondMeasure }.
+\]
+By uniqueness of limits,
+$\MeasuredSpace{\BaseCarrier }{\MetricSymbol }{\SecondMeasure }=\FiberPoint $.
+Thus there exists an isometry
+$\GroupElement\colon\BaseCarrier\to\BaseCarrier$
+such that
+$\SecondMeasure=\GroupElement\Pushforward\FiberMeasure{\BaseCarrier}{\FiberPoint}$.
+The measure
+$\FiberMeasure{\BaseCarrier}{\FiberPoint}$
+is invariant,
+so
+\begin{equation}\label{eq:fiber-measure-limit}
+ \SecondMeasure=\FiberMeasure{\BaseCarrier}{\FiberPoint}.
+\end{equation}
+Compactness of
+$\ProbabilityMeasures(\AmbientCarrier)$
+and uniqueness of the subsequential limit in
+\eqref{eq:fiber-measure-limit} imply \eqref{eq:fiber-pullbacks}.
+With the space
+$\BaseCarrier $
+fixed,
+this also proves continuity of
+$\FiberMeasureMap{\BaseCarrier }$.
+
+\paraid{p-39f42cc41be0}
+Push the law on the fiber forward by
+$\FiberMeasureMap{\BaseCarrier}$
+and define
+\[
+ \FirstProbabilityLaw_\BaseCarrier
+ =(\FiberMeasureMap{\BaseCarrier})\Pushforward
+   \left(\LawSection\MetricSpace{\BaseCarrier}{\MetricSymbol}
+                 |_{\MeasureFiber{\BaseCarrier}}\right).
+\]
+Using the barycenter in \Cref{lem:continuous-barycenter},
+we define
+\[
+ \SelectedMeasure{\BaseCarrier}{\MetricSymbol}
+ =\operatorname{bar}_\BaseCarrier(\FirstProbabilityLaw_\BaseCarrier).
+\]
+Define
+$\RepresentingFunctional_\BaseCarrier\colon\ContinuousFunctions(\BaseCarrier)\to\RealNumbers$
+as follows.
+For every
+$\TestFunction\in\ContinuousFunctions(\BaseCarrier)$,
+set
+\begin{equation}\label{eq:average-functional}
+ \RepresentingFunctional_\BaseCarrier(\TestFunction)
+ =\int_{\MeasureFiber{\BaseCarrier}}
+       \left(\int_\BaseCarrier\TestFunction\,
+       \IntegrationDifferential\FiberMeasure{\BaseCarrier}{\FiberPoint}\right)
+       \IntegrationDifferential\LawSection
+       \MetricSpace{\BaseCarrier}{\MetricSymbol}(\FiberPoint).
+\end{equation}
+Substituting
+$\FirstProbabilityLaw_\BaseCarrier$
+for
+$\FirstProbabilityLaw$
+in the identity \eqref{eq:continuous-barycenter} gives
+\begin{equation}\label{eq:measure-barycenter}
+ \int_\BaseCarrier\TestFunction\,
+       \IntegrationDifferential\SelectedMeasure{\BaseCarrier}{\MetricSymbol}
+ =\RepresentingFunctional_\BaseCarrier(\TestFunction).
+\end{equation}
+Figure~\ref{fig:measure-average} shows the two levels of probability measures.
+\input{figures/measure-average}
+
+\paraid{p-4bf68c702f9c}
+For a compact metric space
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$,
+we denote by
+$\FullSupportProbabilities{\BaseCarrier}$
+the set of full-support probabilities on
+$\BaseCarrier$,
+defined by
+\[
+ \FullSupportProbabilities{\BaseCarrier}
+ =\{\FirstMeasure\in\ProbabilityMeasures(\BaseCarrier)
+       \mid\supp\FirstMeasure=\BaseCarrier\}.
+\]
+For each
+$\GroupElement\in\Isom\MetricSpace{\BaseCarrier}{\MetricSymbol}$,
+we denote by
+$\InvariantProbabilities{\BaseCarrier}{\GroupElement}$
+the set of probabilities invariant under
+$\GroupElement$,
+defined by
+\[
+ \InvariantProbabilities{\BaseCarrier}{\GroupElement}
+ =\{\FirstMeasure\in\ProbabilityMeasures(\BaseCarrier)
+       \mid\GroupElement\Pushforward\FirstMeasure=\FirstMeasure\}.
+\]
+The law
+$\FirstProbabilityLaw_\BaseCarrier$
+is concentrated on
+\[
+ \FullSupportProbabilities{\BaseCarrier}
+ \cap\bigcap_{\GroupElement\in\Isom\MetricSpace{\BaseCarrier}{\MetricSymbol}}
+       \InvariantProbabilities{\BaseCarrier}{\GroupElement}.
+\]
+Choose a countable base $\CountableBasis$ for
+$\BaseCarrier$.
+A probability
+$\FirstMeasure\in\ProbabilityMeasures(\BaseCarrier)$
+has full support if and only if
+$\FirstMeasure(\OpenSubset)>0$
+for every nonempty
+$\OpenSubset\in\CountableBasis$.
+The weak topology on
+$\ProbabilityMeasures(\BaseCarrier)$
+is metrizable.
+For each nonempty
+$\OpenSubset\in\CountableBasis$
+and each sequence
+$\{\FirstMeasure_\SequenceIndex\}_{\SequenceIndex\in\NonnegativeIntegers}$
+that converges weakly to
+$\FirstMeasure\in\ProbabilityMeasures(\BaseCarrier)$,
+\Cref{thm:portmanteau}
+applied to the open set
+$\OpenSubset$
+gives
+\[
+ \FirstMeasure(\OpenSubset)
+ \leq\liminf_{\SequenceIndex\to\infty}
+          \FirstMeasure_\SequenceIndex(\OpenSubset).
+\]
+The sequential criterion for lower semicontinuity in a metrizable space now
+shows that the map
+\[
+ \ProbabilityMeasures(\BaseCarrier)\to[0,1],
+ \qquad\FirstMeasure\mapsto\FirstMeasure(\OpenSubset)
+\]
+is lower semicontinuous for the weak topology.
+The strict superlevel set at $0$ is open, so
+\[
+ \{\FirstMeasure\in\ProbabilityMeasures(\BaseCarrier)
+      \mid \FirstMeasure(\OpenSubset)>0\}
+\]
+is open in
+$\ProbabilityMeasures(\BaseCarrier)$.
+The basis criterion yields
+\[
+ \FullSupportProbabilities{\BaseCarrier}
+ =\bigcap_{\substack{\OpenSubset\in\CountableBasis\\
+                      \OpenSubset\ne\emptyset}}
+       \{\FirstMeasure\in\ProbabilityMeasures(\BaseCarrier)
+           \mid\FirstMeasure(\OpenSubset)>0\}.
+\]
+Since the basis is countable and each set in this intersection is open,
+$\FullSupportProbabilities{\BaseCarrier}$
+is a countable intersection of open sets, and in particular is Borel.
+For each
+$\GroupElement\in\Isom\MetricSpace{\BaseCarrier}{\MetricSymbol}$,
+the set
+$\InvariantProbabilities{\BaseCarrier}{\GroupElement}$
+is closed in
+$\ProbabilityMeasures(\BaseCarrier)$,
+as we now verify.
+For every
+$\FirstMeasure\in\ProbabilityMeasures(\BaseCarrier)$
+and every
+$\TestFunction\in\ContinuousFunctions(\BaseCarrier)$,
+the pushforward satisfies
+\[
+ \int_\BaseCarrier\TestFunction\,
+       \IntegrationDifferential(\GroupElement\Pushforward\FirstMeasure)
+ =\int_\BaseCarrier(\TestFunction\circ\GroupElement)\,
+       \IntegrationDifferential\FirstMeasure.
+\]
+Since
+$\GroupElement$
+is continuous,
+$\TestFunction\circ\GroupElement$
+is continuous.
+Let
+$\{\FirstMeasure_\SequenceIndex\}_{\SequenceIndex\in\NonnegativeIntegers}$
+be a sequence in
+$\ProbabilityMeasures(\BaseCarrier)$
+that converges weakly to
+$\FirstMeasure$.
+For every
+$\TestFunction\in\ContinuousFunctions(\BaseCarrier)$,
+the integral identity gives
+\[
+ \int_\BaseCarrier\TestFunction\,
+       \IntegrationDifferential(\GroupElement\Pushforward\FirstMeasure_\SequenceIndex)
+ \longrightarrow
+ \int_\BaseCarrier\TestFunction\,
+       \IntegrationDifferential(\GroupElement\Pushforward\FirstMeasure).
+\]
+Hence the pushforward map
+\[
+ \GroupElement\Pushforward\colon
+ \ProbabilityMeasures(\BaseCarrier)\to\ProbabilityMeasures(\BaseCarrier)
+\]
+is continuous for the weak topology.
+Now let
+$\{\FirstMeasure_\SequenceIndex\}_{\SequenceIndex\in\NonnegativeIntegers}$
+be a sequence in
+$\InvariantProbabilities{\BaseCarrier}{\GroupElement}$
+that converges weakly to
+$\FirstMeasure\in\ProbabilityMeasures(\BaseCarrier)$.
+Continuity and invariance give
+\[
+ \GroupElement\Pushforward\FirstMeasure_\SequenceIndex
+ =\FirstMeasure_\SequenceIndex\longrightarrow\FirstMeasure,
+ \qquad
+ \GroupElement\Pushforward\FirstMeasure_\SequenceIndex
+ \longrightarrow\GroupElement\Pushforward\FirstMeasure.
+\]
+Uniqueness of weak limits gives
+$\GroupElement\Pushforward\FirstMeasure=\FirstMeasure$.
+Thus
+$\InvariantProbabilities{\BaseCarrier}{\GroupElement}$
+is sequentially closed.
+Since the weak topology is metrizable,
+$\InvariantProbabilities{\BaseCarrier}{\GroupElement}$
+is closed.
+\Cref{lem:continuous-barycenter} therefore implies that
+$\SelectedMeasure{\BaseCarrier}{\MetricSymbol}$
+is invariant and has full support.
+Finally,
+for an isometry
+$\IdentifyingIsometry \colon\MetricSpace{\BaseCarrier }{\MetricSymbol }\to\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }$,
+we have the equality of isometry classes
+\[
+ \MetricSpace{\BaseCarrier}{\MetricSymbol}
+ =\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}
+ \quad\text{in }\GHSpace.
+\]
+Thus the fibers satisfy
+\[
+ \MeasureFiber{\BaseCarrier}=\MeasureFiber{\ComparisonCarrier}
+ \quad\text{as subsets of }\InvariantMeasuredSpaces,
+\]
+and,
+since the map
+$\LawSection$
+is defined on GH isometry classes,
+\[
+ \LawSection\MetricSpace{\BaseCarrier}{\MetricSymbol}
+ =\LawSection\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}.
+\]
+Fix the representatives
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+and
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$
+and the isometry
+$\IdentifyingIsometry$
+between them.
+For every
+$\FiberPoint\in\MeasureFiber{\BaseCarrier}$,
+the definition by transport implies
+\[
+ \FiberMeasure{\ComparisonCarrier}{\FiberPoint}
+ =\IdentifyingIsometry\Pushforward\FiberMeasure{\BaseCarrier}{\FiberPoint}.
+\]
+For every
+$\TestFunction\in\ContinuousFunctions(\ComparisonCarrier)$,
+apply \eqref{eq:average-functional} and \eqref{eq:measure-barycenter} on
+$\BaseCarrier$
+to
+$\TestFunction\circ\IdentifyingIsometry$.
+The change-of-variables identity for each fiber measure then implies
+\[
+ \begin{aligned}
+ \int_\ComparisonCarrier\TestFunction\,
+   \IntegrationDifferential(\IdentifyingIsometry\Pushforward\SelectedMeasure{\BaseCarrier}{\MetricSymbol})
+ &=\int_{\MeasureFiber{\BaseCarrier}}
+     \left(\int_\BaseCarrier\TestFunction\circ\IdentifyingIsometry\,
+       \IntegrationDifferential\FiberMeasure{\BaseCarrier}{\FiberPoint}\right)
+       \IntegrationDifferential\LawSection\MetricSpace{\BaseCarrier}{\MetricSymbol}(\FiberPoint)\\
+ &=\int_{\MeasureFiber{\ComparisonCarrier}}
+     \left(\int_\ComparisonCarrier\TestFunction\,
+       \IntegrationDifferential\FiberMeasure{\ComparisonCarrier}{\FiberPoint}\right)
+       \IntegrationDifferential\LawSection\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}(\FiberPoint)\\
+ &=\int_\ComparisonCarrier\TestFunction\,
+       \IntegrationDifferential\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric}.
+ \end{aligned}
+\]
+Uniqueness of the representing measure proves the required compatibility
+with isometries.
+
+\paraid{p-7ae020536d8d}
+It remains to prove continuity as the underlying spaces vary.
+We use the prescribed embeddings into
+$\AmbientCarrier$
+and identify each carrier with its image.
+Fix a real continuous function
+$\TestFunction\in\ContinuousFunctions(\AmbientCarrier)$.
+We express the integral of
+$\TestFunction$
+against each selected measure using one bounded continuous extension
+on a fixed space.
+
+\textbf{Step 1.
+A closed domain for the fiber integrals.}
+\paraid{p-72ddde2e12f8}
+Put
+\[
+ \SequenceParameterSpace=\{0\}\cup\{2^{-\SequenceIndex}\mid\SequenceIndex\in\NonnegativeIntegers\}.
+\]
+Set
+\[
+ \ParameterCarrier_0=\BaseCarrier.
+\]
+For each
+$\SequenceIndex\in\NonnegativeIntegers$,
+set
+\[
+ \ParameterCarrier_{2^{-\SequenceIndex}}=\BaseCarrier_\SequenceIndex.
+\]
+All carriers have the restricted ambient metric.
+The map
+$\ParameterTime\mapsto[\ParameterCarrier_\ParameterTime]$
+from
+$\SequenceParameterSpace$
+to
+$\GHSpace$
+is continuous.
+Here the brackets denote the isometry class with the restricted metric.
+Consequently,
+\[
+ \FiberIntegralDomain
+ =\{(\ParameterTime,\FiberPoint)\in\SequenceParameterSpace\times\InvariantMeasuredSpaces
+       \mid\MeasureProjection(\FiberPoint)=[\ParameterCarrier_\ParameterTime]\}
+\]
+is closed,
+since it is the equality set of two continuous maps to the metric space
+$\GHSpace$.
+Define a function
+$\FiberIntegral\colon\FiberIntegralDomain\to\RealNumbers$
+by
+\[
+ \FiberIntegral(\ParameterTime,\FiberPoint)
+ =\int_{\ParameterCarrier_\ParameterTime}\TestFunction\,
+       \IntegrationDifferential\FiberMeasure{\ParameterCarrier_\ParameterTime}{\FiberPoint}.
+\]
+Continuity at parameter
+$0$
+follows from \eqref{eq:fiber-pullbacks}.
+At an isolated parameter,
+continuity follows from \eqref{eq:fiber-pullbacks}
+with the carrier fixed.
+Moreover,
+$|\FiberIntegral|\leq\norm{\TestFunction}_\infty$.
+
+\textbf{Step 2.
+Extension and weak convergence of the laws.}
+\paraid{p-b2e0811e32ee}
+The product
+$\SequenceParameterSpace\times\InvariantMeasuredSpaces$
+is metrizable and hence normal.
+By the Tietze--Urysohn theorem (\Cref{thm:tietze}),
+$\FiberIntegral$
+extends to a continuous function
+$\ExtendedFiberIntegral\colon\SequenceParameterSpace\times\InvariantMeasuredSpaces\to\RealNumbers$
+with
+$|\ExtendedFiberIntegral|\leq\norm{\TestFunction}_\infty$.
+Write
+\[
+ \ParameterLaw_\ParameterTime=\LawSection([\ParameterCarrier_\ParameterTime]).
+\]
+Continuity of
+$\LawSection$
+implies
+$\ParameterLaw_{2^{-\SequenceIndex}}\to\ParameterLaw_0$
+weakly.
+\Cref{lem:dirac-product-convergence},
+with
+$\CompactParameterSpace=\SequenceParameterSpace$
+and
+$\ProbabilityCarrier=\InvariantMeasuredSpaces$,
+implies
+\begin{equation}\label{eq:parameter-law-products}
+ \DiracProbability_{2^{-\SequenceIndex}}\otimes\ParameterLaw_{2^{-\SequenceIndex}}
+ \longrightarrow\DiracProbability_0\otimes\ParameterLaw_0
+ \quad\text{weakly on }\SequenceParameterSpace\times\InvariantMeasuredSpaces.
+\end{equation}
+
+\textbf{Step 3.
+Integrals of the averaged measures.}
+\paraid{p-b288c7e8154f}
+Each product measure in \eqref{eq:parameter-law-products} is concentrated on
+$\FiberIntegralDomain$.
+By \eqref{eq:average-functional} and \eqref{eq:measure-barycenter},
+\[
+ \begin{aligned}
+ \int_\AmbientCarrier\TestFunction\,\IntegrationDifferential\SelectedMeasure{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex}
+ &=\int\ExtendedFiberIntegral\,
+   \IntegrationDifferential(\DiracProbability_{2^{-\SequenceIndex}}\otimes\ParameterLaw_{2^{-\SequenceIndex}})\\
+ &\longrightarrow\int\ExtendedFiberIntegral\,
+   \IntegrationDifferential(\DiracProbability_0\otimes\ParameterLaw_0)
+ =\int_\AmbientCarrier\TestFunction\,\IntegrationDifferential\SelectedMeasure{\BaseCarrier}{\MetricSymbol}.
+ \end{aligned}
+\]
+Since this holds for every real continuous
+$\TestFunction$
+on the compact ambient space
+$\AmbientCarrier$,
+the selected measures
+$\SelectedMeasure{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex}$
+converge weakly to
+$\SelectedMeasure{\BaseCarrier}{\MetricSymbol}$
+as asserted.
+\end{proof}

@@ -1,0 +1,60 @@
+version: v0.4
+project:
+  name: "Conditional Hilbert-space classification of Gromov--Hausdorff space"
+  description: >-
+    A Lean formalization of the implication from five explicitly stated literature
+    inputs to a homeomorphism between the ordinary Gromov--Hausdorff space of
+    nonempty compact metric spaces and real square-summable sequences.
+    The proof constructs invariant full-support probability assignments, finite
+    dimensional local models, global AR domination and discrete approximation.
+    The five literature inputs are assumptions, not theorems proved in this snapshot.
+  authors: ["Yoshito Ishiki"]
+  responsible_maintainers: ["Yoshito Ishiki"]
+  license: MIT
+classification:
+  arxiv: [math.GN, math.MG]
+  msc2020: [54E35, 54C55]
+sources:
+  - title: "The topology of Gromov--Hausdorff space"
+    authors: ["Yoshito Ishiki"]
+    type: paper
+    relationship: formalizes
+    location: "manuscript/main.tex"
+    note: "Owner manuscript, paperN snapshot; conditional formalization of its main proof chain."
+  - title: "Probability measures and Milyutin maps between metric spaces, Valov, arXiv:0801.1721v2"
+    type: paper
+    relationship: other
+    note: "Theorem 1.1 continuous-right-inverse consequence remains an explicit Polish-space assumption."
+  - title: "Antonyan equivariant hyperspace and orbit retract theorems"
+    type: paper
+    relationship: other
+    note: "2003 Proposition 3.1 with 2006 correction; 1990 Theorem 8 and Corollary 1. Exact locators in EXTERNAL-INPUTS.md."
+  - title: "Hanner 1951 ANR domination"
+    type: paper
+    relationship: other
+    note: "Theorem 7.2(b) remains explicit."
+  - title: "Characterizing Hilbert space topology, Torunczyk 1981, with 1985 correction"
+    type: paper
+    relationship: other
+    note: "1981 p.248 condition (i), with 1985 Section C; recognition remains explicit."
+automation:
+  methods:
+    - method: agent
+      models: ["OpenAI Codex"]
+      tool_setup: "Lean implementation, source checks, statement alignment and packaging by Codex under owner direction."
+review:
+  status: self-assessed
+  notes: "Same implementation agent performed alignment; no independent reviewer or owner proof check is claimed."
+status:
+  scope: "The compared theorem is PalomarPaperN.main, conditional on the five displayed assumptions."
+  main_results:
+    - declaration: PalomarPaperN.main
+      file: Solution.lean
+      comparator_config: comparator.json
+  axioms: [propext, Classical.choice, Quot.sound]
+fidelity:
+  divergences: >-
+    Challenge replaces the specialized Valov assumption with its general Type-1-to-Type-0
+    Polish-space version, which implies the required instance. The other four
+    input definitions agree with the substantive development. This is a
+    conditional implication, not an unconditional Lean proof of the manuscript.

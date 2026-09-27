@@ -1,0 +1,100 @@
+\paraid{p-d1bcda9ea36a}
+We now approximate the distance functions on a compact metric space by
+functions in a finite-dimensional vector space.
+The selected probability measure makes this vector space invariant under
+isometries.
+Using the spectral results from Section~\ref{sec:prelim-spectral},
+we first prove approximation at one space.
+We then compare the resulting functions and coordinates on nearby spaces.
+
+\paraid{p-a4c5f187e680}
+A simple construction explains why finite-dimensional coordinates can
+approximate a metric.
+Let
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+be nonempty and compact,
+fix
+$\ErrorTolerance>0$,
+and choose a finite
+$\ErrorTolerance$-net
+$\{\NetPoint_0,\ldots,\NetPoint_{\NetSize-1}\}$.
+Define
+\[
+ \NetCoordinateMap\colon\BaseCarrier\to\RealNumbers^{\NetSize}
+\]
+by
+\[
+ \NetCoordinateMap(\BasePoint)
+ =\bigl(\MetricSymbol(\BasePoint,\NetPoint_0),\ldots,
+        \MetricSymbol(\BasePoint,\NetPoint_{\NetSize-1})\bigr).
+\]
+For all
+$\BasePoint,\ComparisonPoint\in\BaseCarrier$,
+\begin{equation}\label{eq:finite-net-distance-approximation}
+ \MetricSymbol(\BasePoint,\ComparisonPoint)-2\ErrorTolerance
+ \leq\norm{\NetCoordinateMap(\BasePoint)-\NetCoordinateMap(\ComparisonPoint)}_\infty
+ \leq\MetricSymbol(\BasePoint,\ComparisonPoint).
+\end{equation}
+
+\paraid{p-37280d9fcd1a}
+Finite families of functions also underlie Shioya's approximation of metric
+measure spaces
+\cite[author's manuscript, Section~4.4, Definition~4.37, Theorem~4.43 and Corollary~4.44]{ShioyaMetricMeasure}.
+More precisely,
+for every mm-space
+$(X,d_X,\mu_X)$
+and every
+$\ErrorTolerance>0$,
+there is an integer
+$N\geq1$
+for which we can choose real
+$1$-Lipschitz
+functions
+$f_1,\ldots,f_N$
+on
+$X$
+such that the map
+$\Phi=(f_1,\ldots,f_N)$
+satisfies
+\[
+ \BoxDistance\bigl(X,(\RealNumbers^N,\norm{\cdot}_\infty,
+                         \Phi_*\mu_X)\bigr)<\ErrorTolerance.
+\]
+Here
+$\BoxDistance$
+is the distance in \Cref{def:box-distance}.
+Estimate \eqref{eq:finite-net-distance-approximation}
+concerns uniform error over all pairs of points
+of one compact space.
+Our construction also needs continuity throughout a Gromov--Hausdorff neighborhood
+and compatibility with isometries.
+A finite net in one space does not determine such continuous choices.
+Finite spectral subspaces provide the coordinate classes of \Cref{thm:local-models}.
+For a convergent sequence of spaces,
+\ref{item:model-continuity} guarantees coordinate pairs with the stated
+convergence of norms and coordinate maps.
+Condition \ref{item:model-equivariance} specifies their transformation under isometries.
+Their coordinates are the coefficients of unique best approximations.
+For each compact metric space
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$,
+we define a norm
+$\NormSymbol_\ComparisonCarrier$
+on the coordinate space.
+Under a change of orthonormal basis,
+each coordinate vector $v$ is replaced by
+$\OrthogonalChange v$.
+The norm in the new coordinates is therefore
+$\NormSymbol_\ComparisonCarrier\circ\OrthogonalChange^{-1}$,
+since a vector $v$ in the new coordinates represents
+$\OrthogonalChange^{-1}v$
+in the old coordinates.
+Thus the distances between coordinate vectors do not depend on the basis.
+
+\paraid{p-1bee81df97ab}
+Throughout this section,
+$\SelectedMeasure{\BaseCarrier}{\MetricSymbol}$
+denotes the assignment of \Cref{thm:invariant-measures}.
+The two subscripts denote the carrier
+$\BaseCarrier$
+and its metric
+$\MetricSymbol$.

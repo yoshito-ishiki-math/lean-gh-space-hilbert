@@ -1,0 +1,181 @@
+\subsection{Haar probability and continuous laws}\label{subsec:measures-preliminaries-laws}
+\paraid{p-c03d5071df48}
+We use Haar probability to average over the isometry group.
+
+\paraid{p-d2f74a62001a}
+By the next lemma,
+the full isometry group is compact,
+so we can apply
+the Haar probability theorem.
+
+\begin{lemma}\label{lem:compact-isometry-group}
+\paraid{p-bd8a5b8d04a8}
+Let
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+be a nonempty compact metric space.
+Then
+$\Isom\MetricSpace{\BaseCarrier}{\MetricSymbol}$,
+equipped with the uniform topology,
+is a compact metrizable topological group.
+\end{lemma}
+
+\begin{proof}
+\paraid{p-e174430bf1e9}
+Let
+$\IsometryGroup=\Isom\MetricSpace{\BaseCarrier}{\MetricSymbol}$.
+For
+$\Mapping,\SecondMapping\in\ContinuousFunctions(\BaseCarrier,\BaseCarrier)$,
+define the uniform metric by
+\[
+ \UniformMetric(\Mapping,\SecondMapping)
+ =\sup_{\BasePoint\in\BaseCarrier}
+    \MetricSymbol(\Mapping(\BasePoint),\SecondMapping(\BasePoint)).
+\]
+Since every element of
+$\IsometryGroup$
+is an isometry and
+$\BaseCarrier$
+is compact,
+the Arzel\`a--Ascoli theorem (\Cref{thm:arzela-ascoli}) implies that
+$\IsometryGroup$
+has compact closure in
+$\ContinuousFunctions(\BaseCarrier,\BaseCarrier)$.
+
+\paraid{p-6888b18e99f0}
+A uniform limit
+$\Mapping\in\ContinuousFunctions(\BaseCarrier,\BaseCarrier)$
+of elements of
+$\IsometryGroup$
+preserves distances and is surjective by
+\cite[Theorem~1.6.14]{BuragoBuragoIvanov2001}.
+Thus
+$\IsometryGroup$
+is closed and compact.
+Let
+$\GroupElement_\SequenceIndex\to\GroupElement$
+and
+$\SecondGroupElement_\SequenceIndex\to\SecondGroupElement$
+be two convergent sequences in
+$\IsometryGroup$.
+From the estimates
+\[
+ \UniformMetric(\GroupElement_\SequenceIndex\circ\SecondGroupElement_\SequenceIndex,
+               \GroupElement\circ\SecondGroupElement)
+ \leq\UniformMetric(\GroupElement_\SequenceIndex,\GroupElement)
+       +\UniformMetric(\SecondGroupElement_\SequenceIndex,\SecondGroupElement),
+\]
+and
+\[
+ \UniformMetric(\GroupElement_\SequenceIndex^{-1},\GroupElement^{-1})
+ =\UniformMetric(\GroupElement_\SequenceIndex,\GroupElement),
+\]
+it follows  that composition and inversion are continuous.
+Hence
+$\IsometryGroup$
+is a compact metrizable topological group.
+\end{proof}
+
+\begin{theorem}[{Haar probability, \cite[Theorem~5.14 and Chapter~5, Section~3]{DiestelSpalsbury2014}}]\label{thm:haar}
+\paraid{p-c37dcbf3e97d}
+Every compact metrizable topological group
+$\ActingGroup$
+admits a unique left invariant Radon probability
+$\HaarProbability\in\ProbabilityMeasures(\ActingGroup)$.
+Thus
+\[
+ \HaarProbability(\ActingGroup)=1,
+\]
+and for every
+$\GroupElement\in\ActingGroup$
+and every
+$\BorelSubset\in\BorelSets(\ActingGroup)$,
+we have
+\[
+ \HaarProbability(\GroupElement\BorelSubset)=\HaarProbability(\BorelSubset).
+\]
+This probability is also right invariant and has full support.
+\end{theorem}
+
+\paraid{p-09eb6dcfaa8e}
+We apply the following consequence of Valov's theorem
+\cite[arXiv v2, Theorem~1.1]{Valov2009}.
+The probabilities in this formulation are Radon probabilities.
+The theorem imposes no compact-support restriction.
+For Polish spaces, the same conclusion follows from the earlier theorem
+of Banakh and Radul \cite[Theorem~1.2, p.~20]{BanakhRadul1999}.
+
+\begin{theorem}[{Valov, \cite[arXiv v2, Theorem~1.1]{Valov2009}}]\label{thm:valov}
+\paraid{p-ea9930a1ae3f}
+Let
+$\OpenSurjection \colon \LawTotalSpace \to \LawBaseSpace $
+be an open continuous surjection between completely metrizable spaces.
+Then there is a continuous map
+$\LawSection\colon \LawBaseSpace \to\ProbabilityMeasures(\LawTotalSpace )$
+such that
+$\OpenSurjection \Pushforward\LawSection(\LawBasePoint )=\DiracProbability _\LawBasePoint $
+for every
+$\LawBasePoint \in \LawBaseSpace $.
+\end{theorem}
+
+\paraid{p-07d85ea78312}
+Here
+$\DiracProbability _\LawBasePoint $
+is the Dirac probability at
+$\LawBasePoint $.
+Valov's theorem yields a continuous right inverse of the induced
+map on probabilities.
+Composing this right inverse with
+$\LawBasePoint \mapsto\DiracProbability _\LawBasePoint $
+proves this formulation.
+
+\begin{remark}\label{rem:laws-averaging-operator}
+\paraid{p-2db988c38721}
+The law in \Cref{thm:valov} also defines a linear averaging operator.
+Assume that
+$\LawBaseSpace\ne\emptyset$,
+and define the averaging operator
+\[
+ \AveragingOperator\colon
+ \BoundedContinuousFunctions(\LawTotalSpace,\RealNumbers)
+ \to\BoundedContinuousFunctions(\LawBaseSpace,\RealNumbers).
+\]
+For every
+$\TestFunction\in\BoundedContinuousFunctions(\LawTotalSpace,\RealNumbers)$
+and
+$\LawBasePoint\in\LawBaseSpace$,
+put
+\[
+ (\AveragingOperator\TestFunction)(\LawBasePoint)
+ =\int_{\LawTotalSpace}\TestFunction(\FiberPoint)
+   \,\IntegrationDifferential\LawSection(\LawBasePoint)(\FiberPoint).
+\]
+Since
+$\LawSection$
+is a weakly continuous family of probabilities,
+$\AveragingOperator$
+is a positive linear operator satisfying
+\begin{equation}\label{eq:law-averaging-identities-1}
+ \AveragingOperator1=1.
+\end{equation}
+For every
+$\TestFunction\in\BoundedContinuousFunctions(\LawTotalSpace,\RealNumbers)$,
+\begin{equation}\label{eq:law-averaging-identities-2}
+ \|\AveragingOperator\TestFunction\|_\infty\leq\|\TestFunction\|_\infty.
+\end{equation}
+The fiber support condition implies that,
+for every
+$f\in\BoundedContinuousFunctions(\LawBaseSpace,\RealNumbers)$,
+\begin{equation}\label{eq:law-averaging-identities-3}
+ \AveragingOperator(f\circ\OpenSurjection)=f.
+\end{equation}
+Define
+$\OpenSurjection^*\colon
+ \BoundedContinuousFunctions(\LawBaseSpace,\RealNumbers)
+ \to\BoundedContinuousFunctions(\LawTotalSpace,\RealNumbers)$
+by
+$\OpenSurjection^*f=f\circ\OpenSurjection$.
+By \eqref{eq:law-averaging-identities-1}--\eqref{eq:law-averaging-identities-3},
+$\OpenSurjection^*\AveragingOperator$
+is a projection of norm one onto
+$\OpenSurjection^*\BoundedContinuousFunctions(\LawBaseSpace,\RealNumbers)$.
+\end{remark}

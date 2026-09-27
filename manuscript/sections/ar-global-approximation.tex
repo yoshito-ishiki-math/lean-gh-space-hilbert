@@ -1,0 +1,1063 @@
+\subsection{Global approximation with small homotopy tracks}\label{subsec:ar-global-approximation}
+\paraid{p-441d3863d070}
+In the next theorem,
+we combine the local models to construct approximations
+through the auxiliary AR
+$\AuxiliaryAR=\CompactHyperspace(\BanachAmbientSpace)/\ActingGroup$.
+We choose this orbit space for the prescribed error function.
+For maps on $\GHSpace$, evaluation at $\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$
+means evaluation at its isometry class $[\ComparisonCarrier,\ComparisonMetric]$.
+This convention applies in particular to $\ModelError$ and $\ErrorControl$.
+
+\begin{theorem}\label{thm:global-domination}
+\paraid{p-c8631fd0a7ae}
+Let
+$\ErrorControl \colon \GHSpace\to(0,\infty)$
+be continuous.
+Then there exist a separable metrizable AR
+$\AuxiliaryAR$,
+continuous maps
+$\ApproximationMap\colon \GHSpace\to \AuxiliaryAR$
+and
+$\RealizationMap\colon \AuxiliaryAR\to\GHSpace$,
+a continuous function
+$\ModelError \colon \GHSpace\to[0,\infty)$,
+and a continuous homotopy
+$\ApproximationHomotopy \colon \GHSpace\times\UnitInterval\to\GHSpace$
+with the following properties.
+For every
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}\in\GHSpace$,
+we have
+\[
+ \ModelError\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}
+ <\ErrorControl\MetricSpace{\ComparisonCarrier}{\ComparisonMetric},
+\]
+and the endpoint identities
+\begin{equation}\label{eq:global-domination-1}
+ \ApproximationHomotopy (\MetricSpace{\ComparisonCarrier }{\ComparisonMetric },0)=\MetricSpace{\ComparisonCarrier }{\ComparisonMetric },
+\end{equation}
+and
+\begin{equation}\label{eq:global-domination-2}
+ \ApproximationHomotopy (\MetricSpace{\ComparisonCarrier }{\ComparisonMetric },1)=\RealizationMap\ApproximationMap\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }.
+\end{equation}
+For every
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}\in\GHSpace$
+and every
+$\FirstTime,\HomotopyTime\in\UnitInterval$,
+we have
+\begin{equation}\label{eq:global-track-control}
+  \GHDistance(\ApproximationHomotopy (\MetricSpace{\ComparisonCarrier }{\ComparisonMetric },\FirstTime ),\ApproximationHomotopy (\MetricSpace{\ComparisonCarrier }{\ComparisonMetric },\HomotopyTime ))\leq\frac{\abs{\FirstTime -\HomotopyTime }}2 \ModelError \MetricSpace{\ComparisonCarrier }{\ComparisonMetric }.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+\paraid{p-665396df3bb9}
+We construct the local cover and its Banach space,
+define the global map,
+and then prove continuity and the homotopy estimates.
+
+\ProofStep{Local models and a partition of unity.}\label{step:global-local-models}
+\paraid{p-45dee78ed9f8}
+For each center
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}\in\GHSpace$,
+apply \Cref{thm:local-models} with a positive tolerance smaller than
+$\ErrorControl\MetricSpace{\BaseCarrier}{\MetricSymbol}$.
+By continuity of the model error and of
+$\ErrorControl$,
+shrink the model domain so that for every space
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$
+in that domain the model error is less than
+$\ErrorControl\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$.
+Let $\OpenCover$ be the family of these domains.
+Then $\OpenCover$ is an open cover of
+$\GHSpace$.
+
+\paraid{p-d2972dd59fa1}
+Since
+$\GHSpace$
+is separable and metrizable,
+choose a countable locally finite partition of unity
+$\{\PartitionWeight _\CoverIndex \}_{\CoverIndex \in\NonnegativeIntegers}$
+subordinate to $\OpenCover$
+(\Cref{thm:metric-partition-unity}).
+For each index
+$\CoverIndex$,
+fix one of the local models whose domain
+$\ModelDomain_\CoverIndex$
+contains
+$\supp\PartitionWeight_\CoverIndex$.
+Different indices may use the same local model.
+The supports form a locally finite family.
+For each
+$\CoverIndex\in\NonnegativeIntegers$,
+write the selected local model as
+\[
+ \mathfrak M_\CoverIndex
+ =(\ModelDomain_\CoverIndex,\ModelDimension_\CoverIndex,
+   \mathcal L_\CoverIndex,\ModelError_\CoverIndex).
+\]
+Thus
+$\ModelDimension_\CoverIndex\geq1$
+is its dimension,
+$\mathcal L_\CoverIndex$
+is its coordinate-class assignment,
+and
+$\ModelError_\CoverIndex\colon\ModelDomain_\CoverIndex\to[0,\infty)$
+is its error function.
+For a compact metric space
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$
+whose isometry class belongs to
+$\ModelDomain_\CoverIndex$,
+choose a pair in
+$\mathcal L_\CoverIndex(\ComparisonCarrier,\ComparisonMetric)$.
+Write its coordinate map as
+$\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier}\colon\ComparisonCarrier\to\RealNumbers^{\ModelDimension_\CoverIndex}$
+and its norm as
+$\NormSymbol_{\CoverIndex,\ComparisonCarrier}\colon\RealNumbers^{\ModelDimension_\CoverIndex}\to[0,\infty)$.
+For
+$\ComparisonPoint,\IntegrationPoint\in\ComparisonCarrier$,
+write
+\[
+ \ModelPseudometric_{\CoverIndex,\ComparisonCarrier}(\ComparisonPoint,\IntegrationPoint)
+ =\NormSymbol_{\CoverIndex,\ComparisonCarrier}
+   (\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier}(\ComparisonPoint)
+    -\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier}(\IntegrationPoint)).
+\]
+The model error satisfies
+\[
+ \ModelError_\CoverIndex\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}
+ =\norm{\ComparisonMetric-\ModelPseudometric_{\CoverIndex,\ComparisonCarrier}}_\infty
+ <\ErrorControl\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}.
+\]
+The zero-weight blocks will be defined separately in Step~\ref{step:global-map}.
+
+\ProofStep{A Banach space with a compact group action.}\label{step:global-orbit-space}
+\paraid{p-ab63bc101601}
+Form the separable Banach space and compact metrizable group
+\begin{equation}\label{eq:banach-sum-group-1}
+ \BanachAmbientSpace =\left(\bigoplus_{\CoverIndex \in\NonnegativeIntegers}\BanachAmbientSpace _{\ModelDimension _\CoverIndex }\right)_{\SummableNorm},
+\end{equation}
+and
+\begin{equation}\label{eq:banach-sum-group-2}
+ \ActingGroup =\prod_{\CoverIndex \in\NonnegativeIntegers}\OrthogonalGroup(\ModelDimension _\CoverIndex ).
+\end{equation}
+The norm in
+$\BanachAmbientSpace $
+is
+$\norm{\{\BlockVector _\CoverIndex \}_{\CoverIndex \in\NonnegativeIntegers}}_\BanachAmbientSpace =\sum_{\CoverIndex\in\NonnegativeIntegers} \norm{\BlockVector _\CoverIndex }_\infty$.
+Define the induced metric
+\[
+ \BanachMetric\colon\BanachAmbientSpace\times\BanachAmbientSpace\to[0,\infty)
+\]
+as follows.
+For every
+$\FirstVector,\SecondVector\in\BanachAmbientSpace$,
+set
+\[
+ \BanachMetric(\FirstVector,\SecondVector)=\norm{\FirstVector-\SecondVector}_\BanachAmbientSpace.
+\]
+The group
+$\ActingGroup$
+acts on each summand by linear isometries.
+We prove that the action map
+\[
+ \ActingGroup\times\BanachAmbientSpace\to\BanachAmbientSpace,
+ \qquad
+ (\GroupElement,\DirectSumVector)\longmapsto\GroupElement\DirectSumVector
+\]
+is continuous.
+Indeed,
+if
+$\GroupElement _\SequenceIndex \to \GroupElement $
+in the product group and
+$\DirectSumVector =\{\BlockVector _\CoverIndex \}\in \BanachAmbientSpace $,
+then for each
+$\TruncationSize \geq1$,
+\[
+ \norm{\GroupElement _\SequenceIndex \DirectSumVector -\GroupElement \DirectSumVector }_\BanachAmbientSpace
+ \leq\sum_{\CoverIndex =0}^\TruncationSize \norm{(\GroupElement _\SequenceIndex )_\CoverIndex \BlockVector _\CoverIndex -\GroupElement _\CoverIndex \BlockVector _\CoverIndex }_\infty
+        +2\sum_{\CoverIndex >\TruncationSize }\norm{\BlockVector _\CoverIndex }_\infty.
+\]
+First choose
+$\TruncationSize $
+to control the tail,
+and then use continuity on the finitely many remaining blocks.
+For varying
+$\ApproximatingDirectSumVector _\SequenceIndex \to \DirectSumVector $,
+the inequality
+\[
+ \norm{\GroupElement _\SequenceIndex \ApproximatingDirectSumVector _\SequenceIndex -\GroupElement \DirectSumVector }_\BanachAmbientSpace \leq\norm{\ApproximatingDirectSumVector _\SequenceIndex -\DirectSumVector }_\BanachAmbientSpace +\norm{\GroupElement _\SequenceIndex \DirectSumVector -\GroupElement \DirectSumVector }_\BanachAmbientSpace\longrightarrow0
+\]
+proves continuity of the action map on the product
+$\ActingGroup\times\BanachAmbientSpace$.
+
+\ProofStep{The global map and its error.}\label{step:global-map}
+\paraid{p-4b598342fd3f}
+Fix a compact metric space
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$
+representing an input class in
+$\GHSpace$.
+Define the finite set of active indices for this input by
+\[
+ \mathcal I(\ComparisonCarrier,\ComparisonMetric)
+ =\{\CoverIndex\in\NonnegativeIntegers\mid
+ \PartitionWeight_\CoverIndex\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}>0\}.
+\]
+Finiteness follows from local finiteness of the partition of unity.
+For each index with
+$\PartitionWeight_\CoverIndex\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}>0$,
+choose a representative coordinate pair
+$(\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier},\NormSymbol_{\CoverIndex,\ComparisonCarrier})$
+from the coordinate class of the assigned local model.
+For every $\CoverIndex\in\NonnegativeIntegers$ and
+$\ComparisonPoint\in\ComparisonCarrier$, define
+\[
+ B_{\CoverIndex,\ComparisonCarrier}(\ComparisonPoint)=
+ \begin{cases}
+ \PartitionWeight_\CoverIndex\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}
+ \NormEmbedding_{\NormSymbol_{\CoverIndex,\ComparisonCarrier}}
+ (\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier}(\ComparisonPoint))
+ &\text{if }\PartitionWeight_\CoverIndex\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}>0,\\
+ 0&\text{otherwise}.
+ \end{cases}
+\]
+The zero in the second case is the zero vector of
+$\BanachAmbientSpace_{\ModelDimension_\CoverIndex}$.
+Using these blocks,
+define the map
+$\JointFeatureMap_\ComparisonCarrier\colon\ComparisonCarrier\to\BanachAmbientSpace$
+as follows.
+For every
+$\ComparisonPoint\in\ComparisonCarrier$,
+put
+\begin{equation}\label{eq:joint-feature-map-1}
+ \JointFeatureMap_\ComparisonCarrier(\ComparisonPoint)=\{B_{\CoverIndex,\ComparisonCarrier}(\ComparisonPoint)\}_{\CoverIndex\in\NonnegativeIntegers},
+\end{equation}
+and denote its image by
+\begin{equation}\label{eq:joint-feature-map-2}
+ \CompactFeatureImage _\ComparisonCarrier =\JointFeatureMap _\ComparisonCarrier (\ComparisonCarrier ).
+\end{equation}
+For every point of
+$\ComparisonCarrier$,
+all nonzero blocks have indices in the same finite set
+$\mathcal I(\ComparisonCarrier,\ComparisonMetric)$.
+Thus
+$\JointFeatureMap _\ComparisonCarrier $
+is continuous and
+$\CompactFeatureImage _\ComparisonCarrier $
+is nonempty and compact.
+Equation \eqref{eq:dual-isometry} and \ref{item:model-bound} of \Cref{thm:local-models}
+imply that for every
+$\ComparisonPoint\in\ComparisonCarrier$
+\begin{equation}\label{eq:global-feature-bound}
+  \norm{\JointFeatureMap _\ComparisonCarrier (\ComparisonPoint )}_\BanachAmbientSpace \leq2\diam\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }.
+\end{equation}
+
+\paraid{p-b86cdaebafd5}
+If the local coordinate pairs are changed as in \eqref{eq:frame-action} by
+$\GroupElement=\{\OrthogonalChange_\CoverIndex\}_\CoverIndex\in\ActingGroup$,
+then \eqref{eq:dual-equivariance} transforms the joint point map into
+$\GroupElement\circ\JointFeatureMap_\ComparisonCarrier$
+and its image into
+$\GroupElement\CompactFeatureImage_\ComparisonCarrier$.
+If
+$\InputIsometry\colon\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}
+ \to\MetricSpace{\ComparisonCarrier_0}{\ComparisonMetric_0}$
+is an isometry,
+then
+\eqref{eq:input-isometry-1},
+\eqref{eq:input-isometry-2},
+and \eqref{eq:dual-equivariance}
+imply that for some
+$\GroupElement\in\ActingGroup$,
+\[
+ \JointFeatureMap_{\ComparisonCarrier_0}\circ\InputIsometry
+ =\GroupElement\circ\JointFeatureMap_\ComparisonCarrier.
+\]
+Thus both changes leave the orbit of the compact image unchanged.
+Consequently,
+we can define
+\[
+ \ApproximationMap\colon \GHSpace\to \AuxiliaryAR=\CompactHyperspace(\BanachAmbientSpace )/\ActingGroup
+\]
+by
+\[
+ \ApproximationMap\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }=[\CompactFeatureImage _\ComparisonCarrier ].
+\]
+The value is independent of the representative of the input isometry class.
+By \Cref{lem:hyperspace-orbit-ar},
+$\AuxiliaryAR$
+is a separable metrizable AR.
+By \Cref{lem:hyperspace-orbit-realization},
+we obtain a
+$1$-Lipschitz map
+$\RealizationMap\colon \AuxiliaryAR\to\GHSpace$.
+
+\paraid{p-1264f3c8b4b3}
+Figure~\ref{fig:global-models} shows how the local maps are combined.
+\input{figures/global-models}
+
+\paraid{p-b45630ebc16d}
+For
+$\ComparisonPoint,\IntegrationPoint\in\ComparisonCarrier$,
+define the pseudometric induced by
+$\JointFeatureMap_\ComparisonCarrier$
+by
+\begin{equation}\label{eq:global-pseudometric}
+  \ModelPseudometric _\ComparisonCarrier (\ComparisonPoint ,\IntegrationPoint )=\norm{\JointFeatureMap _\ComparisonCarrier (\ComparisonPoint )-\JointFeatureMap _\ComparisonCarrier (\IntegrationPoint )}_\BanachAmbientSpace.
+\end{equation}
+By \eqref{eq:dual-isometry},
+we have
+\begin{equation}\label{eq:global-pseudometric-sum}
+ \ModelPseudometric_\ComparisonCarrier(\ComparisonPoint,\IntegrationPoint)
+ =\sum_{\substack{\CoverIndex\in\NonnegativeIntegers\\\PartitionWeight_\CoverIndex\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}>0}} \PartitionWeight _\CoverIndex \MetricSpace{\ComparisonCarrier }{\ComparisonMetric }\ModelPseudometric _{\CoverIndex ,\ComparisonCarrier }(\ComparisonPoint ,\IntegrationPoint ).
+\end{equation}
+Every block in \eqref{eq:joint-feature-map-1} is evaluated at the same point
+$\ComparisonPoint\in\ComparisonCarrier$.
+Define the error by
+\begin{equation}\label{eq:global-error}
+  \ModelError \MetricSpace{\ComparisonCarrier }{\ComparisonMetric }=\norm{\ComparisonMetric -\ModelPseudometric _\ComparisonCarrier }_\infty.
+\end{equation}
+Since the weights sum to one,
+\eqref{eq:global-pseudometric-sum} implies
+\begin{equation}\label{eq:global-error-bound}
+ \ModelError\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}
+ \leq
+ \sum_{\CoverIndex\in \mathcal I(\ComparisonCarrier,\ComparisonMetric)}\PartitionWeight _\CoverIndex \MetricSpace{\ComparisonCarrier }{\ComparisonMetric }\ModelError _\CoverIndex \MetricSpace{\ComparisonCarrier }{\ComparisonMetric }
+ <
+ \sum_{\CoverIndex\in \mathcal I(\ComparisonCarrier,\ComparisonMetric)}\PartitionWeight _\CoverIndex \MetricSpace{\ComparisonCarrier }{\ComparisonMetric }
+ \ErrorControl \MetricSpace{\ComparisonCarrier }{\ComparisonMetric }
+=\ErrorControl \MetricSpace{\ComparisonCarrier }{\ComparisonMetric }.
+\end{equation}
+
+
+
+
+
+\ProofStep{Continuity along common correspondences.}\label{step:global-continuity}
+\paraid{p-613bbdb06ba1}
+We next prove continuity of
+$\ApproximationMap$
+and
+$\ModelError$
+by estimating the maps
+$\JointFeatureMap_\ComparisonCarrier$
+along common correspondences.
+Local finiteness reduces the argument to finitely many blocks.
+We treat separately the blocks whose weights have positive limits
+and those whose weights tend to
+$0$.
+We will also use the estimate \eqref{eq:global-alignment} to prove continuity of
+$\ApproximationHomotopy$.
+
+\ProofSubstep{A common correspondence and finitely many blocks.}\label{step:global-common-correspondence}
+\paraid{p-527721648b5d}
+Let
+$\MetricSpace{\ComparisonCarrier _\SequenceIndex }{\ComparisonMetric _\SequenceIndex}\to\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }$
+in
+$\GHSpace$.
+By \Cref{lem:common-gh-embedding},
+we may regard all the carriers as compact subsets of one compact metric space
+$\MetricSpace{\AmbientCarrier}{\AmbientMetric}$
+such that
+$\HausdorffDistance{\AmbientMetric}
+ (\ComparisonCarrier_\SequenceIndex,\ComparisonCarrier)\to0$.
+Choose correspondences
+$\Correspondence _\SequenceIndex \subset \ComparisonCarrier _\SequenceIndex \times \ComparisonCarrier $
+such that
+\[
+ \AmbientDisplacement_\SequenceIndex
+ =\sup_{(\ComparisonPoint_\SequenceIndex,\ComparisonPoint)
+          \in\Correspondence_\SequenceIndex}
+   \AmbientMetric(\ComparisonPoint_\SequenceIndex,\ComparisonPoint)
+ \longrightarrow0.
+\]
+We use these same correspondences for every block.
+Local finiteness of the supports provides an open neighborhood
+$\OpenNeighborhood$
+of
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$
+such that
+\[
+ \ActiveModelIndices
+ =\{\CoverIndex\in\NonnegativeIntegers\mid
+       \OpenNeighborhood\cap\supp\PartitionWeight_\CoverIndex
+       \ne\emptyset\}
+ \quad\text{is finite}.
+\]
+For all sufficiently large
+$\SequenceIndex$,
+we have
+$\MetricSpace{\ComparisonCarrier_\SequenceIndex}{\ComparisonMetric_\SequenceIndex}
+ \in\OpenNeighborhood$.
+Thus,
+for every
+$\CoverIndex\in\NonnegativeIntegers\setminus\ActiveModelIndices$,
+\[
+ \PartitionWeight_\CoverIndex\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}
+ =\PartitionWeight_\CoverIndex
+   \MetricSpace{\ComparisonCarrier_\SequenceIndex}{\ComparisonMetric_\SequenceIndex}
+ =0.
+\]
+Partition the finite set
+$\ActiveModelIndices$
+according to the limiting weights by putting
+\[
+ I_+=\{\CoverIndex\in\ActiveModelIndices\mid
+ \PartitionWeight_\CoverIndex\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}>0\}
+\]
+and
+$I_-=\ActiveModelIndices\setminus I_+$.
+Namely,
+\[
+ I_-=\{\CoverIndex\in\ActiveModelIndices\mid
+ \PartitionWeight_\CoverIndex\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}=0\}.
+\]
+
+\ProofSubstep{Blocks with positive limiting weights.}\label{step:global-positive-blocks}
+\paraid{p-5b0d3e37abfc}
+For each
+$\CoverIndex\in I_+$,
+continuity of
+$\PartitionWeight_\CoverIndex$
+implies
+\[
+ \PartitionWeight_\CoverIndex
+ \MetricSpace{\ComparisonCarrier_\SequenceIndex}{\ComparisonMetric_\SequenceIndex}
+ \longrightarrow
+ \PartitionWeight_\CoverIndex\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}>0
+ \quad\text{as }\SequenceIndex\to\infty.
+\]
+Since
+$I_+$
+is finite,
+we ignore finitely many initial terms so that
+$\PartitionWeight_\CoverIndex
+ \MetricSpace{\ComparisonCarrier_\SequenceIndex}{\ComparisonMetric_\SequenceIndex}>0$
+for every
+$\CoverIndex\in I_+$
+and every remaining index
+$\SequenceIndex$.
+Thus,
+for each
+$\CoverIndex\in I_+$,
+the corresponding local model is defined at both
+$\MetricSpace{\ComparisonCarrier_\SequenceIndex}{\ComparisonMetric_\SequenceIndex}$
+and
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$.
+We now examine the continuity of the factor
+$\NormEmbedding_{\NormSymbol_{\CoverIndex,\ComparisonCarrier}}
+ \circ\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier}$
+in the definition of
+$B_{\CoverIndex,\ComparisonCarrier}$
+as both the norm and the coordinate map vary.
+By \ref{item:model-continuity} of \Cref{thm:local-models},
+choose coordinate pairs for each
+$\CoverIndex\in I_+$
+such that
+\begin{equation}\label{eq:global-block-norm-convergence}
+ \sup_{\SpherePoint\in\UnitSphere^{\ModelDimension_\CoverIndex-1}}
+ \bigl|\NormSymbol_{\CoverIndex,\ComparisonCarrier_\SequenceIndex}(\SpherePoint)
+       -\NormSymbol_{\CoverIndex,\ComparisonCarrier}(\SpherePoint)\bigr|
+ \longrightarrow0
+\end{equation}
+and
+\begin{equation}\label{eq:global-block-coordinate-convergence}
+ \sup_{(\ComparisonPoint_\SequenceIndex,\ComparisonPoint)
+          \in\Correspondence_\SequenceIndex}
+ \norm{\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier_\SequenceIndex}
+          (\ComparisonPoint_\SequenceIndex)
+       -\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier}
+          (\ComparisonPoint)}_2
+\longrightarrow0.
+\end{equation}
+Fix
+$\CoverIndex\in I_+$.
+For every sufficiently large
+$\SequenceIndex$,
+the supremum in \eqref{eq:global-block-coordinate-convergence}
+is at most
+$1$.
+Fix such an index
+$\SequenceIndex$
+and take an arbitrary point
+$\ComparisonPoint_\SequenceIndex\in\ComparisonCarrier_\SequenceIndex$.
+Since the first coordinate projection
+$\Correspondence_\SequenceIndex\to\ComparisonCarrier_\SequenceIndex$
+is surjective,
+choose
+$\ComparisonPoint\in\ComparisonCarrier$
+such that
+$(\ComparisonPoint_\SequenceIndex,\ComparisonPoint)\in\Correspondence_\SequenceIndex$.
+Applying the triangle inequality to this pair,
+we obtain
+\begin{equation}\label{eq:global-block-pointwise-bound}
+ \begin{aligned}
+ \norm{\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier_\SequenceIndex}
+       (\ComparisonPoint_\SequenceIndex)}_2
+ &\leq
+ \norm{\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier_\SequenceIndex}
+       (\ComparisonPoint_\SequenceIndex)
+       -\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier}(\ComparisonPoint)}_2
+ +\norm{\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier}(\ComparisonPoint)}_2\\
+ &\leq1+\max_{\IntegrationPoint\in\ComparisonCarrier}
+       \norm{\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier}(\IntegrationPoint)}_2.
+ \end{aligned}
+\end{equation}
+Taking the supremum over all
+$\ComparisonPoint_\SequenceIndex\in\ComparisonCarrier_\SequenceIndex$
+in \eqref{eq:global-block-pointwise-bound},
+we obtain
+\begin{equation}\label{eq:global-block-coordinate-bound}
+ \sup_{\ComparisonPoint_\SequenceIndex\in\ComparisonCarrier_\SequenceIndex}
+ \norm{\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier_\SequenceIndex}
+       (\ComparisonPoint_\SequenceIndex)}_2
+ \leq1+\max_{\IntegrationPoint\in\ComparisonCarrier}
+       \norm{\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier}(\IntegrationPoint)}_2.
+\end{equation}
+Put
+\[
+ \Radius_\CoverIndex
+ =1+\max_{\IntegrationPoint\in\ComparisonCarrier}
+       \norm{\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier}(\IntegrationPoint)}_2
+ <\infty.
+\]
+The finiteness follows from continuity and compactness.
+By \eqref{eq:global-block-coordinate-bound},
+for all sufficiently large
+$\SequenceIndex$,
+the images of
+$\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier_\SequenceIndex}$
+and
+$\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier}$
+lie in the closed Euclidean ball
+\[
+ \overline{\MetricBall}(0,\Radius_\CoverIndex;\norm{\cdot}_2)
+ =\{\FirstVector\in\RealNumbers^{\ModelDimension_\CoverIndex}\mid
+     \norm{\FirstVector}_2\leq\Radius_\CoverIndex\}.
+\]
+For
+$(\ComparisonPoint_\SequenceIndex,\ComparisonPoint)
+ \in\Correspondence_\SequenceIndex$,
+we separate the change of norm from the change of coordinates by the estimate
+\begin{equation}\label{eq:global-block-embedding-comparison}
+ \begin{aligned}
+ &\Bigl\|\NormEmbedding_{\NormSymbol_{\CoverIndex,\ComparisonCarrier_\SequenceIndex}}
+   \bigl(\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier_\SequenceIndex}
+      (\ComparisonPoint_\SequenceIndex)\bigr)
+ -\NormEmbedding_{\NormSymbol_{\CoverIndex,\ComparisonCarrier}}
+   \bigl(\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier}
+      (\ComparisonPoint)\bigr)\Bigr\|_\infty\\
+ &\quad\leq
+ \Bigl\|\bigl(\NormEmbedding_{\NormSymbol_{\CoverIndex,\ComparisonCarrier_\SequenceIndex}}
+             -\NormEmbedding_{\NormSymbol_{\CoverIndex,\ComparisonCarrier}}\bigr)
+   \bigl(\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier_\SequenceIndex}
+      (\ComparisonPoint_\SequenceIndex)\bigr)\Bigr\|_\infty
+ +
+ \NormSymbol_{\CoverIndex,\ComparisonCarrier}
+   \bigl(\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier_\SequenceIndex}
+      (\ComparisonPoint_\SequenceIndex)
+       -\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier}(\ComparisonPoint)\bigr)\\
+ &\quad\leq
+ \sup_{\FirstVector\in\overline{\MetricBall}(0,\Radius_\CoverIndex;\norm{\cdot}_2)}
+ \Bigl\|\bigl(\NormEmbedding_{\NormSymbol_{\CoverIndex,\ComparisonCarrier_\SequenceIndex}}
+             -\NormEmbedding_{\NormSymbol_{\CoverIndex,\ComparisonCarrier}}\bigr)
+   (\FirstVector)\Bigr\|_\infty
+ +
+ \NormSymbol_{\CoverIndex,\ComparisonCarrier}
+   \bigl(\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier_\SequenceIndex}
+      (\ComparisonPoint_\SequenceIndex)
+       -\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier}(\ComparisonPoint)\bigr).
+ \end{aligned}
+\end{equation}
+The first inequality in \eqref{eq:global-block-embedding-comparison}
+follows from the triangle inequality and \eqref{eq:dual-isometry}.
+The second follows from \eqref{eq:global-block-coordinate-bound}.
+By \eqref{eq:global-block-norm-convergence}
+and \eqref{eq:dual-embedding-uniform-on-bounded},
+we obtain
+\begin{equation}\label{eq:global-block-embedding-uniform-convergence}
+ \sup_{\FirstVector\in\overline{\MetricBall}(0,\Radius_\CoverIndex;\norm{\cdot}_2)}
+ \Bigl\|\bigl(\NormEmbedding_{\NormSymbol_{\CoverIndex,\ComparisonCarrier_\SequenceIndex}}
+             -\NormEmbedding_{\NormSymbol_{\CoverIndex,\ComparisonCarrier}}\bigr)
+   (\FirstVector)\Bigr\|_\infty
+ \longrightarrow0.
+\end{equation}
+Since the fixed norm
+$\NormSymbol_{\CoverIndex,\ComparisonCarrier}$
+is continuous on the compact unit sphere,
+the constant
+\[
+ \NormComparisonBound_\CoverIndex
+ =\max_{\SpherePoint\in\UnitSphere^{\ModelDimension_\CoverIndex-1}}
+       \NormSymbol_{\CoverIndex,\ComparisonCarrier}(\SpherePoint)
+\]
+is finite.
+For every
+$\FirstVector\in\RealNumbers^{\ModelDimension_\CoverIndex}$,
+homogeneity implies
+\[
+ \NormSymbol_{\CoverIndex,\ComparisonCarrier}(\FirstVector)
+ \leq\NormComparisonBound_\CoverIndex\norm{\FirstVector}_2.
+\]
+Thus,
+\eqref{eq:global-block-coordinate-convergence} implies
+\begin{equation}\label{eq:global-block-coordinate-norm-convergence}
+ \begin{aligned}
+ &\sup_{(\ComparisonPoint_\SequenceIndex,\ComparisonPoint)
+          \in\Correspondence_\SequenceIndex}
+ \NormSymbol_{\CoverIndex,\ComparisonCarrier}
+   \bigl(\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier_\SequenceIndex}
+      (\ComparisonPoint_\SequenceIndex)
+       -\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier}(\ComparisonPoint)\bigr)\\
+ &\quad\leq\NormComparisonBound_\CoverIndex
+ \sup_{(\ComparisonPoint_\SequenceIndex,\ComparisonPoint)
+          \in\Correspondence_\SequenceIndex}
+ \norm{\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier_\SequenceIndex}
+          (\ComparisonPoint_\SequenceIndex)
+       -\FeatureCoordinates_{\CoverIndex,\ComparisonCarrier}
+          (\ComparisonPoint)}_2
+ \longrightarrow0.
+ \end{aligned}
+\end{equation}
+By \eqref{eq:global-block-embedding-comparison},
+\eqref{eq:global-block-embedding-uniform-convergence},
+and \eqref{eq:global-block-coordinate-norm-convergence},
+for every
+$\CoverIndex\in I_+$,
+the embedded coordinate maps are uniformly bounded and converge
+uniformly along
+$\Correspondence_\SequenceIndex$.
+By continuity of the weights
+$\PartitionWeight_\CoverIndex$
+and the definition of the blocks
+$B_{\CoverIndex,\ComparisonCarrier_\SequenceIndex}$
+and
+$B_{\CoverIndex,\ComparisonCarrier}$
+in Step~\ref{step:global-map},
+we obtain
+\begin{equation}\label{eq:global-positive-weight-block}
+ \sup_{(\ComparisonPoint_\SequenceIndex,\ComparisonPoint)
+          \in\Correspondence_\SequenceIndex}
+ \norm{B_{\CoverIndex,\ComparisonCarrier_\SequenceIndex}
+           (\ComparisonPoint_\SequenceIndex)
+       -B_{\CoverIndex,\ComparisonCarrier}(\ComparisonPoint)}_\infty
+ \longrightarrow0.
+\end{equation}
+
+\ProofSubstep{Blocks with vanishing weights.}\label{step:global-vanishing-blocks}
+\paraid{p-50b148b589f3}
+Fix
+$\CoverIndex\in I_-$.
+By continuity of
+$\PartitionWeight_\CoverIndex$,
+we have
+$\PartitionWeight_\CoverIndex
+ \MetricSpace{\ComparisonCarrier_\SequenceIndex}{\ComparisonMetric_\SequenceIndex}
+ \to\PartitionWeight_\CoverIndex\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}=0$.
+The definition in Step~\ref{step:global-map} implies
+$B_{\CoverIndex,\ComparisonCarrier}=0$.
+If the weight at
+$\MetricSpace{\ComparisonCarrier_\SequenceIndex}{\ComparisonMetric_\SequenceIndex}$
+is zero,
+then the corresponding block is zero by its definition in Step~\ref{step:global-map}.
+If the weight is positive,
+then the local model is defined,
+and \ref{item:model-bound} of \Cref{thm:local-models}
+and \eqref{eq:dual-isometry} apply.
+In both cases,
+\begin{equation}\label{eq:vanishing-weight-block}
+ \sup_{\ComparisonPoint_\SequenceIndex\in\ComparisonCarrier_\SequenceIndex}
+ \norm{B_{\CoverIndex,\ComparisonCarrier_\SequenceIndex}(\ComparisonPoint_\SequenceIndex)}_\infty
+ \leq2\PartitionWeight _\CoverIndex \MetricSpace{\ComparisonCarrier _\SequenceIndex }{\ComparisonMetric _\SequenceIndex}\diam\MetricSpace{\ComparisonCarrier _\SequenceIndex }{\ComparisonMetric _\SequenceIndex}\to0.
+\end{equation}
+Indeed,
+the diameters are bounded along the convergent sequence.
+Thus these blocks converge uniformly to
+$0$
+for any choices of coordinate pairs.
+
+\ProofSubstep{Continuity of the global map and its error.}\label{step:global-map-continuity}
+\paraid{p-f79a92fe8ba3}
+Use the coordinate pairs chosen in Step~\ref{step:global-positive-blocks} on
+$I_+$
+and arbitrary coordinate pairs for the blocks with positive weights in
+$I_-$.
+Put
+\[
+ \FeatureDisplacement _\SequenceIndex =\sup_{(\ComparisonPoint _\SequenceIndex ,\ComparisonPoint )\in \Correspondence _\SequenceIndex }\norm{\JointFeatureMap _{\ComparisonCarrier _\SequenceIndex }(\ComparisonPoint _\SequenceIndex )-\JointFeatureMap _\ComparisonCarrier (\ComparisonPoint )}_\BanachAmbientSpace ,
+\]
+so that
+$\FeatureDisplacement_\SequenceIndex$
+measures the displacement of the joint feature maps along
+$\Correspondence_\SequenceIndex$.
+All blocks outside
+$\ActiveModelIndices$
+vanish for sufficiently large
+$\SequenceIndex$.
+Since the norm of
+$\BanachAmbientSpace$
+is the sum of the block norms and
+$\ActiveModelIndices$
+is finite,
+\eqref{eq:global-positive-weight-block} and \eqref{eq:vanishing-weight-block}
+imply
+\begin{equation}\label{eq:global-alignment}
+ \FeatureDisplacement_\SequenceIndex
+ \leq\sum_{\CoverIndex\in\ActiveModelIndices}
+ \sup_{(\ComparisonPoint_\SequenceIndex,\ComparisonPoint)
+          \in\Correspondence_\SequenceIndex}
+ \norm{B_{\CoverIndex,\ComparisonCarrier_\SequenceIndex}
+           (\ComparisonPoint_\SequenceIndex)
+       -B_{\CoverIndex,\ComparisonCarrier}(\ComparisonPoint)}_\infty
+\longrightarrow0.
+\end{equation}
+Since both coordinate projections of
+$\Correspondence_\SequenceIndex$
+are onto,
+the definition of
+$\FeatureDisplacement_\SequenceIndex$
+implies
+\[
+ \HausdorffDistance{\BanachMetric}
+ (\CompactFeatureImage_{\ComparisonCarrier_\SequenceIndex},
+  \CompactFeatureImage_\ComparisonCarrier)
+ \leq\FeatureDisplacement_\SequenceIndex\longrightarrow0.
+\]
+Here the representatives
+$\CompactFeatureImage_{\ComparisonCarrier_\SequenceIndex}$
+and
+$\CompactFeatureImage_\ComparisonCarrier$
+are constructed using,
+for each
+$\CoverIndex\in I_+$,
+the coordinate pairs guaranteed by
+\ref{item:model-continuity} of \Cref{thm:local-models}
+to satisfy \eqref{eq:global-block-norm-convergence}
+and \eqref{eq:global-block-coordinate-convergence}.
+Taking the identity element of
+$\ActingGroup$
+in \eqref{eq:orbit-metric},
+we obtain
+\[
+ \OrbitMetric([\CompactFeatureImage_{\ComparisonCarrier_\SequenceIndex}],
+             [\CompactFeatureImage_\ComparisonCarrier])
+ \leq\HausdorffDistance{\BanachMetric}
+ (\CompactFeatureImage_{\ComparisonCarrier_\SequenceIndex},
+  \CompactFeatureImage_\ComparisonCarrier)
+ \longrightarrow0.
+\]
+This proves continuity of
+$\ApproximationMap$.
+
+\paraid{p-39150d57f5ed}
+We finally prove continuity of
+$\ModelError$.
+For
+$(\ComparisonPoint _\SequenceIndex ,\ComparisonPoint ),(\IntegrationPoint _\SequenceIndex ,\IntegrationPoint )\in \Correspondence _\SequenceIndex $,
+the triangle inequalities in
+$\BanachAmbientSpace$
+and
+$\MetricSpace{\AmbientCarrier}{\AmbientMetric}$
+imply
+\[
+ |\ModelPseudometric _{\ComparisonCarrier _\SequenceIndex }(\ComparisonPoint _\SequenceIndex ,\IntegrationPoint _\SequenceIndex )-\ModelPseudometric _\ComparisonCarrier (\ComparisonPoint ,\IntegrationPoint )|\leq2\FeatureDisplacement _\SequenceIndex ,
+\]
+and
+\[
+ |\ComparisonMetric _\SequenceIndex(\ComparisonPoint _\SequenceIndex ,\IntegrationPoint _\SequenceIndex )-\ComparisonMetric (\ComparisonPoint ,\IntegrationPoint )|\leq2\AmbientDisplacement _\SequenceIndex .
+\]
+By \eqref{eq:pseudometric-uniform-comparison},
+we obtain
+\[
+ |\ModelError \MetricSpace{\ComparisonCarrier _\SequenceIndex }{\ComparisonMetric _\SequenceIndex}-\ModelError \MetricSpace{\ComparisonCarrier }{\ComparisonMetric }|
+ \leq2\FeatureDisplacement _\SequenceIndex +2\AmbientDisplacement _\SequenceIndex \longrightarrow0.
+\]
+This proves continuity of
+$\ModelError $
+in \eqref{eq:global-error}.
+
+\ProofStep{The interpolating homotopy.}\label{step:global-homotopy}
+\paraid{p-35ac6ff9ee97}
+We interpolate the original metric and the model pseudometric to construct a continuous map
+$\ApproximationHomotopy\colon\GHSpace\times\UnitInterval\to\GHSpace$
+with the endpoint identities in \eqref{eq:global-domination-1} and \eqref{eq:global-domination-2}
+and the estimate in \eqref{eq:global-track-control}.
+
+\ProofSubstep{Definition and compactness.}\label{step:global-homotopy-definition}
+\paraid{p-132d78a0f66f}
+For
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}\in\GHSpace$
+and
+$\HomotopyTime\in\UnitInterval$,
+put
+\begin{equation}\label{eq:interpolating-pseudometrics-1}
+\InterpolatingPseudometric_{\ComparisonCarrier,\HomotopyTime}
+ =(1-\HomotopyTime)\ComparisonMetric
+       +\HomotopyTime\ModelPseudometric_\ComparisonCarrier,
+\end{equation}
+and
+\begin{equation}\label{eq:interpolating-pseudometrics-2}
+\ApproximationHomotopy(\MetricSpace{\ComparisonCarrier}{\ComparisonMetric},\HomotopyTime)
+ =\MetricQuotient{\ComparisonCarrier}
+       {\InterpolatingPseudometric_{\ComparisonCarrier,\HomotopyTime}}.
+\end{equation}
+Both
+$\ComparisonMetric$
+and
+$\ModelPseudometric_\ComparisonCarrier$
+are continuous pseudometrics on the compact space
+$\ComparisonCarrier$.
+By the definition,
+$\InterpolatingPseudometric_{\ComparisonCarrier,\HomotopyTime}$
+is a metric
+generating the same topology on
+$Y$
+when
+$\HomotopyTime<1$.
+
+\paraid{p-7cd5915365f0}
+By \eqref{eq:global-pseudometric-sum}
+and the invariance under \eqref{eq:frame-action},
+$\ModelPseudometric_\ComparisonCarrier$
+is independent of the coordinate pairs chosen in the local models.
+Moreover,
+by \eqref{eq:input-isometry-1} and \eqref{eq:input-isometry-2},
+every isometry
+$\InputIsometry\colon\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}
+ \to\MetricSpace{\ComparisonCarrier_0}{\ComparisonMetric_0}$
+satisfies
+\[
+ \ModelPseudometric_{\ComparisonCarrier_0}
+   (\InputIsometry(\ComparisonPoint),\InputIsometry(\IntegrationPoint))
+ =\ModelPseudometric_\ComparisonCarrier(\ComparisonPoint,\IntegrationPoint)
+ \qquad(\ComparisonPoint,\IntegrationPoint\in\ComparisonCarrier).
+\]
+Thus
+$\ApproximationHomotopy$
+is well-defined on
+$\GHSpace\times\UnitInterval$.
+
+\ProofSubstep{The two endpoints.}\label{step:global-homotopy-endpoints}
+\paraid{p-76f372559d9c}
+We next prove \eqref{eq:global-domination-1} and \eqref{eq:global-domination-2}.
+By \eqref{eq:interpolating-pseudometrics-1},
+we obtain
+$\InterpolatingPseudometric_{\ComparisonCarrier,0}=\ComparisonMetric$,
+and
+$\InterpolatingPseudometric_{\ComparisonCarrier,1}
+       =\ModelPseudometric_\ComparisonCarrier$.
+At the second endpoint,
+for every
+$\ComparisonPoint,\IntegrationPoint\in\ComparisonCarrier$,
+\eqref{eq:global-pseudometric}
+implies
+that
+$\ModelPseudometric_\ComparisonCarrier(\ComparisonPoint,\IntegrationPoint)=0$
+if and only if
+$\JointFeatureMap_\ComparisonCarrier(\ComparisonPoint)
+       =\JointFeatureMap_\ComparisonCarrier(\IntegrationPoint)$.
+Since
+$\CompactFeatureImage_\ComparisonCarrier
+ =\JointFeatureMap_\ComparisonCarrier(\ComparisonCarrier)$,
+the induced map
+\begin{equation}\label{eq:quotient-feature-isometry}
+ \MetricQuotient{\ComparisonCarrier}{\ModelPseudometric_\ComparisonCarrier}
+ \to\MetricSpace{\CompactFeatureImage_\ComparisonCarrier}
+       {\RestrictedMetric{\BanachMetric}{\CompactFeatureImage_\ComparisonCarrier}}
+\end{equation}
+is defined as follows.
+For each
+$\ComparisonPoint\in\ComparisonCarrier$,
+send
+$[\ComparisonPoint]$
+to
+$\JointFeatureMap_\ComparisonCarrier(\ComparisonPoint)$.
+It is a bijection.
+For every
+$\ComparisonPoint,\IntegrationPoint\in\ComparisonCarrier$,
+the identity
+\[
+ \ModelPseudometric_\ComparisonCarrier(\ComparisonPoint,\IntegrationPoint)
+ =\norm{\JointFeatureMap_\ComparisonCarrier(\ComparisonPoint)
+        -\JointFeatureMap_\ComparisonCarrier(\IntegrationPoint)}_\BanachAmbientSpace
+\]
+shows that this map is an isometry.
+By \eqref{eq:interpolating-pseudometrics-2},
+the isometry
+\eqref{eq:quotient-feature-isometry},
+and the definitions of
+$\ApproximationMap$
+and
+$\RealizationMap$,
+we obtain the following equalities in
+$\GHSpace$.
+\[
+ \ApproximationHomotopy(\MetricSpace{\ComparisonCarrier}{\ComparisonMetric},0)
+  =\MetricSpace{\ComparisonCarrier}{\ComparisonMetric},
+\]
+and
+\[
+ \begin{aligned}
+ \ApproximationHomotopy(\MetricSpace{\ComparisonCarrier}{\ComparisonMetric},1)
+ &=\MetricQuotient{\ComparisonCarrier}{\ModelPseudometric_\ComparisonCarrier}=\MetricSpace{\CompactFeatureImage_\ComparisonCarrier}
+       {\RestrictedMetric{\BanachMetric}{\CompactFeatureImage_\ComparisonCarrier}}
+  =\RealizationMap\ApproximationMap\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}.
+ \end{aligned}
+\]
+
+\ProofSubstep{Variation of the time parameter.}\label{step:global-homotopy-time}
+\paraid{p-8853a418623b}
+Fix
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$.
+To prove \eqref{eq:global-track-control},
+let
+$\FirstTime,\HomotopyTime\in\UnitInterval$.
+By \eqref{eq:global-error},
+\[
+ \InterpolatingPseudometric_{\ComparisonCarrier,\FirstTime}
+       -\InterpolatingPseudometric_{\ComparisonCarrier,\HomotopyTime}
+ =(\FirstTime-\HomotopyTime)
+       (\ModelPseudometric_\ComparisonCarrier-\ComparisonMetric),
+\]
+and
+\[
+ \norm{\InterpolatingPseudometric_{\ComparisonCarrier,\FirstTime}
+       -\InterpolatingPseudometric_{\ComparisonCarrier,\HomotopyTime}}_\infty
+ =|\FirstTime-\HomotopyTime|
+       \ModelError\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}.
+\]
+Applying \eqref{eq:pseudometric-bound} on the common carrier
+$\ComparisonCarrier$,
+we obtain
+\[
+ \begin{aligned}
+ &\GHDistance\bigl(
+   \ApproximationHomotopy(\MetricSpace{\ComparisonCarrier}{\ComparisonMetric},\FirstTime),
+   \ApproximationHomotopy(\MetricSpace{\ComparisonCarrier}{\ComparisonMetric},\HomotopyTime)
+   \bigr)\\
+ &\qquad\leq\tfrac12
+       \norm{\InterpolatingPseudometric_{\ComparisonCarrier,\FirstTime}
+       -\InterpolatingPseudometric_{\ComparisonCarrier,\HomotopyTime}}_\infty
+  =\tfrac12|\FirstTime-\HomotopyTime|
+       \ModelError\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}.
+ \end{aligned}
+\]
+This is \eqref{eq:global-track-control}.
+Figure~\ref{fig:pseudometric-homotopy} illustrates the interpolation
+and the metric quotient at its endpoint.
+
+\input{figures/pseudometric-homotopy}
+
+\ProofSubstep{Continuity when the space and time both vary.}\label{step:global-homotopy-continuity}
+\paraid{p-f7c37d1cb847}
+Let
+\[
+ \MetricSpace{\ComparisonCarrier_\SequenceIndex}{\ComparisonMetric_\SequenceIndex}
+       \longrightarrow\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}
+       \quad\text{in }\GHSpace,
+\]
+and
+\[
+ \HomotopyTime_\SequenceIndex\longrightarrow\HomotopyTime
+       \quad\text{in }\UnitInterval.
+\]
+We prove that
+\[
+ \GHDistance\bigl(
+   \ApproximationHomotopy(
+       \MetricSpace{\ComparisonCarrier_\SequenceIndex}{\ComparisonMetric_\SequenceIndex},
+       \HomotopyTime_\SequenceIndex),
+   \ApproximationHomotopy(\MetricSpace{\ComparisonCarrier}{\ComparisonMetric},\HomotopyTime)
+   \bigr)\longrightarrow0.
+\]
+Use the correspondences
+$\Correspondence_\SequenceIndex$
+and the numbers
+$\AmbientDisplacement_\SequenceIndex,\FeatureDisplacement_\SequenceIndex\to0$
+from Step~\ref{step:global-continuity}.
+First
+we consider the case of
+$\HomotopyTime_\SequenceIndex=\HomotopyTime$.
+For
+$(\ComparisonPoint_\SequenceIndex,\ComparisonPoint),
+  (\IntegrationPoint_\SequenceIndex,\IntegrationPoint)\in\Correspondence_\SequenceIndex$,
+the estimates in Step~\ref{step:global-continuity} imply
+\[
+ \begin{aligned}
+ &\bigl|\InterpolatingPseudometric_{\ComparisonCarrier_\SequenceIndex,\HomotopyTime}
+       (\ComparisonPoint_\SequenceIndex,\IntegrationPoint_\SequenceIndex)
+       -\InterpolatingPseudometric_{\ComparisonCarrier,\HomotopyTime}
+       (\ComparisonPoint,\IntegrationPoint)\bigr|\\
+ &\qquad\leq(1-\HomotopyTime)
+       |\ComparisonMetric_\SequenceIndex(\ComparisonPoint_\SequenceIndex,\IntegrationPoint_\SequenceIndex)
+         -\ComparisonMetric(\ComparisonPoint,\IntegrationPoint)|
+       +\HomotopyTime
+       |\ModelPseudometric_{\ComparisonCarrier_\SequenceIndex}
+          (\ComparisonPoint_\SequenceIndex,\IntegrationPoint_\SequenceIndex)
+         -\ModelPseudometric_\ComparisonCarrier(\ComparisonPoint,\IntegrationPoint)|\\
+ &\qquad\leq2(1-\HomotopyTime)\AmbientDisplacement_\SequenceIndex
+       +2\HomotopyTime\FeatureDisplacement_\SequenceIndex.
+ \end{aligned}
+\]
+At
+$\HomotopyTime=1$,
+the induced pseudometrics may identify distinct points,
+and we use their metric quotients.
+\Cref{lem:pseudometric-comparison} therefore applies also at this endpoint and yields
+\begin{equation}\label{eq:fixed-time-homotopy-convergence}
+ \begin{aligned}
+ &\GHDistance\bigl(
+   \ApproximationHomotopy(
+       \MetricSpace{\ComparisonCarrier_\SequenceIndex}{\ComparisonMetric_\SequenceIndex},\HomotopyTime),
+   \ApproximationHomotopy(\MetricSpace{\ComparisonCarrier}{\ComparisonMetric},\HomotopyTime)
+   \bigr)\leq(1-\HomotopyTime)\AmbientDisplacement_\SequenceIndex
+       +\HomotopyTime\FeatureDisplacement_\SequenceIndex\longrightarrow0.
+ \end{aligned}
+\end{equation}
+
+\paraid{p-6a7506bb68e5}
+We combine the fixed-time convergence with the track estimate to compare the values at
+$\HomotopyTime_\SequenceIndex$
+and
+$\HomotopyTime$.
+The continuity
+of
+$\ModelError$
+proved in Step~\ref{step:global-continuity} implies
+\[
+ \ModelError\MetricSpace{\ComparisonCarrier_\SequenceIndex}{\ComparisonMetric_\SequenceIndex}
+       \longrightarrow\ModelError\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}.
+\]
+By the triangle inequality and \eqref{eq:global-track-control},
+\[
+ \begin{aligned}
+ &\GHDistance\bigl(
+   \ApproximationHomotopy(
+       \MetricSpace{\ComparisonCarrier_\SequenceIndex}{\ComparisonMetric_\SequenceIndex},
+       \HomotopyTime_\SequenceIndex),
+   \ApproximationHomotopy(\MetricSpace{\ComparisonCarrier}{\ComparisonMetric},\HomotopyTime)
+   \bigr)\\
+ &\qquad\leq\GHDistance\bigl(
+   \ApproximationHomotopy(
+       \MetricSpace{\ComparisonCarrier_\SequenceIndex}{\ComparisonMetric_\SequenceIndex},
+       \HomotopyTime_\SequenceIndex),
+   \ApproximationHomotopy(
+       \MetricSpace{\ComparisonCarrier_\SequenceIndex}{\ComparisonMetric_\SequenceIndex},\HomotopyTime)
+   \bigr)+\GHDistance\bigl(
+   \ApproximationHomotopy(
+       \MetricSpace{\ComparisonCarrier_\SequenceIndex}{\ComparisonMetric_\SequenceIndex},\HomotopyTime),
+   \ApproximationHomotopy(\MetricSpace{\ComparisonCarrier}{\ComparisonMetric},\HomotopyTime)
+   \bigr)\\
+ &\qquad\leq\tfrac12|\HomotopyTime_\SequenceIndex-\HomotopyTime|
+       \ModelError\MetricSpace{\ComparisonCarrier_\SequenceIndex}{\ComparisonMetric_\SequenceIndex}
+       +(1-\HomotopyTime)\AmbientDisplacement_\SequenceIndex
+       +\HomotopyTime\FeatureDisplacement_\SequenceIndex\longrightarrow0.
+ \end{aligned}
+\]
+Since
+$\GHSpace\times\UnitInterval$
+is metrizable,
+this proves continuity of
+$\ApproximationHomotopy\colon\GHSpace\times\UnitInterval\to\GHSpace$.
+\end{proof}

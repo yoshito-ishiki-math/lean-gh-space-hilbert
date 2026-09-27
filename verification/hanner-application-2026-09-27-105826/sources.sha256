@@ -1,0 +1,4 @@
+61b965cc9ff464862dc9f4f934ea2f89e1033e807f04636cfcc73fbd06c49e64  ../../../references/items/papers/hanner-1951-anr-domination/original/paper.pdf
+b57d2aad7634b55591ef718750f77ca0384dd0207539d428fec3dac4e42bc9b7  PaperN/PartII/HannerDomination.lean
+7494291d8c45ea8e878929631149d1a73cc33bff96817bc6e144a023662b8b44  PaperN/PartII/GlobalARDomination.lean
+c0b60dd303e6db5f1c0f7d450841f46468c3b05d5f6fef2a1e64d322eef76295  CheckHannerApplication.lean

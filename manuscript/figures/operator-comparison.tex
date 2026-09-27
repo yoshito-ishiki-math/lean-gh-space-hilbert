@@ -1,0 +1,24 @@
+\begin{figure}[H]
+\centering
+\begin{tikzcd}[column sep=large,row sep=large]
+ \ContinuousFunctions(\AmbientCarrier,\ComplexNumbers)
+ \arrow[r,"\CarrierAmbientOperator_\ComparisonCarrier"]
+ \arrow[d,"\RestrictionOperator_\ComparisonCarrier"'] &
+ \ContinuousFunctions(\AmbientCarrier,\ComplexNumbers)
+ \arrow[d,"\RestrictionOperator_\ComparisonCarrier"] \\
+ \LebesgueSpace^2(\ComparisonCarrier,\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric};\ComplexNumbers)
+ \arrow[r,"\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}"']
+ \arrow[ur,"\KernelExtensionOperator_\ComparisonCarrier" description] &
+ \LebesgueSpace^2(\ComparisonCarrier,\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric};\ComplexNumbers)
+\end{tikzcd}
+\caption{Restriction intertwines the ambient operator
+$\CarrierAmbientOperator_\ComparisonCarrier$
+and the distance operator
+$\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}$.
+The factorizations
+$\CarrierAmbientOperator_\ComparisonCarrier=\KernelExtensionOperator_\ComparisonCarrier\RestrictionOperator_\ComparisonCarrier$
+and
+$\DistanceOperator{\ComparisonCarrier}{\ComparisonMetric}=\RestrictionOperator_\ComparisonCarrier\KernelExtensionOperator_\ComparisonCarrier$
+explain the comparison of their nonzero spectral subspaces.}
+\label{fig:operator-comparison}
+\end{figure}

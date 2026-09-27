@@ -1,0 +1,93 @@
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Stealth,font=\small]
+\node at (0,1.6) {$\BaseCarrier$};
+\draw (0,0) ellipse (1.15 and 0.4);
+\fill (-0.55,0.04) circle (1.1pt);
+\fill (0.5,-0.12) circle (1.1pt);
+\fill (0.05,0.08) circle (1.5pt);
+\node[above,inner sep=3pt] at (0.05,0.08) {$\BasePoint$};
+\draw[->] (1.5,0) -- node[above]
+ {$\times\EquilateralCarrier_3$} (3.1,0);
+\node at (4.65,1.6) {$\BaseCarrier\times\EquilateralCarrier_3$};
+\fill[black!8] (4.5,-1.15) rectangle (4.9,1.3);
+\foreach \level/\index in {0.95/0,0/1,-0.95/2}
+{
+ \draw (4.65,\level) ellipse (1.15 and 0.4);
+ \fill (4.1,{\level+0.04}) circle (1.1pt);
+ \fill (5.15,{\level-0.12}) circle (1.1pt);
+ \fill (4.7,{\level+0.08}) circle (1.5pt);
+ \node[right] at (5.95,\level)
+  {$\BaseCarrier\times\{\index\}$};
+}
+\node[align=center] at (4.7,-1.95)
+ {$\{\BasePoint\}\times\EquilateralCarrier_3$\\
+  pairwise distance $\ProductScale$};
+\end{tikzpicture}
+\par\medskip
+\begin{tikzpicture}[
+ >=Stealth,
+ font=\small,
+ role/.style={draw,align=center,text width=3.4cm,
+              minimum height=2.1cm,inner sep=5pt,anchor=north}
+]
+\node at (4,0.9)
+ {$\MetricSpace{\ClosedDomain}{\SubspaceMetric}
+   =\ProductApproximation_{\EquilateralSize_{\FamilyIndex}}
+      \MetricSpace{\BaseCarrier}{\MetricSymbol},
+   \qquad
+   \ProductScale=\CoverScale\MetricSpace{\BaseCarrier}{\MetricSymbol}$};
+\node (formula) at (4,0)
+ {$\MetricSpace{\ClosedDomain}{\SubspaceMetric}
+   =\MetricSpace{\BaseCarrier\times\EquilateralCarrier_{\EquilateralSize_{\FamilyIndex}}}
+                {\MetricSymbol\vee\EquilateralMetric_{\EquilateralSize_{\FamilyIndex},\ProductScale}}$};
+\node[role] (approximation) at (0,-1.7)
+ {small scale $\ProductScale$\\
+  $\begin{gathered}
+    \GHDistance(\MetricSpace{\ClosedDomain}{\SubspaceMetric},
+                 \MetricSpace{\BaseCarrier}{\MetricSymbol})\\
+    \leq\ProductScale/2
+   \end{gathered}$\\
+  approximation};
+\node[role] (separation) at (4,-1.7)
+ {$\EquilateralSize_{\FamilyIndex}>\PackingBound_{\FamilyIndex}$\\
+  recursive choice\\
+  disjoint images};
+\node[role] (packing) at (8,-1.7)
+ {$\EquilateralSize_{\FamilyIndex}\to\infty$\\
+  positive scale bound\\
+  no accumulation};
+\draw[->,shorten <=2pt]
+ ([xshift=-1.8cm]formula.south) .. controls +(0,-0.55) and +(0,0.55) .. (approximation.north);
+\draw[->,shorten <=2pt]
+ (formula.south) -- (separation.north);
+\draw[->,shorten <=2pt]
+ ([xshift=1.8cm]formula.south) .. controls +(0,-0.55) and +(0,0.55) .. (packing.north);
+\end{tikzpicture}
+\caption{The upper diagram shows three copies of
+$\BaseCarrier$
+in a product with an equilateral space.
+The marked fiber has
+$\EquilateralSize$
+points at pairwise distance
+$\ProductScale$
+for a general factor
+$\EquilateralCarrier_\EquilateralSize$.
+The scales and cardinalities of the equilateral factors control the
+ discrete approximation.
+The bound
+$\PackingBound_{\FamilyIndex}$
+applies to subsets separated by
+$\ProductScale_{\FamilyIndex}/2$
+in the previously constructed images,
+where
+$\ProductScale_{\FamilyIndex}$
+is the minimum input scale in \eqref{eq:minimum-product-scale}.
+The recursive choice \eqref{eq:equilateral-cardinality-choice}
+separates the images.
+Along a convergent sequence of approximating spaces,
+the scales have a positive lower bound,
+so the divergence of the cardinalities contradicts
+Corollary~\ref{cor:uniform-separated-sets}.}
+\label{fig:discrete-approximation}
+\end{figure}

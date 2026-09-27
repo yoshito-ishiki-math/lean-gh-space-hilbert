@@ -1,0 +1,26 @@
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Stealth,node distance=9mm,font=\small]
+\node (law) {$\LawSection\MetricSpace{\BaseCarrier}{\MetricSymbol}
+ \in\ProbabilityMeasures(\MeasureFiber{\BaseCarrier})$};
+\node[below=of law] (transport) {$
+ (\FiberMeasureMap{\BaseCarrier})_*\LawSection\MetricSpace{\BaseCarrier}{\MetricSymbol}
+ \in\ProbabilityMeasures(\ProbabilityMeasures(\BaseCarrier))$};
+\node[below=of transport] (average) {$
+ \SelectedMeasure{\BaseCarrier}{\MetricSymbol}\in\ProbabilityMeasures(\BaseCarrier)$};
+\draw[->] (law) -- node[right]{transport by $\FiberMeasureMap{\BaseCarrier}$} (transport);
+\draw[->] (transport) -- node[right]{average} (average);
+\end{tikzpicture}
+\caption{For a fixed representative
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$,
+the law
+$\LawSection\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+on the fiber
+$\MeasureFiber{\BaseCarrier}$
+is transported to a law on
+$\ProbabilityMeasures(\BaseCarrier)$.
+The averaged measure
+$\SelectedMeasure{\BaseCarrier}{\MetricSymbol}$
+is defined by \eqref{eq:average-functional} and \eqref{eq:measure-barycenter}.}
+\label{fig:measure-average}
+\end{figure}

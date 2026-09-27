@@ -1,0 +1,40 @@
+\subsection{A characterization of Hilbert space}\label{subsec:hilbert-preliminaries-recognition}
+\paraid{p-a8af9823b28c}
+We use the following characterization of Hilbert space.
+It is Toru\'nczyk's theorem
+\cite[p.~248, condition~(i)]{Torunczyk1981},
+with its correction
+\cite[Section~C]{Torunczyk1985}.
+
+\begin{theorem}[{Toru\'nczyk, \cite[p.~248, condition~(i)]{Torunczyk1981}, \cite[Section~C]{Torunczyk1985}}]\label{thm:torunczyk}
+\paraid{p-e19e6ccab7f7}
+Let
+$\MetricSpace{\RecognitionTarget }{\TargetMetric }$
+be a nonempty complete separable metric AR,
+and let
+$\HilbertCube =\UnitInterval^{\NonnegativeIntegers}$
+be the Hilbert cube.
+Equip
+$\NonnegativeIntegers$
+with the discrete topology.
+Then
+$\RecognitionTarget $
+is homeomorphic to the real Hilbert space
+$\SeparableHilbertSpace$
+if and only if,
+for every continuous map
+$\InputMap \colon \NonnegativeIntegers\times \HilbertCube \to \RecognitionTarget $
+and every open cover
+$\OpenCover$
+of
+$\RecognitionTarget $,
+there exists a continuous map
+$\ApproximatingMap \colon \NonnegativeIntegers\times \HilbertCube \to \RecognitionTarget $
+that is
+$\OpenCover$-close to
+$\InputMap$
+and whose image family
+$\{\ApproximatingMap (\{\FamilyIndex \}\times \HilbertCube )\}_{\FamilyIndex \in\NonnegativeIntegers}$
+is discrete in
+$\RecognitionTarget $.
+\end{theorem}

@@ -1,0 +1,62 @@
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Stealth,font=\small]
+\node at (0,1.65)
+ {$(\FeatureCoordinates,\NormSymbol)$};
+\node at (5.8,1.65)
+ {$(\OrthogonalChange\circ\FeatureCoordinates,
+     \NormSymbol\circ\OrthogonalChange^{-1})$};
+\begin{scope}
+ \filldraw[fill=black!4] (0,0) ellipse (1.45 and 0.88);
+ \draw[->,black!35] (-1.8,0) -- (1.8,0);
+ \draw[->,black!35] (0,-1.15) -- (0,1.2);
+ \foreach \x/\y in {-0.8/-0.3,-0.55/0.42,0.12/-0.55,0.48/0.3,0.92/-0.15}
+  \fill (\x,\y) circle (1.4pt);
+ \draw[black!55] (0.48,0.3) -- (0.85,1.03);
+ \node at (0.85,1.25)
+  {$\FeatureCoordinates(\ComparisonPoint)$};
+ \draw[black!55] (-0.8,-0.3) -- (-0.95,-0.9);
+ \node at (-0.95,-1.12)
+  {$\FeatureCoordinates(\IntegrationPoint)$};
+\end{scope}
+\begin{scope}[xshift=5.8cm]
+ \begin{scope}[rotate=30]
+  \filldraw[fill=black!4] (0,0) ellipse (1.45 and 0.88);
+ \end{scope}
+ \draw[->,black!35] (-1.8,0) -- (1.8,0);
+ \draw[->,black!35] (0,-1.15) -- (0,1.2);
+ \begin{scope}[rotate=30]
+  \foreach \x/\y in {-0.8/-0.3,-0.55/0.42,0.12/-0.55,0.48/0.3,0.92/-0.15}
+   \fill (\x,\y) circle (1.4pt);
+  \coordinate (rotatedy) at (0.48,0.3);
+  \coordinate (rotatedz) at (-0.8,-0.3);
+ \end{scope}
+ \draw[black!55] (rotatedy) -- (0.4,1.03);
+ \node at (0.4,1.25)
+  {$\OrthogonalChange\FeatureCoordinates(\ComparisonPoint)$};
+ \draw[black!55] (rotatedz) -- (-1,-0.92);
+ \node at (-1,-1.14)
+  {$\OrthogonalChange\FeatureCoordinates(\IntegrationPoint)$};
+\end{scope}
+\draw[->] (2.05,0.15) -- node[above]
+ {$\OrthogonalChange\in\OrthogonalGroup(2)$} (3.75,0.15);
+\node at (0,-1.55)
+ {$\{\FirstVector\mid\NormSymbol(\FirstVector)\leq1\}$};
+\node at (5.8,-1.55)
+ {$\{\FirstVector\mid
+     (\NormSymbol\circ\OrthogonalChange^{-1})(\FirstVector)\leq1\}$};
+\node at (2.9,-2.35)
+ {$(\NormSymbol\circ\OrthogonalChange^{-1})
+     \bigl(\OrthogonalChange\FeatureCoordinates(\ComparisonPoint)
+           -\OrthogonalChange\FeatureCoordinates(\IntegrationPoint)\bigr)
+   =\NormSymbol\bigl(\FeatureCoordinates(\ComparisonPoint)
+                     -\FeatureCoordinates(\IntegrationPoint)\bigr)$};
+\end{tikzpicture}
+\caption{An orthogonal change of coordinates acts on both the coordinate
+image and the norm unit ball.
+The dots represent a finite coordinate image in dimension
+$2$,
+and the shaded regions represent the two unit balls.
+Their simultaneous rotation leaves the induced pseudometric unchanged.}
+\label{fig:orthogonal-coordinate-change}
+\end{figure}

@@ -1,0 +1,209 @@
+\paraid{p-96eb53c66867}
+In Part~\ref{part:topology},
+we proved that the Gromov--Hausdorff space
+is an absolute retract.
+We now prove the discrete approximation property needed to identify
+this space with Hilbert space.
+Let
+$\GHSpace$
+denote the space of isometry classes of nonempty compact metric spaces
+with the ordinary unpointed Gromov--Hausdorff distance
+$\GHDistance$.
+Antonyan asks whether
+$\GHSpace$
+is homeomorphic to the separable
+infinite-dimensional Hilbert space
+\cite[p.~2]{Antonyan2020Euclidean}.
+For each positive integer
+$\FiniteSize $,
+Antonyan identifies the subspace represented by compact subsets of
+$\RealNumbers^\FiniteSize $
+with the Hilbert cube minus a point
+\cite[Corollary~5.3]{Antonyan2021Euclidean}.
+
+\paraid{p-707b7043674a}
+Previous work has explored the topology of $\GHSpace$ through explicit
+families and embeddings.
+The author constructed families of branching Gromov--Hausdorff geodesics
+continuously parametrized by the Hilbert cube
+\cite[Theorem~1.3]{Ishiki2022Branching}.
+The author also constructed topological embeddings of arbitrary compact metrizable
+spaces into the subsets of
+$\GHSpace$
+consisting of continua
+\cite[Theorem~1.1]{Ishiki2022Continua},
+spaces with prescribed dimensions
+\cite[Theorem~1.3]{Ishiki2023FractalDimensions},
+and compact metric trees
+\cite[Theorem~1.1]{Ishiki2023MetricTrees}.
+In each construction,
+finitely many distinct values of the embedding may be prescribed.
+Byakuno
+\cite[arXiv v1, Corollary~1.4]{Byakuno2026Embedding}
+proves that countable products of closed intervals with positive summable lengths,
+equipped with the supremum metric,
+admit isometric embeddings into
+$\GHSpace$.
+
+\paraid{p-1084d3b137e6}
+We also recall the dimension of the subspace of finite metric spaces.
+Nakajima,
+Yamauchi,
+and Zava
+\cite[arXiv v1, Theorem~A]{NakajimaYamauchiZava2025}
+prove that the subspace of spaces with at most
+$\FiniteSize$
+points has topological dimension
+$\FiniteSize(\FiniteSize-1)/2$.
+Nakajima and Shioya
+\cite[arXiv v1, Main Theorem~1.2]{NakajimaShioyaCompactification}
+construct a compact metrizable space containing a dense topological copy of
+$\GHSpace$.
+
+\paraid{p-c46ed027b219}
+A related Hilbert space classification concerns the Urysohn universal
+metric space.
+Uspenskij
+\cite[arXiv v1, Theorem~2.1]{Uspenskij2004Urysohn}
+proves that this space is homeomorphic to
+$\SeparableHilbertSpace$.
+
+\paraid{p-6d7aa84e3e0d}
+Our approximation theorem concerns a countable family of prescribed maps
+from compact metrizable domains.
+We approximate all these maps so that every point of
+$\GHSpace$
+has a neighborhood meeting at most one of their images.
+The construction uses products with finite equilateral spaces,
+independently of Parts~\ref{part:measures}--\ref{part:topology}.
+We combine this discrete approximation with the absolute retract property
+to prove the following theorem.
+
+\begin{theorem}\label{thm:part-iv-main}
+\paraid{p-13f85da9e5b7}
+The space
+$\GHSpace$
+is homeomorphic to the real Hilbert space
+$\SeparableHilbertSpace$.
+\end{theorem}
+
+\paraid{p-add73a912728}
+The classification concerns only topology and does not preserve the geometric
+information carried by the Gromov--Hausdorff distance.
+Ivanov and Tuzhilin
+\cite[Main Theorem]{IvanovTuzhilin2019Isometries}
+prove that every surjective isometry from
+$\GHSpace$ to itself
+is the identity.
+Zava
+\cite[arXiv v3, Theorem~B]{Zava2025Coarse}
+proves that the subspace of finite metric spaces cannot be coarsely
+embedded into any Hilbert space.
+Consequently,
+a homeomorphism in \Cref{thm:part-iv-main} cannot be bi-Lipschitz.
+
+\paraid{p-60f77024d745}
+For a sequence of compact metrizable domains
+$\{\ApproximationDomain_\FamilyIndex\}_{\FamilyIndex\in\NonnegativeIntegers}$,
+continuous maps
+$\InputMap_\FamilyIndex\colon\ApproximationDomain_\FamilyIndex\to\GHSpace$,
+and an open cover
+$\OpenCover$
+of
+$\GHSpace$,
+we construct continuous maps
+$\ApproximatingMap_\FamilyIndex\colon\ApproximationDomain_\FamilyIndex\to\GHSpace$
+such that
+\[
+ \forall\FamilyIndex\in\NonnegativeIntegers\
+ \forall\DomainPoint\in\ApproximationDomain_\FamilyIndex\
+ \exists U\in\OpenCover,\qquad
+ \{\InputMap_\FamilyIndex(\DomainPoint),
+   \ApproximatingMap_\FamilyIndex(\DomainPoint)\}\subset U,
+\]
+and
+\[
+ \{\ApproximatingMap_\FamilyIndex(\ApproximationDomain_\FamilyIndex)
+   \}_{\FamilyIndex\in\NonnegativeIntegers}
+ \text{ is discrete in }\GHSpace.
+\]
+The first condition means that the maps are
+$\OpenCover$-close.
+The second means that every point of
+$\GHSpace$
+has a neighborhood meeting at most one image.
+This is \Cref{thm:discrete-approximation}.
+Taking
+$\ApproximationDomain_\FamilyIndex=\HilbertCube
+ =\UnitInterval^{\NonnegativeIntegers}$
+for every
+$\FamilyIndex$
+yields the approximation
+condition in Toru\'nczyk's characterization,
+stated in \Cref{thm:torunczyk}
+and taken from
+\cite[p.~248, assertion~(i)]{Torunczyk1981},
+with the correction in
+\cite[Section~C]{Torunczyk1985}.
+Together with completeness,
+separability,
+and the absolute retract property,
+this condition proves \Cref{thm:part-iv-main}.
+
+\paraid{p-01c02735fab9}
+The main theorem also implies that every point has a basis of open neighborhoods
+that strongly deformation retract onto that point.
+We do not know whether these neighborhoods can be chosen to be balls for
+$\GHDistance$.
+
+\medskip
+\noindent\textbf{Dependence on the other parts.}
+\paraid{p-518fca37991d}
+\Cref{thm:discrete-approximation} uses the common preliminaries
+and the metric constructions recalled in Section~\ref{sec:prelim-hilbert}.
+The absolute retract result \Cref{thm:part-iii-main} enters only when we
+apply Toru\'nczyk's characterization in
+Subsection~\ref{subsec:approximation-hilbert-recognition}.
+Thus the proof of the classification combines the approximation in this
+part with the result of Parts~\ref{part:measures}--\ref{part:topology}.
+
+\medskip
+\noindent\textbf{Organization.}
+\paraid{p-c7e99d59b5f0}
+In Section~\ref{sec:prelim-hilbert},
+we define discrete families and state the Hilbert space characterization.
+In Subsection~\ref{subsec:approximation-products},
+we recall the Gromov--Hausdorff estimate for metric products.
+In Subsection~\ref{subsec:approximation-discrete},
+we construct approximations of maps from countably many
+compact domains whose images form a discrete family,
+proving \Cref{thm:discrete-approximation}.
+In Subsection~\ref{subsec:approximation-hilbert-recognition},
+we apply Toru\'nczyk's characterization to prove
+\Cref{thm:part-iv-main} and obtain strong local contractions.
+In \Cref{sec:questions},
+we conclude with questions about related spaces
+and the geometry of Gromov--Hausdorff balls.
+
+\medskip
+\noindent\textbf{Conventions and notation.}
+\paraid{p-bb6d5f435441}
+All compact metric spaces are nonempty,
+and Banach and Hilbert spaces are real.
+We identify compact metric spaces with their isometry classes in
+$\GHSpace$.
+An isometry is a surjective isometric embedding.
+For a metric space
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$,
+we write
+$\CompactHyperspace(\BaseCarrier)$
+for its nonempty compact subsets,
+equipped with the Hausdorff metric
+$\HausdorffDistance{\MetricSymbol}$.
+For a compact space with an isometric embedding into an ambient metric space,
+we identify the compact space with its image and use the restricted ambient metric.
+The notation
+$\IdentityMap$
+denotes the identity map on its specified domain.
+Sequences are indexed by
+$\NonnegativeIntegers=\{0,1,2,\ldots\}$.

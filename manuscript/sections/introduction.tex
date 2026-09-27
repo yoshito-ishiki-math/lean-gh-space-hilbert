@@ -1,0 +1,733 @@
+\paraid{p-a26667c35d82}
+The Gromov--Hausdorff distance
+$\GHDistance$
+quantifies the difference in shape between
+two compact metric spaces.
+Let
+$\GHSpace$
+denote the space of isometry classes of nonempty compact metric spaces,
+equipped with the Gromov--Hausdorff distance
+$\GHDistance$.
+We call
+the space
+$(\GHSpace, \GHDistance)$
+the \emph{Gromov--Hausdorff space}.
+Antonyan
+\cite[p.~2]{Antonyan2020Euclidean}
+asked whether
+$\GHSpace$
+ is homeomorphic to
+$\SeparableHilbertSpace$.
+We answer this question affirmatively by proving the following classification.
+
+\begin{theorem}[\Cref{thm:part-iv-main}]\label{thm:main}
+\paraid{p-f4cb7088c681}
+The space
+$\GHSpace$
+is homeomorphic to the Hilbert space
+$\SeparableHilbertSpace$.
+\end{theorem}
+
+\paraid{p-414311e7f43d}
+Zava
+\cite[arXiv v3, Theorem~B]{Zava2025Coarse}
+proves that the subspace of
+$\GHSpace$
+consisting of finite metric spaces cannot be coarsely embedded into any
+Hilbert space.
+In particular,
+no homeomorphism in \Cref{thm:main} can be bi-Lipschitz.
+
+\medskip
+\noindent\textbf{Related work.}
+\paraid{p-fb73239bb9f0}
+For comparison with \Cref{thm:main},
+we first recall a classification of subspaces of
+$\GHSpace$.
+For each positive integer
+$\FiniteSize $,
+Antonyan identifies the subspace of
+$\GHSpace$
+represented by compact subsets of
+$\RealNumbers^\FiniteSize $
+with the Hilbert cube minus a point
+\cite[Corollary~5.3]{Antonyan2021Euclidean}.
+
+\paraid{p-31fbde650eca}
+Geodesics and optimal correspondences describe the metric structure
+underlying our topological classification of
+$\GHSpace$.
+Ivanov,
+Nikolaeva,
+and Tuzhilin
+\cite[arXiv v1, Theorem~1]{IvanovNikolaevaTuzhilin2015}
+prove that any two points of
+$\GHSpace$
+can be joined by a geodesic.
+Ivanov,
+Iliadis,
+and Tuzhilin
+\cite[arXiv v1, Theorem~2.6 and Corollary~2.7]{IvanovIliadisTuzhilin2016}
+prove the existence of optimal correspondences between compact metric spaces
+and use them to attain the Gromov--Hausdorff distance as the Hausdorff distance
+between isometric copies in a common metric space.
+A further point of comparison for our classification by homeomorphisms
+is rigidity under surjective isometries.
+Ivanov and Tuzhilin
+\cite[Main Theorem]{IvanovTuzhilin2019Isometries}
+prove that every surjective isometry of
+$\GHSpace$
+is the identity.
+Tuzhilin surveys Hausdorff and Gromov--Hausdorff distance geometry in
+\cite{Tuzhilin2020}.
+
+\paraid{p-9f8f911356f3}
+Earlier work studies the topology of
+$\GHSpace$
+through continuous families and embedded compact spaces.
+Our result identifies the topological type of
+$\GHSpace$
+itself.
+The author constructed families of branching Gromov--Hausdorff geodesics
+continuously parametrized by the Hilbert cube
+\cite[Theorem~1.3]{Ishiki2022Branching}.
+The author also constructed topological embeddings of arbitrary compact metrizable
+spaces into the subspaces of
+$\GHSpace$
+consisting of continua
+\cite[Theorem~1.1]{Ishiki2022Continua},
+spaces with prescribed dimensions
+\cite[Theorem~1.3]{Ishiki2023FractalDimensions},
+and compact metric trees
+\cite[Theorem~1.1]{Ishiki2023MetricTrees}.
+In each case,
+the embeddings can be chosen with finitely many distinct prescribed values.
+Byakuno
+\cite[arXiv v1, Corollary~1.4]{Byakuno2026Embedding}
+proves that countable products of closed intervals with positive summable lengths,
+equipped with the supremum metric,
+admit isometric embeddings into
+$\GHSpace$.
+
+\paraid{p-6f8cb7cfa910}
+For comparison with our classification of the full space
+$\GHSpace$,
+we recall local descriptions and dimension formulas for its subspaces
+of finite metric spaces.
+Iliadis,
+Ivanov,
+and Tuzhilin
+\cite[arXiv v1, Theorem~4.1]{IliadisIvanovTuzhilin2017Local}
+prove that sufficiently small neighborhoods of generic finite metric spaces,
+within the subspace of spaces with the same number of points,
+are isometric to open subsets of a finite-dimensional space with the maximum norm.
+Here generic means that the nonzero distances are pairwise distinct
+and all triangle inequalities involving three distinct points are strict.
+Nakajima,
+Yamauchi,
+and Zava
+\cite[arXiv v1, Theorem~A]{NakajimaYamauchiZava2025}
+prove that the subspace of spaces with at most
+$\FiniteSize$
+points has topological dimension
+$\FiniteSize(\FiniteSize-1)/2$.
+A complementary approach to the global topology of
+$\GHSpace$
+studies its compactifications.
+Nakajima and Shioya
+\cite[arXiv v1, Main Theorem~1.2]{NakajimaShioyaCompactification}
+construct a compact metrizable space containing a dense topological copy of
+$\GHSpace$.
+
+\paraid{p-d8629ae38ad9}
+Part~\ref{part:measures} selects probability measures continuously over
+$\GHSpace$.
+Topological results for metric measure spaces provide a comparison when
+the measure is included as part of the data.
+Kazukawa,
+Nakajima,
+and Shioya
+\cite[arXiv v1, Theorems~1.4--1.6]{KazukawaNakajimaShioya2024}
+prove that the space of metric measure spaces is contractible and locally
+path connected both in the box topology and in the concentration topology.
+Our classification concerns compact metric spaces.
+An extension of the Gromov--Hausdorff framework treats noncomplete spaces
+together with their boundary.
+Shibahara
+\cite[arXiv v1, Definition~3.2 and Theorem~1.1]{Shibahara2021Boundary}
+introduces a Gromov--Hausdorff metric with boundary on the isometry classes
+of noncomplete precompact locally compact metric spaces.
+The boundary is the complement of the space in its metric completion.
+Our local models in Part~\ref{part:spectral} keep track of isometries
+between representatives.
+Isometries between individual spaces are also retained by the moduli stack
+used by
+Yuji
+\cite[arXiv v2, Definition~5.1]{Yuji2026ModuliStack}
+to study families of compact metric spaces.
+
+
+\paraid{p-86969a2d1c01}
+Part~\ref{part:topology} studies
+$\GHSpace$
+as a global analogue of a hyperspace with a fixed ambient metric space.
+The link between these two settings also appears in the study of geodesics.
+M\'emoli and Wan
+\cite[arXiv v2, Theorem~1]{MemoliWan2023}
+prove that every Gromov--Hausdorff geodesic can be realized as a Hausdorff
+geodesic of compact subsets of one compact metric space.
+For comparison with our absolute retract theorem,
+we recall the case of compact subsets of a fixed Banach space.
+Curtis
+\cite[Theorem~1.6]{Curtis1980}
+proves,
+in particular,
+that the hyperspace of nonempty compact subsets of a Banach space,
+equipped with the Hausdorff metric of its norm,
+is an absolute retract.
+We construct approximations to the identity of
+$\GHSpace$
+using quotients of hyperspaces of nonempty compact subsets of Banach spaces
+by compact groups.
+
+\paraid{p-5f89de56c669}
+Our use of Toru\'nczyk's characterization in Part~\ref{part:hilbert}
+has a precedent in the study of the Urysohn universal metric space.
+In the early twenty-first century,
+Uspenskij
+\cite[arXiv v1, Theorem~2.1]{Uspenskij2004Urysohn}
+proved that this space is homeomorphic to
+$\SeparableHilbertSpace$.
+The Urysohn space is the complete separable metric space that contains
+an isometric copy of every separable metric space and in which every isometry
+between finite subsets extends to a surjective isometry of the whole space.
+
+
+\medskip
+\noindent\textbf{Proof strategy and the four parts.}
+\paraid{p-ce4b777e5ddb}
+We first prove that
+$\GHSpace$
+is an absolute retract for metrizable spaces.
+We approximate a sequence of maps from compact metrizable domains so that
+the images of the approximating maps form a discrete family.
+Since
+$\GHSpace$
+is complete and separable,
+the absolute retract property and the discrete approximation property
+imply \Cref{thm:main} by Toru\'nczyk's characterization
+\cite[p.~248, assertion~(i)]{Torunczyk1981},
+using the correction in
+\cite[Section~C]{Torunczyk1985}.
+In Parts~\ref{part:measures}--\ref{part:topology},
+we construct the approximations needed for the absolute retract property.
+The discrete approximation argument in Part~\ref{part:hilbert}
+uses only the common preliminaries and its own metric constructions.
+Figure~\ref{fig:proof-strategy}
+shows how these two arguments combine to prove the classification.
+
+\paraid{p-69b86b1ef543}
+A difficulty in the absolute retract argument is that the isometry group
+depends on the compact metric space.
+Rouyer's results on generic compact metric spaces
+\cite[arXiv v1, Theorems~2 and~4]{Rouyer2011}
+imply that
+\[
+ \overline{
+ \{\MetricSpace{\BaseCarrier}{\MetricSymbol}\in\GHSpace
+   \mid\Isom\MetricSpace{\BaseCarrier}{\MetricSymbol}
+      =\{\IdentityMap_\BaseCarrier\}\}
+ }=\GHSpace.
+\]
+This also implies that the assignment of isometry groups
+with their uniform metrics is discontinuous as a map from
+$\GHSpace$
+to itself.
+Our construction must also handle spaces with nontrivial isometry groups.
+On each model neighborhood,
+we construct homomorphisms from the varying isometry groups into one fixed
+orthogonal group so that the local point maps are equivariant.
+We then use a partition of unity to combine the local point maps in a Banach space.
+A countable product of orthogonal groups acts on this Banach space.
+Passing to the orbit space of nonempty compact subsets of this Banach space
+makes the resulting approximation independent of all coordinate choices.
+
+\medskip
+\noindent\textbf{Part~\ref{part:measures}.
+Continuous invariant probability measures.}
+\paraid{p-b0e31260869e}
+In the first part,
+we construct measures for integration on varying compact spaces.
+The main result of this part,
+\Cref{thm:invariant-measures},
+assigns a Borel probability measure
+$\SelectedMeasure{\BaseCarrier}{\MetricSymbol}$
+to every nonempty compact metric space
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$.
+Each assigned measure has full support,
+\[
+ \supp(\SelectedMeasure{\BaseCarrier}{\MetricSymbol})=\BaseCarrier.
+\]
+For every isometry
+$\IdentifyingIsometry\colon
+\MetricSpace{\BaseCarrier}{\MetricSymbol}\to
+\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$,
+the assignment satisfies
+\[
+ \IdentifyingIsometry\Pushforward\SelectedMeasure{\BaseCarrier}{\MetricSymbol}
+ =\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric}.
+\]
+The assignment of measures is also continuous in the following sense.
+If compact subspaces
+$\BaseCarrier_\SequenceIndex$
+and
+$\BaseCarrier$
+of a compact metric space
+$\MetricSpace{\AmbientCarrier}{\AmbientMetric}$
+carry the restricted metrics
+$\MetricSymbol_\SequenceIndex$
+and
+$\MetricSymbol$,
+then
+\[
+ \HausdorffDistance{\AmbientMetric}(\BaseCarrier_\SequenceIndex,\BaseCarrier)\to0
+ \quad\Longrightarrow\quad
+ \SelectedMeasure{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex}
+ \to\SelectedMeasure{\BaseCarrier}{\MetricSymbol}
+ \quad\text{weakly in }\ProbabilityMeasures(\AmbientCarrier).
+\]
+Here the measures are regarded as probabilities on the common ambient space.
+
+\paraid{p-968906a0f31d}
+For a fixed compact space,
+averaging over its isometry group produces an invariant probability measure.
+Our construction must also preserve continuity when the space varies.
+To construct such measures,
+we prove that the space of invariant full-support measured compact spaces
+is Polish and that the map that forgets the measure is an open surjection
+onto
+$\GHSpace$.
+By Valov's theorem (\Cref{thm:valov}),
+we obtain continuous probability laws on its fibers.
+Averaging these laws produces the selected measures.
+We use full support and continuity in the spectral approximation of
+Part~\ref{part:spectral}.
+
+\medskip
+\noindent\textbf{Part~\ref{part:spectral}.
+Continuous finite-dimensional approximation.}
+\paraid{p-16a5923a2a64}
+In the second part,
+we replace distance functions by finite-dimensional data while controlling
+all pairwise distances.
+The main result of this part is \Cref{thm:local-models}.
+For every
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}\in\GHSpace$
+and every
+$\LocalTolerance>0$,
+we obtain a neighborhood
+$\ModelNeighborhood$
+of
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+and an integer
+$\ModelDimension\geq1$
+with the following property.
+For each compact metric space
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$
+whose isometry class belongs to
+$\ModelNeighborhood$,
+we construct a norm
+$\NormSymbol_\ComparisonCarrier$
+on
+$\RealNumbers^\ModelDimension$
+and a continuous map
+$\FeatureCoordinates_\ComparisonCarrier\colon
+\ComparisonCarrier\to\RealNumbers^\ModelDimension$.
+For every
+$\ComparisonPoint,\IntegrationPoint\in\ComparisonCarrier$,
+define the induced pseudometric by
+\[
+ \Pseudometric_\ComparisonCarrier(\ComparisonPoint,\IntegrationPoint)
+ =
+ \NormSymbol_\ComparisonCarrier
+ \bigl(\FeatureCoordinates_\ComparisonCarrier(\ComparisonPoint)
+       -\FeatureCoordinates_\ComparisonCarrier(\IntegrationPoint)\bigr).
+\]
+After shrinking
+$\ModelNeighborhood$,
+we obtain
+\[
+ \sup_{\ComparisonPoint,\IntegrationPoint\in\ComparisonCarrier}
+ \bigl|\Pseudometric_\ComparisonCarrier(\ComparisonPoint,\IntegrationPoint)
+       -\ComparisonMetric(\ComparisonPoint,\IntegrationPoint)\bigr|
+ <\LocalTolerance.
+\]
+The dimension
+$\ModelDimension$
+is fixed on
+$\ModelNeighborhood$,
+but may depend on the center
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+and the error scale
+$\LocalTolerance$.
+The norms
+$\NormSymbol_\ComparisonCarrier$
+and point maps
+$\FeatureCoordinates_\ComparisonCarrier\colon
+\ComparisonCarrier\to\RealNumbers^\ModelDimension$
+vary continuously up to changes of coordinates in
+$\OrthogonalGroup(\ModelDimension)$
+in the sense of
+\Cref{thm:local-models}\ref{item:model-continuity}.
+Each isometry group
+$\Isom\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$
+acts on the coordinate image
+$\FeatureCoordinates_\ComparisonCarrier(\ComparisonCarrier)
+\subset\RealNumbers^\ModelDimension$
+through a continuous homomorphism
+\[
+ \IsometryRepresentation{\ComparisonCarrier}{\ComparisonMetric}
+ \colon\Isom\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}
+ \to\OrthogonalGroup(\ModelDimension).
+\]
+For every
+$\FirstIsometry\in\Isom\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$,
+it satisfies
+\[
+ \FeatureCoordinates_\ComparisonCarrier\circ\FirstIsometry
+ =\IsometryRepresentation{\ComparisonCarrier}{\ComparisonMetric}(\FirstIsometry)
+  \circ\FeatureCoordinates_\ComparisonCarrier,
+ \qquad
+ \NormSymbol_\ComparisonCarrier
+  \circ\IsometryRepresentation{\ComparisonCarrier}{\ComparisonMetric}(\FirstIsometry)
+ =\NormSymbol_\ComparisonCarrier
+\]
+by Remark~\ref{rem:local-isometry-representation}.
+Thus the induced pseudometrics
+$\Pseudometric_\ComparisonCarrier$
+respect isometries while the coordinate changes take place in the fixed
+compact group
+$\OrthogonalGroup(\ModelDimension)$.
+
+\paraid{p-458636bfa314}
+To construct $\ModelNeighborhood$, we use the measures of Part~\ref{part:measures}
+to define the distance operator
+$\DistanceOperator{\BaseCarrier}{\MetricSymbol}$
+on
+$\LebesgueSpace^2(\BaseCarrier,\SelectedMeasure{\BaseCarrier}{\MetricSymbol})$.
+For every
+$f\in\LebesgueSpace^2(\BaseCarrier,\SelectedMeasure{\BaseCarrier}{\MetricSymbol})$
+and
+$\BasePoint\in\BaseCarrier$,
+set
+\[
+ (\DistanceOperator{\BaseCarrier}{\MetricSymbol}f)(\BasePoint)
+ =\int_\BaseCarrier
+   \MetricSymbol(\BasePoint,\IntegrationPoint)f(\IntegrationPoint)
+   \,\IntegrationDifferential
+   \SelectedMeasure{\BaseCarrier}{\MetricSymbol}(\IntegrationPoint).
+\]
+These operators and their spectral coordinates were studied by Maria,
+Oudot,
+and Solomon
+\cite[Section~3]{MariaOudotSolomon2020}.
+Finite spectral subspaces of the distance operators approximate the distance
+functions.
+For our local models,
+we choose the unique best approximations in
+$\LebesgueSpace^\IntegrabilityExponent$
+for a finite exponent
+$2\leq\IntegrabilityExponent<\infty$
+chosen to achieve the error bound at the center in
+\ref{item:model-center-error} of \Cref{thm:local-models}.
+We keep whole eigenspaces to handle eigenvalue multiplicities by orthogonal
+changes of basis.
+We retain both the compact coordinate image and its norm for the
+construction in Part~\ref{part:topology}.
+We expect this approach to provide a bridge between the study of the
+Gromov--Hausdorff space and geometric analysis or spectral geometry.
+
+\paraid{p-24f2b5c3820e}
+By \cite[Theorem~1.1]{Ishiki2026Interpolation},
+we obtain a uniform error bound when extending prescribed metrics from a
+discrete family of closed subsets of a fixed metrizable space.
+The absolute retract argument here uses approximations of metrics on varying
+compact spaces whose coordinate pairs satisfy the convergence conditions in
+\ref{item:model-continuity} of \Cref{thm:local-models}.
+
+\medskip
+\noindent\textbf{Part~\ref{part:topology}.
+The absolute retract property.}
+\paraid{p-159ea0252542}
+In \Cref{thm:part-iii-main},
+the main result of the third part,
+we prove that
+$\GHSpace$
+is an absolute retract for all metrizable spaces.
+In \Cref{thm:absolute-extensor},
+we prove that
+$\GHSpace$
+is an absolute extensor for all metrizable spaces.
+
+\paraid{p-02e057f0dca4}
+Fix a continuous function
+$\ErrorControl\colon\GHSpace\to(0,\infty)$.
+We choose a countable locally finite cover by local models whose errors
+are less than
+$\ErrorControl$
+throughout their domains.
+For each model index
+$\CoverIndex\in\NonnegativeIntegers$,
+let
+$\ModelDimension_\CoverIndex$
+be the model dimension.
+We represent the varying norms isometrically in fixed Banach spaces
+and combine the point maps by a partition of unity in their
+$\SummableNorm$-sum,
+a separable Banach space
+$\BanachAmbientSpace$.
+The norm representation respects orthogonal changes of coordinates
+(\Cref{lem:dual-representation,lem:dual-representation-equivariance}).
+The compact group
+\[
+ \ActingGroup
+ =\prod_{\CoverIndex\in\NonnegativeIntegers}
+   \OrthogonalGroup(\ModelDimension_\CoverIndex)
+\]
+acts continuously on
+$\BanachAmbientSpace$
+by linear isometries.
+Passing to the orbit of each compact coordinate image removes the
+choices of bases and isometric representatives.
+The orbit space
+$\AuxiliaryAR=\CompactHyperspace(\BanachAmbientSpace)/\ActingGroup$
+is an absolute retract by Antonyan's results
+(\Cref{lem:hyperspace-orbit-ar}).
+By \Cref{thm:global-domination},
+we obtain continuous maps
+\[
+ \GHSpace\xrightarrow{\ \ApproximationMap\ }
+ \AuxiliaryAR\xrightarrow{\ \RealizationMap\ }\GHSpace
+\]
+and a continuous homotopy
+$\ApproximationHomotopy\colon\GHSpace\times\UnitInterval\to\GHSpace$.
+For every
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}\in\GHSpace$,
+this homotopy satisfies
+\begin{equation}\label{eq:intro-domination-1}
+ \ApproximationHomotopy(\MetricSpace{\ComparisonCarrier}{\ComparisonMetric},0)
+ =\MetricSpace{\ComparisonCarrier}{\ComparisonMetric},
+\end{equation}
+and
+\begin{equation}\label{eq:intro-domination-2}
+ \ApproximationHomotopy(\MetricSpace{\ComparisonCarrier}{\ComparisonMetric},1)
+ =\RealizationMap\ApproximationMap\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}.
+\end{equation}
+The homotopy tracks satisfy
+\begin{equation}\label{eq:intro-domination-3}
+ \diam_{\GHDistance}
+ \bigl\{\ApproximationHomotopy(\MetricSpace{\ComparisonCarrier}{\ComparisonMetric},t)
+       \mid t\in\UnitInterval\bigr\}
+ <\ErrorControl\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}.
+\end{equation}
+Applying Hanner's domination theorem (\Cref{thm:hanner-domination})
+to the small homotopy tracks in \eqref{eq:intro-domination-3},
+we obtain the ANR property.
+Scaling all distances to
+$0$
+contracts
+$\GHSpace$
+to the one-point space.
+Using the ANR/ANE equivalence in \Cref{thm:retract-extensor},
+we apply \Cref{thm:contractible-ane} to conclude that
+$\GHSpace$
+is an AE for metrizable spaces.
+By the AE/AR equivalence in \Cref{thm:retract-extensor},
+we obtain the absolute retract property.
+
+\input{figures/proof-strategy}
+
+\medskip
+\noindent\textbf{Part~\ref{part:hilbert}.
+Discrete approximation and Hilbert space topology.}
+\paraid{p-64cc2f159292}
+In the fourth part,
+we prove the remaining approximation condition and then
+obtain the classification in \Cref{thm:part-iv-main}.
+\Cref{thm:discrete-approximation},
+the discrete approximation theorem of this part,
+applies to any sequence
+$\{\ApproximationDomain_\FamilyIndex\}_{\FamilyIndex\in\NonnegativeIntegers}$
+of compact metrizable spaces.
+If
+$\InputMap_\FamilyIndex\colon\ApproximationDomain_\FamilyIndex\to\GHSpace$
+are continuous and
+$\OpenCover$
+is an open cover of
+$\GHSpace$,
+then there are continuous maps
+$\ApproximatingMap_\FamilyIndex\colon\ApproximationDomain_\FamilyIndex\to\GHSpace$
+such that
+\[
+ \forall\FamilyIndex\in\NonnegativeIntegers\
+ \forall x\in\ApproximationDomain_\FamilyIndex\
+ \exists U\in\OpenCover,\qquad
+ \{\InputMap_\FamilyIndex(x),\ApproximatingMap_\FamilyIndex(x)\}\subset U,
+\]
+and
+\[
+ \{\ApproximatingMap_\FamilyIndex(\ApproximationDomain_\FamilyIndex)
+   \}_{\FamilyIndex\in\NonnegativeIntegers}
+ \text{ is discrete in }\GHSpace.
+\]
+The last condition means that every point of
+$\GHSpace$
+has a neighborhood that intersects at most one of these image sets.
+
+\paraid{p-66ca83693c4d}
+Taking products with sufficiently small finite equilateral spaces changes each
+input by a controlled amount in Gromov--Hausdorff distance.
+We choose the cardinalities recursively to exceed the bounds on separated subsets
+in the previously constructed compact images.
+This separates the images,
+and letting the cardinalities tend to infinity prevents accumulation in
+$\GHSpace$.
+This construction is independent of the results of Parts~\ref{part:measures}--\ref{part:topology}.
+If all domains are the Hilbert cube
+$\HilbertCube=\UnitInterval^{\NonnegativeIntegers}$,
+then we obtain the discrete approximation condition in Toru\'nczyk's theorem.
+We combine this condition with completeness,
+separability,
+and the absolute retract property from Part~\ref{part:topology}
+to prove \Cref{thm:main}.
+
+\paraid{p-59ed21a6dca9}
+The main theorem also answers the local contractibility question.
+We use local contractibility in the sense that every neighborhood
+$\OpenNeighborhood $
+of a point contains a neighborhood
+$\SmallerNeighborhood $
+whose inclusion into
+$\OpenNeighborhood $
+is null-homotopic.
+By \Cref{thm:main},
+every point has a neighborhood basis consisting of open sets that
+strongly deformation retract onto that point.
+This conclusion is topological and does not prescribe the neighborhoods
+as balls for
+$\GHDistance$.
+
+\medskip
+\noindent\textbf{Organization.}
+\paraid{p-10cf165b0a9f}
+The introduction and
+\Cref{sec:preliminaries}
+provide the common background for four parts.
+Each part also has its own preliminaries,
+in Sections~\ref{sec:prelim-measures},
+\ref{sec:prelim-spectral},
+\ref{sec:prelim-topology},
+and~\ref{sec:prelim-hilbert},
+respectively.
+Part~\ref{part:measures},
+introduced in \Cref{sec:intro-measures} and developed in \Cref{sec:measures},
+constructs continuous invariant probabilities.
+Part~\ref{part:spectral},
+introduced in \Cref{sec:intro-spectral} and developed in \Cref{sec:spectral},
+uses these probabilities to construct finite-dimensional local models.
+Part~\ref{part:topology},
+introduced in \Cref{sec:intro-topology} and developed in \Cref{sec:ar},
+combines the models into global approximations
+and proves the absolute retract property.
+Part~\ref{part:hilbert},
+introduced in \Cref{sec:intro-hilbert} and developed in \Cref{sec:approximation},
+proves the discrete approximation property and completes the proof of
+\Cref{thm:main}.
+\Cref{sec:questions} concludes with questions about related spaces
+and the geometry of GH balls.
+
+\medskip
+\noindent\textbf{Conventions and notation.}
+\paraid{p-67846154e305}
+For a set
+$\BaseCarrier$,
+we denote by
+$\Card(\BaseCarrier)$
+its cardinality.
+Every metric space
+$\MetricSpace{\BaseCarrier }{\MetricSymbol }$
+representing a point of
+$\GHSpace$
+is nonempty and compact.
+We identify such a pair with its isometry class when it occurs in
+$\GHSpace$.
+The symbol
+$\BaseCarrier $
+denotes the underlying set,
+equipped with the topology induced by
+$\MetricSymbol $.
+Subscripts on constructions such as
+$\SelectedMeasure{\BaseCarrier}{\MetricSymbol}$
+refer to the specified pair
+$\MetricSpace{\BaseCarrier }{\MetricSymbol }$.
+When isometric embeddings into
+$\MetricSpace{\AmbientCarrier }{\AmbientMetric }$
+are specified,
+we use the same symbols for the embedded subsets and the restricted
+metrics.
+The notation
+$\IdentityMap_{\BaseCarrier}$
+denotes the identity map on
+$\BaseCarrier$.
+We omit the subscript when the domain is specified.
+Banach and Hilbert spaces are real unless complex scalars are explicitly indicated.
+We denote by
+$\CompactHyperspace(\BaseCarrier )$
+the set of all nonempty compact subsets of
+$\BaseCarrier $.
+For a specified metric
+$\MetricSymbol $,
+we equip it with the Hausdorff metric
+$\HausdorffDistance{\MetricSymbol }$.
+For a metrizable space
+$\DomainSpace$,
+we denote by
+$\ProbabilityMeasures(\DomainSpace )$
+the set of Radon probability measures on
+$\DomainSpace$
+and equip it with the topology of weak convergence against bounded continuous
+functions.
+An isometric embedding
+$\IsometricEmbeddingMap \colon\MetricSpace{\BaseCarrier }{\MetricSymbol }\to\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }$
+is a map satisfying
+$\ComparisonMetric (\IsometricEmbeddingMap (\BasePoint ),\IsometricEmbeddingMap (\ComparisonPoint ))=\MetricSymbol (\BasePoint ,\ComparisonPoint )$
+for every
+$\BasePoint ,\ComparisonPoint \in \BaseCarrier $.
+Throughout this paper,
+an isometry is a surjective isometric embedding.
+We use
+$\NonnegativeIntegers=\{0,1,2,\ldots\}$
+as the index set of sequences unless stated otherwise.
+
+\begin{useofai}
+\paraid{p-64859c0d8f24}
+OpenAI Codex,
+based on GPT-6,
+was used to explore and develop the mathematical constructions and proofs,
+search the literature,
+and prepare the exposition and \LaTeX{} source.
+The research and writing workflow used customized versions of
+\texttt{math-research-harness}
+(\url{https://github.com/haruhisa-enomoto/math-research-harness})
+and
+\texttt{math-paper-skills}
+(\url{https://github.com/haruhisa-enomoto/math-paper-skills}),
+both made publicly available by Haruhisa Enomoto.
+The author takes full responsibility for the mathematical content and the final
+manuscript.
+\end{useofai}
+
+\begin{acknowledgements}
+\paraid{p-e60be87ab1f9}
+The author was supported by JSPS KAKENHI Grant Number JP24KJ0182.
+\end{acknowledgements}

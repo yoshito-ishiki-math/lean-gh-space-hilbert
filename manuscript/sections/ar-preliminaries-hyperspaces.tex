@@ -1,0 +1,106 @@
+\subsection{Equivariant hyperspaces and orbit spaces}\label{subsec:ar-preliminaries-hyperspaces}
+\paraid{p-44f297e51ff0}
+A metrizable
+$\ActingGroup$-space
+is a metrizable space with a continuous action of the topological group
+$\ActingGroup$.
+For metrizable
+$\ActingGroup$-spaces
+$\BaseCarrier$ and
+$\ComparisonCarrier$,
+a continuous map
+$\Mapping:\BaseCarrier\to\ComparisonCarrier$
+is equivariant if, for every
+$\GroupElement\in\ActingGroup$
+and
+$\BasePoint\in\BaseCarrier$,
+\[
+ \Mapping(\GroupElement\cdot\BasePoint)
+ =\GroupElement\cdot\Mapping(\BasePoint).
+\]
+A metrizable
+$\ActingGroup$-space
+$\BaseCarrier$
+is a
+$\ActingGroup$-AR
+if every closed equivariant embedding
+$\FirstEmbedding:\BaseCarrier\to\ComparisonCarrier$
+into a metrizable
+$\ActingGroup$-space
+$\ComparisonCarrier$
+admits a continuous equivariant retraction
+$\EquivariantRetraction:\ComparisonCarrier\to\BaseCarrier$
+such that
+\[
+ \EquivariantRetraction\circ\FirstEmbedding=\IdentityMap_\BaseCarrier.
+\]
+
+
+A space
+$\BanachAmbientSpace$
+is \emph{locally continuum-connected} if for every
+$\BasePoint\in\BanachAmbientSpace$
+and every open set
+$\OpenSubset\subset\BanachAmbientSpace$
+with
+$\BasePoint\in\OpenSubset$,
+there is an open set
+$\InnerNeighborhood$
+such that
+\[
+ \BasePoint\in\InnerNeighborhood\subset\OpenSubset,
+ \qquad
+ \forall\ComparisonPoint\in\InnerNeighborhood\quad
+ \exists\JoiningContinuum\subset\BanachAmbientSpace\quad
+ \begin{cases}
+ \JoiningContinuum\text{ is compact and connected},\\
+ \{\BasePoint,\ComparisonPoint\}\subset\JoiningContinuum\subset\OpenSubset.
+ \end{cases}
+\]
+In a Banach space we can take
+$\InnerNeighborhood$
+to be a sufficiently small open ball and use the segments
+$\JoiningContinuum=\{(1-\HomotopyTime)\BasePoint+\HomotopyTime\ComparisonPoint
+ \mid\HomotopyTime\in\UnitInterval\}$.
+
+\paraid{p-c196bd37c296}
+For an action of a group $\ActingGroup$ on a space $\BanachAmbientSpace$,
+the induced action on $\CompactHyperspace(\BanachAmbientSpace)$ is defined as follows.
+For every $\GroupElement\in\ActingGroup$ and
+$\FirstCompactSet\in\CompactHyperspace(\BanachAmbientSpace)$, set
+\[
+ \GroupElement\FirstCompactSet
+ =\{\GroupElement\FirstVector\mid\FirstVector\in\FirstCompactSet\}.
+\]
+The following hyperspace theorem is
+\cite[Proposition~3.1]{Antonyan2003West},
+with the corrigendum \cite{Antonyan2006Correction}.
+It is also stated in \cite[Theorem~2.3]{Antonyan2020Euclidean}.
+
+\begin{theorem}[{\cite[Proposition~3.1]{Antonyan2003West}}]\label{thm:equivariant-hyperspace}
+\paraid{p-d6a3d16c8e27}
+Let a compact group
+$\ActingGroup$
+act continuously on a nonempty connected,
+locally continuum-connected metrizable space
+$\BanachAmbientSpace$.
+Then
+$\CompactHyperspace(\BanachAmbientSpace)$,
+with its Vietoris topology and this induced action,
+is a
+$\ActingGroup$-AR.
+\end{theorem}
+
+\begin{theorem}[{\cite[Theorem~8 and Corollary~1]{Antonyan1990}}]\label{thm:orbit-retract}
+\paraid{p-687bedbec7c3}
+Let
+$\ActingGroup$
+be a compact group with a countable basis and let
+$\BanachAmbientSpace$
+be a metrizable
+$\ActingGroup$-AR.
+Then its orbit space
+$\BanachAmbientSpace/\ActingGroup$
+is an AR for
+all metrizable spaces.
+\end{theorem}

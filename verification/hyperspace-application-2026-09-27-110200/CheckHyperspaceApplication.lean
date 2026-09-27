@@ -1,0 +1,8 @@
+import PaperN.PartII.SphereOrbitAR
+open PaperN.PartII
+#check SphereOrbit.hyperspace_equivariantAR
+#print EquivariantHyperspaceARInput
+#print axioms normedSpace_continuumConnectedBasis
+#print axioms orthogonalProduct_compactSpace
+#print axioms continuous_sphereBlockSumAction_product
+#print axioms SphereOrbit.hyperspace_equivariantAR

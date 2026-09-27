@@ -1,0 +1,148 @@
+PaperN.PartI.currentInvariantAssignment_spec.{u} (hm : PaperN.PartI.GHPMetricInput.{0})
+  (hp : PaperN.PartI.GHPPolishInput.{0} hm) (hc : PaperN.PartI.GHPCommonEmbeddingInput.{0})
+  (hg : PaperN.PartI.GHCommonEmbeddingInput.{0}) (ha : PaperN.PartI.ProbabilityApproximationInput.{0})
+  (hv : PaperN.PartI.InvariantValovInput hm hp hc) : PaperN.PartI.CurrentInvariantAssignmentStatement.{u}
+PaperN.PartII.LocalModel (X₀ : PaperN.PartI.MeasuredCompact.{0}) (τ : ℝ) : Type 1
+PaperN.PartII.LocalModel.pseudometric_invariant {X₀ : PaperN.PartI.MeasuredCompact.{0}} {τ : ℝ}
+  (M : PaperN.PartII.LocalModel X₀ τ) (X Y : PaperN.PartI.MeasuredCompact.{0})
+  (hX : Membership.mem.{0, 0} M.domain (GromovHausdorff.toGHSpace.{0} (PaperN.PartI.MeasuredCompact.Carrier.{0} X)))
+  (hY : Membership.mem.{0, 0} M.domain (GromovHausdorff.toGHSpace.{0} (PaperN.PartI.MeasuredCompact.Carrier.{0} Y)))
+  (e : IsometryEquiv.{0, 0} (PaperN.PartI.MeasuredCompact.Carrier.{0} X) (PaperN.PartI.MeasuredCompact.Carrier.{0} Y))
+  (a :
+    PaperN.PartII.NormedCoordinatePair.{0, 0} (PaperN.PartI.MeasuredCompact.Carrier.{0} X)
+      (EuclideanSpace.{0, 0} ℝ (Fin M.dimension)))
+  (b :
+    PaperN.PartII.NormedCoordinatePair.{0, 0} (PaperN.PartI.MeasuredCompact.Carrier.{0} Y)
+      (EuclideanSpace.{0, 0} ℝ (Fin M.dimension)))
+  (ha : Eq.{1} ⟦a⟧ (M.coordinateClass X hX)) (hb : Eq.{1} ⟦b⟧ (M.coordinateClass Y hY))
+  (x y : PaperN.PartI.MeasuredCompact.Carrier.{0} X) :
+  Eq.{1}
+    ((fun x y =>
+        (PaperN.Shared.ContinuousPseudometric.kernel.{0} (PaperN.PartII.NormedCoordinatePair.pseudometric.{0, 0} b))
+          (Prod.mk.{0, 0} x y))
+      (e x) (e y))
+    ((fun x y =>
+        (PaperN.Shared.ContinuousPseudometric.kernel.{0} (PaperN.PartII.NormedCoordinatePair.pseudometric.{0, 0} a))
+          (Prod.mk.{0, 0} x y))
+      x y)
+PaperN.PartII.NormedCoordinatePair.pseudometric.{u_1, u_2} {X : Type u_1} {E : Type u_2} [TopologicalSpace.{u_1} X]
+  [NormedAddCommGroup.{u_2} E] [NormedSpace.{0, u_2} ℝ E] [FiniteDimensional.{0, u_2} ℝ E]
+  (a : PaperN.PartII.NormedCoordinatePair.{u_1, u_2} X E) : PaperN.Shared.ContinuousPseudometric.{u_1} X
+PaperN.PartII.AmbientKernel.exists_localModel (hm : PaperN.PartI.GHPMetricInput.{0})
+  (hp : PaperN.PartI.GHPPolishInput.{0} hm) (hs : PaperN.PartI.InvariantFiberLawSelectionStatement hm)
+  (hg : PaperN.PartI.GHCommonEmbeddingInput.{0}) (hk : PaperN.PartII.DistanceKernelSpectralInput.{0})
+  (hf : PaperN.PartII.CompactEigenvalueFinitenessInput.{0}) (X : PaperN.PartI.MeasuredCompact.{0}) (τ : ℝ)
+  (hτ : LT.lt.{0} 0 τ) : Nonempty.{2} (PaperN.PartII.LocalModel X τ)
+PaperN.PartII.AmbientKernel.exists_AR_domination (hm : PaperN.PartI.GHPMetricInput.{0})
+  (hp : PaperN.PartI.GHPPolishInput.{0} hm) (hs : PaperN.PartI.InvariantFiberLawSelectionStatement hm)
+  (hg : PaperN.PartI.GHCommonEmbeddingInput.{0}) (hk : PaperN.PartII.DistanceKernelSpectralInput.{0})
+  (hf : PaperN.PartII.CompactEigenvalueFinitenessInput.{0}) (hH : PaperN.PartII.EquivariantHyperspaceARInput)
+  (hO : PaperN.PartII.OrbitARInput) (ε : GromovHausdorff.GHSpace → ℝ) (hε : Continuous.{0, 0} ε)
+  (hpos : ∀ (q : GromovHausdorff.GHSpace), LT.lt.{0} 0 (ε q)) :
+  ∃ n,
+    (∀ (i : ℕ), LT.lt.{0} 0 (n i)) ∧
+      TopologicalSpace.SeparableSpace.{0} (PaperN.PartII.SphereOrbit.Space n) ∧
+        PaperN.PartII.IsAbsoluteRetract.{0, 0} (PaperN.PartII.SphereOrbit.Space n) ∧
+          ∃ f,
+            Continuous.{0, 0} f ∧
+              Continuous.{0, 0} (PaperN.PartII.SphereOrbit.realization n) ∧
+                ∃ e,
+                  Continuous.{0, 0} e ∧
+                    (∀ (q : GromovHausdorff.GHSpace), LE.le.{0} 0 (e q)) ∧
+                      (∀ (q : GromovHausdorff.GHSpace), LT.lt.{0} (e q) (ε q)) ∧
+                        ∃ H,
+                          (Continuous.{0, 0} fun p => H p.1 p.2) ∧
+                            (∀ (q : GromovHausdorff.GHSpace), Eq.{1} (H q (Subtype.mk.{1} 0 ⋯)) q) ∧
+                              (∀ (q : GromovHausdorff.GHSpace),
+                                  Eq.{1} (H q (Subtype.mk.{1} 1 ⋯)) (PaperN.PartII.SphereOrbit.realization n (f q))) ∧
+                                (∀ (q : GromovHausdorff.GHSpace) (s t : ↑(Set.Icc.{0} 0 1)),
+                                    LE.le.{0} (dist.{0} (H q s) (H q t))
+                                      (HDiv.hDiv.{0, 0, 0}
+                                        (HMul.hMul.{0, 0, 0} (abs.{0} (HSub.hSub.{0, 0, 0} ↑s ↑t)) (e q)) 2)) ∧
+                                  (∀ (q : GromovHausdorff.GHSpace) (s t : ↑(Set.Icc.{0} 0 1)),
+                                      LT.lt.{0} (dist.{0} (H q s) (H q t)) (HDiv.hDiv.{0, 0, 0} (ε q) 2)) ∧
+                                    ∀ (q : GromovHausdorff.GHSpace),
+                                      LT.lt.{0} (Metric.diam.{0} (Set.range.{0, 1} (H q))) (ε q)
+PaperN.PartII.AmbientKernel.ghSpace_absoluteNeighborhoodRetract (hm : PaperN.PartI.GHPMetricInput.{0})
+  (hp : PaperN.PartI.GHPPolishInput.{0} hm) (hs : PaperN.PartI.InvariantFiberLawSelectionStatement hm)
+  (hg : PaperN.PartI.GHCommonEmbeddingInput.{0}) (hk : PaperN.PartII.DistanceKernelSpectralInput.{0})
+  (hf : PaperN.PartII.CompactEigenvalueFinitenessInput.{0}) (hH : PaperN.PartII.EquivariantHyperspaceARInput)
+  (hO : PaperN.PartII.OrbitARInput) (hD : PaperN.PartII.HannerDominationInput)
+  (hA : PaperN.PartII.HannerANRCategoryInput) :
+  PaperN.PartII.IsAbsoluteNeighborhoodRetract.{0, 0} GromovHausdorff.GHSpace
+PaperN.PartII.AmbientKernel.ghSpace_absoluteRetract (hm : PaperN.PartI.GHPMetricInput.{0})
+  (hp : PaperN.PartI.GHPPolishInput.{0} hm) (hs : PaperN.PartI.InvariantFiberLawSelectionStatement hm)
+  (hg : PaperN.PartI.GHCommonEmbeddingInput.{0}) (hk : PaperN.PartII.DistanceKernelSpectralInput.{0})
+  (hf : PaperN.PartII.CompactEigenvalueFinitenessInput.{0}) (hH : PaperN.PartII.EquivariantHyperspaceARInput)
+  (hO : PaperN.PartII.OrbitARInput) (hD : PaperN.PartII.HannerDominationInput)
+  (hA : PaperN.PartII.HannerANRCategoryInput) (hK : PaperN.PartII.ContractibleANEToAEInput) :
+  PaperN.PartII.IsAbsoluteRetract.{0, 0} GromovHausdorff.GHSpace
+PaperN.PartIV.ghSpace_homeomorphic_hilbert_main
+  (hv :
+    PaperN.PartI.InvariantValovInput PaperN.PartI.ghpMetricInput_proved.{0} PaperN.PartI.ghpPolishInput_proved
+      PaperN.PartI.ghpCommonEmbeddingInput_proved.{0})
+  (hH : PaperN.PartII.EquivariantHyperspaceARInput) (hO : PaperN.PartII.OrbitARInput)
+  (hD : PaperN.PartII.HannerDominationInput) (hT : PaperN.PartIV.TorunczykRecognitionInput) :
+  Nonempty.{1} (Homeomorph.{0, 0} GromovHausdorff.GHSpace ↥PaperN.PartIV.RealHilbertSpace)
+PaperN.PartI.currentInvariantAssignment_main.{u}
+  (hv :
+    PaperN.PartI.InvariantValovInput PaperN.PartI.ghpMetricInput_proved.{0} PaperN.PartI.ghpPolishInput_proved
+      PaperN.PartI.ghpCommonEmbeddingInput_proved.{0}) :
+  PaperN.PartI.CurrentInvariantAssignmentStatement.{u}
+PaperN.PartII.localModel_main
+  (hv :
+    PaperN.PartI.InvariantValovInput PaperN.PartI.ghpMetricInput_proved.{0} PaperN.PartI.ghpPolishInput_proved
+      PaperN.PartI.ghpCommonEmbeddingInput_proved.{0})
+  (X : PaperN.PartI.MeasuredCompact.{0}) (τ : ℝ) (hτ : LT.lt.{0} 0 τ) : Nonempty.{2} (PaperN.PartII.LocalModel X τ)
+PaperN.PartII.ghSpace_absoluteRetract_main.{v}
+  (hv :
+    PaperN.PartI.InvariantValovInput PaperN.PartI.ghpMetricInput_proved.{0} PaperN.PartI.ghpPolishInput_proved
+      PaperN.PartI.ghpCommonEmbeddingInput_proved.{0})
+  (hH : PaperN.PartII.EquivariantHyperspaceARInput) (hO : PaperN.PartII.OrbitARInput)
+  (hD : PaperN.PartII.HannerDominationInput) : PaperN.PartII.IsAbsoluteRetract.{0, v} GromovHausdorff.GHSpace
+PaperN.PartII.localModel_concrete_main.{u_1}
+  (hv :
+    PaperN.PartI.InvariantValovInput PaperN.PartI.ghpMetricInput_proved.{0} PaperN.PartI.ghpPolishInput_proved
+      PaperN.PartI.ghpCommonEmbeddingInput_proved.{0})
+  (X : Type u_1) [MetricSpace.{u_1} X] [CompactSpace.{u_1} X] [Nonempty.{u_1 + 1} X] (τ : ℝ) (hτ : LT.lt.{0} 0 τ) :
+  ∃ M,
+    Membership.mem.{0, 0} M.domain (GromovHausdorff.toGHSpace.{u_1} X) ∧
+      LT.lt.{0} (M.error (GromovHausdorff.toGHSpace.{u_1} X)) τ
+PaperN.PartII.LocalModel.universal_representatives_converge.{u_1, u_2, u_3} {X₀ : PaperN.PartI.MeasuredCompact.{0}}
+  {τ : ℝ} (M : PaperN.PartII.LocalModel X₀ τ) (Xs : ℕ → Type u_1) (X : Type u_2) (Z : Type u_3)
+  [(n : ℕ) → MetricSpace.{u_1} (Xs n)] [∀ (n : ℕ), CompactSpace.{u_1} (Xs n)] [∀ (n : ℕ), Nonempty.{u_1 + 1} (Xs n)]
+  [MetricSpace.{u_2} X] [CompactSpace.{u_2} X] [Nonempty.{u_2 + 1} X] [MetricSpace.{u_3} Z] [CompactSpace.{u_3} Z]
+  (es : (n : ℕ) → Xs n → Z) (e : X → Z) (hes : ∀ (n : ℕ), Isometry.{u_1, u_3} (es n)) (he : Isometry.{u_2, u_3} e)
+  (hXs : ∀ (n : ℕ), Membership.mem.{0, 0} M.domain (GromovHausdorff.toGHSpace.{u_1} (Xs n)))
+  (hX : Membership.mem.{0, 0} M.domain (GromovHausdorff.toGHSpace.{u_2} X))
+  (hH :
+    Filter.Tendsto.{0, 0}
+      (fun n => Metric.hausdorffDist.{u_3} (Set.range.{u_3, u_1 + 1} (es n)) (Set.range.{u_3, u_2 + 1} e))
+      Filter.atTop.{0} (nhds.{0} 0)) :
+  ∃ a as,
+    Eq.{u_2 + 1} ⟦a⟧ (PaperN.PartII.LocalModel.universalClass.{u_2} M X hX) ∧
+      (∀ (n : ℕ), Eq.{u_1 + 1} ⟦as n⟧ (PaperN.PartII.LocalModel.universalClass.{u_1} M (Xs n) ⋯)) ∧
+        Filter.Tendsto.{0, 0}
+            (fun n =>
+              PaperN.PartII.unitNormError.{0} (PaperN.PartII.NormedCoordinatePair.norm.{u_1, 0} (as n))
+                (PaperN.PartII.NormedCoordinatePair.norm.{u_2, 0} a))
+            Filter.atTop.{0} (nhds.{0} 0) ∧
+          ∀ (R : (n : ℕ) → PaperN.Shared.Correspondence.{u_1, u_2} (Xs n) X),
+            Filter.Tendsto.{0, 0} (fun n => ⨆ z, dist.{u_3} (es n (↑z).1) (e (↑z).2)) Filter.atTop.{0} (nhds.{0} 0) →
+              Filter.Tendsto.{0, 0}
+                (fun n =>
+                  PaperN.PartII.coordinateError.{0, u_1, u_2} (R n)
+                    (PaperN.PartII.NormedCoordinatePair.coordinates.{u_1, 0} (as n))
+                    (PaperN.PartII.NormedCoordinatePair.coordinates.{u_2, 0} a))
+                Filter.atTop.{0} (nhds.{0} 0)
+PaperN.PartIV.discreteApproximation_main.{u_1, u_2} {D : ℕ → Type u_1} [(j : ℕ) → TopologicalSpace.{u_1} (D j)]
+  [∀ (j : ℕ), CompactSpace.{u_1} (D j)] (f : (j : ℕ) → D j → GromovHausdorff.GHSpace)
+  (hf : ∀ (j : ℕ), Continuous.{u_1, 0} (f j)) {I : Type u_2} [Nonempty.{u_2 + 1} I]
+  (U : I → Set.{0} GromovHausdorff.GHSpace) (ho : ∀ (i : I), IsOpen.{0} (U i))
+  (hc : ∀ (q : GromovHausdorff.GHSpace), ∃ i, Membership.mem.{0, 0} (U i) q) :
+  ∃ g,
+    (∀ (j : ℕ), Continuous.{u_1, 0} (g j)) ∧
+      (∀ (j : ℕ) (x : D j), ∃ i, Membership.mem.{0, 0} (U i) (f j x) ∧ Membership.mem.{0, 0} (U i) (g j x)) ∧
+        PaperN.PartIV.IsDiscreteFamily.{0, 0} fun j => Set.range.{0, u_1 + 1} (g j)
+PaperN.PartIV.hilbertCubeDiscreteApproximation_main :
+  PaperN.PartIV.HasHilbertCubeDiscreteApproximation.{0} GromovHausdorff.GHSpace

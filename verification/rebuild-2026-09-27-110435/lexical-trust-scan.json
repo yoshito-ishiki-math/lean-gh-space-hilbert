@@ -1,0 +1,67 @@
+[
+  {
+    "file": "PaperN/PartI/Barycenter.lean",
+    "line": 9,
+    "text": "This uses the existing Giry measurable structure, and does not assume a barycenter axiom. -/"
+  },
+  {
+    "file": "PaperN/PartI/GHPMetricFromSeparation.lean",
+    "line": 7,
+    "text": "/-- The remaining metric axiom: zero GHP distance identifies measured isometry classes. -/"
+  },
+  {
+    "file": "PaperN/PartI/IsometryGroupGH.lean",
+    "line": 78,
+    "text": "An explicit source input, not a global axiom or an asserted inhabitant. -/"
+  },
+  {
+    "file": "PaperN/PartI/MeasurableNearMap.lean",
+    "line": 23,
+    "text": "/-- Hausdorff-close compact images admit a measurable transport with any strict error margin. -/"
+  },
+  {
+    "file": "PaperN/PartI/UniverseGHP.lean",
+    "line": 52,
+    "text": "/-- The max-infimum GHP distance is independent of universe, without a metric axiom input. -/"
+  },
+  {
+    "file": "PaperN/PartII/EquivariantARInputs.lean",
+    "line": 26,
+    "text": "This is an input proposition, not a global axiom or an implementation of the citation. -/"
+  },
+  {
+    "file": "PaperN/PartII/FiniteDimensionalApproximation.lean",
+    "line": 7,
+    "text": "/-- Finite-dimensional linear subspaces admit best approximations. -/"
+  },
+  {
+    "file": "PaperN/PartII/LocalDualFeature.lean",
+    "line": 39,
+    "text": "/-- The local-model equivariance axiom supplies the required sphere-action witness. -/"
+  },
+  {
+    "file": "PaperN/PartII/LocalModelPartition.lean",
+    "line": 37,
+    "text": "/-- Local models for a positive continuous error control admit a countable"
+  },
+  {
+    "file": "PaperN/PartII/PointwiseResolventStability.lean",
+    "line": 29,
+    "text": "/-- Finite subsets of the limit resolvent admit one common eventual index. -/"
+  },
+  {
+    "file": "PaperN/PartII/SelectedClassConvergence.lean",
+    "line": 23,
+    "text": "/-- Selected spectral classes admit representatives converging simultaneously"
+  },
+  {
+    "file": "PaperN/PartII/ZeroCoordinateClass.lean",
+    "line": 29,
+    "text": "/-- Arbitrary representatives admit the required orthogonal change of coordinates. -/"
+  },
+  {
+    "file": "PaperN/PartIV/BanachHomeomorphism.lean",
+    "line": 8,
+    "text": "This is an explicit cited proposition, not a constructed proof or an implicit axiom. -/"
+  }
+]

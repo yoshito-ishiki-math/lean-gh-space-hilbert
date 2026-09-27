@@ -1,0 +1,79 @@
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+ >=Stealth,
+ font=\small,
+ partbox/.style={
+  draw=black,
+  fill=white,
+  rounded corners=3pt,
+  line width=.65pt,
+  text width=4.9cm,
+  minimum height=2.35cm,
+  align=center,
+  inner sep=7pt
+ },
+ route/.style={->,line width=.85pt,draw=black}
+]
+\node[partbox] (measures) at (-2.95,0) {
+ \textbf{Part~\ref{part:measures}}\\
+ Continuous invariant\\
+ full-support probabilities\\
+ \Cref{thm:invariant-measures}
+};
+\node[partbox] (models) at (2.95,0) {
+ \textbf{Part~\ref{part:spectral}}\\
+ Finite-dimensional local models\\
+ $\Isom(Y,e)\to\OrthogonalGroup(n)$\\
+ \Cref{thm:local-models}
+};
+\node[partbox,minimum height=2.95cm] (ar) at (2.95,-3.55) {
+ \textbf{Part~\ref{part:topology}}\\
+ $\ActingGroup=\prod_{i\in\NonnegativeIntegers}\OrthogonalGroup(n_i)$\\
+ $\CompactHyperspace(\BanachAmbientSpace)/\ActingGroup$ is an AR\\
+ Small tracks $\Longrightarrow$ ANR\\
+ Scaling contraction $\Longrightarrow$ AR\\
+ \Cref{thm:part-iii-main}
+};
+\node[
+ partbox,
+ minimum height=2.95cm
+] (discrete) at (-2.95,-3.55) {
+ \textbf{Part~\ref{part:hilbert}}\\
+ Products with finite equilateral spaces\\
+ Discrete approximation\\
+ \Cref{thm:discrete-approximation}
+};
+\node[
+ partbox,
+ text width=10.8cm,
+ minimum height=1.9cm
+] (hilbert) at (0,-7) {
+ \textbf{Toru\'nczyk's characterization}\\
+ AR and discrete approximation,
+ with completeness and separability\\
+ $\GHSpace$ is homeomorphic to real $\SeparableHilbertSpace$\\
+ \textbf{Part~\ref{part:hilbert}.
+ \Cref{thm:part-iv-main}}
+};
+\draw[route] (measures.east)--(models.west);
+\draw[route] (models.south)--(ar.north)
+ node[midway,left=5pt,font=\footnotesize,align=right]
+ {Partition of unity\\in the Banach space $\BanachAmbientSpace$};
+\draw[route] (ar.south)--(2.95,-5.5)--(0,-5.5)--(hilbert.north);
+\draw[line width=.85pt,draw=black]
+ (discrete.south)--(-2.95,-5.5)--(0,-5.5);
+\fill[black] (0,-5.5) circle (1.5pt);
+\end{tikzpicture}
+\caption{The two arguments used to identify the topology of
+$\GHSpace$.
+Arrows indicate dependence of the proofs.
+In Parts~\ref{part:measures}--\ref{part:topology},
+we prove the absolute retract property.
+The discrete approximation theorem in Part~\ref{part:hilbert}
+uses the common preliminaries and its own metric constructions.
+These two conclusions,
+together with completeness and separability,
+imply the Hilbert space classification.}
+\label{fig:proof-strategy}
+\end{figure}

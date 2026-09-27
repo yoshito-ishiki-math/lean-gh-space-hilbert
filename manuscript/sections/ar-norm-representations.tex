@@ -1,0 +1,352 @@
+\subsection{Isometric representations of varying norms}\label{subsec:ar-norm-representations}
+\paraid{p-8059e6be8ce0}
+The norms
+$\NormSymbol_\ComparisonCarrier$
+in the local models vary with the compact metric space
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$.
+We first represent all norms of a fixed finite dimension in one Banach
+space in a way compatible with orthogonal changes of coordinates.
+
+\paraid{p-e433ffb7555a}
+For
+$\ModelDimension \geq1$,
+write
+\[
+ \UnitSphere^{\ModelDimension -1}=\{\SpherePoint \in\RealNumbers^\ModelDimension \mid\norm{\SpherePoint }_2=1\},
+\]
+and
+\[
+ \BanachAmbientSpace _\ModelDimension =\ContinuousFunctions(\UnitSphere^{\ModelDimension -1},\RealNumbers).
+\]
+We equip
+$\BanachAmbientSpace _\ModelDimension $
+with the uniform norm.
+For a norm
+$\NormSymbol $
+on
+$\RealNumbers^\ModelDimension $,
+define its dual norm on
+$\RealNumbers^\ModelDimension$
+as follows.
+For every
+$\SecondVector\in\RealNumbers^\ModelDimension$,
+set
+\[
+ \NormSymbol\DualNorm(\SecondVector)
+ =\sup\{|\langle\FirstVector,\SecondVector\rangle|
+       \mid\FirstVector\in\RealNumbers^\ModelDimension,
+            \NormSymbol(\FirstVector)\leq1\}.
+\]
+The pairing is the Euclidean inner product.
+For every nonzero
+$\SecondVector\in\RealNumbers^\ModelDimension$,
+we have
+$\NormSymbol\DualNorm(\SecondVector)>0$.
+In particular,
+the restriction of the dual norm to
+$\UnitSphere^{\ModelDimension-1}$
+is positive.
+Figure~\ref{fig:dual-norm-embedding} illustrates the construction in
+\Cref{lem:dual-representation} in dimension
+$2$.
+
+\input{figures/dual-norm-embedding}
+
+\paraid{p-6b2bac5b7bed}
+The following proposition is a specific version of the Banach--Mazur theorem.
+Its linear isometry is obtained from the dual norm formula
+\cite[Proposition~11.21]{Muscat2024}.
+
+\begin{proposition}\label{lem:dual-representation}
+\paraid{p-53660d2864b0}
+Let
+$\NormSymbol $
+be a norm on
+$\RealNumbers^\ModelDimension $.
+For
+$\FirstVector\in\RealNumbers^\ModelDimension$
+and
+$\SpherePoint\in\UnitSphere^{\ModelDimension-1}$,
+define
+\[
+ \NormEmbedding _\NormSymbol \colon(\RealNumbers^\ModelDimension ,\NormSymbol )\to(\BanachAmbientSpace _\ModelDimension ,\norm{\cdot}_\infty)
+\]
+by
+\begin{equation}\label{eq:dual-embedding}
+ \NormEmbedding _\NormSymbol (\FirstVector )(\SpherePoint )=\frac{\langle \FirstVector ,\SpherePoint \rangle}{\NormSymbol \DualNorm(\SpherePoint )}.
+\end{equation}
+Then
+$\NormEmbedding_\NormSymbol$
+is a linear isometric embedding.
+Thus,
+for every
+$\FirstVector,\SecondVector\in\RealNumbers^\ModelDimension$,
+we have
+\begin{equation}\label{eq:dual-isometry}
+ \norm{\NormEmbedding _\NormSymbol (\FirstVector )-\NormEmbedding _\NormSymbol (\SecondVector )}_\infty=\NormSymbol (\FirstVector -\SecondVector ).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+\paraid{p-7ee99d206db2}
+The formula in \eqref{eq:dual-embedding} defines a continuous function
+because the dual norm is continuous and positive on the compact sphere.
+It is linear in
+$\FirstVector$.
+For every
+$\SpherePoint\in\UnitSphere^{\ModelDimension-1}$,
+the definition of the dual norm gives
+\[
+ \frac{|\langle\FirstVector,\SpherePoint\rangle|}
+      {\NormSymbol\DualNorm(\SpherePoint)}
+ \leq\NormSymbol(\FirstVector).
+\]
+Taking the supremum over
+$\UnitSphere^{\ModelDimension-1}$
+shows that
+\begin{equation}\label{eq:dual-embedding-upper-bound}
+ \sup_{\SpherePoint\in\UnitSphere^{\ModelDimension-1}}
+ \frac{|\langle\FirstVector,\SpherePoint\rangle|}
+      {\NormSymbol\DualNorm(\SpherePoint)}
+ \leq\NormSymbol(\FirstVector).
+\end{equation}
+If
+$\FirstVector\ne0$,
+define
+$\SubspaceFunctional\colon\LinearSpan\{\FirstVector\}\to\RealNumbers$
+ by
+ $\SubspaceFunctional(\SpanCoefficient\FirstVector)=\SpanCoefficient\NormSymbol(\FirstVector)$.
+Its operator norm is
+\[
+ \sup_{\substack{\HahnBanachTestVector\in\LinearSpan\{\FirstVector\}\\\HahnBanachTestVector\ne0}}
+ \frac{|\SubspaceFunctional(\HahnBanachTestVector)|}{\NormSymbol(\HahnBanachTestVector)}=1.
+\]
+By the Hahn--Banach theorem
+\cite[Theorem~11.19 and Proposition~11.20]{Muscat2024},
+the functional
+$\SubspaceFunctional$
+extends to a functional
+$\HahnBanachExtension\colon\RealNumbers^\ModelDimension\to\RealNumbers$
+such that
+\[
+ \sup_{\HahnBanachTestVector\in\RealNumbers^\ModelDimension\setminus\{0\}}
+ \frac{|\HahnBanachExtension(\HahnBanachTestVector)|}{\NormSymbol(\HahnBanachTestVector)}=1.
+\]
+Write
+$\HahnBanachExtension(\HahnBanachTestVector)=\langle\HahnBanachTestVector,\NormingVector\rangle$.
+Then
+$\NormSymbol\DualNorm(\NormingVector)=1$
+and
+$\langle\FirstVector,\NormingVector\rangle=\NormSymbol(\FirstVector)$.
+For every
+$\HomogeneityScalar\in\RealNumbers\setminus\{0\}$,
+we have
+\[
+ \frac{|\langle\FirstVector,\HomogeneityScalar\SpherePoint\rangle|}
+      {\NormSymbol\DualNorm(\HomogeneityScalar\SpherePoint)}
+ =\frac{|\HomogeneityScalar|\,|\langle\FirstVector,\SpherePoint\rangle|}
+        {|\HomogeneityScalar|\,\NormSymbol\DualNorm(\SpherePoint)}
+ =\frac{|\langle\FirstVector,\SpherePoint\rangle|}
+        {\NormSymbol\DualNorm(\SpherePoint)}.
+\]
+Set
+\[
+ \NormalizedNormingVector
+ =\frac{\NormingVector}{\norm{\NormingVector}_2}
+ \in\UnitSphere^{\ModelDimension-1}.
+\]
+Then
+\begin{equation}\label{eq:dual-embedding-lower-bound}
+ \sup_{\SpherePoint\in\UnitSphere^{\ModelDimension-1}}
+ \frac{|\langle\FirstVector,\SpherePoint\rangle|}
+      {\NormSymbol\DualNorm(\SpherePoint)}
+ \geq
+ \frac{|\langle\FirstVector,\NormalizedNormingVector\rangle|}
+      {\NormSymbol\DualNorm(\NormalizedNormingVector)}
+ =\frac{|\langle\FirstVector,\NormingVector\rangle|}
+        {\NormSymbol\DualNorm(\NormingVector)}
+ =\NormSymbol(\FirstVector).
+\end{equation}
+The upper bound in
+\eqref{eq:dual-embedding-upper-bound}
+and the lower bound in
+\eqref{eq:dual-embedding-lower-bound}
+together with
+\eqref{eq:dual-embedding},
+ for
+$\FirstVector\ne0$,
+we have
+\[
+ \norm{\NormEmbedding_\NormSymbol(\FirstVector)}_\infty
+ =\sup_{\SpherePoint\in\UnitSphere^{\ModelDimension-1}}
+       \frac{|\langle\FirstVector,\SpherePoint\rangle|}
+            {\NormSymbol\DualNorm(\SpherePoint)}
+ =\NormSymbol(\FirstVector).
+\]
+This identity is immediate when
+$\FirstVector=0$.
+Linearity now proves \eqref{eq:dual-isometry}.
+\end{proof}
+
+\begin{proposition}\label{lem:dual-representation-continuity}
+\paraid{p-e6ffdb8e19db}
+Let
+$\NormSymbol$
+be a norm on
+$\RealNumbers^\ModelDimension$.
+If norms
+$\NormSymbol _\SequenceIndex $
+converge uniformly to
+$\NormSymbol $
+on
+$\UnitSphere^{\ModelDimension -1}$
+and
+$\FirstVector _\SequenceIndex \to \FirstVector $
+in
+$\RealNumbers^\ModelDimension $,
+then
+\[
+ \norm{\NormEmbedding _{\NormSymbol _\SequenceIndex }(\FirstVector _\SequenceIndex )-\NormEmbedding _\NormSymbol (\FirstVector )}_\infty\to0.
+\]
+\end{proposition}
+
+\begin{proof}
+\paraid{p-d51c2824eb6d}
+Set
+\[
+ \MinimumNormValue =\min_{\UnitSphere^{\ModelDimension -1}}\NormSymbol >0.
+\]
+Set
+\[
+ \ErrorTolerance _\SequenceIndex =\sup_{\UnitSphere^{\ModelDimension -1}}|\NormSymbol _\SequenceIndex -\NormSymbol |.
+\]
+Set
+\[
+ \RelativeNormError _\SequenceIndex =\ErrorTolerance _\SequenceIndex /\MinimumNormValue .
+\]
+Since
+$\RelativeNormError_\SequenceIndex\to0$,
+choose
+$n_0\in\NonnegativeIntegers$
+such that
+$0\leq\RelativeNormError_\SequenceIndex<1$
+for every
+$\SequenceIndex\geq n_0$.
+For every
+$\SequenceIndex\geq n_0$
+and every
+$\FirstVector\in\RealNumbers^\ModelDimension$,
+homogeneity implies
+\[
+ (1-\RelativeNormError _\SequenceIndex )\NormSymbol (\FirstVector )\leq \NormSymbol _\SequenceIndex (\FirstVector )\leq(1+\RelativeNormError _\SequenceIndex )\NormSymbol (\FirstVector ).
+\]
+For every
+$\SequenceIndex\geq n_0$
+and every
+$\SpherePoint\in\UnitSphere^{\ModelDimension-1}$,
+the inclusions of unit balls imply
+\[
+ (1+\RelativeNormError _\SequenceIndex )^{-1}\NormSymbol \DualNorm(\SpherePoint )\leq \NormSymbol _\SequenceIndex \DualNorm(\SpherePoint )
+                       \leq(1-\RelativeNormError _\SequenceIndex )^{-1}\NormSymbol \DualNorm(\SpherePoint ).
+\]
+Thus the dual norms
+$\NormSymbol_\SequenceIndex\DualNorm$
+converge uniformly to
+$\NormSymbol\DualNorm$
+on the sphere
+$\UnitSphere^{\ModelDimension-1}$
+and have a common positive lower bound there.
+Consequently,
+\begin{equation}\label{eq:dual-embedding-continuity}
+ \begin{split}
+ &\norm{\NormEmbedding _{\NormSymbol _\SequenceIndex }(\FirstVector _\SequenceIndex )-\NormEmbedding _\NormSymbol (\FirstVector )}_\infty
+ \leq\\ &
+ \frac{\norm{\FirstVector _\SequenceIndex -\FirstVector }_2}{\min_{\UnitSphere^{\ModelDimension -1}}\NormSymbol _\SequenceIndex \DualNorm}+\norm{\FirstVector }_2\sup_{\UnitSphere^{\ModelDimension -1}}
+                       |(\NormSymbol _\SequenceIndex \DualNorm)^{-1}-(\NormSymbol \DualNorm)^{-1}|
+ \longrightarrow0.
+ \end{split}
+\end{equation}
+Applying \eqref{eq:dual-embedding-continuity} to fixed vectors,
+we also obtain uniform convergence on each bounded set.
+For every
+$\CoefficientBound>0$,
+\begin{equation}\label{eq:dual-embedding-uniform-on-bounded}
+ \sup_{\substack{\FirstVector\in\RealNumbers^\ModelDimension\\\norm{\FirstVector}_2\leq\CoefficientBound}}
+ \norm{\NormEmbedding_{\NormSymbol_\SequenceIndex}(\FirstVector)
+       -\NormEmbedding_\NormSymbol(\FirstVector)}_\infty
+ \leq\CoefficientBound
+ \sup_{\UnitSphere^{\ModelDimension-1}}
+ |(\NormSymbol_\SequenceIndex\DualNorm)^{-1}
+   -(\NormSymbol\DualNorm)^{-1}|
+ \longrightarrow0.
+\end{equation}
+
+\end{proof}
+
+\begin{proposition}\label{lem:dual-representation-equivariance}
+\paraid{p-ecf17de1513a}
+Let
+$\NormSymbol$
+be a norm on
+$\RealNumbers^\ModelDimension$.
+For
+$\OrthogonalChange\in\OrthogonalGroup(\ModelDimension)$,
+$\SphereFunction\in\BanachAmbientSpace_\ModelDimension$,
+and
+$\SpherePoint\in\UnitSphere^{\ModelDimension-1}$,
+define
+\[
+ (\OrthogonalChange\SphereFunction)(\SpherePoint)
+ =\SphereFunction(\OrthogonalChange^{-1}\SpherePoint).
+\]
+This defines a continuous action of
+$\OrthogonalGroup(\ModelDimension )$
+on
+$\BanachAmbientSpace _\ModelDimension $
+by linear isometries.
+For every
+$\OrthogonalChange\in\OrthogonalGroup(\ModelDimension)$
+and
+$\FirstVector\in\RealNumbers^\ModelDimension$,
+we have
+\begin{equation}\label{eq:dual-equivariance}
+ \NormEmbedding _{\NormSymbol \circ \OrthogonalChange ^{-1}}(\OrthogonalChange \FirstVector )=\OrthogonalChange \NormEmbedding _\NormSymbol (\FirstVector ).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+\paraid{p-2ab06945f322}
+Orthogonal transformations preserve the Euclidean sphere,
+so
+$\norm{\OrthogonalChange \SphereFunction }_\infty=\norm{\SphereFunction }_\infty$.
+If
+$\OrthogonalChange _\SequenceIndex \to \OrthogonalChange $
+and
+$\SphereFunction _\SequenceIndex \to \SphereFunction $
+uniformly,
+then
+\[
+ \norm{\OrthogonalChange _\SequenceIndex \SphereFunction _\SequenceIndex -\OrthogonalChange \SphereFunction }_\infty
+ \leq\norm{\SphereFunction _\SequenceIndex -\SphereFunction }_\infty+
+      \sup_{\SpherePoint \in\UnitSphere^{\ModelDimension -1}}|\SphereFunction (\OrthogonalChange _\SequenceIndex ^{-1}\SpherePoint )-\SphereFunction (\OrthogonalChange ^{-1}\SpherePoint )|\to0
+\]
+by uniform continuity of
+$\SphereFunction $.
+Finally,
+substituting
+$\FirstVector =\OrthogonalChange \SecondVector $
+in the definition of the dual norm
+$\NormSymbol\DualNorm$
+implies
+\[
+ (\NormSymbol \circ \OrthogonalChange ^{-1})\DualNorm(\SpherePoint )=\NormSymbol \DualNorm(\OrthogonalChange ^{-1}\SpherePoint ).
+\]
+Substituting this identity into \eqref{eq:dual-embedding},
+we obtain
+\[
+ \NormEmbedding _{\NormSymbol \circ \OrthogonalChange ^{-1}}(\OrthogonalChange \FirstVector )(\SpherePoint )
+ =\frac{\langle \OrthogonalChange \FirstVector ,\SpherePoint \rangle}{\NormSymbol \DualNorm(\OrthogonalChange ^{-1}\SpherePoint )}
+ =\NormEmbedding _\NormSymbol (\FirstVector )(\OrthogonalChange ^{-1}\SpherePoint ),
+\]
+which proves \eqref{eq:dual-equivariance}.
+\end{proof}

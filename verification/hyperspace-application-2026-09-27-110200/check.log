@@ -1,0 +1,13 @@
+PaperN.PartII.SphereOrbit.hyperspace_equivariantAR (n : ℕ → ℕ) (hH : EquivariantHyperspaceARInput) :
+  IsEquivariantAbsoluteRetract (SphereOrbit.GroupType n) (TopologicalSpace.NonemptyCompacts ↥(SphereBlockSum n))
+def PaperN.PartII.EquivariantHyperspaceARInput : Prop :=
+∀ (G X : Type) [inst : Group G] [inst_1 : TopologicalSpace G] [IsTopologicalGroup G] [T2Space G] [CompactSpace G]
+  [inst_5 : MetricSpace X] [Nonempty X] [inst_7 : MulAction G X] [ContinuousSMul G X]
+  [inst_9 : MulAction G (TopologicalSpace.NonemptyCompacts X)],
+  (∀ (a : G) (K : TopologicalSpace.NonemptyCompacts X), ↑(a • K) = (fun x => a • x) '' ↑K) →
+    IsConnected Set.univ →
+      HasContinuumConnectedBasis X → IsEquivariantAbsoluteRetract G (TopologicalSpace.NonemptyCompacts X)
+'PaperN.PartII.normedSpace_continuumConnectedBasis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.orthogonalProduct_compactSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.continuous_sphereBlockSumAction_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.SphereOrbit.hyperspace_equivariantAR' depends on axioms: [propext, Classical.choice, Quot.sound]

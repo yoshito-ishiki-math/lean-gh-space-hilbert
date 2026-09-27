@@ -1,0 +1,216 @@
+\subsection{Pseudometrics and metric quotients}\label{subsec:preliminaries-quotients}
+\paraid{p-dcc3379498b8}
+We prove estimates that also apply when distinct points are identified.
+
+\paraid{p-f455c68e0d8f}
+The diameter is continuous on
+$\GHSpace$,
+by \cite[arXiv v1, Example~6.29]{Tuzhilin2020},
+which states that for all nonempty compact metric spaces
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+and
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$
+we have
+\[
+ \abs{\diam\MetricSpace{\BaseCarrier }{\MetricSymbol }-\diam\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }}\le 2\GHDistance(\MetricSpace{\BaseCarrier }{\MetricSymbol },\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }).
+\]
+A continuous pseudometric
+$\Pseudometric $
+on a compact space
+$\BaseCarrier $
+defines an equivalence relation as follows.
+For
+$\BasePoint,\ComparisonPoint\in\BaseCarrier$,
+write
+$\BasePoint\sim_\Pseudometric\ComparisonPoint$
+if
+$\Pseudometric(\BasePoint,\ComparisonPoint)=0$.
+Its metric quotient is
+\[
+ \MetricQuotient{\BaseCarrier }{\Pseudometric }
+ =\MetricSpace{\BaseCarrier /{\sim_\Pseudometric }}{\overline{\Pseudometric }},
+\]
+where for representatives
+$\BasePoint,\ComparisonPoint\in\BaseCarrier$
+the quotient metric satisfies
+\[
+ \overline{\Pseudometric }([\BasePoint ],[\ComparisonPoint ])=\Pseudometric (\BasePoint ,\ComparisonPoint ).
+\]
+This quotient is compact.
+When
+$\Pseudometric $
+is a metric,
+it is isometric to
+$\MetricSpace{\BaseCarrier }{\Pseudometric }$.
+For the comparison of a pseudometric quotient with a metric on the same set,
+see the author's
+\cite[Proposition~2.12]{Ishiki2023FractalDimensions}.
+We use the following correspondence form,
+which also compares two metric quotients.
+
+\begin{proposition}\label{lem:pseudometric-comparison}
+\paraid{p-03dd7915a29a}
+Let
+$\BaseCarrier$
+and
+$\ComparisonCarrier$
+be nonempty compact spaces.
+Let
+$\Correspondence\subset\BaseCarrier\times\ComparisonCarrier$
+be a correspondence.
+For continuous pseudometrics
+$\Pseudometric$
+on
+$\BaseCarrier$
+and
+$\ComparisonPseudometric$
+on
+$\ComparisonCarrier$,
+put
+\begin{equation}\label{eq:correspondence-pseudometric-error}
+ \PseudometricError_\Correspondence(\Pseudometric,\ComparisonPseudometric)
+ =\sup_{(\BasePoint_0,\ComparisonPoint_0),(\BasePoint_1,\ComparisonPoint_1)\in\Correspondence}
+ |\Pseudometric(\BasePoint_0,\BasePoint_1)
+       -\ComparisonPseudometric(\ComparisonPoint_0,\ComparisonPoint_1)|.
+\end{equation}
+\begin{enumerate}[label=\textup{(Q\arabic*)},ref=\textup{(Q\arabic*)}]
+\item\label{item:quotient-1}
+\paraid{p-31226097263c}
+The quotient spaces satisfy
+\begin{equation}\label{eq:pseudometric-correspondence-bound}
+ \GHDistance(\MetricQuotient{\BaseCarrier}{\Pseudometric},
+              \MetricQuotient{\ComparisonCarrier}{\ComparisonPseudometric})
+ \leq\tfrac12\PseudometricError_\Correspondence(\Pseudometric,\ComparisonPseudometric).
+\end{equation}
+\item\label{item:quotient-2}
+\paraid{p-ef3a293af6ca}
+If
+$\Pseudometric_0,\Pseudometric_1$
+are continuous pseudometrics on
+$\BaseCarrier$
+and
+$\ComparisonPseudometric_0,\ComparisonPseudometric_1$
+are continuous pseudometrics on
+$\ComparisonCarrier$,
+then
+\begin{equation}\label{eq:pseudometric-uniform-comparison}
+ \bigl|\norm{\Pseudometric_0-\Pseudometric_1}_\infty
+       -\norm{\ComparisonPseudometric_0-\ComparisonPseudometric_1}_\infty\bigr|
+ \leq\PseudometricError_\Correspondence(\Pseudometric_0,\ComparisonPseudometric_0)
+       +\PseudometricError_\Correspondence(\Pseudometric_1,\ComparisonPseudometric_1).
+\end{equation}
+\item\label{item:quotient-3}
+\paraid{p-b2b1a301c639}
+Let the pseudometrics satisfy the hypotheses in \ref{item:quotient-2}
+and let
+$\HomotopyTime\in[0,1]$.
+Then
+\begin{equation}\label{eq:pseudometric-interpolation}
+ \PseudometricError_\Correspondence((1-\HomotopyTime)\Pseudometric_0+\HomotopyTime\Pseudometric_1,
+                   (1-\HomotopyTime)\ComparisonPseudometric_0+\HomotopyTime\ComparisonPseudometric_1)
+ \leq(1-\HomotopyTime)\PseudometricError_\Correspondence(\Pseudometric_0,\ComparisonPseudometric_0)
+       +\HomotopyTime\PseudometricError_\Correspondence(\Pseudometric_1,\ComparisonPseudometric_1).
+\end{equation}
+\item\label{item:quotient-4}
+\paraid{p-45401a311836}
+For continuous pseudometrics
+$\Pseudometric_0,\Pseudometric_1$
+on a nonempty compact space
+$\BaseCarrier$,
+\begin{equation}\label{eq:pseudometric-bound}
+ \GHDistance(\MetricQuotient{\BaseCarrier}{\Pseudometric_0},\MetricQuotient{\BaseCarrier}{\Pseudometric_1})
+ \leq\tfrac12\norm{\Pseudometric_0-\Pseudometric_1}_\infty.
+\end{equation}
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\textbf{Proof of \ref{item:quotient-1}. Correspondence estimate.}
+\paraid{p-04c1d56a107a}
+Let
+$\QuotientMap\colon\BaseCarrier\to\BaseCarrier/{\sim_\Pseudometric}$
+and
+$\SecondQuotientMap\colon\ComparisonCarrier\to\ComparisonCarrier/{\sim_\ComparisonPseudometric}$
+be the quotient maps.
+The set
+\begin{equation}\label{eq:quotient-correspondence}
+ \{(\QuotientMap(\BasePoint),\SecondQuotientMap(\ComparisonPoint))
+       \mid(\BasePoint,\ComparisonPoint)\in\Correspondence\}
+\end{equation}
+is a correspondence because both quotient maps and both coordinate
+projections of
+$\Correspondence$
+are surjective.
+For two elements of the correspondence in
+\eqref{eq:quotient-correspondence},
+definition \eqref{eq:correspondence-pseudometric-error} implies
+\begin{equation}\label{eq:quotient-correspondence-error}
+ |\Pseudometric(\BasePoint_0,\BasePoint_1)
+   -\ComparisonPseudometric(\ComparisonPoint_0,\ComparisonPoint_1)|
+ \leq\PseudometricError_\Correspondence(\Pseudometric,\ComparisonPseudometric).
+\end{equation}
+Applying \Cref{thm:gh-correspondence} to \eqref{eq:quotient-correspondence-error}
+proves \eqref{eq:pseudometric-correspondence-bound}.
+
+\textbf{Proof of \ref{item:quotient-2}. Uniform comparison.}
+\paraid{p-1e5ed86ba147}
+Fix
+$(\BasePoint_0,\ComparisonPoint_0),(\BasePoint_1,\ComparisonPoint_1)\in\Correspondence$.
+The triangle inequality on the real line implies
+\begin{equation}\label{eq:pseudometric-pointwise-comparison}
+ |\Pseudometric_0(\BasePoint_0,\BasePoint_1)
+    -\Pseudometric_1(\BasePoint_0,\BasePoint_1)|
+ \leq|\ComparisonPseudometric_0(\ComparisonPoint_0,\ComparisonPoint_1)
+         -\ComparisonPseudometric_1(\ComparisonPoint_0,\ComparisonPoint_1)|
+ +\PseudometricError_\Correspondence(\Pseudometric_0,\ComparisonPseudometric_0)
+       +\PseudometricError_\Correspondence(\Pseudometric_1,\ComparisonPseudometric_1).
+\end{equation}
+Every pair in
+$\BaseCarrier\times\BaseCarrier$
+has a corresponding pair in
+$\ComparisonCarrier\times\ComparisonCarrier$.
+Taking the supremum in \eqref{eq:pseudometric-pointwise-comparison},
+we obtain
+\begin{equation}\label{eq:pseudometric-sup-comparison}
+ \norm{\Pseudometric_0-\Pseudometric_1}_\infty
+ \leq\norm{\ComparisonPseudometric_0-\ComparisonPseudometric_1}_\infty
+      +\PseudometricError_\Correspondence(\Pseudometric_0,\ComparisonPseudometric_0)
+      +\PseudometricError_\Correspondence(\Pseudometric_1,\ComparisonPseudometric_1).
+\end{equation}
+Applying \eqref{eq:pseudometric-sup-comparison} after interchanging the carriers
+proves \eqref{eq:pseudometric-uniform-comparison}.
+
+\textbf{Proof of \ref{item:quotient-3}. Interpolation.}
+\paraid{p-94f3dbc66479}
+Fix
+$(\BasePoint_0,\ComparisonPoint_0),(\BasePoint_1,\ComparisonPoint_1)\in\Correspondence$.
+The difference of the interpolated pseudometrics at these pairs is
+\begin{equation}\label{eq:pseudometric-pointwise-interpolation}
+ (1-\HomotopyTime)
+   \bigl(\Pseudometric_0(\BasePoint_0,\BasePoint_1)
+       -\ComparisonPseudometric_0(\ComparisonPoint_0,\ComparisonPoint_1)\bigr)
+ +\HomotopyTime
+   \bigl(\Pseudometric_1(\BasePoint_0,\BasePoint_1)
+       -\ComparisonPseudometric_1(\ComparisonPoint_0,\ComparisonPoint_1)\bigr).
+\end{equation}
+The absolute value of \eqref{eq:pseudometric-pointwise-interpolation} is bounded by the weighted sum of the two errors,
+since both weights are nonnegative.
+Taking the supremum and using \eqref{eq:correspondence-pseudometric-error}
+proves \eqref{eq:pseudometric-interpolation}.
+
+\textbf{Proof of \ref{item:quotient-4}. A common carrier.}
+\paraid{p-95c5873e8f8e}
+Use
+$\Correspondence=\{(\BasePoint,\BasePoint)\mid\BasePoint\in\BaseCarrier\}$.
+By \eqref{eq:correspondence-pseudometric-error},
+\begin{equation}\label{eq:pseudometric-diagonal-error}
+ \PseudometricError_\Correspondence(\Pseudometric_0,\Pseudometric_1)
+ =\norm{\Pseudometric_0-\Pseudometric_1}_\infty.
+\end{equation}
+Substituting \eqref{eq:pseudometric-diagonal-error} into
+\eqref{eq:pseudometric-correspondence-bound} proves \eqref{eq:pseudometric-bound}.
+\end{proof}
+
+% Retired paragraph IDs.
+% \paraid{p-1248fc16354c}
+% \paraid{p-83a90d959336}

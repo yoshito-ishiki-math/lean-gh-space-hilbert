@@ -1,0 +1,184 @@
+\subsection{The distance operator and its spectral subspaces}\label{subsec:spectral-distance-operator}
+\paraid{p-834e7a7b7a65}
+Fix a nonempty compact metric space
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$.
+Equip the space
+\[
+ \HilbertDomain _\BaseCarrier =\LebesgueSpace^2(\BaseCarrier ,\SelectedMeasure{\BaseCarrier}{\MetricSymbol})
+\]
+with the inner product
+\[
+ \langle \HilbertFunction ,\HilbertTestFunction \rangle_{\HilbertDomain _\BaseCarrier }=\int_\BaseCarrier  \HilbertFunction  \HilbertTestFunction \,\IntegrationDifferential \SelectedMeasure{\BaseCarrier}{\MetricSymbol}.
+\]
+This is a separable real Hilbert space.
+Here separability follows from density of continuous functions in
+$\LebesgueSpace^2$
+and the separability of
+$\ContinuousFunctions(\BaseCarrier )$
+for compact metric spaces
+\cite[Section~6.4]{Muscat2024}.
+We define the \emph{distance operator}
+$\DistanceOperator{\BaseCarrier}{\MetricSymbol}\colon\HilbertDomain_\BaseCarrier\to\HilbertDomain_\BaseCarrier$
+as follows.
+For every
+$\HilbertFunction\in\HilbertDomain_\BaseCarrier$
+and
+$\BasePoint\in\BaseCarrier$,
+set
+\[
+ \DistanceOperator{\BaseCarrier}{\MetricSymbol}\HilbertFunction (\BasePoint )
+ =\int_\BaseCarrier  \MetricSymbol (\BasePoint ,\IntegrationPoint )\HilbertFunction (\IntegrationPoint )\,\IntegrationDifferential \SelectedMeasure{\BaseCarrier}{\MetricSymbol}(\IntegrationPoint ).
+\]
+The integral is independent of the representative of
+$\HilbertFunction $.
+This is the distance kernel operator of
+\cite[Definition~11]{MariaOudotSolomon2020}.
+
+\begin{lemma}\label{lem:distance-operator}
+\paraid{p-fd7cf639024a}
+The operator
+$\DistanceOperator{\BaseCarrier}{\MetricSymbol}\colon \HilbertDomain _\BaseCarrier \to \HilbertDomain _\BaseCarrier $
+is compact and self-adjoint.
+It maps
+$\HilbertDomain _\BaseCarrier $
+into
+$\ContinuousFunctions(\BaseCarrier )$,
+and for every
+$\HilbertFunction \in \HilbertDomain _\BaseCarrier $
+and
+$\BasePoint ,\ComparisonPoint \in \BaseCarrier $,
+\begin{equation}\label{eq:operator-uniform-bound-1}
+ \norm{\DistanceOperator{\BaseCarrier}{\MetricSymbol}\HilbertFunction }_\infty
+ \leq\diam\MetricSpace{\BaseCarrier }{\MetricSymbol }\norm{\HilbertFunction }_2,
+\end{equation}
+and
+\begin{equation}\label{eq:operator-uniform-bound-2}
+ |\DistanceOperator{\BaseCarrier}{\MetricSymbol}\HilbertFunction (\BasePoint )-\DistanceOperator{\BaseCarrier}{\MetricSymbol}\HilbertFunction (\ComparisonPoint )|
+ \leq \MetricSymbol (\BasePoint ,\ComparisonPoint )\norm{\HilbertFunction }_2.
+\end{equation}
+Every eigenfunction with nonzero eigenvalue has a unique continuous
+representative.
+\end{lemma}
+
+\paraid{p-e83149336582}
+Compactness and self-adjointness of the distance operator are also proved in
+\cite[Propositions~12 and~13]{MariaOudotSolomon2020}.
+
+\begin{proof}
+\paraid{p-3eab3569fc53}
+Let
+$\HilbertFunction\in\HilbertDomain_\BaseCarrier$
+and
+$\BasePoint,\ComparisonPoint\in\BaseCarrier$.
+By the Cauchy--Schwarz inequality
+\cite[Lemma~3.2.27]{BreitGmeineder2026}
+and
+$\SelectedMeasure{\BaseCarrier}{\MetricSymbol}(\BaseCarrier)=1$,
+we obtain
+\[
+ \int_\BaseCarrier |\HilbertFunction |\,\IntegrationDifferential \SelectedMeasure{\BaseCarrier}{\MetricSymbol}\leq\norm{\HilbertFunction }_2.
+\]
+Consequently,
+\begin{equation}\label{eq:distance-operator-pointwise-bounds-1}
+|\DistanceOperator{\BaseCarrier}{\MetricSymbol}\HilbertFunction (\BasePoint )|
+ \leq\int_\BaseCarrier  \MetricSymbol (\BasePoint ,\IntegrationPoint )|\HilbertFunction (\IntegrationPoint )|\,\IntegrationDifferential \SelectedMeasure{\BaseCarrier}{\MetricSymbol}(\IntegrationPoint )
+ \leq\diam\MetricSpace{\BaseCarrier }{\MetricSymbol }\norm{\HilbertFunction }_2,
+\end{equation}
+and
+\begin{equation}\label{eq:distance-operator-pointwise-bounds-2}
+\begin{aligned}
+|\DistanceOperator{\BaseCarrier}{\MetricSymbol}\HilbertFunction (\BasePoint )-\DistanceOperator{\BaseCarrier}{\MetricSymbol}\HilbertFunction (\ComparisonPoint )|
+ &\leq\int_\BaseCarrier |\MetricSymbol (\BasePoint ,\IntegrationPoint )-\MetricSymbol (\ComparisonPoint ,\IntegrationPoint )|\,|\HilbertFunction (\IntegrationPoint )|\,\IntegrationDifferential \SelectedMeasure{\BaseCarrier}{\MetricSymbol}(\IntegrationPoint )\\
+ &\leq \MetricSymbol (\BasePoint ,\ComparisonPoint )\norm{\HilbertFunction }_2.
+\end{aligned}
+\end{equation}
+The estimates \eqref{eq:distance-operator-pointwise-bounds-1} and
+\eqref{eq:distance-operator-pointwise-bounds-2},
+together with the Arzel\`a--Ascoli theorem (\Cref{thm:arzela-ascoli}),
+show that
+$\DistanceOperator{\BaseCarrier}{\MetricSymbol}\colon
+\HilbertDomain_\BaseCarrier\to\ContinuousFunctions(\BaseCarrier)$
+is compact.
+Since the inclusion
+$\ContinuousFunctions(\BaseCarrier)\to\HilbertDomain_\BaseCarrier$
+is bounded,
+the operator on
+$\HilbertDomain_\BaseCarrier$
+is compact as well.
+Symmetry of the kernel and Fubini's theorem
+\cite[Theorem~2.8.20(a)]{BreitGmeineder2026}
+imply self-adjointness.
+
+\paraid{p-9cf941c90fec}
+If
+$\DistanceOperator{\BaseCarrier}{\MetricSymbol}\HilbertFunction =\Eigenvalue  \HilbertFunction $
+in
+$\HilbertDomain _\BaseCarrier $
+and
+$\Eigenvalue \ne0$,
+then
+$\Eigenvalue ^{-1}\DistanceOperator{\BaseCarrier}{\MetricSymbol}\HilbertFunction $
+is a continuous representative of
+$\HilbertFunction $.
+The representative is unique because
+$\SelectedMeasure{\BaseCarrier}{\MetricSymbol}$
+has full support.
+\end{proof}
+
+\paraid{p-f6f6a5a89ba1}
+For every eigenfunction with nonzero eigenvalue, we use its unique continuous representative.
+Apply \Cref{prop:spectral-basics} to
+$\DistanceOperator{\BaseCarrier}{\MetricSymbol}$
+on
+$\HilbertDomain_\BaseCarrier$,
+and choose an orthonormal family
+$\{\Eigenfunction_\CoordinateIndex\}_{\CoordinateIndex\in\EigenIndexSet}$
+with corresponding nonzero eigenvalues
+$\{\Eigenvalue_\CoordinateIndex\}_{\CoordinateIndex\in\EigenIndexSet}$
+as in that theorem.
+For
+$\SpectralCutoff >0$,
+put
+\[
+ \EigenIndexSet _{\BaseCarrier ,\SpectralCutoff }=\{\CoordinateIndex \in \EigenIndexSet \mid|\Eigenvalue _\CoordinateIndex |>\SpectralCutoff \},
+\]
+and
+\[
+ \SpectralSubspace{\BaseCarrier }{\SpectralCutoff }
+ =\LinearSpan \{\Eigenfunction _\CoordinateIndex \mid \CoordinateIndex \in \EigenIndexSet _{\BaseCarrier ,\SpectralCutoff }\}.
+\]
+This is a finite-dimensional space of continuous functions.
+Define the orthogonal projection
+$\SpectralProjection{\BaseCarrier}{\SpectralCutoff}
+ \colon\HilbertDomain_\BaseCarrier\to\SpectralSubspace{\BaseCarrier}{\SpectralCutoff}$
+by
+\begin{equation}\label{eq:spectral-projection-definition}
+ \SpectralProjection{\BaseCarrier }{\SpectralCutoff }\HilbertFunction
+ =\sum_{\CoordinateIndex \in \EigenIndexSet _{\BaseCarrier ,\SpectralCutoff }}\langle \HilbertFunction ,\Eigenfunction _\CoordinateIndex \rangle_{\HilbertDomain _\BaseCarrier }\Eigenfunction _\CoordinateIndex .
+\end{equation}
+Equivalently,
+\[
+ \begin{aligned}
+ \SpectralSubspace{\BaseCarrier }{\SpectralCutoff }
+ =\bigoplus_{\substack{\Eigenvalue \in\spec(\DistanceOperator{\BaseCarrier}{\MetricSymbol})\\|\Eigenvalue |>\SpectralCutoff }}
+       \ker(\DistanceOperator{\BaseCarrier}{\MetricSymbol}-\Eigenvalue \IdentityMap),
+ \end{aligned}
+\]
+and
+\[
+ \range\SpectralProjection{\BaseCarrier }{\SpectralCutoff }=\SpectralSubspace{\BaseCarrier }{\SpectralCutoff }.
+\]
+These definitions do not depend on the orthonormal basis
+$\{\Eigenfunction_\CoordinateIndex\}_{\CoordinateIndex\in\EigenIndexSet}$.
+For every
+$\HilbertFunction\in\HilbertDomain_\BaseCarrier$,
+the vector
+$\SpectralProjection{\BaseCarrier}{\SpectralCutoff}\HilbertFunction$
+converges in the norm of
+$\HilbertDomain_\BaseCarrier$
+to the orthogonal projection of
+$\HilbertFunction$
+onto
+$(\ker\DistanceOperator{\BaseCarrier}{\MetricSymbol})^\perp$
+as
+$\SpectralCutoff\downarrow0$.

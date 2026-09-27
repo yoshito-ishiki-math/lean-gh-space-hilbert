@@ -1,0 +1,42 @@
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Stealth,font=\small]
+\node (input) at (0,0) {$\ComparisonPoint\in\ComparisonCarrier$};
+\node (first) at (4,1) {$\PartitionWeight_{\CoverIndex_0}\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}
+ \NormEmbedding_{\NormSymbol_{\CoverIndex_0,\ComparisonCarrier}}
+ (\FeatureCoordinates_{\CoverIndex_0,\ComparisonCarrier}(\ComparisonPoint))$};
+\node (second) at (4,-1) {$\PartitionWeight_{\CoverIndex_1}\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}
+ \NormEmbedding_{\NormSymbol_{\CoverIndex_1,\ComparisonCarrier}}
+ (\FeatureCoordinates_{\CoverIndex_1,\ComparisonCarrier}(\ComparisonPoint))$};
+\node at (4,0) {$\vdots$};
+\node (joint) at (8,0) {$\JointFeatureMap_\ComparisonCarrier(\ComparisonPoint)\in\BanachAmbientSpace$};
+\draw[->] (input)--(first);
+\draw[->] (input)--(second);
+\draw[->] (first)--(joint);
+\draw[->] (second)--(joint);
+\end{tikzpicture}
+\par\medskip
+\begin{tikzcd}[column sep=large]
+ \GHSpace \arrow[r,"\ApproximationMap"] &
+ \AuxiliaryAR=\CompactHyperspace(\BanachAmbientSpace)/\ActingGroup
+ \arrow[r,"\RealizationMap"] & \GHSpace
+\end{tikzcd}
+\[
+ \RealizationMap\ApproximationMap\simeq\IdentityMap_\GHSpace
+ \quad\text{via }\ApproximationHomotopy.
+\]
+\caption{For a fixed compact metric space
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$,
+the active blocks use the same point
+$\ComparisonPoint$.
+Their joint image is
+$\CompactFeatureImage_\ComparisonCarrier=\JointFeatureMap_\ComparisonCarrier(\ComparisonCarrier)$.
+Changing the chosen coordinate pairs as in \eqref{eq:frame-action} acts on this image by
+$\ActingGroup$,
+so
+$\ApproximationMap\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}
+ =[\CompactFeatureImage_\ComparisonCarrier]$.
+The displayed composite is joined to the identity by the homotopy in Step~\ref{step:global-homotopy}
+with the track estimate \eqref{eq:global-track-control}.}
+\label{fig:global-models}
+\end{figure}

@@ -1,0 +1,316 @@
+\paraid{p-c05f83eda3c9}
+We represent a compact metric space by its distance functions in
+an infinite-dimensional function space.
+Using the continuous invariant probabilities of Part~\ref{part:measures},
+we construct finite-dimensional approximations of this representation
+that are equivariant under isometries and vary continuously with the compact space.
+Let
+$\GHSpace$
+denote the space of isometry classes of nonempty compact metric spaces.
+Our main result is \Cref{thm:local-models}.
+
+\paraid{p-79876a468ed5}
+The symmetry of the input space is part of the approximation problem.
+Rouyer's results
+\cite[arXiv v1, Theorems~2 and~4]{Rouyer2011}
+imply that compact metric spaces with trivial isometry group are dense in
+$\GHSpace$.
+The approximation must also remain continuous at spaces with nontrivial
+isometries.
+We retain whole finite spectral subspaces and allow changes of their
+orthonormal bases.
+The resulting orthogonal actions express both the symmetry of the input
+and the coordinate changes needed when the input varies.
+
+
+\paraid{p-a0f40ab05c70}
+For every nonempty compact metric space
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+and every
+$\LocalTolerance>0$,
+we construct a neighborhood
+$\ModelNeighborhood\subset\GHSpace$
+and a fixed integer
+$\ModelDimension\geq1$.
+For each compact metric space
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$
+whose isometry class belongs to
+$\ModelNeighborhood$,
+there is a norm
+$\NormSymbol_\ComparisonCarrier$
+on
+$\RealNumbers^\ModelDimension$
+and a continuous map
+\[
+ \FeatureCoordinates_\ComparisonCarrier\colon\ComparisonCarrier
+ \to\RealNumbers^\ModelDimension.
+\]
+For
+$\ComparisonPoint,\IntegrationPoint\in\ComparisonCarrier$,
+define the induced pseudometric by
+\[
+ \Pseudometric_\ComparisonCarrier(\ComparisonPoint,\IntegrationPoint)
+ =\NormSymbol_\ComparisonCarrier
+ (\FeatureCoordinates_\ComparisonCarrier(\ComparisonPoint)
+ -\FeatureCoordinates_\ComparisonCarrier(\IntegrationPoint)).
+\]
+Its uniform error is
+\[
+ \LocalError\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}
+ =\sup_{\ComparisonPoint,\IntegrationPoint\in\ComparisonCarrier}
+ |\Pseudometric_\ComparisonCarrier(\ComparisonPoint,\IntegrationPoint)
+ -\ComparisonMetric(\ComparisonPoint,\IntegrationPoint)|.
+\]
+The function
+$\LocalError$
+is continuous on
+$\ModelNeighborhood$
+and satisfies
+$\LocalError\MetricSpace{\BaseCarrier}{\MetricSymbol}<\LocalTolerance$.
+We can
+shrink
+$\ModelNeighborhood$
+so that
+$\LocalError\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}<\LocalTolerance$
+for every
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}\in\ModelNeighborhood$.
+The dimension and the neighborhood may depend on the center
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+and the tolerance
+$\LocalTolerance$.
+Within that neighborhood,
+the image
+$\FeatureCoordinates_\ComparisonCarrier(\ComparisonCarrier)$
+is a compact subset of one fixed vector space equipped with the varying norm
+$\NormSymbol_\ComparisonCarrier$.
+We also use
+$\NormSymbol_\ComparisonCarrier$
+to denote the metric
+$(\FirstVector,\SecondVector)\mapsto\NormSymbol_\ComparisonCarrier(\FirstVector-\SecondVector)$
+on
+$\RealNumbers^\ModelDimension$.
+The correspondence
+$\{(\ComparisonPoint,\FeatureCoordinates_\ComparisonCarrier(\ComparisonPoint))
+ \mid\ComparisonPoint\in\ComparisonCarrier\}$
+has distortion at most
+$\LocalError\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$.
+Then \Cref{thm:gh-correspondence} implies
+\[
+ \GHDistance\!\left(
+ \MetricSpace{\ComparisonCarrier}{\ComparisonMetric},
+ \MetricSpace{\FeatureCoordinates_\ComparisonCarrier(\ComparisonCarrier)}{\NormSymbol_\ComparisonCarrier}
+ \right)<\frac{\LocalTolerance}{2}.
+\]
+We summarize the continuity assertion of \Cref{thm:local-models}\ref{item:model-continuity} for the norms and point maps.
+Let
+$\{\MetricSpace{\ComparisonCarrier_\SequenceIndex}{\ComparisonMetric_\SequenceIndex}\}_{\SequenceIndex\in\NonnegativeIntegers}$
+be a sequence in
+$\ModelNeighborhood$,
+and let
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}\in\ModelNeighborhood$.
+Assume that these spaces are embedded isometrically in a common compact ambient space
+and that their carriers converge in Hausdorff distance to
+$\ComparisonCarrier$.
+After fixing these spaces and embeddings, choose a coordinate pair
+$(\FeatureCoordinates_\ComparisonCarrier,\NormSymbol_\ComparisonCarrier)$
+for the limit space and coordinate pairs
+$\{(\FeatureCoordinates_{\ComparisonCarrier_\SequenceIndex},\NormSymbol_{\ComparisonCarrier_\SequenceIndex})\}_{\SequenceIndex\in\NonnegativeIntegers}$
+for the spaces in the sequence so that
+\[
+ \sup_{\substack{\CoefficientVector\in\RealNumbers^\ModelDimension\\\norm{\CoefficientVector}_2=1}}
+ \bigl|\NormSymbol_{\ComparisonCarrier_\SequenceIndex}(\CoefficientVector)
+       -\NormSymbol_\ComparisonCarrier(\CoefficientVector)\bigr|\to0,
+\]
+and for every sequence
+$\ComparisonPoint_\SequenceIndex\in\ComparisonCarrier_\SequenceIndex$
+and every
+$\ComparisonPoint\in\ComparisonCarrier$
+with
+$\ComparisonPoint_\SequenceIndex\to\ComparisonPoint$
+in the common ambient space,
+the coordinate values satisfy
+\[
+ \FeatureCoordinates_{\ComparisonCarrier_\SequenceIndex}(\ComparisonPoint_\SequenceIndex)
+ \to\FeatureCoordinates_\ComparisonCarrier(\ComparisonPoint).
+\]
+For each
+$\OrthogonalChange\in\OrthogonalGroup(\ModelDimension)$,
+the corresponding change of orthonormal basis acts on the pair by
+\[
+ (\FeatureCoordinates_\ComparisonCarrier,\NormSymbol_\ComparisonCarrier)
+ \longmapsto
+ (\OrthogonalChange\circ\FeatureCoordinates_\ComparisonCarrier,
+  \NormSymbol_\ComparisonCarrier\circ\OrthogonalChange^{-1}).
+\]
+This action preserves the induced pseudometric.
+
+\paraid{p-210d146c099f}
+The feature map is equivariant with respect to an orthogonal representation
+of the isometry group of each input space.
+In Remark~\ref{rem:local-isometry-representation},
+we construct a continuous
+homomorphism
+\[
+ \IsometryRepresentation{\ComparisonCarrier}{\ComparisonMetric}
+ \colon\Isom\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}
+ \to\OrthogonalGroup(\ModelDimension)
+\]
+that satisfies equivariance and preserves the chosen norm.
+For every
+$\FirstIsometry\in\Isom\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$
+and every
+$\ComparisonPoint\in\ComparisonCarrier$,
+the equivariance identity is
+\[
+ \FeatureCoordinates_\ComparisonCarrier(\FirstIsometry\ComparisonPoint)
+ =\IsometryRepresentation{\ComparisonCarrier}{\ComparisonMetric}(\FirstIsometry)
+   \FeatureCoordinates_\ComparisonCarrier(\ComparisonPoint).
+\]
+For every
+$\FirstIsometry\in\Isom\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}$
+and every
+$\CoefficientVector\in\RealNumbers^\ModelDimension$,
+the norm-preservation identity is
+\[
+ \NormSymbol_\ComparisonCarrier
+   \bigl(\IsometryRepresentation{\ComparisonCarrier}{\ComparisonMetric}(\FirstIsometry)
+          \CoefficientVector\bigr)
+ =\NormSymbol_\ComparisonCarrier(\CoefficientVector).
+\]
+Thus the varying isometry groups act through one fixed orthogonal group
+on the model neighborhood.
+Orthogonal changes of basis remain relevant even when the input space
+has trivial isometry group.
+
+\paraid{p-852d0b9cfe26}
+We first recall two examples of spectral methods in geometry that provide context for our construction.
+Bates
+\cite[arXiv v1, Theorem~2]{Bates2014Eigenfunctions}
+proves that closed connected Riemannian manifolds of fixed dimension at least two
+and unit volume,
+with a common lower bound on Ricci curvature and a common positive lower bound
+on injectivity radius,
+admit smooth embeddings by a uniformly bounded number of Laplacian eigenfunctions.
+Kuwae and Shioya study spectral structures associated with nonnegative
+self-adjoint operators on varying Hilbert spaces.
+Under compact convergence of these structures,
+they prove eventual equality of the dimensions of spectral subspaces
+for bounded intervals whose endpoints lie outside the limiting spectrum
+\cite[Theorem~2.6]{KuwaeShioya2003Spectral}.
+In the present  paper,
+ we use the distance kernel on arbitrary compact metric spaces
+and approximate the distance uniformly.
+We use the continuous invariant full-support assignment of probabilities
+constructed in \Cref{thm:invariant-measures} of Part~\ref{part:measures}.
+For
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$,
+the associated distance operator
+$\DistanceOperator{\BaseCarrier}{\MetricSymbol}
+ \colon\LebesgueSpace^2(\BaseCarrier,\SelectedMeasure{\BaseCarrier}{\MetricSymbol})
+ \to\LebesgueSpace^2(\BaseCarrier,\SelectedMeasure{\BaseCarrier}{\MetricSymbol})$
+is a self-adjoint Hilbert--Schmidt integral operator.
+For every
+$f\in\LebesgueSpace^2(\BaseCarrier,\SelectedMeasure{\BaseCarrier}{\MetricSymbol})$
+and
+$\BasePoint\in\BaseCarrier$,
+its value is
+\[
+ (\DistanceOperator{\BaseCarrier}{\MetricSymbol}f)(\BasePoint)
+ =\int_{\BaseCarrier}\MetricSymbol(\BasePoint,\IntegrationPoint)
+ f(\IntegrationPoint)\,d\SelectedMeasure{\BaseCarrier}{\MetricSymbol}(\IntegrationPoint).
+\]
+Maria,
+Oudot,
+and Solomon study this operator and its spectral coordinates
+\cite[Section~3]{MariaOudotSolomon2020}.
+We approximate the distance functions by unique best approximations in
+finite spectral subspaces,
+using
+$\LebesgueSpace^\IntegrabilityExponent$
+norms.
+Here
+$2\leq\IntegrabilityExponent<\infty$,
+and the norm is taken with respect to the selected probability measure.
+We choose the exponent so that the distances between the approximants
+approximate the original distances uniformly.
+We retain whole eigenspaces and account for eigenvalue multiplicities
+by orthogonal changes of basis.
+Using continuity of the spectral subspaces and of the best approximations,
+we prove the asserted continuity of the norms and point maps.
+
+% Retired paragraph ID from the introduction to former Subsections 8.5 and 8.6.
+% \paraid{p-fc6db22afc8b}
+
+\paraid{p-cfb0b7538b10}
+By the interpolation result in
+\cite[Theorem~1.1]{Ishiki2026Interpolation},
+we obtain a uniform error bound when extending prescribed metrics from a
+discrete family of closed subsets of a fixed metrizable space.
+Here we use \Cref{thm:local-models} to construct maps and norms on varying
+compact spaces for the subsequent absolute retract argument.
+
+\medskip
+\noindent\textbf{Dependence on the other parts.}
+\paraid{p-b4ac06e8df4d}
+\Cref{thm:invariant-measures} is the input from Part~\ref{part:measures}.
+We prove the spectral approximation and its applications using this
+assignment and the preliminaries of Section~\ref{sec:prelim-spectral}.
+Part~\ref{part:topology} uses \Cref{thm:local-models} to represent the varying
+norms in fixed Banach spaces and combine the local point maps.
+The orthogonal actions determine the compact group used in that construction.
+
+\medskip
+\noindent\textbf{Organization.}
+\paraid{p-6ad9276d62d7}
+In Section~\ref{sec:prelim-spectral},
+we recall best approximation in
+$\LebesgueSpace^\IntegrabilityExponent$,
+spectral decomposition and perturbation,
+and square roots of positive definite matrices.
+In Subsection~\ref{subsec:spectral-distance-operator},
+we define the distance operator and study its finite
+spectral subspaces.
+In Subsection~\ref{subsec:spectral-distance-approximation},
+we prove approximation of distance functions using finite
+spectral subspaces and unique best approximations in finite
+$\LebesgueSpace^\IntegrabilityExponent$
+norms.
+In Subsection~\ref{subsec:spectral-subspace-continuity},
+we prove continuity of the finite spectral subspaces
+and construct orthonormal bases whose continuous extensions converge uniformly
+on a common compact ambient space,
+as asserted in \ref{item:spectral-basis-uniform-convergence}
+of \Cref{lem:spectral-continuity}.
+In Subsection~\ref{subsec:spectral-local-models},
+we combine these results to construct the local maps and
+varying norms in \Cref{thm:local-models}.
+
+\medskip
+\noindent\textbf{Conventions and notation.}
+\paraid{p-21fe15dbd1cc}
+All compact metric spaces are nonempty,
+and finite-dimensional coordinate spaces are real.
+Weak convergence of probabilities and the uniform integral estimates are
+recalled in Subsection~\ref{subsec:preliminaries-probability}.
+Function spaces are real unless complex scalars are explicitly indicated
+for spectral perturbation.
+An isometry is a surjective isometric embedding.
+The pair
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+specifies both the underlying set and its metric.
+In particular,
+$\SelectedMeasure{\BaseCarrier}{\MetricSymbol}$
+and
+$\DistanceOperator{\BaseCarrier}{\MetricSymbol}$
+depend on that pair.
+When compact spaces are embedded isometrically into a common ambient
+space,
+we use the same symbols for the embedded subsets and the restricted
+metrics.
+The notation
+$\IdentityMap_\BaseCarrier$
+denotes the identity map on
+$\BaseCarrier$.
+We omit the subscript when its domain is specified.
+Sequences are indexed by
+$\NonnegativeIntegers=\{0,1,2,\ldots\}$.

@@ -1,0 +1,4 @@
+'PalomarPaperN.main' depends on axioms: [propext, Classical.choice, Quot.sound]
+PalomarPaperN.main (hv : PalomarPaperN.ValovInput) (hH : PaperN.PartII.EquivariantHyperspaceARInput)
+  (hO : PaperN.PartII.OrbitARInput) (hD : PaperN.PartII.HannerDominationInput)
+  (hT : PaperN.PartIV.TorunczykRecognitionInput) : Nonempty (GromovHausdorff.GHSpace ≃ₜ ↥PaperN.PartIV.RealHilbertSpace)

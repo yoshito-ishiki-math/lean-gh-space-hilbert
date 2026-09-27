@@ -1,0 +1,67 @@
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Stealth,font=\small]
+\node at (0,1.65) {radial normalization};
+\filldraw[fill=black!4] (0,0) ellipse (1.55 and 0.85);
+\draw[dashed] (0,0) circle (1);
+\draw[->,black!35] (-1.85,0) -- (1.9,0);
+\draw[->,black!35] (0,-1.1) -- (0,1.25);
+\pgfmathsetmacro{\radialfactor}{1/sqrt((cos(10)/1.55)^2+(sin(10)/0.85)^2)}
+\coordinate (spherepoint) at ({cos(10)},{sin(10)});
+\coordinate (dualpoint) at ({\radialfactor*cos(10)},{\radialfactor*sin(10)});
+\draw[->] (0,0) -- (dualpoint);
+\fill (spherepoint) circle (1.3pt);
+\fill (dualpoint) circle (1.3pt);
+\draw[black!55] (spherepoint) -- (0.65,0.3);
+\node at (0.65,0.46) {$\SpherePoint$};
+\draw[black!55] (dualpoint) -- (1.5,0.58);
+\node at (1.5,0.98)
+ {$\dfrac{\SpherePoint}{\NormSymbol\DualNorm(\SpherePoint)}$};
+\node[below left,inner sep=2pt] at (0,0) {$0$};
+\node at (-0.85,0.95) {$\UnitSphere^1$};
+\node at (0,-1.4)
+ {$\{\SecondVector\mid\NormSymbol\DualNorm(\SecondVector)=1\}$};
+\draw[->] (2.45,0.05) -- node[above,align=center]
+ {pair with\\$\FirstVector$} (3.45,0.05);
+\begin{scope}[xshift=4.25cm]
+ \node at (2.1,1.65)
+  {$\NormEmbedding_\NormSymbol(\FirstVector)(\SpherePoint(\theta))$};
+ \draw[->,black!50] (-0.15,0) -- (4.5,0) node[right] {$\theta$};
+ \draw[->,black!50] (0,-1.35) -- (0,1.35);
+ \draw[densely dotted,black!45] (0,1.1) -- (4.2,1.1);
+ \draw[densely dotted,black!45] (0,-1.1) -- (4.2,-1.1);
+ \draw[thick,smooth,samples=121,domain=0:360,variable=\angle]
+  plot ({4.2*\angle/360},
+        {1.1*cos(\angle)/(1.55*sqrt((cos(\angle)/1.55)^2+(sin(\angle)/0.85)^2))});
+ \node[left,inner sep=3pt] at (0,1.1) {$\NormSymbol(\FirstVector)$};
+ \node[left,inner sep=3pt] at (0,-1.1) {$-\NormSymbol(\FirstVector)$};
+ \foreach \x/\tick in {0/0,2.1/\pi,4.2/2\pi}
+ {
+  \draw (\x,0.05) -- (\x,-0.05);
+  \node[below,inner sep=3pt] at (\x,0) {$\tick$};
+ }
+\end{scope}
+\node at (3.25,-2.15)
+ {$\NormEmbedding_\NormSymbol(\FirstVector)(\SpherePoint)
+   =\left\langle\FirstVector,
+      \dfrac{\SpherePoint}{\NormSymbol\DualNorm(\SpherePoint)}\right\rangle,
+   \qquad
+   \norm{\NormEmbedding_\NormSymbol(\FirstVector)}_\infty
+   =\NormSymbol(\FirstVector)$};
+\end{tikzpicture}
+\caption{The dual unit sphere is parametrized radially by the fixed
+Euclidean sphere.
+In the illustrated case,
+the dual unit sphere is an ellipse,
+$\FirstVector=(1,0)$,
+and
+$\SpherePoint(\theta)=(\cos\theta,\sin\theta)$.
+Pairing with
+$\FirstVector$
+produces a continuous function on
+$\UnitSphere^1$
+whose uniform norm is
+$\NormSymbol(\FirstVector)$.
+Changing the norm changes the function while its domain remains fixed.}
+\label{fig:dual-norm-embedding}
+\end{figure}

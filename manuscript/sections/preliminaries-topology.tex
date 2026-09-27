@@ -1,0 +1,302 @@
+\subsection{Partitions of unity, contractions and absolute retracts}\label{subsec:preliminaries-topology}
+\paraid{p-33a116cd3f4a}
+We recall partitions of unity,
+an extension theorem for continuous real functions,
+and the terminology for contractions and absolute retracts.
+
+\paraid{p-4f4ac6ddbc21}
+A family of subsets of a topological space is \emph{locally finite} if every point
+has a neighborhood meeting only finitely many members of the family.
+A cover \emph{refines} another cover if each member of the first is contained
+in a member of the second.
+A Hausdorff space is \emph{paracompact} if every open cover admits a locally finite
+open refinement.
+
+\paraid{p-bcbfe50f69ab}
+Let
+$X$
+be a topological space and let
+$I$
+be an index set.
+A family of continuous functions
+$\lambda_i\colon X\to[0,1]$,
+indexed by
+$i\in I$,
+is a \emph{locally finite partition of unity} if the supports
+\[
+ \supp\lambda_i=\overline{\{x\in X\mid\lambda_i(x)\ne0\}}
+\]
+form a locally finite family and for every
+$x\in X$
+we have
+\[
+ \sum_{i\in I}\lambda_i(x)=1.
+\]
+It is \emph{subordinate} to an open cover if each support is contained in a member
+of that cover.
+
+\begin{theorem}[{\cite[Theorems~1.3.33 and~1.3.38]{CobzasMiculescuNicolae2019}}]\label{thm:metric-partition-unity}
+\paraid{p-e8f70dfc07eb}
+Every metrizable space is paracompact.
+Every open cover of a metrizable space admits a locally finite partition of unity
+subordinate to it.
+\end{theorem}
+
+\begin{theorem}[{Tietze--Urysohn, \cite[Theorem~2.1.8]{Engelking1989}}]\label{thm:tietze}
+\paraid{p-fb8cfff8e576}
+Let
+$\ExtensionDomain$
+be a normal space,
+let
+$\ClosedDomain\subset\ExtensionDomain$
+be closed,
+and let
+$\FunctionBound\geq0$.
+Then every continuous function
+$\Mapping\colon\ClosedDomain\to[-\FunctionBound,\FunctionBound]$
+has a continuous extension
+$\TietzeExtension\colon\ExtensionDomain\to[-\FunctionBound,\FunctionBound]$.
+\end{theorem}
+
+\paraid{p-c07e9f5bb5bf}
+A continuous map
+$\Mapping \colon \ClosedDomain \to \ExtensionTarget $
+is \emph{null-homotopic} if there exist a point
+$\ConstantPoint \in \ExtensionTarget $
+and a continuous map
+$\ContractionHomotopy \colon \ClosedDomain \times\UnitInterval\to \ExtensionTarget $
+such that for every
+$\FirstScale\in\ClosedDomain$
+we have
+\[
+ \ContractionHomotopy (\FirstScale ,0)=\Mapping (\FirstScale ),
+\]
+and
+\[
+ \ContractionHomotopy (\FirstScale ,1)=\ConstantPoint.
+\]
+A nonempty space is \emph{contractible} if its identity map is null-homotopic.
+
+\paraid{p-457cc7aecb3b}
+The following proposition shows that scaling distances defines a contraction.
+Write
+$\SingletonSpace=\MetricSpace{\{0\}}{0}$
+for the one-point metric space.
+
+\begin{proposition}\label{lem:scaling-contraction}
+\paraid{p-3f7987feb185}
+For compact metric spaces
+$\MetricSpace{\BaseCarrier }{\MetricSymbol }$
+and
+$\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }$
+and real numbers
+$\FirstScale ,\SecondScale \geq0$,
+we have
+\begin{equation}\label{eq:scaling}
+ \begin{aligned}
+ \GHDistance(\MetricQuotient{\BaseCarrier }{\FirstScale  \MetricSymbol },\MetricQuotient{\ComparisonCarrier }{\SecondScale  \ComparisonMetric })
+ &\leq \FirstScale \GHDistance(\MetricSpace{\BaseCarrier }{\MetricSymbol },\MetricSpace{\ComparisonCarrier }{\ComparisonMetric })
+       +\frac{|\FirstScale -\SecondScale |}{2}\diam\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }.
+ \end{aligned}
+\end{equation}
+Consequently the map
+\[
+ \ContractionHomotopy \colon\GHSpace\times\UnitInterval\to\GHSpace
+\]
+defined by
+\[
+ \ContractionHomotopy (\MetricSpace{\BaseCarrier }{\MetricSymbol },\HomotopyTime )=\MetricQuotient{\BaseCarrier }{(1-\HomotopyTime )\MetricSymbol }
+\]
+is continuous and satisfies
+\[
+ \ContractionHomotopy (\MetricSpace{\BaseCarrier }{\MetricSymbol },0)=\MetricSpace{\BaseCarrier }{\MetricSymbol },
+\]
+and
+\[
+ \ContractionHomotopy (\MetricSpace{\BaseCarrier }{\MetricSymbol },1)=\SingletonSpace.
+\]
+The contraction fixes the one-point space at every time,
+so
+\[
+ \ContractionHomotopy (\SingletonSpace,\HomotopyTime )=\SingletonSpace.
+\]
+In particular,
+$\GHSpace$
+is contractible.
+\end{proposition}
+
+\begin{proof}
+\paraid{p-98b9e8081dac}
+By the triangle inequality and the scaling identities in
+\cite[arXiv v1, Examples~6.31 and~6.32]{Tuzhilin2020},
+we obtain \eqref{eq:scaling},
+also when one of the scaling factors is zero.
+Since the diameter is continuous on
+$\GHSpace$,
+the estimate proves continuity of the map
+\[
+ \GHSpace\times[0,\infty)\to\GHSpace,
+ \qquad
+ (\MetricSpace{\BaseCarrier}{\MetricSymbol},\FirstScale)
+       \longmapsto\MetricQuotient{\BaseCarrier}{\FirstScale\MetricSymbol},
+\]
+including at
+$\FirstScale=0$.
+The three identities for
+$\ContractionHomotopy $
+follow directly from its definition.
+\end{proof}
+
+\paraid{p-3e5d9433b03f}
+For balls in Gromov--Hausdorff space we use
+a different  symbol,
+\[
+ \GHball(\MetricSpace{\BaseCarrier}{\MetricSymbol},\Radius)
+ =\{\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}\in\GHSpace\mid
+ \GHDistance(\MetricSpace{\BaseCarrier}{\MetricSymbol},\MetricSpace{\ComparisonCarrier}{\ComparisonMetric})<\Radius\}.
+\]
+The correspondence formula also implies
+$\GHDistance(\MetricSpace{\BaseCarrier }{\MetricSymbol },\SingletonSpace)=\diam\MetricSpace{\BaseCarrier }{\MetricSymbol }/2$.
+
+\paraid{p-263af0d7c090}
+We state extension and retraction properties relative to a class of
+topological spaces.
+
+\begin{definition}\label{def:extension}
+\paraid{p-3d55c72c99aa}
+Let
+$\TopologicalSpaceClass$
+be a class of topological spaces.
+A topological space
+$\ExtensionTarget$
+is an \emph{absolute extensor for $\TopologicalSpaceClass$},
+or AE for
+$\TopologicalSpaceClass$,
+if for every space
+$\BaseCarrier\in\TopologicalSpaceClass$,
+every closed subset
+$\ClosedDomain\subset\BaseCarrier$,
+and every continuous map
+$\Mapping\colon\ClosedDomain\to\ExtensionTarget$,
+there exists a continuous map
+$\ContinuousExtension\colon\BaseCarrier\to\ExtensionTarget$
+such that
+$\ContinuousExtension|_\ClosedDomain=\Mapping$.
+It is an \emph{absolute neighborhood extensor for $\TopologicalSpaceClass$},
+or ANE for
+$\TopologicalSpaceClass$,
+if for every space
+$\BaseCarrier\in\TopologicalSpaceClass$,
+every closed subset
+$\ClosedDomain\subset\BaseCarrier$,
+and every continuous map
+$\Mapping\colon\ClosedDomain\to\ExtensionTarget$,
+there exist an open neighborhood
+$\OpenNeighborhood$
+of
+$\ClosedDomain$
+in
+$\BaseCarrier$
+and a continuous map
+$\ContinuousExtension\colon\OpenNeighborhood\to\ExtensionTarget$
+such that
+$\ContinuousExtension|_\ClosedDomain=\Mapping$.
+A space
+$\ExtensionTarget\in\TopologicalSpaceClass$
+is an \emph{absolute retract for $\TopologicalSpaceClass$},
+or AR for
+$\TopologicalSpaceClass$,
+if for every space
+$\BaseCarrier\in\TopologicalSpaceClass$
+and every embedding
+$\FirstEmbedding\colon\ExtensionTarget\to\BaseCarrier$
+with closed image,
+there exists a continuous map
+$\RetractionMap\colon\BaseCarrier\to\ExtensionTarget$
+such that
+$\RetractionMap\circ\FirstEmbedding=\IdentityMap_\ExtensionTarget$.
+A space
+$\ExtensionTarget\in\TopologicalSpaceClass$
+is an \emph{absolute neighborhood retract for $\TopologicalSpaceClass$},
+or ANR for
+$\TopologicalSpaceClass$,
+if for every space
+$\BaseCarrier\in\TopologicalSpaceClass$
+and every embedding
+$\FirstEmbedding\colon\ExtensionTarget\to\BaseCarrier$
+with closed image,
+there exist an open neighborhood
+$\OpenNeighborhood$
+of
+$\FirstEmbedding(\ExtensionTarget)$
+in
+$\BaseCarrier$
+and a continuous map
+$\RetractionMap\colon\OpenNeighborhood\to\ExtensionTarget$
+such that
+$\RetractionMap\circ\FirstEmbedding=\IdentityMap_\ExtensionTarget$.
+\end{definition}
+
+\paraid{p-cb58f0b73b6e}
+Unless otherwise stated,
+ANR means ANR for all metrizable spaces,
+and the same convention applies to AE,
+ANE,
+and AR.
+Spaces described by these unqualified terms are assumed to be metrizable.
+
+\begin{theorem}[{\cite[Theorem~12.1]{Dugundji1958}}]\label{thm:retract-extensor}
+\paraid{p-a393bc2f3507}
+For a metrizable target in the category of metrizable spaces,
+the AE and AR properties are equivalent,
+and the ANE and ANR properties are equivalent.
+\end{theorem}
+
+\begin{definition}\label{def:local-contractibility}
+\paraid{p-e8a842a80650}
+A space
+$\ExtensionTarget $
+is \emph{locally contractible at}
+$\BasePoint \in \ExtensionTarget $
+if for every open neighborhood
+$\LargerNeighborhood $
+of
+$\BasePoint $
+there is an open neighborhood
+$\SmallerNeighborhood \subset \LargerNeighborhood $
+of
+$\BasePoint $
+such that the inclusion
+$\SmallerNeighborhood \to \LargerNeighborhood $
+is null-homotopic.
+\end{definition}
+
+\paraid{p-6fea115b8d45}
+The homotopy may be chosen to end at the constant map with value
+$\BasePoint $.
+Indeed,
+evaluating the homotopy at
+$\BasePoint $
+defines a path from
+$\BasePoint $
+to the constant value,
+and its reversed path can be appended to the homotopy path of every point of
+$\SmallerNeighborhood$.
+For
+$\GHSpace$,
+this definition is equivalent to the following condition.
+For every
+$\MetricSpace{\BaseCarrier }{\MetricSymbol }\in\GHSpace$
+and
+$\ErrorTolerance >0$,
+there exist
+$0<\ContractionRadius <\ErrorTolerance $
+and a continuous map
+\[
+ \ContractionHomotopy \colon \GHball(\MetricSpace{\BaseCarrier }{\MetricSymbol },\ContractionRadius )\times\UnitInterval
+          \to \GHball(\MetricSpace{\BaseCarrier }{\MetricSymbol },\ErrorTolerance )
+\]
+such that
+$\ContractionHomotopy (\MetricSpace{\ComparisonCarrier }{\ComparisonMetric },0)=\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }$
+and
+$\ContractionHomotopy (\MetricSpace{\ComparisonCarrier }{\ComparisonMetric },1)=\MetricSpace{\BaseCarrier }{\MetricSymbol }$.

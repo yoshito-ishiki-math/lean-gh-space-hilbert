@@ -1,0 +1,6 @@
+3594221c57ba6438e10ad7be28e68f8bbaf3cab306c5904ebc4f666a4cae31a0  ../../../references/items/papers/torunczyk-1981-hilbert-topology/original/paper.pdf
+783f52de2e8f432aa2794be5419139ce48bb02e7cc1db8581b373cec12060f08  ../../../references/items/papers/torunczyk-1985-correction/original/paper.pdf
+18d7b82268a4dbbfd8f707b8b38123aa6f23cd702becc4d8dd362156750bfd07  PaperN/PartIV/HilbertRecognition.lean
+9630228bd6393839d74fe5f292025814764d45d504bf253121d0cd2dedcf7aa2  PaperN/PartIV/HilbertCubeApproximation.lean
+39235822fae407d0f458e413c1c1671da353fb0a3b9a3abf9c9a5f11a3474822  PaperN/PartIV/DiscreteApproximation.lean
+e7bef85cd452c52620aba5290f990678cd0537fdbedd1b8f1109c9fa1e4fb7f1  CheckRecognitionApplication.lean

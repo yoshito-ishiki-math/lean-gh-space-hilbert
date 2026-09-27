@@ -1,0 +1,83 @@
+\subsection{Metric products}\label{subsec:approximation-products}
+\paraid{p-94e60cbaf8be}
+We recall a Gromov--Hausdorff estimate for metric products
+used in the approximation construction.
+For compact metric spaces
+$\MetricSpace{\FirstFactor }{\FirstFactorMetric }$
+and
+$\MetricSpace{\SecondFactor }{\SecondFactorMetric }$,
+write
+$\FirstFactorMetric \vee \SecondFactorMetric $
+for the max metric on
+$\FirstFactor \times \SecondFactor $.
+For every
+$\FirstFactorPoint,\OtherFirstFactorPoint\in\FirstFactor$
+and
+$\SecondFactorPoint,\OtherSecondFactorPoint\in\SecondFactor$,
+put
+\[
+  (\FirstFactorMetric \vee \SecondFactorMetric )((\FirstFactorPoint ,\SecondFactorPoint ),(\OtherFirstFactorPoint ,\OtherSecondFactorPoint ))
+  =\max\{\FirstFactorMetric (\FirstFactorPoint ,\OtherFirstFactorPoint ),\SecondFactorMetric (\SecondFactorPoint ,\OtherSecondFactorPoint )\}.
+\]
+
+\begin{lemma}\label{lem:metric-products}
+\paraid{p-0e0f1f1764e1}
+Let
+$\MetricSpace{\FirstFactor }{\FirstFactorMetric }$,
+$\MetricSpace{\SecondFactor }{\SecondFactorMetric }$,
+$\MetricSpace{\ComparisonFirstFactor }{\ComparisonFirstFactorMetric }$,
+and
+$\MetricSpace{\ComparisonSecondFactor }{\ComparisonSecondFactorMetric }$
+be nonempty compact metric spaces.
+Then
+\begin{equation}\label{eq:max-product}
+ \begin{aligned}
+  &\GHDistance(\MetricSpace{\FirstFactor \times \SecondFactor }{\FirstFactorMetric \vee \SecondFactorMetric },
+        \MetricSpace{\ComparisonFirstFactor \times \ComparisonSecondFactor }{\ComparisonFirstFactorMetric \vee \ComparisonSecondFactorMetric })\\
+  &\qquad\leq\max\{\GHDistance(\MetricSpace{\FirstFactor }{\FirstFactorMetric },\MetricSpace{\ComparisonFirstFactor }{\ComparisonFirstFactorMetric }),
+                       \GHDistance(\MetricSpace{\SecondFactor }{\SecondFactorMetric },\MetricSpace{\ComparisonSecondFactor }{\ComparisonSecondFactorMetric })\}.
+ \end{aligned}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+\paraid{p-dd7692535fb1}
+Let
+$\Correspondence_\FirstFactor\subset
+ \FirstFactor\times\ComparisonFirstFactor$
+and
+$\Correspondence_\SecondFactor\subset
+ \SecondFactor\times\ComparisonSecondFactor$
+be correspondences.
+By rearranging coordinates,
+we regard their product
+$\Correspondence_\times
+ =\Correspondence_\FirstFactor\times\Correspondence_\SecondFactor$
+as a correspondence between
+$\FirstFactor\times\SecondFactor$
+and
+$\ComparisonFirstFactor\times\ComparisonSecondFactor$.
+For real numbers
+$a,b,c,d$,
+we have
+\[
+ |\max\{a,b\}-\max\{c,d\}|
+ \leq\max\{|a-c|,|b-d|\}.
+\]
+Hence
+$\dis\Correspondence_\times
+ \leq\max\{\dis\Correspondence_\FirstFactor,
+            \dis\Correspondence_\SecondFactor\}$.
+Taking the infimum over the two factor correspondences proves
+\eqref{eq:max-product} by \eqref{eq:correspondence}.
+\end{proof}
+
+% \paraid{p-4fe5350ab6f2}
+% \paraid{p-990fe723df47}
+% \paraid{p-593e7df8a9f5}
+% \paraid{p-cba33d789d31}
+% \paraid{p-539467a269ef}
+% \paraid{p-117a415627d1}
+% \paraid{p-de5425fa9621}
+% \paraid{p-9eac5ece7654}
+% \paraid{p-0596666bd9f9}

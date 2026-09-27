@@ -1,0 +1,21 @@
+def PaperN.PartII.HasSmallANRDomination : (X : Type) → [MetricSpace X] → Prop :=
+fun X [MetricSpace X] =>
+  ∀ (ε : ℝ),
+    0 < ε →
+      ∃ Y m,
+        TopologicalSpace.SeparableSpace Y ∧
+          IsAbsoluteNeighborhoodRetract Y ∧
+            ∃ f g,
+              Continuous f ∧
+                Continuous g ∧
+                  ∃ H,
+                    (Continuous fun p => H p.1 p.2) ∧
+                      (∀ (x : X), H x ⟨0, HasSmallANRDomination._proof_1⟩ = x) ∧
+                        (∀ (x : X), H x ⟨1, HasSmallANRDomination._proof_2⟩ = g (f x)) ∧
+                          ∀ (x : X), Metric.diam (Set.range (H x)) < ε
+def PaperN.PartII.HannerDominationInput : Prop :=
+∀ (X : Type) [inst : MetricSpace X] [TopologicalSpace.SeparableSpace X],
+  HasSmallANRDomination X → IsSeparableAbsoluteNeighborhoodRetract X
+'PaperN.PartII.AmbientKernel.ghSpace_hasSmallANRDomination' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.hannerANRCategoryInput_proved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartII.ghSpace_absoluteRetract_main' depends on axioms: [propext, Classical.choice, Quot.sound]

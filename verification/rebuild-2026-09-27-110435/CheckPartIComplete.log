@@ -1,0 +1,333 @@
+def PaperN.PartI.FixedTopologyAssignmentStatement.{u} : Prop :=
+∃ μ,
+  (∀ (X : Type u) [inst : TopologicalSpace X] [inst_1 : CompactSpace X] [inst_2 : Nonempty X]
+      (d : PaperN.PartI.CompatibleMetric X), (↑(μ X d)).support = Set.univ) ∧
+    (∀ (X Y : Type u) [inst : TopologicalSpace X] [inst_1 : CompactSpace X] [inst_2 : Nonempty X]
+        [inst_3 : TopologicalSpace Y] [inst_4 : CompactSpace Y] [inst_5 : Nonempty Y]
+        (d : PaperN.PartI.CompatibleMetric X) (e : PaperN.PartI.CompatibleMetric Y) (f : X ≃ᵢ Y),
+        (μ X d).map ⋯ = μ Y e) ∧
+      ∀ (Xs : ℕ → Type u) (X Z : Type u) [inst : (n : ℕ) → TopologicalSpace (Xs n)]
+        [inst_1 : ∀ (n : ℕ), CompactSpace (Xs n)] [inst_2 : ∀ (n : ℕ), Nonempty (Xs n)] [inst_3 : TopologicalSpace X]
+        [inst_4 : CompactSpace X] [inst_5 : Nonempty X] [inst_6 : MetricSpace Z] [CompactSpace Z]
+        (ds : (n : ℕ) → PaperN.PartI.CompatibleMetric (Xs n)) (d : PaperN.PartI.CompatibleMetric X)
+        (es : (n : ℕ) → Xs n → Z) (e : X → Z) (hes : ∀ (n : ℕ), Isometry (es n)) (he : Isometry e),
+        Filter.Tendsto (fun n => Metric.hausdorffDist (Set.range (es n)) (Set.range e)) Filter.atTop (nhds 0) →
+          Filter.Tendsto (fun n => (μ (Xs n) (ds n)).map ⋯) Filter.atTop (nhds ((μ X d).map ⋯))
+def PaperN.PartI.GHPRetractionStatement.{u} : PaperN.PartI.GHPMetricInput → Prop :=
+fun hm =>
+  ∃ s,
+    Function.LeftInverse PaperN.PartI.MeasuredGHSpace.forget ⇑s ∧
+      Topology.IsEmbedding ⇑s ∧
+        (∀ (q : GromovHausdorff.GHSpace), (s q).invariantFullSupport ∧ (s q).fullSupport) ∧
+          Nonempty (GromovHausdorff.GHSpace ≃ₜ ↑(Set.range ⇑s)) ∧
+            (∃ r, ∀ (x : ↑(Set.range ⇑s)), r ↑x = x) ∧
+              ∀ (S : Set PaperN.PartI.MeasuredGHSpace) (hS : Set.range ⇑s ⊆ S),
+                ∃ r, ∀ (x : ↑(Set.range ⇑s)), r ⟨↑x, ⋯⟩ = x
+def PaperN.PartI.CommonGHCauchyEmbeddingStatement.{u} : Prop :=
+∀ (Xs : ℕ → PaperN.PartI.MeasuredCompact),
+  (CauchySeq fun n => GromovHausdorff.toGHSpace (Xs n).Carrier) →
+    ∃ X C,
+      C.HausdorffConverges ∧
+        Filter.Tendsto (fun n => GromovHausdorff.toGHSpace (Xs n).Carrier) Filter.atTop
+          (nhds (GromovHausdorff.toGHSpace X.Carrier))
+def PaperN.PartI.LawAveragingStatement.{u, v} : {X : Type u} →
+  {Y : Type v} →
+    [inst : TopologicalSpace X] →
+      [inst_1 : TopologicalSpace Y] →
+        [inst_2 : MeasurableSpace X] →
+          [inst_3 : BorelSpace X] → C(X, Y) → C(Y, MeasureTheory.ProbabilityMeasure X) → Prop :=
+fun {X} {Y} [TopologicalSpace X] [TopologicalSpace Y] [MeasurableSpace X] [BorelSpace X] p s =>
+  ∃ A P,
+    (∀ (f : BoundedContinuousFunction X ℝ) (y : Y), (A f) y = ∫ (x : X), f x ∂↑(s y)) ∧
+      (∀ (f : BoundedContinuousFunction X ℝ), 0 ≤ f → 0 ≤ A f) ∧
+        A 1 = 1 ∧
+          (∀ (f : BoundedContinuousFunction X ℝ), ‖A f‖ ≤ ‖f‖) ∧
+            (∀ (f : BoundedContinuousFunction Y ℝ), A (f.compContinuous p) = f) ∧
+              (∀ (f : BoundedContinuousFunction X ℝ), P f = (A f).compContinuous p) ∧
+                (∀ (f : BoundedContinuousFunction X ℝ), P (P f) = P f) ∧
+                  (Set.range ⇑P = Set.range fun f => f.compContinuous p) ∧ ‖P‖ = 1
+PaperN.PartI.universalProbability_natural : ∀ (hm : PaperN.PartI.GHPMetricInput)
+  (hs : PaperN.PartI.InvariantFiberLawSelectionStatement hm) (X : Type u_1) (Y : Type u_2) [inst : MetricSpace X]
+  [inst_1 : CompactSpace X] [inst_2 : Nonempty X] [inst_3 : MetricSpace Y] [inst_4 : CompactSpace Y]
+  [inst_5 : Nonempty Y] (e : X ≃ᵢ Y),
+  (PaperN.PartI.universalProbability hm hs X).map ⋯ = PaperN.PartI.universalProbability hm hs Y
+PaperN.PartI.universalProbability_tendsto : ∀ (hm : PaperN.PartI.GHPMetricInput),
+  PaperN.PartI.GHPPolishInput hm →
+    ∀ (hs : PaperN.PartI.InvariantFiberLawSelectionStatement hm) (Xs : ℕ → Type u_1) (X : Type u_2) (Z : Type u_3)
+      [inst : (n : ℕ) → MetricSpace (Xs n)] [inst_1 : ∀ (n : ℕ), CompactSpace (Xs n)]
+      [inst_2 : ∀ (n : ℕ), Nonempty (Xs n)] [inst_3 : MetricSpace X] [inst_4 : CompactSpace X] [inst_5 : Nonempty X]
+      [inst_6 : MetricSpace Z] [CompactSpace Z] (es : (n : ℕ) → Xs n → Z) (e : X → Z) (hes : ∀ (n : ℕ), Isometry (es n))
+      (he : Isometry e),
+      Filter.Tendsto (fun n => Metric.hausdorffDist (Set.range (es n)) (Set.range e)) Filter.atTop (nhds 0) →
+        Filter.Tendsto (fun n => (PaperN.PartI.universalProbability hm hs (Xs n)).map ⋯) Filter.atTop
+          (nhds ((PaperN.PartI.universalProbability hm hs X).map ⋯))
+PaperN.PartI.fixedTopologyAssignment_spec : ∀ (hm : PaperN.PartI.GHPMetricInput) (hp : PaperN.PartI.GHPPolishInput hm)
+  (hc : PaperN.PartI.GHPCommonEmbeddingInput),
+  PaperN.PartI.GHCommonEmbeddingInput →
+    PaperN.PartI.ProbabilityApproximationInput →
+      PaperN.PartI.InvariantValovInput hm hp hc → PaperN.PartI.FixedTopologyAssignmentStatement
+PaperN.PartI.ghpRetraction_universe : ∀ (hm : PaperN.PartI.GHPMetricInput) (hp : PaperN.PartI.GHPPolishInput hm)
+  (hc : PaperN.PartI.GHPCommonEmbeddingInput),
+  PaperN.PartI.GHCommonEmbeddingInput →
+    PaperN.PartI.ProbabilityApproximationInput →
+      PaperN.PartI.InvariantValovInput hm hp hc → PaperN.PartI.GHPRetractionStatement ⋯
+@PaperN.PartI.ghpEDist_measuredEquiv : ∀ {X Y : PaperN.PartI.MeasuredCompact} {A B : PaperN.PartI.MeasuredCompact}
+  (ex : PaperN.PartI.MeasuredEquiv A X) (ey : PaperN.PartI.MeasuredEquiv B Y),
+  PaperN.PartI.ghpEDist A B = PaperN.PartI.ghpEDist X Y
+PaperN.PartI.measuredUniverseIsometry : (hm : PaperN.PartI.GHPMetricInput) →
+  PaperN.PartI.MeasuredGHSpace ≃ᵢ PaperN.PartI.MeasuredGHSpace
+PaperN.PartI.universalProbability_section : ∀ (hm : PaperN.PartI.GHPMetricInput)
+  (hs : PaperN.PartI.InvariantFiberLawSelectionStatement hm) (X : PaperN.PartI.MeasuredCompact),
+  PaperN.PartI.smallMeasuredClass
+      (X.withProbability (PaperN.PartI.universalProbability hm hs X.Carrier)).toMeasuredGHSpace =
+    PaperN.PartI.selectedGHSection hm hs (GromovHausdorff.toGHSpace X.Carrier)
+'PaperN.PartI.probability_tendsto_of_closedEmbedding' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.probabilityOnSubtype_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.diracProduct_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.diracProduct_fullMass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.closedDomainLaw_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.diracProduct_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.closedDomainAverage_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isClosed_familyFiber' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.continuous_familyGH' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.continuous_familyFiberProbability' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.familyFiberAverage_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.probability_eq_of_invariant_class_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.probability_map_class' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.exists_fiberProbability' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.fiberProbability_fullSupport_invariant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.fiberProbability_class' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.fiberProbability_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.fiberProbability_eq_map' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.fiberProbability_natural' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ghpDist_withProbability_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.continuous_probabilityClass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isEmbedding_invariantProbabilityClass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.continuous_fiberProbability' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.map_probabilityOnSubtype' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.barycenter_map' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isClosed_invariantFiber' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.transportedFiberLaw_fullMass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.fiberLawAverage_fullSupport_invariant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.continuous_fiberLawAverage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.integral_fiberLawAverage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.averageConcentratedLaw_fullSupport_invariant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.fiberLawAverage_natural' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.averageConcentratedLaw_natural' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.selectedProbability_fullSupport_invariant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.selectedProbability_natural' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.selectedProbability_withProbability' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.naturalInvariantAssignment_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ballMass_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.continuous_ballMass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.minimumBallMass_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.minimumBallMass_attained' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.minimumBallMass_pos_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ballMass_map' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.minimumBallMass_isometryEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.minimumBallMass_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.support_eq_univ_iff_minimumBallMass_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.compact_minima_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CommonRealization.minimumBallMass_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.MeasuredGHSpace.continuous_minimumMass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.MeasuredGHSpace.fullSupport_iff_minimumMass_pos' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartI.MeasuredGHSpace.fullSupport_eq_iInter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.fullSupportGDelta_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ghpBasic_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ghProjectionBound_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.invariantProjectionSurjectivity_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.weakProkhorov_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.MeasuredCompact.measuredSetoid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.MeasuredCompact.invariantFullSupport_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.MeasuredGHSpace.edistance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.MeasuredGHSpace.forget_distance_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.invariant_projection_surjective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.GHPMetricInput.metricSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ghpPolish_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ghpForgetLipschitz_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.invariantProjectionContinuousSurjective_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.commonMeasuredEmbedding_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.commonMeasuredEmbedding_of_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ghRepresentative_class' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.selectedGHSection_class' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.forget_selectedGHSection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.selectedGHSection_invariant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.continuous_selectedGHSection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.exists_range_retraction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.exists_subspace_range_retraction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ghpRetraction_of_selection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ghpRetraction_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.sectionRangeHomeomorph' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.map_restrictedLaw_lift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.familyFiberAverage_eq_map' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CommonRealization.sequenceEmbedding_isometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CommonRealization.continuous_sequenceImages' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.averageConcentratedLaw_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.selectedProbability_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.invariantAssignment_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.preimage_thickening_image_isometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.levyProkhorovEDist_map_isometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.levyProkhorovDist_map_isometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.levyProkhorovDist_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isometryDefect_embedding' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.hasIsometryDefect_of_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.invariantGDelta_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.invariantFullSupportGDelta_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CommonRealization.graph_integral_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CommonRealization.actionProbability_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CommonRealization.actionProbability_subsequence' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartI.CommonRealization.isometryDefect_subsequence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.MeasuredCompact.isometryDefect_conjugate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.MeasuredCompact.hasIsometryDefect_of_isomorphic' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'PaperN.PartI.MeasuredCompact.hasIsometryDefect_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.MeasuredCompact.isometryDefect_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.MeasuredCompact.invariant_iff_no_dyadic_defect' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.MeasuredGHSpace.hasIsometryDefect_out' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.MeasuredGHSpace.isClosed_hasIsometryDefect' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.MeasuredGHSpace.invariant_iff_no_dyadic_defect' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.MeasuredGHSpace.invariant_eq_iInter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.MeasuredGHSpace.invariantFullSupport_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.integral_haarAverage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CommonRealization.integral_averagedProbability' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CommonRealization.haarConvergence_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CommonRealization.ghpDist_le_max' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CommonRealization.ghpDist_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.probabilityMixture_fullSupport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.integral_probabilityMixture' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.norm_integral_probabilityMixture_sub_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CommonRealization.mixture_weakConverges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CommonRealization.invariantApproximation_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.invariantLifts_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isOpenMap_of_sequence_lifts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.invariantProjection_sequenceLift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.openInvariantProjection_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.invariantFiberLawSelection_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.polishSpace_of_isGDelta' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.invariantMeasuredPolish_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CommonRealization.integral_orbitProbabilityAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CommonRealization.limitActionProbability_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CommonRealization.eventually_orbitError_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CommonRealization.uniformOrbitIntegrals_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.mem_isometryGraph' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.exists_tendsto_mem_compacts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.graph_relation_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.exists_isometry_of_graph_relation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isometryGraph_map_fst' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isometryGraph_map_snd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isometryGraphSubsequence_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CommonRealization.mem_seqGraph' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CommonRealization.mem_limitGraph' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CommonRealization.hausdorffConverges_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CommonRealization.isometryGraph_subsequence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.integral_probabilityPushforward' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.graph_integral_error_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isometry_pushforward_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isometryLimits_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.dist_integral_le_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.uniform_integrals_of_compact_parameters' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.uniformWeakIntegrals_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.tendsto_sup_dist_of_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.parameterIntegrals_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ballMass_tendstoUniformly' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.uniformWeakIntegrals_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.parameterIntegrals_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.metricBump_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.normalizedMetricBump_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.continuousBarycenter_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.probabilityBorel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.compactIsometryGroup_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.invariantFullSupport_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.probabilityPushforward' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.probability_innerRegular_polish' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.valovSelection_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.measure_fiber_of_pushforward_eq_dirac' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.support_subset_fiber_of_pushforward_eq_dirac' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.fiberLawSelection_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.isOpen_probability_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.support_eq_univ_iff_basis_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.fixedFullSupportGDelta_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.fixedInvariantClosed_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.fixedInvariantFullSupportGDelta_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.measurableSet_fixedInvariantFullSupport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.fixedLawAverage_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.limitSupport_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.varying_fiberProbability_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.varyingFiberTransport_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.varying_fiberProbability_integral_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CompatibleMetric.toMetric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CompatibleMetric.ofMetric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CompatibleMetric.nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.smallCarrier' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.smallCarrierEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.universalProbability' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.universalProbability_eq_map' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.universalProbability_natural' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.universalProbability_fullSupport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.small_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.small_mapped' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.universalProbability_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.FixedTopologyAssignmentStatement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.fixedTopologyProbability' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.fixedTopologyProbability_fullSupport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.fixedTopologyProbability_natural' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.fixedTopologyProbability_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.fixedTopologyAssignment_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.fixedTopologyProbability_radon' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.MeasuredEquiv.refl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.MeasuredEquiv.symm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.MeasuredEquiv.trans' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.smallMeasured' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.smallMeasuredEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.smallMeasured_class_eq_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.smallMeasuredClass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.smallMeasuredClass_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.uliftIsometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.liftMeasured' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.liftMeasuredEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.smallMeasuredClass_surjective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.measuredUniverseEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.resizedAmbientEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CompactCoupling.resize' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CompactCoupling.cost_resize' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ghpEDist_measuredEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.smallMeasured_ghpDist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.smallMeasuredClass_distance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.GHPMetricInput.universe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.measuredUniverseIsometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ghpPolish_universe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.MeasuredEquiv.fullSupport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.MeasuredEquiv.invariantFullSupport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.smallMeasuredClass_forget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.smallMeasuredClass_invariantFullSupport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.smallMeasuredClass_fullSupport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ghpRetraction_universe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.universalProbability_section' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.CommonGHCauchyEmbeddingStatement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.ghCommonEmbedding_universe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.commonGHCauchyEmbedding_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.LawAveragingStatement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.lawAverage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.lawAverage_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.lawAveragingOperator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.lawAveragingOperator_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.lawAveragingOperator_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.lawAveragingOperator_pullback' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.lawAveragingProjection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.lawAveragingProjection_idempotent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.lawAveragingProjection_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.lawAveragingProjection_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.lawAveraging_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+failed to synthesize instance of type class
+  MetricSpace PaperN.PartI.MeasuredGHSpace
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+failed to synthesize instance of type class
+  MetricSpace PaperN.PartI.InvariantMeasuredGHSpace
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.

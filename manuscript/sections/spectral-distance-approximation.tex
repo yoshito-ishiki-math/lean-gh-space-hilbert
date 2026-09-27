@@ -1,0 +1,500 @@
+\subsection{Approximation of distance functions}\label{subsec:spectral-distance-approximation}
+\paraid{p-a700e9644abe}
+We first approximate distance profiles in the uniform norm by functions in
+finite-dimensional spectral subspaces.
+For
+$\BasePoint\in\BaseCarrier$,
+we call the function
+\[
+ \MetricSymbol_\BasePoint=\MetricSymbol(\BasePoint,\cdot)
+ \in\ContinuousFunctions(\BaseCarrier)
+\]
+the \emph{distance profile} of
+$\BasePoint$.
+Its values are the distances from
+$\BasePoint$
+to all points of
+$\BaseCarrier$.
+The map
+\[
+ \BaseCarrier\to\ContinuousFunctions(\BaseCarrier),
+ \qquad\BasePoint\longmapsto\MetricSymbol_\BasePoint
+\]
+is an isometric embedding for the uniform norm,
+because
+\[
+ \norm{\MetricSymbol_\BasePoint-\MetricSymbol_\ComparisonPoint}_\infty
+ =\MetricSymbol(\BasePoint,\ComparisonPoint).
+\]
+This is the distance-function construction of the Kuratowski embedding.
+Here the functions
+$\MetricSymbol_\BasePoint$
+are bounded because
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+is compact.
+The following theorem approximates all distance profiles in one finite
+spectral subspace.
+
+\begin{theorem}\label{lem:spectral-density}
+\paraid{p-c4a771b9c692}
+For every nonempty compact metric space
+$\MetricSpace{\BaseCarrier }{\MetricSymbol }$
+and every
+$\SmallError >0$,
+there is
+$\SpectralCutoff >0$
+such that
+$\SpectralCutoff ,-\SpectralCutoff \notin\spec(\DistanceOperator{\BaseCarrier}{\MetricSymbol})$
+and
+\begin{equation}\label{eq:spectral-uniform-approximation}
+ \sup_{\BasePoint \in \BaseCarrier }\inf_{\Vector \in\SpectralSubspace{\BaseCarrier }{\SpectralCutoff }}
+          \norm{\MetricSymbol _\BasePoint -\Vector }_\infty<\SmallError .
+\end{equation}
+If $\Card(\BaseCarrier)\geq2$,
+then we may also require
+$\dim\SpectralSubspace{\BaseCarrier }{\SpectralCutoff }\geq1$.
+\end{theorem}
+
+\begin{proof}
+\paraid{p-53612876bfd1}
+Let
+$\UniformSpectralSpan $
+be the closed linear span in
+$\ContinuousFunctions(\BaseCarrier )$
+of the continuous representatives of all nonzero eigenfunctions.
+For
+$\HilbertFunction \in \HilbertDomain _\BaseCarrier $,
+write
+$\HilbertFunction =\HilbertFunction _0+\HilbertFunction _\perp$
+with
+$\HilbertFunction _0\in\ker\DistanceOperator{\BaseCarrier}{\MetricSymbol}$
+and
+$\HilbertFunction _\perp\perp\ker\DistanceOperator{\BaseCarrier}{\MetricSymbol}$.
+Choose a decreasing sequence of positive real numbers
+$\{\SpectralCutoff_m\}_{m\in\NonnegativeIntegers}$
+converging to
+$0$
+such that, for every $m\in\NonnegativeIntegers$,
+$\SpectralCutoff_m,-\SpectralCutoff_m\notin\spec(\DistanceOperator{\BaseCarrier}{\MetricSymbol})$.
+Such a sequence exists because the nonzero spectrum is countable.
+By the Riesz--Schauder and self-adjoint spectral theorem (\Cref{prop:spectral-basics}),
+we have
+$\norm{\SpectralProjection{\BaseCarrier }{\SpectralCutoff_m}\HilbertFunction -\HilbertFunction _\perp}_2\to0$.
+Since
+$\HilbertFunction_0\in\ker\DistanceOperator{\BaseCarrier}{\MetricSymbol}$,
+the continuous function
+$\DistanceOperator{\BaseCarrier}{\MetricSymbol}\HilbertFunction_0$
+vanishes almost everywhere.
+By full support of
+$\SelectedMeasure{\BaseCarrier}{\MetricSymbol}$,
+for every
+$\BasePoint\in\BaseCarrier$
+we have
+\begin{equation}\label{eq:continuous-kernel-vanishing}
+ (\DistanceOperator{\BaseCarrier}{\MetricSymbol}\HilbertFunction_0)(\BasePoint)=0.
+\end{equation}
+Using \eqref{eq:operator-uniform-bound-1},
+\[
+ \norm{\DistanceOperator{\BaseCarrier}{\MetricSymbol}\SpectralProjection{\BaseCarrier }{\SpectralCutoff_m}\HilbertFunction
+                 -\DistanceOperator{\BaseCarrier}{\MetricSymbol}\HilbertFunction }_\infty
+ \leq\diam\MetricSpace{\BaseCarrier }{\MetricSymbol }
+       \norm{\SpectralProjection{\BaseCarrier }{\SpectralCutoff_m}\HilbertFunction -\HilbertFunction _\perp}_2\to0.
+\]
+For every
+$\SpectralCutoff>0$,
+we have
+\[
+ \DistanceOperator{\BaseCarrier}{\MetricSymbol}
+ \SpectralProjection{\BaseCarrier}{\SpectralCutoff}\HilbertFunction
+ \in\SpectralSubspace{\BaseCarrier}{\SpectralCutoff}
+ \subset\UniformSpectralSpan.
+\]
+Since
+$\UniformSpectralSpan$
+is closed in the uniform norm,
+it follows that
+$\DistanceOperator{\BaseCarrier}{\MetricSymbol}\HilbertFunction \in \UniformSpectralSpan $.
+
+\paraid{p-4c9880842102}
+Fix
+$\BasePoint \in \BaseCarrier $
+and
+$\Radius >0$.
+Use the normalized function
+$\NormalizedBump{\BaseCarrier}{\MetricSymbol}{\BasePoint}{\Radius}{\SelectedMeasure{\BaseCarrier}{\MetricSymbol}}$
+from \eqref{eq:normalized-bump-definition}.
+By \eqref{eq:normalized-bump-properties-1},
+\eqref{eq:normalized-bump-properties-2} and \eqref{eq:normalized-bump-properties-3},
+the normalized function is nonnegative,
+has integral one,
+and is supported in
+$\MetricBall(\BasePoint,\Radius;\MetricSymbol)$.
+For every
+$\ComparisonPoint \in \BaseCarrier $,
+\begin{equation}\label{eq:bump-distance-approximation}
+ \begin{aligned}
+ &|\DistanceOperator{\BaseCarrier}{\MetricSymbol}\NormalizedBump{\BaseCarrier}{\MetricSymbol}{\BasePoint}{\Radius}{\SelectedMeasure{\BaseCarrier}{\MetricSymbol}}(\ComparisonPoint )-\MetricSymbol _\BasePoint (\ComparisonPoint )|\\
+ &=\left|\int_\BaseCarrier (\MetricSymbol (\ComparisonPoint ,\IntegrationPoint )-\MetricSymbol (\ComparisonPoint ,\BasePoint ))\NormalizedBump{\BaseCarrier}{\MetricSymbol}{\BasePoint}{\Radius}{\SelectedMeasure{\BaseCarrier}{\MetricSymbol}}(\IntegrationPoint )
+                                      \,\IntegrationDifferential \SelectedMeasure{\BaseCarrier}{\MetricSymbol}(\IntegrationPoint )\right|\\
+ &\leq\int_\BaseCarrier  \MetricSymbol (\BasePoint ,\IntegrationPoint )\NormalizedBump{\BaseCarrier}{\MetricSymbol}{\BasePoint}{\Radius}{\SelectedMeasure{\BaseCarrier}{\MetricSymbol}}(\IntegrationPoint )\,\IntegrationDifferential \SelectedMeasure{\BaseCarrier}{\MetricSymbol}(\IntegrationPoint )
+ \leq \Radius .
+ \end{aligned}
+\end{equation}
+Since \eqref{eq:bump-distance-approximation} holds for every
+$\Radius>0$
+and
+$\UniformSpectralSpan$
+is closed in the uniform norm,
+we obtain
+$\MetricSymbol_\BasePoint\in\UniformSpectralSpan$.
+
+\paraid{p-0c97576ebc0b}
+Recall that
+\[
+ \norm{\MetricSymbol _\BasePoint -\MetricSymbol _\ComparisonPoint }_\infty=\MetricSymbol (\BasePoint ,\ComparisonPoint ),
+\]
+as established before the theorem.
+Choose finitely many points
+$\BasePoint_0,\ldots,\BasePoint_{\NetSize-1}$
+whose
+$\SmallError /3$-balls
+cover
+$\BaseCarrier $.
+For each
+$\NetIndex $,
+choose a finite sum
+$\Vector _\NetIndex $
+of nonzero eigenfunctions with
+$\norm{\MetricSymbol _{\BasePoint _\NetIndex }-\Vector _\NetIndex }_\infty<\SmallError /3$.
+Let
+$\ApproximationEigenvalues$
+be the finite set of eigenvalues occurring in these sums.
+Choose
+$\SpectralCutoff>0$
+such that
+\[
+ \SpectralCutoff,-\SpectralCutoff\notin\spec(\DistanceOperator{\BaseCarrier}{\MetricSymbol}),
+\]
+and such that for every
+$\Eigenvalue\in\ApproximationEigenvalues$
+we have
+\[
+ \SpectralCutoff<|\Eigenvalue|.
+\]
+Note that even if
+$\ApproximationEigenvalues=\emptyset$,
+it suffices to choose a positive real number
+$\SpectralCutoff$
+satisfying
+$\SpectralCutoff,-\SpectralCutoff\notin\spec(\DistanceOperator{\BaseCarrier}{\MetricSymbol})$.
+Such a real number exists because the nonzero spectrum is countable.
+Then every
+$\Vector _\NetIndex $
+belongs to
+$\SpectralSubspace{\BaseCarrier }{\SpectralCutoff }$.
+For
+$\MetricSymbol (\BasePoint ,\BasePoint _\NetIndex )<\SmallError /3$,
+\[
+ \inf_{\Vector \in\SpectralSubspace{\BaseCarrier }{\SpectralCutoff }}\norm{\MetricSymbol _\BasePoint -\Vector }_\infty
+ \leq\norm{\MetricSymbol _\BasePoint -\MetricSymbol _{\BasePoint _\NetIndex }}_\infty+\norm{\MetricSymbol _{\BasePoint _\NetIndex }-\Vector _\NetIndex }_\infty
+ <2\SmallError /3.
+\]
+This proves \eqref{eq:spectral-uniform-approximation}.
+
+\paraid{p-f6773180e565}
+If
+$\BaseCarrier $
+is not a singleton,
+choose
+$\BasePoint ,\IntegrationPoint \in \BaseCarrier $
+with
+$\MetricSymbol (\BasePoint ,\IntegrationPoint )>0$.
+The integral
+$\DistanceOperator{\BaseCarrier}{\MetricSymbol}1(\BasePoint )$
+is positive because the distance from
+$\BasePoint $
+is positive on a neighborhood of
+$\IntegrationPoint $
+of positive measure.
+Thus
+$\DistanceOperator{\BaseCarrier}{\MetricSymbol}\ne0$.
+By the Riesz--Schauder and self-adjoint spectral theorem (\Cref{prop:spectral-basics}),
+it has a nonzero eigenvalue.
+If necessary,
+choose a smaller positive
+$\SpectralCutoff$
+below the absolute value of this eigenvalue and still satisfying
+$\pm\SpectralCutoff\notin\spec(\DistanceOperator{\BaseCarrier}{\MetricSymbol})$.
+This retains the approximation in \eqref{eq:spectral-uniform-approximation} and ensures
+$\dim\SpectralSubspace{\BaseCarrier}{\SpectralCutoff}\geq1$.
+\end{proof}
+
+\paraid{p-9e170f5d7db0}
+The uniform distance between the distance profiles is the original distance,
+but a best approximation in a finite-dimensional subspace need not be
+unique for the uniform norm.
+We minimize a finite
+$\LebesgueSpace^\IntegrabilityExponent $-norm
+instead.
+For
+$1<\IntegrabilityExponent <\infty$,
+the best approximation exists and is unique by \Cref{thm:best-approximation}.
+\Cref{lem:lp-distance} shows that the
+$\LebesgueSpace^\IntegrabilityExponent$-distances
+between distance profiles
+approximate the original distances uniformly when
+$\IntegrabilityExponent$
+is sufficiently large.
+We then combine \eqref{eq:lp-distance-error} with finite spectral approximation in
+\eqref{eq:finite-spectral-error}.
+
+\paraid{p-c8d27acdc339}
+To compare the best approximations,
+we use the following continuity statement for their coefficients.
+
+\begin{lemma}\label{lem:minimizer-continuity}
+\paraid{p-df64ce5d76d4}
+Let
+$\ModelDimension\geq1$,
+and let continuous functions
+$\ApproximationObjective_\SequenceIndex,\ApproximationObjective\colon
+ \RealNumbers^\ModelDimension\to\RealNumbers$
+converge uniformly on every compact subset.
+Assume that each
+$\CoefficientVector_\SequenceIndex$
+minimizes
+$\ApproximationObjective_\SequenceIndex$,
+that these vectors form a bounded sequence,
+and that
+$\ApproximationObjective$
+has a unique minimizer
+$\CoefficientVector$.
+Then
+$\CoefficientVector_\SequenceIndex\to\CoefficientVector$.
+\end{lemma}
+
+\begin{proof}
+\paraid{p-586499da67ea}
+By boundedness of $\CoefficientVector_j$,
+choose
+$\CoefficientBound>0$
+such that
+\[
+ \{\CoefficientVector_\SequenceIndex\mid\SequenceIndex\in\NonnegativeIntegers\}
+ \subset\{\CompetitorCoefficients\in\RealNumbers^\ModelDimension
+       \mid\norm{\CompetitorCoefficients}_2\leq\CoefficientBound\}.
+\]
+This closed ball is compact,
+so every subsequence has a further convergent subsequence.
+Let
+$\ComparisonCoefficients$
+denote the limit of such a subsequence
+$\{\CoefficientVector_{n_k}\}_{k\in\NonnegativeIntegers}$.
+The limit satisfies
+$\norm{\ComparisonCoefficients}_2\leq\CoefficientBound$,
+and the assumed uniform convergence implies
+\begin{equation}\label{eq:minimizer-uniform-objective-error}
+ \sup_{\substack{\CompetitorCoefficients\in\RealNumbers^\ModelDimension\\\norm{\CompetitorCoefficients}_2\leq\CoefficientBound}}
+ |\ApproximationObjective_{n_k}(\CompetitorCoefficients)
+       -\ApproximationObjective(\CompetitorCoefficients)|\longrightarrow0.
+\end{equation}
+Since $\ApproximationObjective$ is continuous and
+$\CoefficientVector_{n_k}\to\ComparisonCoefficients$,
+the difference between its values at these two coefficient vectors tends to $0$.
+The objective error
+$|\ApproximationObjective_{n_k}(\CoefficientVector_{n_k})
+ -\ApproximationObjective(\CoefficientVector_{n_k})|$
+tends to $0$ by \eqref{eq:minimizer-uniform-objective-error}.
+Consequently,
+\begin{equation}\label{eq:minimizer-objective-limit}
+ \begin{aligned}
+ &|\ApproximationObjective_{n_k}(\CoefficientVector_{n_k})
+        -\ApproximationObjective(\ComparisonCoefficients)|
+ \leq\\
+ &|\ApproximationObjective_{n_k}(\CoefficientVector_{n_k})
+        -\ApproximationObjective(\CoefficientVector_{n_k})|+|\ApproximationObjective(\CoefficientVector_{n_k})
+        -\ApproximationObjective(\ComparisonCoefficients)|\longrightarrow0.
+ \end{aligned}
+\end{equation}
+For a fixed competitor
+$\CompetitorCoefficients\in\RealNumbers^\ModelDimension$,
+minimality at each index and convergence at that competitor now imply
+\begin{equation}\label{eq:limit-minimizer-comparison}
+ \ApproximationObjective(\ComparisonCoefficients)
+ =\lim_{k\to\infty}\ApproximationObjective_{n_k}(\CoefficientVector_{n_k})
+ \leq\lim_{k\to\infty}\ApproximationObjective_{n_k}(\CompetitorCoefficients)
+ =\ApproximationObjective(\CompetitorCoefficients).
+\end{equation}
+Thus
+$\ComparisonCoefficients=\CoefficientVector$
+by uniqueness.
+Relative compactness and uniqueness of the subsequential limit imply
+$\CoefficientVector_\SequenceIndex\to\CoefficientVector$.
+\end{proof}
+
+\begin{lemma}\label{lem:lp-distance}
+\paraid{p-c7556a5ad9a5}
+Let
+$\MetricSpace{\BaseCarrier }{\MetricSymbol }$
+be a nonempty compact metric space and set
+$\DiameterBound =\diam\MetricSpace{\BaseCarrier }{\MetricSymbol }$.
+Then for every
+$\Radius >0$,
+the number
+\[
+ \BallMassBound _\Radius =\inf_{\BasePoint \in \BaseCarrier }\SelectedMeasure{\BaseCarrier}{\MetricSymbol}(\MetricBall(\BasePoint ,\Radius;\MetricSymbol))
+\]
+is positive.
+Moreover,
+for every
+$\Radius>0$,
+every
+$2\leq \IntegrabilityExponent <\infty$,
+and every pair
+$\BasePoint ,\ComparisonPoint \in \BaseCarrier $,
+\begin{equation}\label{eq:lp-distance-error}
+ 0\leq \MetricSymbol (\BasePoint ,\ComparisonPoint )-\norm{\MetricSymbol _\BasePoint -\MetricSymbol _\ComparisonPoint }_{\LebesgueSpace^\IntegrabilityExponent (\SelectedMeasure{\BaseCarrier}{\MetricSymbol})}
+ \leq \DiameterBound (1-\BallMassBound _\Radius ^{1/\IntegrabilityExponent })+2\Radius .
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+\paraid{p-ce0329a6de36}
+In this proof, $\norm{\cdot}_\IntegrabilityExponent$ denotes the norm on
+$\LebesgueSpace^\IntegrabilityExponent(\BaseCarrier,\SelectedMeasure{\BaseCarrier}{\MetricSymbol})$.
+Choose a finite
+$\Radius /4$-net
+$\{\IntegrationPoint_0,\ldots,\IntegrationPoint_{\NetSize-1}\}$.
+For each
+$\BasePoint \in \BaseCarrier $,
+some
+$\NetIndex $
+satisfies
+$\MetricSymbol (\BasePoint ,\IntegrationPoint _\NetIndex )<\Radius /4$,
+and then
+$\MetricBall(\IntegrationPoint _\NetIndex ,\Radius /4;\MetricSymbol)\subset\MetricBall(\BasePoint ,\Radius;\MetricSymbol)$.
+Therefore,
+\[
+ \BallMassBound _\Radius \geq\min_{0\leq \NetIndex<\NetSize }
+          \SelectedMeasure{\BaseCarrier}{\MetricSymbol}(\MetricBall(\IntegrationPoint _\NetIndex ,\Radius /4;\MetricSymbol))>0.
+\]
+For all
+$\IntegrationPoint \in \BaseCarrier $,
+$|\MetricSymbol _\BasePoint (\IntegrationPoint )-\MetricSymbol _\ComparisonPoint (\IntegrationPoint )|\leq \MetricSymbol (\BasePoint ,\ComparisonPoint )$.
+For
+$\IntegrationPoint \in\MetricBall(\BasePoint ,\Radius;\MetricSymbol)$,
+\[
+ \MetricSymbol _\ComparisonPoint (\IntegrationPoint )-\MetricSymbol _\BasePoint (\IntegrationPoint )\geq \MetricSymbol (\BasePoint ,\ComparisonPoint )-2\MetricSymbol (\BasePoint ,\IntegrationPoint )>\MetricSymbol (\BasePoint ,\ComparisonPoint )-2\Radius .
+\]
+Consequently,
+\begin{equation}\label{eq:lp-distance-two-sided-bound}
+ \BallMassBound _\Radius ^{1/\IntegrabilityExponent }\max\{\MetricSymbol (\BasePoint ,\ComparisonPoint )-2\Radius ,0\}
+ \leq\norm{\MetricSymbol _\BasePoint -\MetricSymbol _\ComparisonPoint }_\IntegrabilityExponent\leq \MetricSymbol (\BasePoint ,\ComparisonPoint ).
+\end{equation}
+Since
+$\SelectedMeasure{\BaseCarrier}{\MetricSymbol}$
+is a probability and the ball masses are positive,
+$0<\BallMassBound_\Radius\leq1$.
+Consequently,
+$0<\BallMassBound_\Radius^{1/\IntegrabilityExponent}\leq1$.
+From the lower bound in \eqref{eq:lp-distance-two-sided-bound} and
+\[
+\max\{\MetricSymbol(\BasePoint,\ComparisonPoint)-2\Radius,0\}
+ \geq\MetricSymbol(\BasePoint,\ComparisonPoint)-2\Radius
+ \]
+it follows that
+\[
+ \begin{aligned}
+ \MetricSymbol(\BasePoint,\ComparisonPoint)
+   -\norm{\MetricSymbol_\BasePoint-\MetricSymbol_\ComparisonPoint}_\IntegrabilityExponent
+ &\leq \MetricSymbol(\BasePoint,\ComparisonPoint)
+ -\BallMassBound_\Radius^{1/\IntegrabilityExponent}
+ \max\{\MetricSymbol(\BasePoint,\ComparisonPoint)-2\Radius,0\}\\
+ &\leq \MetricSymbol(\BasePoint,\ComparisonPoint)
+ -\BallMassBound_\Radius^{1/\IntegrabilityExponent}
+ \bigl(\MetricSymbol(\BasePoint,\ComparisonPoint)-2\Radius\bigr)\\
+ &= (1-\BallMassBound_\Radius^{1/\IntegrabilityExponent})
+      \MetricSymbol(\BasePoint,\ComparisonPoint)
+       +2\Radius\BallMassBound_\Radius^{1/\IntegrabilityExponent}\\
+ &\leq
+ (1-\BallMassBound_\Radius^{1/\IntegrabilityExponent})
+      \DiameterBound+2\Radius.
+ \end{aligned}
+\]
+The last inequality uses
+$\MetricSymbol(\BasePoint,\ComparisonPoint)\leq\DiameterBound$,
+$1-\BallMassBound_\Radius^{1/\IntegrabilityExponent}\geq0$,
+and
+$\BallMassBound_\Radius^{1/\IntegrabilityExponent}\leq1$.
+This proves \eqref{eq:lp-distance-error}.
+\end{proof}
+
+\paraid{p-533de80974c4}
+Fix
+$\SpectralSubspace{\BaseCarrier }{\SpectralCutoff }$
+and
+$2\leq \IntegrabilityExponent <\infty$.
+Write $\norm{\cdot}_\IntegrabilityExponent$ for the norm on
+$\LebesgueSpace^\IntegrabilityExponent(\BaseCarrier,\SelectedMeasure{\BaseCarrier}{\MetricSymbol})$.
+For each
+$\BasePoint \in \BaseCarrier $,
+let
+$\Vector _\BasePoint $
+be the unique minimizer of
+$\Vector \mapsto\norm{\MetricSymbol _\BasePoint -\Vector }_\IntegrabilityExponent ^\IntegrabilityExponent $
+over
+$\SpectralSubspace{\BaseCarrier }{\SpectralCutoff }$.
+The spectral subspace
+$\SpectralSubspace{\BaseCarrier}{\SpectralCutoff}$
+is finite-dimensional,
+and hence closed and convex in
+$\LebesgueSpace^\IntegrabilityExponent(\BaseCarrier,\SelectedMeasure{\BaseCarrier}{\MetricSymbol})$.
+By \Cref{thm:best-approximation},
+this minimizer exists and is unique.
+Since
+$\SelectedMeasure{\BaseCarrier}{\MetricSymbol}$
+has full support,
+the natural map
+$\ContinuousFunctions(\BaseCarrier)\to
+ \LebesgueSpace^\IntegrabilityExponent(\BaseCarrier,\SelectedMeasure{\BaseCarrier}{\MetricSymbol})$
+is injective.
+
+\paraid{p-f10c0269a0dd}
+We call the function
+$\Vector_\BasePoint\in\SpectralSubspace{\BaseCarrier}{\SpectralCutoff}$
+the \emph{finite-dimensional approximation of the distance profile}.
+The map
+$\BaseCarrier\to\SpectralSubspace{\BaseCarrier}{\SpectralCutoff}$,
+$\BasePoint\mapsto\Vector_\BasePoint$,
+need not be injective.
+We use these approximating functions to approximate distances with a controlled error.
+
+\paraid{p-774eca26292a}
+If \eqref{eq:spectral-uniform-approximation} holds,
+then
+$\norm{\MetricSymbol _\BasePoint -\Vector _\BasePoint }_\IntegrabilityExponent <\SmallError $.
+Define
+$\Pseudometric_\BaseCarrier\colon\BaseCarrier\times\BaseCarrier\to[0,\infty)$
+by
+$\Pseudometric_\BaseCarrier(\BasePoint,\ComparisonPoint)
+ =\norm{\Vector_\BasePoint-\Vector_\ComparisonPoint}_\IntegrabilityExponent$.
+The norm triangle inequality implies
+\[
+ \left|\Pseudometric _\BaseCarrier (\BasePoint ,\ComparisonPoint )-\norm{\MetricSymbol _\BasePoint -\MetricSymbol _\ComparisonPoint }_\IntegrabilityExponent \right|
+ \leq\norm{\Vector _\BasePoint -\MetricSymbol _\BasePoint }_\IntegrabilityExponent +\norm{\Vector _\ComparisonPoint -\MetricSymbol _\ComparisonPoint }_\IntegrabilityExponent <2\SmallError .
+\]
+Together with \Cref{lem:lp-distance},
+this yields
+\begin{equation}\label{eq:finite-spectral-error}
+ \norm{\Pseudometric _\BaseCarrier -\MetricSymbol }_\infty
+ \leq2\SmallError +\DiameterBound (1-\BallMassBound _\Radius ^{1/\IntegrabilityExponent })+2\Radius .
+\end{equation}
+For a prescribed error tolerance,
+choose
+$\Radius $
+small,
+then choose a sufficiently large finite
+$\IntegrabilityExponent $,
+and finally choose
+$\SmallError $
+small and a corresponding spectral subspace.

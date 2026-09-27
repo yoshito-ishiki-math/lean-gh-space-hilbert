@@ -1,0 +1,38 @@
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Stealth,node distance=12mm,font=\small]
+\node (profile) {$\ComparisonMetric(\ComparisonPoint,\cdot)
+ \in\LebesgueSpace^\IntegrabilityExponent
+ (\ComparisonCarrier,\SelectedMeasure{\ComparisonCarrier}{\ComparisonMetric})$};
+\node[below=of profile] (approximation) {$
+ \displaystyle\sum_{\BasisIndex=0}^{\ModelDimension-1}
+ (\FeatureCoordinates_\ComparisonCarrier(\ComparisonPoint))_\BasisIndex
+ \BasisFunction_\BasisIndex
+ \in\SpectralSubspace{\ComparisonCarrier}{\SpectralCutoff}$};
+\node[below=of approximation] (coordinates) {$
+ \FeatureCoordinates_\ComparisonCarrier(\ComparisonPoint)
+ \in(\RealNumbers^\ModelDimension,\NormSymbol_\ComparisonCarrier)$};
+\draw[->] (profile) -- node[right]
+ {best approximation in $\LebesgueSpace^\IntegrabilityExponent$} (approximation);
+\draw[->] (approximation) -- node[right]
+ {coordinates in $\{\BasisFunction_\BasisIndex\}_{0\leq\BasisIndex<\ModelDimension}$} (coordinates);
+\end{tikzpicture}
+\caption{The best approximation of
+$\ComparisonMetric(\ComparisonPoint,\cdot)$
+in
+$\SpectralSubspace{\ComparisonCarrier}{\SpectralCutoff}$
+has coordinate vector
+$\FeatureCoordinates_\ComparisonCarrier(\ComparisonPoint)$
+in the chosen
+$\LebesgueSpace^2$-orthonormal
+basis.
+This vector is the minimizer in \eqref{eq:best-approximation-objective}.
+With the
+$\LebesgueSpace^\IntegrabilityExponent$
+norm on
+$\SpectralSubspace{\ComparisonCarrier}{\SpectralCutoff}$,
+the coordinate map in the second arrow is a linear isometry onto
+$(\RealNumbers^\ModelDimension,\NormSymbol_\ComparisonCarrier)$
+by \eqref{eq:local-norm}.}
+\label{fig:local-coordinates}
+\end{figure}

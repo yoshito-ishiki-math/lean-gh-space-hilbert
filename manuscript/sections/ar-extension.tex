@@ -1,0 +1,83 @@
+\subsection{Absolute retracts}\label{subsec:ar-extension}
+\paraid{p-32b0b613231b}
+We now apply the domination and extension theorems from
+Subsection~\ref{subsec:ar-preliminaries-domination}.
+
+\begin{theorem}\label{thm:absolute-extensor}
+\paraid{p-8ec15f8bbe5b}
+The space
+$\GHSpace$
+is an ANR for all metrizable spaces.
+In particular,
+the space
+$\GHSpace$ is also  an AR
+for all metrizable spaces.
+\end{theorem}
+
+\begin{proof}
+\paraid{p-2a571e30ef7f}
+Apply \Cref{thm:global-domination} with
+$\ErrorControl \equiv\ErrorTolerance $
+for each
+$\ErrorTolerance >0$.
+We obtain continuous maps
+$\ApproximationMap\colon\GHSpace\to\AuxiliaryAR$
+and
+$\RealizationMap\colon\AuxiliaryAR\to\GHSpace$
+and a homotopy
+$\ApproximationHomotopy$
+from
+$\IdentityMap_{\GHSpace}$
+to
+$\RealizationMap\circ\ApproximationMap$.
+By \eqref{eq:global-track-control},
+for every
+$\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}\in\GHSpace$,
+we have
+\[
+ \diam_{\GHDistance}
+ \{\ApproximationHomotopy(\MetricSpace{\ComparisonCarrier}{\ComparisonMetric},\HomotopyTime)
+   \mid\HomotopyTime\in\UnitInterval\}
+ \leq\tfrac12\ModelError\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}
+ <\tfrac12\ErrorTolerance.
+\]
+By \Cref{thm:hanner-domination},
+$\GHSpace$
+is an ANR
+for all  separable metrizable spaces.
+
+\paraid{p-6516cafeac15}
+By \Cref{thm:anr-category},
+the space
+$\GHSpace$
+is an ANR for all metrizable spaces.
+Thus
+\Cref{thm:retract-extensor}
+implies
+that
+$\GHSpace$
+is an ANE for all metrizable spaces.
+
+\paraid{p-6d9be79c3189}
+\Cref{lem:scaling-contraction} proves that
+$\GHSpace$
+is contractible by scaling every distance to
+$0$.
+Thus
+ \Cref{thm:contractible-ane}
+ shows that
+the contractible ANE
+$\GHSpace$
+is an AE for all metrizable spaces.
+Finally,
+using  \Cref{thm:retract-extensor},
+we conclude that
+$\GHSpace$
+is an AR for all metrizable spaces.
+\end{proof}
+
+
+\begin{proof}[Proof of \Cref{thm:part-iii-main}]
+\paraid{p-0b3fa815dd6f}
+This is a direct consequence of \Cref{thm:absolute-extensor}.
+\end{proof}

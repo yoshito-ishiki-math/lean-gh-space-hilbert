@@ -1,0 +1,963 @@
+\subsection{The open projection to unmeasured spaces}\label{subsec:measures-open-projection}
+\paraid{p-fef9f75c2978}
+We next restrict the measured space
+$\MeasuredSpaces$
+to invariant full-support measures
+and prove that forgetting the measure is an open map.
+We use uniform control of integrals to prove that the full-support condition
+is a countable intersection of open conditions.
+By taking limits of isometries,
+we prove that the invariance condition is also
+a countable intersection of open conditions and that the averaged measures
+used to lift a convergent sequence of compact spaces converge weakly.
+The required uniform estimates are in
+\Cref{lem:uniform-weak-integrals,lem:parameter-integrals}.
+
+\paraid{p-573911841fb0}
+In the next proposition,
+we extract a convergent subsequence of graphs of isometries
+when the compact spaces vary.
+
+\begin{proposition}\label{lem:isometry-limits}
+\paraid{p-7c4e086d9e70}
+Let
+$\BaseCarrier _\SequenceIndex ,\BaseCarrier \subset \AmbientCarrier $
+be nonempty compact subsets of a compact metric space
+$\MetricSpace{\AmbientCarrier }{\AmbientMetric }$
+with
+$\HausdorffDistance{\AmbientMetric }(\BaseCarrier _\SequenceIndex ,\BaseCarrier )\to0$.
+Equip each subset of
+$\AmbientCarrier$
+with the restricted ambient metric, and equip the product
+$\AmbientCarrier\times\AmbientCarrier$
+with the maximum product metric.
+For any isometries
+$\Isometry _\SequenceIndex \colon \BaseCarrier _\SequenceIndex \to \BaseCarrier _\SequenceIndex $,
+a subsequence of their graphs converges in
+$\CompactHyperspace(\AmbientCarrier \times \AmbientCarrier )$
+to the graph of an isometry
+$\Isometry \colon \BaseCarrier \to \BaseCarrier $.
+Along that subsequence,
+let
+$\GraphProbability_\SequenceIndex\in\ProbabilityMeasures(\BaseCarrier_\SequenceIndex)$
+and
+$\GraphProbability\in\ProbabilityMeasures(\BaseCarrier)$
+satisfy
+$\GraphProbability_\SequenceIndex\to\GraphProbability$
+weakly as probabilities on
+$\AmbientCarrier$.
+Then
+\[
+ (\Isometry_\SequenceIndex)\Pushforward\GraphProbability_\SequenceIndex
+ \longrightarrow\Isometry\Pushforward\GraphProbability
+ \quad\text{weakly in }\ProbabilityMeasures(\AmbientCarrier).
+\]
+\end{proposition}
+
+\begin{proof}
+\paraid{p-b6a94ad3a354}
+We first identify the limit of the graphs and then the limit of the
+probabilities supported on them.
+For all
+$\BasePoint_0,\ComparisonPoint_0,\BasePoint_1,\ComparisonPoint_1\in\AmbientCarrier$,
+write
+\[
+ \AmbientMetric_\times((\BasePoint_0,\ComparisonPoint_0),(\BasePoint_1,\ComparisonPoint_1))
+ =\max\{\AmbientMetric(\BasePoint_0,\BasePoint_1),
+          \AmbientMetric(\ComparisonPoint_0,\ComparisonPoint_1)\}.
+\]
+For each
+$\SequenceIndex$,
+put
+\[
+ \Correspondence_\SequenceIndex
+ =\{(\BasePoint,\Isometry_\SequenceIndex(\BasePoint))\mid
+       \BasePoint\in\BaseCarrier_\SequenceIndex\}.
+\]
+By compactness of
+$\CompactHyperspace(\AmbientCarrier\times\AmbientCarrier)$,
+choose a subsequence whose graphs converge to a nonempty compact set
+$\Correspondence\subset\AmbientCarrier\times\AmbientCarrier$.
+For the remainder of this proof,
+reindex the selected spaces,
+isometries,
+probabilities,
+and graphs by
+$\SequenceIndex\in\NonnegativeIntegers$,
+retaining the notation
+$\BaseCarrier_\SequenceIndex$,
+$\Isometry_\SequenceIndex$,
+$\GraphProbability_\SequenceIndex$,
+and
+$\Correspondence_\SequenceIndex$.
+Then
+\begin{equation}\label{eq:isometry-graph-convergence}
+ \HausdorffDistance{\AmbientMetric_\times}
+ (\Correspondence_\SequenceIndex,\Correspondence)\longrightarrow0.
+\end{equation}
+
+\textbf{Step 1.
+The limiting graph.}
+\paraid{p-7e16f5aad565}
+Let
+$\CoordinateProjection_1,\CoordinateProjection_2\colon
+ \AmbientCarrier\times\AmbientCarrier\to\AmbientCarrier$
+be the coordinate projections.
+They are
+$1$-Lipschitz
+for
+$\AmbientMetric_\times$,
+and
+$\CoordinateProjection_i(\Correspondence_\SequenceIndex)=\BaseCarrier_\SequenceIndex$
+for
+$i=1,2$,
+because each
+$\Isometry_\SequenceIndex$
+is surjective.
+For each
+$i=1,2$,
+we apply \Cref{lem:hausdorff-lipschitz-images} to
+$\CoordinateProjection_i$
+with
+$L=1$.
+Together with the triangle inequality,
+this yields
+\[
+ \begin{aligned}
+ \HausdorffDistance{\AmbientMetric}(\CoordinateProjection_i(\Correspondence),\BaseCarrier)
+ &\leq\HausdorffDistance{\AmbientMetric}
+       (\CoordinateProjection_i(\Correspondence),\CoordinateProjection_i(\Correspondence_\SequenceIndex))
+       +\HausdorffDistance{\AmbientMetric}(\BaseCarrier_\SequenceIndex,\BaseCarrier)\\
+ &\leq\HausdorffDistance{\AmbientMetric_\times}(\Correspondence,\Correspondence_\SequenceIndex)
+       +\HausdorffDistance{\AmbientMetric}(\BaseCarrier_\SequenceIndex,\BaseCarrier)
+       \longrightarrow0.
+ \end{aligned}
+\]
+Thus
+$\CoordinateProjection_1(\Correspondence)=\CoordinateProjection_2(\Correspondence)=\BaseCarrier$.
+In particular,
+$\Correspondence\subset\BaseCarrier\times\BaseCarrier$.
+
+\paraid{p-49be4c2dec12}
+Fix
+$(\BasePoint_0,\ComparisonPoint_0),(\BasePoint_1,\ComparisonPoint_1)\in\Correspondence$.
+For each
+$i\in\{0,1\}$
+and each
+$\SequenceIndex\in\NonnegativeIntegers$,
+choose a pair
+$(\BasePoint_{i,\SequenceIndex},\ComparisonPoint_{i,\SequenceIndex})\in\Correspondence_\SequenceIndex$
+whose distance from
+$(\BasePoint_i,\ComparisonPoint_i)$
+in the metric
+$\AmbientMetric_\times$
+is minimal.
+Such a pair exists because
+$\Correspondence_\SequenceIndex$
+is nonempty and compact.
+By \eqref{eq:isometry-graph-convergence},
+\[
+ \begin{aligned}
+ \max\{\AmbientMetric(\BasePoint_{i,\SequenceIndex},\BasePoint_i),
+        \AmbientMetric(\ComparisonPoint_{i,\SequenceIndex},\ComparisonPoint_i)\}
+ &=\dist_{\AmbientMetric_\times}
+   ((\BasePoint_i,\ComparisonPoint_i),\Correspondence_\SequenceIndex)\\
+ &\leq\HausdorffDistance{\AmbientMetric_\times}
+   (\Correspondence_\SequenceIndex,\Correspondence)\longrightarrow0.
+ \end{aligned}
+\]
+Thus
+$\BasePoint_{i,\SequenceIndex}\to\BasePoint_i$
+and
+$\ComparisonPoint_{i,\SequenceIndex}\to\ComparisonPoint_i$.
+Since
+$\ComparisonPoint_{i,\SequenceIndex}=\Isometry_\SequenceIndex(\BasePoint_{i,\SequenceIndex})$,
+we obtain
+\begin{equation}\label{eq:limit-graph-distance}
+ \begin{aligned}
+ \AmbientMetric(\BasePoint_0,\BasePoint_1)
+ &=\lim_\SequenceIndex\AmbientMetric(\BasePoint_{0,\SequenceIndex},\BasePoint_{1,\SequenceIndex})\\
+ &=\lim_\SequenceIndex\AmbientMetric(
+      \Isometry_\SequenceIndex(\BasePoint_{0,\SequenceIndex}),
+      \Isometry_\SequenceIndex(\BasePoint_{1,\SequenceIndex}))\\
+ &=\lim_\SequenceIndex\AmbientMetric(\ComparisonPoint_{0,\SequenceIndex},\ComparisonPoint_{1,\SequenceIndex})
+ =\AmbientMetric(\ComparisonPoint_0,\ComparisonPoint_1).
+ \end{aligned}
+\end{equation}
+In particular,
+if
+ $(\BasePoint,\ComparisonPoint_0),(\BasePoint,\ComparisonPoint_1)\in\Correspondence$,
+ then
+ $\AmbientMetric(\ComparisonPoint_0,\ComparisonPoint_1)=0$.
+ Hence
+ $\ComparisonPoint_0=\ComparisonPoint_1$.
+Since the first projection is surjective and each first coordinate has a unique
+second coordinate,
+we define the map
+$\Isometry\colon\BaseCarrier\to\BaseCarrier$
+by
+\[
+ \Correspondence=\{(\BasePoint,\Isometry(\BasePoint))\mid\BasePoint\in\BaseCarrier\}.
+\]
+Since the second projection is surjective,
+we have
+$\Isometry(\BaseCarrier)=\BaseCarrier$,
+and for every
+$\BasePoint_0,\BasePoint_1\in\BaseCarrier$,
+\eqref{eq:limit-graph-distance} implies
+\[
+ \AmbientMetric(\Isometry(\BasePoint_0),\Isometry(\BasePoint_1))
+ =\AmbientMetric(\BasePoint_0,\BasePoint_1).
+\]
+Hence
+$\Isometry$
+is an isometry.
+
+\textbf{Step 2.
+Probabilities on the graphs.}
+\paraid{p-338e44ba371c}
+For every
+$\SequenceIndex\in\NonnegativeIntegers$,
+define the map
+\[
+ \GraphMap_\SequenceIndex\colon\BaseCarrier_\SequenceIndex\to\AmbientCarrier\times\AmbientCarrier
+\]
+by
+\[
+ \GraphMap_\SequenceIndex(\BasePoint)=(\BasePoint,\Isometry_\SequenceIndex(\BasePoint)).
+\]
+We also define the map
+\[
+ \GraphMap\colon\BaseCarrier\to\AmbientCarrier\times\AmbientCarrier
+\]
+by
+\[
+ \GraphMap(\BasePoint)=(\BasePoint,\Isometry(\BasePoint)).
+\]
+Set
+\[
+ \GraphLaw_\SequenceIndex=(\GraphMap_\SequenceIndex)\Pushforward\GraphProbability_\SequenceIndex.
+\]
+By compactness of
+$\ProbabilityMeasures(\AmbientCarrier\times\AmbientCarrier)$,
+every subsequence of
+$\GraphLaw_\SequenceIndex$
+has a further weakly convergent subsequence.
+Write the indices of any such subsequence as
+$n_k$
+and denote its limit by
+$\GraphLaw\in\ProbabilityMeasures(\AmbientCarrier\times\AmbientCarrier)$.
+Then
+\[
+ \GraphLaw_{n_k}\longrightarrow\GraphLaw
+ \quad\text{weakly in }\ProbabilityMeasures(\AmbientCarrier\times\AmbientCarrier).
+\]
+Since
+$\GraphLaw_{n_k}(\Correspondence_{n_k})=1$,
+Equation \eqref{eq:isometry-graph-convergence},
+\Cref{lem:limit-support},
+and continuity of the first projection
+$\CoordinateProjection_1$
+imply
+\begin{equation}\label{eq:limit-graph-law-support}
+ \GraphLaw(\Correspondence)=1,
+\end{equation}
+and
+\[
+ (\CoordinateProjection_1)\Pushforward\GraphLaw
+ =\lim_{k\to\infty}(\CoordinateProjection_1)\Pushforward\GraphLaw_{n_k}
+ =\lim_{k\to\infty}\GraphProbability_{n_k}
+ =\GraphProbability.
+\]
+On
+$\Correspondence$
+we have
+\begin{equation}\label{eq:graph-projection-inverse}
+ \GraphMap\circ\CoordinateProjection_1=\operatorname{id}_\Correspondence.
+\end{equation}
+Regard
+$\GraphLaw$
+as a probability on
+$\Correspondence$.
+By \eqref{eq:graph-projection-inverse},
+we obtain
+\[
+ \GraphLaw
+ =(\GraphMap\circ\CoordinateProjection_1)\Pushforward\GraphLaw
+ =\GraphMap\Pushforward\bigl((\CoordinateProjection_1)\Pushforward\GraphLaw\bigr)
+ =\GraphMap\Pushforward\GraphProbability.
+\]
+Every weakly convergent subsequence has this same limit.
+Compactness of the probability space
+$\ProbabilityMeasures(\AmbientCarrier\times\AmbientCarrier)$
+consequently implies
+\[
+ \GraphLaw_\SequenceIndex\longrightarrow\GraphMap\Pushforward\GraphProbability
+ \quad\text{weakly in }\ProbabilityMeasures(\AmbientCarrier\times\AmbientCarrier).
+\]
+Applying the continuous second projection
+$\CoordinateProjection_2$
+yields
+\[
+ (\Isometry_\SequenceIndex)\Pushforward\GraphProbability_\SequenceIndex
+ =(\CoordinateProjection_2)\Pushforward\GraphLaw_\SequenceIndex
+ \longrightarrow(\CoordinateProjection_2)\Pushforward(\GraphMap\Pushforward\GraphProbability)
+ =\Isometry\Pushforward\GraphProbability.
+\]
+This is the required weak convergence on
+$\AmbientCarrier$.
+\end{proof}
+
+\begin{proposition}\label{lem:full-support-gdelta}
+\paraid{p-380dfd13f917}
+The subset
+\[
+ \mathscr S_{\mathrm{full}}
+ =\{\MeasuredSpace{\BaseCarrier}{\MetricSymbol}{\FirstMeasure}\in\MeasuredSpaces
+       \mid\supp(\FirstMeasure)=\BaseCarrier\}
+\]
+is a
+$\CountableIntersectionType$
+subset of
+$\MeasuredSpaces$.
+\end{proposition}
+
+\begin{proof}
+\paraid{p-0aa6b81d8d5c}
+For
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}\in\GHSpace$,
+$\FirstMeasure\in\ProbabilityMeasures(\BaseCarrier)$,
+and
+$\Radius>0$,
+define the ball mass function at each
+$\BasePoint\in\BaseCarrier$
+\[
+ \BallMassFunction_\Radius\colon\BaseCarrier\to[0,1]
+\]
+by
+\begin{equation}\label{eq:ball-mass-functions-1}
+ \BallMassFunction_\Radius(\BasePoint)
+ =\int_\BaseCarrier\BumpFunction{\BaseCarrier}{\MetricSymbol}{\BasePoint}{\Radius}
+       \,\IntegrationDifferential\FirstMeasure,
+\end{equation}
+and define
+\[
+ \MinimumBallMass_\Radius\colon\MeasuredSpaces\to[0,1]
+\]
+by
+\begin{equation}\label{eq:ball-mass-functions-2}
+ \MinimumBallMass_\Radius\MeasuredSpace{\BaseCarrier}{\MetricSymbol}{\FirstMeasure}
+ =\min_{\BasePoint\in\BaseCarrier}\BallMassFunction_\Radius(\BasePoint).
+\end{equation}
+By \eqref{eq:metric-bump-lipschitz},
+the function
+$\BallMassFunction_\Radius$
+is
+$1/\Radius$-Lipschitz,
+so its minimum exists.
+To confirm the continuity of
+$\MinimumBallMass_\Radius$,
+let
+$\MeasuredSpace{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex}{\FirstMeasure_\SequenceIndex}$
+converge to
+$\MeasuredSpace{\BaseCarrier}{\MetricSymbol}{\FirstMeasure}$
+in
+$\MeasuredSpaces$.
+Use \Cref{lem:common-measured-embedding} to realize the carriers in
+$\MetricSpace{\AmbientCarrier}{\AmbientMetric}$
+with Hausdorff convergence and
+$\FirstMeasure_\SequenceIndex\to\FirstMeasure$
+weakly on
+$\AmbientCarrier$.
+Define ambient extensions of the ball mass functions
+by integrating the ambient bump functions against the measures supported on the respective carriers.
+For every
+$\IntegrationPoint\in\AmbientCarrier$,
+define
+\begin{equation}\label{eq:ambient-ball-mass-functions-1}
+ \BallMassFunction_{\Radius,\SequenceIndex}(\IntegrationPoint)
+ =\int_\AmbientCarrier
+    \BumpFunction{\AmbientCarrier}{\AmbientMetric}{\IntegrationPoint}{\Radius}
+    \,\IntegrationDifferential\FirstMeasure_\SequenceIndex,
+\end{equation}
+and
+\begin{equation}\label{eq:ambient-ball-mass-functions-2}
+ \tilde{\BallMassFunction}_\Radius(\IntegrationPoint)
+ =\int_\AmbientCarrier
+    \BumpFunction{\AmbientCarrier}{\AmbientMetric}{\IntegrationPoint}{\Radius}
+    \,\IntegrationDifferential\FirstMeasure.
+\end{equation}
+We have
+$\tilde{\BallMassFunction}_\Radius|_\BaseCarrier=\BallMassFunction_\Radius$,
+and
+$\BallMassFunction_{\Radius,\SequenceIndex}|_{\BaseCarrier_\SequenceIndex}$
+is the ball mass function in \eqref{eq:ball-mass-functions-1} for
+$\MeasuredSpace{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex}{\FirstMeasure_\SequenceIndex}$.
+By \Cref{lem:parameter-integrals} and \eqref{eq:metric-bump-lipschitz},
+\begin{equation}\label{eq:uniform-ball-mass-convergence}
+ \norm{\BallMassFunction_{\Radius,\SequenceIndex}-\tilde{\BallMassFunction}_\Radius}_\infty
+ \longrightarrow0.
+\end{equation}
+Using \eqref{eq:uniform-ball-mass-convergence} and the
+$1/\Radius$-Lipschitz bound,
+we obtain
+\begin{equation}\label{eq:minimum-ball-mass-convergence}
+ |\min_{\BasePoint\in\BaseCarrier_\SequenceIndex}\BallMassFunction_{\Radius,\SequenceIndex}(\BasePoint)
+      -\min_{\BasePoint\in\BaseCarrier}\tilde{\BallMassFunction}_\Radius(\BasePoint)|
+ \leq\norm{\BallMassFunction_{\Radius,\SequenceIndex}-\tilde{\BallMassFunction}_\Radius}_\infty
+      +\frac{\HausdorffDistance{\AmbientMetric}(\BaseCarrier_\SequenceIndex,\BaseCarrier)}{\Radius}
+ \longrightarrow0.
+\end{equation}
+Thus
+$\MinimumBallMass _\Radius $
+is continuous on
+$\MeasuredSpaces$.
+
+\paraid{p-871abef1344e}
+If
+$\supp(\FirstMeasure )=\BaseCarrier $,
+then \eqref{eq:metric-bump-integral} implies that for every
+$\BasePoint \in \BaseCarrier $,
+\[
+ \BallMassFunction _\Radius (\BasePoint )\geq\tfrac12\FirstMeasure (\MetricBall(\BasePoint ,\Radius /2;\MetricSymbol))>0.
+\]
+Continuity and compactness imply
+$\MinimumBallMass _\Radius >0$.
+Conversely,
+if
+$\BasePoint \notin\supp(\FirstMeasure )$,
+choose $r>0$ such that
+$\FirstMeasure(\MetricBall(\BasePoint,r;\MetricSymbol))=0$.
+Choose $\CoordinateIndex\in\NonnegativeIntegers$ with $2^{-\CoordinateIndex}<r$.
+Then $\FirstMeasure(\MetricBall(\BasePoint,2^{-\CoordinateIndex};\MetricSymbol))=0$.
+Then
+$\BallMassFunction _{2^{-\CoordinateIndex} }(\BasePoint )=0$.
+We have proved that
+$\supp(\FirstMeasure)=\BaseCarrier$
+if and only if for every
+$\CoordinateIndex\in\NonnegativeIntegers$
+we have
+\[
+ \MinimumBallMass_{2^{-\CoordinateIndex}}
+ \MeasuredSpace{\BaseCarrier}{\MetricSymbol}{\FirstMeasure}>0.
+\]
+For each
+$\CoordinateIndex\in\NonnegativeIntegers$,
+define the subset
+\[
+ \PositiveBallMassSet _\CoordinateIndex =\{\FiberPoint \in\MeasuredSpaces\mid \MinimumBallMass _{2^{-\CoordinateIndex} }(\FiberPoint )>0\}.
+\]
+Each
+$\PositiveBallMassSet_\CoordinateIndex$
+is open by continuity of
+$\MinimumBallMass_{2^{-\CoordinateIndex}}$.
+
+\paraid{p-39a712fdc965}
+Consequently,
+\[
+ \mathscr S_{\mathrm{full}}
+ =\bigcap_{\CoordinateIndex\in\NonnegativeIntegers}\PositiveBallMassSet_\CoordinateIndex.
+\]
+Thus
+$\mathscr S_{\mathrm{full}}$
+is a countable intersection of open subsets of
+$\MeasuredSpaces$,
+as required.
+\end{proof}
+
+\begin{proposition}\label{lem:invariant-measures-gdelta}
+\paraid{p-fc58c5a6a993}
+Let
+$\mathscr S_{\mathrm{inv}}\subset\MeasuredSpaces$
+consist of the classes
+$\MeasuredSpace{\BaseCarrier}{\MetricSymbol}{\FirstMeasure}$
+whose measures are invariant under every isometry of
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$.
+Then
+$\mathscr S_{\mathrm{inv}}$
+is a
+$\CountableIntersectionType$
+subset of
+$\MeasuredSpaces$.
+\end{proposition}
+
+\begin{proof}
+\paraid{p-9a02df523b4a}
+Fix
+$\CoordinateIndex\in\NonnegativeIntegers$.
+Define
+\[
+ \begin{aligned}
+ \NonInvariantSet _\CoordinateIndex &=\bigl\{\FiberPoint=\MeasuredSpace{\BaseCarrier }{\MetricSymbol }{\FirstMeasure }\in\MeasuredSpaces\bigm|
+       \exists\GroupElement \in\Isom\MetricSpace{\BaseCarrier }{\MetricSymbol }\\
+    &\qquad\qquad\ProkhorovDistance{\MetricSymbol }(\FirstMeasure ,\GroupElement \Pushforward\FirstMeasure )\geq2^{-\CoordinateIndex} \bigr\}.
+ \end{aligned}
+\]
+We prove that
+$\NonInvariantSet_\CoordinateIndex$
+is closed.
+Take a sequence
+\[
+ \FiberPoint_\SequenceIndex
+ =\MeasuredSpace{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex}{\FirstMeasure_\SequenceIndex}
+ \in\NonInvariantSet_\CoordinateIndex
+\]
+converging to
+$\FiberPoint=\MeasuredSpace{\BaseCarrier}{\MetricSymbol}{\FirstMeasure}\in\MeasuredSpaces$.
+For each
+$\SequenceIndex$,
+choose
+$\GroupElement_\SequenceIndex\in\Isom\MetricSpace{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex}$
+such that
+\[
+ \ProkhorovDistance{\MetricSymbol_\SequenceIndex}
+ (\FirstMeasure_\SequenceIndex,
+  (\GroupElement_\SequenceIndex)\Pushforward\FirstMeasure_\SequenceIndex)
+ \geq2^{-\CoordinateIndex}.
+\]
+By \Cref{lem:common-measured-embedding},
+there exist a compact metric space
+$\MetricSpace{\AmbientCarrier}{\AmbientMetric}$
+and isometric embeddings
+$\FirstEmbedding_\SequenceIndex\colon\MetricSpace{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex}\to\MetricSpace{\AmbientCarrier}{\AmbientMetric}$
+and
+$\FirstEmbedding\colon\MetricSpace{\BaseCarrier}{\MetricSymbol}\to\MetricSpace{\AmbientCarrier}{\AmbientMetric}$
+such that
+\[
+ \HausdorffDistance{\AmbientMetric}
+ (\FirstEmbedding_\SequenceIndex(\BaseCarrier_\SequenceIndex),\FirstEmbedding(\BaseCarrier))\to0,
+\]
+and
+\[
+ (\FirstEmbedding_\SequenceIndex)\Pushforward\FirstMeasure_\SequenceIndex
+ \to\FirstEmbedding\Pushforward\FirstMeasure
+ \quad\text{weakly in }\ProbabilityMeasures(\AmbientCarrier).
+\]
+Identify the carriers with these images and the measures with these pushforwards.
+For each
+$\SequenceIndex$,
+on the embedded carrier we use
+$\GroupElement_\SequenceIndex$
+to denote the conjugate
+$\FirstEmbedding_\SequenceIndex\circ\GroupElement_\SequenceIndex\circ\FirstEmbedding_\SequenceIndex^{-1}$.
+By \Cref{lem:isometry-limits},
+we obtain a strictly increasing sequence of indices
+$n_\ell$
+and an isometry
+$\GroupElement\in\Isom\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+for which
+\[
+ (\GroupElement_{n_\ell})\Pushforward\FirstMeasure_{n_\ell}
+ \to\GroupElement\Pushforward\FirstMeasure
+ \quad\text{weakly}.
+\]
+By \Cref{lem:prokhorov-isometric-embedding},
+isometric embeddings preserve the L\'evy--Prokhorov distance.
+Thus the triangle inequality on
+$\ProbabilityMeasures(\AmbientCarrier)$
+yields
+\[
+ \begin{aligned}
+ &\left|
+ \ProkhorovDistance{\MetricSymbol_{n_\ell}}
+ (\FirstMeasure_{n_\ell},(\GroupElement_{n_\ell})\Pushforward\FirstMeasure_{n_\ell})
+ -\ProkhorovDistance{\MetricSymbol}(\FirstMeasure,\GroupElement\Pushforward\FirstMeasure)
+ \right|\\
+ &\quad=\left|
+ \ProkhorovDistance{\AmbientMetric}
+ (\FirstMeasure_{n_\ell},(\GroupElement_{n_\ell})\Pushforward\FirstMeasure_{n_\ell})
+ -\ProkhorovDistance{\AmbientMetric}(\FirstMeasure,\GroupElement\Pushforward\FirstMeasure)
+ \right|\\
+ &\quad\leq
+ \ProkhorovDistance{\AmbientMetric}(\FirstMeasure_{n_\ell},\FirstMeasure)
+ +\ProkhorovDistance{\AmbientMetric}
+ ((\GroupElement_{n_\ell})\Pushforward\FirstMeasure_{n_\ell},\GroupElement\Pushforward\FirstMeasure)
+ \longrightarrow0.
+ \end{aligned}
+\]
+Both terms on the right tend to
+$0$
+because
+$\FirstMeasure_{n_\ell}\to\FirstMeasure$
+and
+$(\GroupElement_{n_\ell})\Pushforward\FirstMeasure_{n_\ell}\to\GroupElement\Pushforward\FirstMeasure$
+weakly in
+$\ProbabilityMeasures(\AmbientCarrier)$,
+and
+$\ProkhorovDistance{\AmbientMetric}$
+induces weak convergence.
+Consequently,
+\[
+ \ProkhorovDistance{\MetricSymbol }(\FirstMeasure ,\GroupElement \Pushforward\FirstMeasure )
+ =\lim_{\ell\to\infty} \ProkhorovDistance{\MetricSymbol _{n_\ell}}(\FirstMeasure _{n_\ell} ,(\GroupElement _{n_\ell} )\Pushforward\FirstMeasure _{n_\ell} )\geq2^{-\CoordinateIndex} .
+\]
+Thus
+$\FiberPoint\in\NonInvariantSet_\CoordinateIndex$,
+and hence
+$\NonInvariantSet_\CoordinateIndex$
+is closed.
+Since the L\'evy--Prokhorov distance is a metric,
+we see that
+\[
+ \mathscr S_{\mathrm{inv}}
+ =\bigcap_{\CoordinateIndex\in\NonnegativeIntegers}
+       (\MeasuredSpaces\setminus\NonInvariantSet_\CoordinateIndex).
+\]
+Each set in this intersection is open.
+\end{proof}
+
+\begin{theorem}\label{prop:invariant-measured-polish}
+\paraid{p-a10d59349312}
+The space
+$\InvariantMeasuredSpaces$
+is Polish.
+\end{theorem}
+
+\begin{proof}
+\paraid{p-463534d4ce84}
+By \Cref{lem:full-support-gdelta,lem:invariant-measures-gdelta},
+\[
+ \InvariantMeasuredSpaces
+ =\mathscr S_{\mathrm{full}}\cap\mathscr S_{\mathrm{inv}}
+\]
+is a
+$\CountableIntersectionType$
+subset of
+$\MeasuredSpaces$.
+\Cref{thm:ghp-polish} states that
+$\MeasuredSpaces$
+is Polish,
+so this subspace is Polish.
+\end{proof}
+
+\paraid{p-47cbaeca7f5a}
+Define
+\[
+ \MeasureProjection\colon\InvariantMeasuredSpaces\to\GHSpace
+\]
+by
+\[
+ \MeasureProjection\MeasuredSpace{\BaseCarrier}{\MetricSymbol}{\FirstMeasure}
+ =\MetricSpace{\BaseCarrier}{\MetricSymbol}.
+\]
+Namely, this map forgets the measure.
+\begin{lemma}\label{lem:invariant-full-support}
+\paraid{p-ab6dab25fbcd}
+Every nonempty compact metric space
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+admits an invariant probability with full support.
+\end{lemma}
+
+\begin{proof}
+\paraid{p-fee9db58d6fe}
+Fix a dense sequence
+$\{\BasePoint_\CoordinateIndex\}_{\CoordinateIndex\in\NonnegativeIntegers}$
+in
+$\BaseCarrier$
+and put
+\[
+ \ApproximatingProbability
+ =\sum_{\CoordinateIndex\in\NonnegativeIntegers}
+   2^{-(\CoordinateIndex+1)}\DiracProbability_{\BasePoint_\CoordinateIndex}.
+\]
+Since
+$\sum_{\CoordinateIndex\in\NonnegativeIntegers}2^{-(\CoordinateIndex+1)}=1$,
+this is a probability on
+$\BaseCarrier$.
+By the density of
+$\{\BasePoint_\CoordinateIndex\}_{\CoordinateIndex\in\NonnegativeIntegers}$,
+we see that
+$\supp(\ApproximatingProbability)=\BaseCarrier$.
+
+\paraid{p-b8095b9a1aa1}
+Put
+$\IsometryGroup=\Isom\MetricSpace{\BaseCarrier}{\MetricSymbol}$.
+By \Cref{lem:compact-isometry-group},
+the group
+$\IsometryGroup$
+is compact and metrizable.
+By the Haar theorem (\Cref{thm:haar}),
+we obtain a normalized left invariant probability
+$\HaarProbability _\IsometryGroup $
+on
+$\IsometryGroup $.
+In the iterated integral below,
+the outer variable
+$\GroupElement\in\IsometryGroup$
+is integrated against
+$\HaarProbability_\IsometryGroup$,
+and the inner variable
+$\BasePoint\in\BaseCarrier$
+is integrated against
+$\ApproximatingProbability$.
+Define the average
+$\overline\ApproximatingProbability$
+by requiring that for every
+$\TestFunction\in\ContinuousFunctions(\BaseCarrier)$,
+\[
+ \int_\BaseCarrier \TestFunction \,\IntegrationDifferential \overline\ApproximatingProbability
+ =\int_\IsometryGroup \int_\BaseCarrier \TestFunction (\GroupElement \BasePoint )\,\IntegrationDifferential \ApproximatingProbability (\BasePoint )\,\IntegrationDifferential \HaarProbability _\IsometryGroup (\GroupElement ).
+\]
+By the Riesz--Markov--Kakutani theorem (\Cref{thm:riesz-markov-kakutani}),
+this positive normalized linear functional represents a unique probability on
+$\BaseCarrier $.
+Left invariance of
+$\HaarProbability _\IsometryGroup $
+implies
+$\TranslatingIsometry \Pushforward\overline\ApproximatingProbability =\overline\ApproximatingProbability $
+for every
+$\TranslatingIsometry \in \IsometryGroup $.
+For every nonempty open set
+$\OpenSubset\subset\BaseCarrier$,
+choose a nonzero continuous function
+$\TestFunction\colon\BaseCarrier\to[0,1]$
+that vanishes outside
+$\OpenSubset$.
+For each
+$\GroupElement\in\IsometryGroup$,
+the function
+$\TestFunction\circ\GroupElement$
+is nonzero and nonnegative,
+so its integral against the full-support measure
+$\ApproximatingProbability$
+is positive.
+The defining identity for the average therefore implies
+\[
+ \overline\ApproximatingProbability(\OpenSubset)
+ \geq\int_\IsometryGroup\int_\BaseCarrier
+       \TestFunction(\GroupElement\BasePoint)
+       \,\IntegrationDifferential\ApproximatingProbability(\BasePoint)
+       \,\IntegrationDifferential\HaarProbability_\IsometryGroup(\GroupElement)>0.
+\]
+Hence
+$\MeasuredSpace{\BaseCarrier }{\MetricSymbol }{\overline\ApproximatingProbability }\in\InvariantMeasuredSpaces$,
+as claimed.
+\end{proof}
+
+\begin{proposition}\label{lem:convergent-invariant-lifts}
+\paraid{p-a0c55c41bf20}
+Let
+$\FiberPoint=\MeasuredSpace{\BaseCarrier}{\MetricSymbol}{\FirstMeasure}\in\InvariantMeasuredSpaces$
+and assume that
+$\MetricSpace{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex}
+ \to\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+in
+$\GHSpace$.
+Then there are invariant probabilities
+$\SecondMeasure_\SequenceIndex$
+with full support on
+$\BaseCarrier_\SequenceIndex$
+such that
+\[
+ \MeasuredSpace{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex}{\SecondMeasure_\SequenceIndex}
+ \longrightarrow\FiberPoint
+ \quad\text{in }\InvariantMeasuredSpaces.
+\]
+\end{proposition}
+
+\begin{proof}
+\paraid{p-c601850135cd}
+By \Cref{lem:common-gh-embedding},
+choose isometric embeddings into a compact
+$\MetricSpace{\AmbientCarrier }{\AmbientMetric }$
+and identify the spaces with their images.
+Let $\iota_\SequenceIndex\colon\BaseCarrier_\SequenceIndex\hookrightarrow\AmbientCarrier$
+and $\iota\colon\BaseCarrier\hookrightarrow\AmbientCarrier$ be the inclusions.
+By the Hausdorff continuity of the probability-measure functor
+\cite[arXiv v5, Lemma~2.13 and Example~2.1(iii)]{Khezeli2023Framework},
+there are probabilities
+$\FirstMeasure_\SequenceIndex\in\ProbabilityMeasures(\BaseCarrier_\SequenceIndex)$
+such that
+$(\iota_\SequenceIndex)_*\FirstMeasure_\SequenceIndex\to\iota_*\FirstMeasure$
+weakly on $\AmbientCarrier$.
+Define
+$\bar\mu_\SequenceIndex=(\iota_\SequenceIndex)_*\FirstMeasure_\SequenceIndex$
+and $\bar\mu=\iota_*\FirstMeasure$ in $\ProbabilityMeasures(\AmbientCarrier)$.
+Then
+\[
+ \ProkhorovDistance{\AmbientMetric}(\bar\mu_\SequenceIndex,\bar\mu)\longrightarrow0.
+\]
+Thus $\bar\mu_\SequenceIndex\to\bar\mu$ weakly in
+$\ProbabilityMeasures(\AmbientCarrier)$.
+Choose a probability
+$\FullSupportProbability_\SequenceIndex$
+with full support on each
+$\BaseCarrier_\SequenceIndex$,
+for example by assigning positive weights summing to one to a dense sequence.
+For
+$0<\MixingWeight_\SequenceIndex<1$
+with
+$\MixingWeight_\SequenceIndex\to0$,
+put
+\[
+ \ApproximatingProbability_\SequenceIndex
+ =(1-\MixingWeight_\SequenceIndex)\FirstMeasure_\SequenceIndex
+   +\MixingWeight_\SequenceIndex\FullSupportProbability_\SequenceIndex.
+\]
+This probability has full support.
+For every real continuous function
+$\TestFunction$
+on
+$\AmbientCarrier$,
+\[
+ \left|\int_{\BaseCarrier_\SequenceIndex}(\TestFunction\circ\iota_\SequenceIndex)\,\IntegrationDifferential\ApproximatingProbability_\SequenceIndex
+       -\int_{\BaseCarrier_\SequenceIndex}(\TestFunction\circ\iota_\SequenceIndex)\,\IntegrationDifferential\FirstMeasure_\SequenceIndex\right|
+ \leq2\MixingWeight_\SequenceIndex\norm{\TestFunction}_\infty\longrightarrow0.
+\]
+Hence
+$(\iota_\SequenceIndex)_*\ApproximatingProbability_\SequenceIndex\to\bar\mu$
+weakly.
+
+\paraid{p-0cb8c42117db}
+Average
+$\ApproximatingProbability _\SequenceIndex $
+with respect to the normalized Haar probability on
+$\IsometryGroup _\SequenceIndex =\Isom\MetricSpace{\BaseCarrier _\SequenceIndex }{\MetricSymbol _\SequenceIndex}$
+and denote the resulting probability by
+$\SecondMeasure _\SequenceIndex $.
+The averaging construction in \Cref{lem:invariant-full-support}
+shows that these probabilities are invariant and have full support.
+For each
+$\TestFunction \in\ContinuousFunctions(\AmbientCarrier )$,
+we claim that
+\begin{equation}\label{eq:uniform-orbit-measures}
+ \sup_{\GroupElement \in \IsometryGroup _\SequenceIndex }
+ \left|\int_{\BaseCarrier_\SequenceIndex}(\TestFunction\circ\iota_\SequenceIndex) \,\IntegrationDifferential (\GroupElement \Pushforward\ApproximatingProbability _\SequenceIndex )-\int_\BaseCarrier(\TestFunction\circ\iota) \,\IntegrationDifferential \FirstMeasure \right|
+ \longrightarrow0.
+\end{equation}
+For the sake of contradiction,
+suppose that \eqref{eq:uniform-orbit-measures} fails.
+Choose
+$\ErrorTolerance>0$
+and a strictly increasing sequence of indices
+$\{n_k\}_{k\in\NonnegativeIntegers}$
+and for each
+$k\in\NonnegativeIntegers$
+choose
+$\GroupElement_{n_k}\in\IsometryGroup_{n_k}$
+satisfying
+\begin{equation}\label{eq:orbit-integral-lower-bound}
+ \left|\int_{\BaseCarrier_{n_k}}(\TestFunction\circ\iota_{n_k})\,
+       \IntegrationDifferential((\GroupElement_{n_k})\Pushforward\ApproximatingProbability_{n_k})
+       -\int_\BaseCarrier(\TestFunction\circ\iota)\,\IntegrationDifferential\FirstMeasure\right|
+ \geq\ErrorTolerance.
+\end{equation}
+By \Cref{lem:isometry-limits},
+there exist a strictly increasing sequence of indices
+$\{k(j)\}_{j\in\NonnegativeIntegers}$
+and an isometry
+$\GroupElement\in\Isom\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+such that
+\[
+ (\iota_{n_{k(j)}}\circ\GroupElement_{n_{k(j)}})_*\ApproximatingProbability_{n_{k(j)}}
+ \to(\iota\circ\GroupElement)_*\FirstMeasure=\bar\mu.
+\]
+Apply this weak convergence to the fixed function
+$\TestFunction\in\ContinuousFunctions(\AmbientCarrier)$.
+By the pushforward integral identity,
+\[
+ \left|\int_{\BaseCarrier_{n_{k(j)}}}(\TestFunction\circ\iota_{n_{k(j)}})
+ \,\IntegrationDifferential((\GroupElement_{n_{k(j)}})_*\ApproximatingProbability_{n_{k(j)}})
+ -\int_\BaseCarrier(\TestFunction\circ\iota)\,\IntegrationDifferential\FirstMeasure\right|
+ \longrightarrow0.
+\]
+This contradicts the lower bound $\ErrorTolerance>0$ in
+\eqref{eq:orbit-integral-lower-bound}.
+Therefore,
+averaging \eqref{eq:uniform-orbit-measures} over
+$\IsometryGroup _\SequenceIndex $
+yields
+$(\iota_\SequenceIndex)_*\SecondMeasure_\SequenceIndex\to\bar\mu$
+weakly.
+Define
+\[
+ \FiberPoint_\SequenceIndex
+ :=\MeasuredSpace{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex}{\SecondMeasure_\SequenceIndex}.
+\]
+Consequently,
+\[
+ \FiberPoint_\SequenceIndex\longrightarrow\FiberPoint,
+\]
+and
+\[
+ \MeasureProjection(\FiberPoint _\SequenceIndex )=\MetricSpace{\BaseCarrier _\SequenceIndex }{\MetricSymbol _\SequenceIndex}.
+\]
+Thus
+$\{\FiberPoint_\SequenceIndex\}_{\SequenceIndex\in\NonnegativeIntegers}$
+is the required sequence of invariant lifts.
+This finishes the proof.
+\end{proof}
+
+\begin{theorem}\label{prop:open-invariant-projection}
+\paraid{p-909c842b7494}
+The map
+\[
+ \MeasureProjection\colon\InvariantMeasuredSpaces\to\GHSpace
+\]
+defined by
+\[
+ \MeasureProjection\MeasuredSpace{\BaseCarrier}{\MetricSymbol}{\FirstMeasure}
+ =\MetricSpace{\BaseCarrier}{\MetricSymbol},
+\]
+is a continuous open surjection.
+\end{theorem}
+
+\begin{proof}
+\paraid{p-34f1f298a7ea}
+The inequality
+\[
+ \GHDistance(\MetricSpace{\BaseCarrier }{\MetricSymbol },\MetricSpace{\ComparisonCarrier }{\ComparisonMetric })
+ \leq\GHPDistance(\MeasuredSpace{\BaseCarrier }{\MetricSymbol }{\FirstMeasure },\MeasuredSpace{\ComparisonCarrier }{\ComparisonMetric }{\SecondMeasure })
+\]
+shows that
+$\MeasureProjection$
+is continuous.
+By \Cref{lem:invariant-full-support},
+the map
+$\MeasureProjection$
+is surjective.
+To prove openness,
+let
+$\OpenSubset \subset\InvariantMeasuredSpaces$
+be open,
+and let
+$\FiberPoint \in \OpenSubset $.
+For the sake of contradiction,
+suppose that
+$\MeasureProjection(\OpenSubset )$
+contains no neighborhood of
+$\MeasureProjection(\FiberPoint )$.
+For each
+$\SequenceIndex\in\NonnegativeIntegers$,
+choose
+\[
+ \MetricSpace{\BaseCarrier _\SequenceIndex }{\MetricSymbol _\SequenceIndex}\in
+ \GHball(\MeasureProjection(\FiberPoint ),2^{-\SequenceIndex} )\setminus\MeasureProjection(\OpenSubset ).
+\]
+By \Cref{lem:convergent-invariant-lifts},
+there exist
+$\FiberPoint_\SequenceIndex\in\InvariantMeasuredSpaces$
+such that
+\[
+ \MeasureProjection(\FiberPoint_\SequenceIndex)
+ =\MetricSpace{\BaseCarrier_\SequenceIndex}{\MetricSymbol_\SequenceIndex},
+\]
+and
+\[
+ \FiberPoint_\SequenceIndex\to\FiberPoint.
+\]
+Since
+$\OpenSubset$
+is an open neighborhood of
+$\FiberPoint$,
+we obtain
+$\FiberPoint _\SequenceIndex \in \OpenSubset $
+for all sufficiently large
+$\SequenceIndex $.
+This implies
+$\MetricSpace{\BaseCarrier _\SequenceIndex }{\MetricSymbol _\SequenceIndex}\in\MeasureProjection(\OpenSubset )$,
+a contradiction.
+Thus
+$\MeasureProjection(\OpenSubset )$
+is open.
+\end{proof}

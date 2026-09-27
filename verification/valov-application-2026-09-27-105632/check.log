@@ -1,0 +1,6 @@
+'PaperN.PartI.invariantMeasuredPolish_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.openInvariantProjection_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.probability_innerRegular_polish' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.valovSelection_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.fiberLawSelection_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperN.PartI.invariantFiberLawSelection_main' depends on axioms: [propext, Classical.choice, Quot.sound]

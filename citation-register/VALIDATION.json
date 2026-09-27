@@ -1,0 +1,27 @@
+{
+  "snapshot_files": 65,
+  "active_tex_files": 60,
+  "citation_occurrences": 140,
+  "source_keys": 61,
+  "pdf_hashes_passed": 61,
+  "result": "pass",
+  "boundary": "Structural and byte-identity checks only; no mathematical proof certification.",
+  "research_lint": {
+    "exit_code": 1,
+    "diagnostics": 218,
+    "baseline": "formalizations/ghsp-topology/paperN/verification/part-i-2026-09-20-135505/research-lint.log",
+    "added": {
+      "ERROR [markdown.broken-link] .research-scratch/ghsp-topology/heavy-20260915-173340/packet/READING.md: local link does not resolve: SYj, SY ": 1,
+      "ERROR [markdown.broken-link] .research-scratch/ghsp-topology/heavy-20260915-173340/packet/READING.md: local link does not resolve: X, Y ": 1,
+      "ERROR [markdown.broken-link] .research-scratch/ghsp-topology/heavy-20260915-173340/packet/READING.md: local link does not resolve: Yj, Y ": 3
+    },
+    "removed": {
+      "ERROR [markdown.broken-link] .research-scratch/ghsp-topology/heavy-20260915-173340/packet/READING.md: local link does not resolve: SYj, SY": 1,
+      "ERROR [markdown.broken-link] .research-scratch/ghsp-topology/heavy-20260915-173340/packet/READING.md: local link does not resolve: X, Y": 1,
+      "ERROR [markdown.broken-link] .research-scratch/ghsp-topology/heavy-20260915-173340/packet/READING.md: local link does not resolve: Yj, Y": 3
+    },
+    "comparison": "Identical diagnostic multiset after trimming trailing whitespace; five raw lines differ only in trailing spaces.",
+    "added_after_rstrip": {},
+    "removed_after_rstrip": {}
+  }
+}

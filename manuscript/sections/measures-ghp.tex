@@ -1,0 +1,158 @@
+\subsection{The Gromov--Hausdorff--Prokhorov space}\label{subsec:measures-ghp}
+\paraid{p-ca05461b41c0}
+Using the probability measures and weak topology recalled in
+Subsection~\ref{subsec:preliminaries-probability},
+we define a metric on the space of measured compact spaces.
+At this stage a measure need not have full support.
+
+\begin{definition}\label{def:measured-space}
+\paraid{p-d2ece563f1da}
+A \emph{measured compact metric space} is a triple
+$\MeasuredSpace{\BaseCarrier}{\MetricSymbol}{\FirstMeasure}$
+consisting of a nonempty compact metric space
+$\MetricSpace{\BaseCarrier}{\MetricSymbol}$
+and a probability
+$\FirstMeasure\in\ProbabilityMeasures(\BaseCarrier)$.
+For two such triples
+$\MeasuredSpace{\BaseCarrier}{\MetricSymbol}{\FirstMeasure}$
+and
+$\MeasuredSpace{\ComparisonCarrier}{\ComparisonMetric}{\SecondMeasure}$,
+an \emph{isomorphism} from
+$\MeasuredSpace{\BaseCarrier }{\MetricSymbol }{\FirstMeasure }$
+to
+$\MeasuredSpace{\ComparisonCarrier }{\ComparisonMetric }{\SecondMeasure }$
+is an isometry
+$\IdentifyingIsometry \colon\MetricSpace{\BaseCarrier }{\MetricSymbol }\to\MetricSpace{\ComparisonCarrier }{\ComparisonMetric }$
+such that
+$\IdentifyingIsometry \Pushforward\FirstMeasure =\SecondMeasure $.
+\end{definition}
+
+\paraid{p-38ea40c9599f}
+We denote by
+$\MeasuredSpaces$
+the set of isomorphism classes of measured compact metric spaces.
+
+\begin{definition}\label{def:ghp-distance}
+\paraid{p-d28a49b96a0a}
+Let
+$\MeasuredSpace{\BaseCarrier}{\MetricSymbol}{\FirstMeasure}$
+and
+$\MeasuredSpace{\ComparisonCarrier}{\ComparisonMetric}{\SecondMeasure}$
+be representatives of two elements of
+$\MeasuredSpaces$.
+Let
+$\MetricSpace{\AmbientCarrier}{\AmbientMetric}$
+range over compact metric spaces and let
+$\FirstEmbedding\colon\MetricSpace{\BaseCarrier}{\MetricSymbol}\to\MetricSpace{\AmbientCarrier}{\AmbientMetric}$
+and
+$\SecondEmbedding\colon\MetricSpace{\ComparisonCarrier}{\ComparisonMetric}\to\MetricSpace{\AmbientCarrier}{\AmbientMetric}$
+range over isometric embeddings.
+Let
+$\mathcal S$
+be the collection of quadruples
+$(\AmbientCarrier,\AmbientMetric,\FirstEmbedding,\SecondEmbedding)$
+consisting of a compact metric space and two isometric embeddings with these domains.
+Taking the infimum over
+$\mathcal S$,
+we define the \emph{Gromov--Hausdorff--Prokhorov distance} by
+\begin{equation}\label{eq:ghp-distance}
+ \begin{split}
+ &\GHPDistance(\MeasuredSpace{\BaseCarrier }{\MetricSymbol }{\FirstMeasure },\MeasuredSpace{\ComparisonCarrier }{\ComparisonMetric }{\SecondMeasure })\\
+ &\qquad=\inf_{(\AmbientCarrier,\AmbientMetric,\FirstEmbedding,\SecondEmbedding)\in\mathcal S}
+ \max\{\HausdorffDistance{\AmbientMetric }(\FirstEmbedding (\BaseCarrier ),\SecondEmbedding (\ComparisonCarrier )),
+          \ProkhorovDistance{\AmbientMetric }(\FirstEmbedding \Pushforward\FirstMeasure ,\SecondEmbedding \Pushforward\SecondMeasure )\}.
+ \end{split}
+\end{equation}
+We use the maximum convention for this unpointed distance.
+These conventions agree with
+\cite[arXiv v5, Example~2.1(iii), Definition~2.4 and equation~(8)]{Khezeli2023Framework},
+with probability measures as the additional structure.
+\end{definition}
+
+\paraid{p-bc49bdb8e003}
+For the measure selection,
+we use the subspace of invariant probabilities with full support.
+
+\begin{definition}\label{def:invariant-measured-space}
+\paraid{p-ad3282ce0247}
+Let
+$\InvariantMeasuredSpaces\subset\MeasuredSpaces$
+consist of the classes represented by triples
+$\MeasuredSpace{\BaseCarrier}{\MetricSymbol}{\FirstMeasure}$
+satisfying
+\begin{equation}\label{eq:invariant-full-support-1}
+ \supp(\FirstMeasure )=\BaseCarrier ,
+\end{equation}
+and for every
+$\GroupElement\in\Isom\MetricSpace{\BaseCarrier}{\MetricSymbol}$,
+\begin{equation}\label{eq:invariant-full-support-2}
+ \GroupElement \Pushforward\FirstMeasure =\FirstMeasure.
+\end{equation}
+\end{definition}
+
+\paraid{p-76c8d59831e8}
+For full-support measures,
+the isomorphism in \Cref{def:measured-space} agrees with the usual mm-isomorphism in
+\cite[arXiv v1, Definition~2.1]{KazukawaNakajimaShioya2024}.
+The cited definition compares the supports of the measures.
+Our definition compares the entire compact spaces even when the measures
+have smaller supports.
+Thus
+the Hausdorff distance term in
+\eqref{eq:ghp-distance}
+retains points outside the support.
+
+
+\begin{theorem}[{\cite[arXiv v5, Theorems~2.6 and~2.12 and Example~2.1(iii)]{Khezeli2023Framework}}]\label{thm:ghp-polish}
+\paraid{p-f754c0ec1769}
+The metric
+$\GHPDistance$
+makes
+$\MeasuredSpaces$
+a complete separable metric space.
+\end{theorem}
+
+\paraid{p-b89da4d94310}
+We next realize a convergent sequence in a common compact ambient space.
+
+\begin{lemma}\label{lem:common-measured-embedding}
+\paraid{p-3b87b5a0068d}
+If
+\[
+ \GHPDistance(\MeasuredSpace{\BaseCarrier _\SequenceIndex }{\MetricSymbol _\SequenceIndex }{\FirstMeasure _\SequenceIndex },
+                   \MeasuredSpace{\BaseCarrier }{\MetricSymbol }{\FirstMeasure })\longrightarrow0,
+\]
+then there exist a compact metric space
+$\MetricSpace{\AmbientCarrier }{\AmbientMetric }$
+and isometric embeddings
+\[
+ \FirstEmbedding _\SequenceIndex \colon\MetricSpace{\BaseCarrier _\SequenceIndex }{\MetricSymbol _\SequenceIndex }\to\MetricSpace{\AmbientCarrier }{\AmbientMetric },
+\]
+and
+\[
+ \FirstEmbedding \colon\MetricSpace{\BaseCarrier }{\MetricSymbol }\to\MetricSpace{\AmbientCarrier }{\AmbientMetric }
+\]
+such that
+\begin{equation}\label{eq:common-measured-embedding-1}
+ \HausdorffDistance{\AmbientMetric }(\FirstEmbedding _\SequenceIndex (\BaseCarrier _\SequenceIndex ),\FirstEmbedding (\BaseCarrier ))\longrightarrow0,
+\end{equation}
+and
+\begin{equation}\label{eq:common-measured-embedding-2}
+ (\FirstEmbedding _\SequenceIndex )\Pushforward\FirstMeasure _\SequenceIndex \longrightarrow\FirstEmbedding \Pushforward\FirstMeasure
+ \quad\text{weakly in }\ProbabilityMeasures(\AmbientCarrier ).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+\paraid{p-a7da142773e7}
+By \cite[arXiv v5, Lemma~2.5 and Example~2.1(iii)]{Khezeli2023Framework},
+we obtain a common compact ambient space in which the carriers
+converge in Hausdorff distance and the pushed-forward probabilities
+converge in the L\'evy--Prokhorov distance.
+On a compact metric space,
+convergence in the L\'evy--Prokhorov distance is equivalent to weak
+convergence
+\cite[author's manuscript, Lemma~1.15]{ShioyaMetricMeasure}.
+These are exactly the two conclusions in
+\eqref{eq:common-measured-embedding-1} and \eqref{eq:common-measured-embedding-2}.
+\end{proof}

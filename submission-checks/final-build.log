@@ -1,0 +1,86 @@
+⚠ [8772/8902] Replayed PaperN.PartI.CompactCouplingGluing
+warning: PaperN/PartI/CompactCouplingGluing.lean:73:23: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: PaperN/PartI/CompactCouplingGluing.lean:73:57: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [8830/8902] Replayed PaperN.PartII.FiniteSpectralApproximation
+warning: PaperN/PartII/FiniteSpectralApproximation.lean:38:4: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [8860/8902] Replayed PaperN.PartII.PointwiseResolventStability
+warning: PaperN/PartII/PointwiseResolventStability.lean:25:15: `ContinuousLinearMap.sub_apply` has been deprecated: Use `sub_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sub_apply` to `sub_apply x`).
+⚠ [8862/8902] Replayed PaperN.PartII.CollectivelyCompactInverseConvergence
+warning: PaperN/PartII/CollectivelyCompactInverseConvergence.lean:35:51: `ContinuousLinearMap.sub_apply` has been deprecated: Use `sub_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sub_apply` to `sub_apply x`).
+⚠ [8888/8902] Replayed PaperN.PartII.RectangleCauchyBridge
+warning: PaperN/PartII/RectangleCauchyBridge.lean:17:82: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: PaperN/PartII/RectangleCauchyBridge.lean:34:82: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: PaperN/PartII/RectangleCauchyBridge.lean:62:23: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: PaperN/PartII/RectangleCauchyBridge.lean:62:33: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [8889/8902] Replayed PaperN.PartII.RectangleScalarOutside
+warning: PaperN/PartII/RectangleScalarOutside.lean:27:23: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [8890/8902] Replayed PaperN.PartII.RectangleScalarInside
+warning: PaperN/PartII/RectangleScalarInside.lean:50:2: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [8892/8902] Replayed PaperN.PartII.SecondOrderResolvent
+warning: PaperN/PartII/SecondOrderResolvent.lean:35:6: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [8893/8902] Replayed PaperN.PartII.SegmentSquareFactorization
+warning: PaperN/PartII/SegmentSquareFactorization.lean:74:24: This simp argument is unused:
+  map_add
+
+Hint: Omit it from the simp argument list.
+  simp [twiceWeightedQuadrilateral, scalarQuadrilateral, add_smul, sub_smul, mul_smul,
+  ̵  ̵ ̵ ̵smul_add,
+  ̲  ̲ ̲ ̲smul_sub, map_a̵d̵d̵,̵ ̵m̵a̵p̵_̵sub, map_smul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperN/PartII/SegmentSquareFactorization.lean:74:33: This simp argument is unused:
+  map_sub
+
+Hint: Omit it from the simp argument list.
+  simp [twiceWeightedQuadrilateral, scalarQuadrilateral, add_smul, sub_smul, mul_smul, smul_add,
+  ̲  ̲ ̲ ̲smul_sub, map_add, m̵a̵p̵_̵s̵u̵b̵,̵ ̵map_smul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperN/PartII/SegmentSquareFactorization.lean:74:42: This simp argument is unused:
+  map_smul
+
+Hint: Omit it from the simp argument list.
+  simp [twiceWeightedQuadrilateral, scalarQuadrilateral, add_smul, sub_smul, mul_smul, smul_add,
+  ̲  ̲ ̲ ̲smul_sub, map_add, m̵a̵p̵_̵s̵u̵b̵,̵ ̵m̵a̵p̵_̵s̵m̵u̵l̵]̵m̲a̲p̲_̲s̲u̲b̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperN/PartII/SegmentSquareFactorization.lean:75:2: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: PaperN/PartII/SegmentSquareFactorization.lean:86:0: automatically included section variable(s) unused in theorem `PaperN.PartII.rectangle_zero_edge_condition`:
+  [CompleteSpace E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CompleteSpace E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8969/9040] Replayed PaperN.PartII.CorrespondenceTransport
+warning: PaperN/PartII/CorrespondenceTransport.lean:21:52: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [9039/9040] Built Challenge (15s)
+warning: Challenge.lean:135:8: declaration uses `sorry`
+Build completed successfully (9040 jobs).
