@@ -76,7 +76,14 @@ The project now pins Lean **v4.35.0-rc3** and Mathlib
 Both the Challenge/Solution build and the full package build pass locally;
 the main theorem uses only `propext`, `Classical.choice`, and `Quot.sound`.
 See the [migration record](submission-checks/MIGRATION-4.35.md).
-Official Comparator/NanoDa checks on this migrated snapshot are pending.
+The [official full preflight](https://github.com/yoshito-ishiki-math/lean-gh-space-hilbert/actions/runs/36293358928)
+returned **pass** for commit
+[`8b25d3fc5b9f2a61dffa59e1daa8c9c483f70a46`](https://github.com/yoshito-ishiki-math/lean-gh-space-hilbert/tree/8b25d3fc5b9f2a61dffa59e1daa8c9c483f70a46)
+on 27 September 2026. Comparator accepted `PalomarPaperN.main`; NanoDa,
+con-ron, and Lean's default kernel accepted the solution. The report lists no
+errors or warnings. See the [machine report](submission-checks/palomar-preflight-2026-09-27-lean4.35.json).
+This result applies to that exact commit; later documentation commits do not
+constitute a new checked snapshot.
 
 The [earlier run](https://github.com/yoshito-ishiki-math/lean-gh-space-hilbert/actions/runs/36290916485)
 on commit `302ef17c74a5975e49f4171bb86f10daef469ba4` stopped at
@@ -101,8 +108,9 @@ Comparator or independent-kernel result.
 
 ## Remaining publication steps
 
-Comparator/NanoDa must pass in the supported verification environment. This
-macOS host has no comparator, lean4export, landrun or nanoda_bin installed.
+Comparator/NanoDa passed in the official Linux verification environment for
+the commit above. Actual Palomar submission/registration remains to be performed
+with owner authorization, using the exact checked commit.
 Publication repository: https://github.com/yoshito-ishiki-math/lean-gh-space-hilbert. Use the full Git commit SHA for submission.
 Before actual submission, verify the author/maintainer and provenance metadata
 for that published snapshot. Preserve the inherited MIT license notice.

@@ -56,3 +56,16 @@ Install the pinned Lean toolchain, then run `lake update`, `lake exe cache get`,
 the pinned dependency tree with `tools/lean_bootstrap.py --project <path> --fetch`.
 Run the pinned Palomar mechanical preflight workflow against a full commit SHA.
 No Palomar registration is performed by that workflow.
+
+## Official independent mechanical checks
+
+The official full preflight passed for commit
+`8b25d3fc5b9f2a61dffa59e1daa8c9c483f70a46` at 2026-09-27T04:23:03Z.
+Run: https://github.com/yoshito-ishiki-math/lean-gh-space-hilbert/actions/runs/36293358928
+Report: [palomar-preflight-2026-09-27-lean4.35.json](palomar-preflight-2026-09-27-lean4.35.json).
+Comparator accepted PalomarPaperN.main. NanoDa, con-ron, and Lean's default kernel
+accepted the exported solution. con-ron reported 61128 declarations accepted
+with --verified; the report also discloses its in-process Lean.Syntax modelling.
+The complete checker configuration and tool digests are in the machine report.
+Errors and warnings are empty. This is an independent mechanical check, not an
+independent informal mathematical review and not Palomar registration.

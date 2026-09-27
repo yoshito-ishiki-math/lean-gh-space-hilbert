@@ -1,5 +1,5 @@
 {
-  "state": "locally-prepared",
+  "state": "mechanical-preflight-passed",
   "lean_build": "passed",
   "jobs": 9361,
   "axioms": [
@@ -12,18 +12,11 @@
   "challenge_imports": [
     "Mathlib"
   ],
-  "comparator": "pending official preflight on migrated snapshot",
-  "nanoda": "pending official preflight on migrated snapshot",
+  "comparator": "passed",
+  "nanoda": "passed",
   "public_repository": "https://github.com/yoshito-ishiki-math/lean-gh-space-hilbert",
   "submission_commit": null,
   "submitted": false,
-  "official_preflight": {
-    "status": "fail",
-    "code": "toolchain.unsupported",
-    "commit": "302ef17c74a5975e49f4171bb86f10daef469ba4",
-    "required_minimum": "v4.35.0-rc2",
-    "url": "https://github.com/yoshito-ishiki-math/lean-gh-space-hilbert/actions/runs/36290916485"
-  },
   "historical_local_verification": {
     "lean_build": "passed",
     "jobs": 9040,
@@ -32,5 +25,24 @@
   },
   "lean_toolchain": "leanprover/lean4:v4.35.0-rc3",
   "mathlib_revision": "3cb72cfd416d1b5ec4b930d67648ef036a5df24f",
-  "full_build_jobs": 4179
+  "full_build_jobs": 4179,
+  "previous_official_preflight": {
+    "status": "fail",
+    "code": "toolchain.unsupported",
+    "commit": "302ef17c74a5975e49f4171bb86f10daef469ba4",
+    "required_minimum": "v4.35.0-rc2",
+    "url": "https://github.com/yoshito-ishiki-math/lean-gh-space-hilbert/actions/runs/36290916485"
+  },
+  "con_ron": "passed",
+  "lean_default_kernel": "passed",
+  "official_preflight": {
+    "status": "pass",
+    "stage": "complete",
+    "commit": "8b25d3fc5b9f2a61dffa59e1daa8c9c483f70a46",
+    "checked_at": "2026-09-27T04:23:03Z",
+    "url": "https://github.com/yoshito-ishiki-math/lean-gh-space-hilbert/actions/runs/36293358928",
+    "report": "palomar-preflight-2026-09-27-lean4.35.json",
+    "errors": [],
+    "warnings": []
+  }
 }

@@ -1,0 +1,1559 @@
+{
+  "build_log_tail": "led with `set_option linter.style.haveILetI false`\n\u2714 [4089/4128] Built PaperN.PartII.LocalMetricErrorConvergence (3.5s)\n\u2714 [4090/4128] Built PaperN.PartII.CoordinateEquivariance (3.7s)\n\u26a0 [4091/4128] Built PaperN.PartII.CenterClassApproximation (4.0s)\nwarning: PaperN/PartII/CenterClassApproximation.lean:26:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: PaperN/PartII/CenterClassApproximation.lean:30:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n\u2714 [4092/4128] Built PaperN.PartII.UniversalLocalClass (3.3s)\n\u26a0 [4093/4128] Built PaperN.PartII.LocalApproximationNeighborhood (3.6s)\nwarning: PaperN/PartII/LocalApproximationNeighborhood.lean:48:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: PaperN/PartII/LocalApproximationNeighborhood.lean:49:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n\u26a0 [4094/4128] Built PaperN.PartII.UniversalLocalConvergence (2.9s)\nwarning: PaperN/PartII/UniversalLocalConvergence.lean:25:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n\u2714 [4095/4128] Built PaperN.PartII.CenterResolventApproximation (3.6s)\n\u26a0 [4096/4128] Built PaperN.PartII.SpectralGHError (3.5s)\nwarning: PaperN/PartII/SpectralGHError.lean:33:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: PaperN/PartII/SpectralGHError.lean:34:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: PaperN/PartII/SpectralGHError.lean:70:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: PaperN/PartII/SpectralGHError.lean:71:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n\u2714 [4097/4128] Built PaperN.PartII.ApproximatingSpectralNeighborhood (2.6s)\n\u26a0 [4098/4128] Built PaperN.PartII.SpectralLocalModel (2.7s)\nwarning: PaperN/PartII/SpectralLocalModel.lean:32:8: `dif_pos` has been deprecated: Use `dite_eq_left` instead\n\nHint: Replace the deprecated name:\n  d\u0335i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335d\u0332i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: PaperN/PartII/SpectralLocalModel.lean:51:8: `dif_pos` has been deprecated: Use `dite_eq_left` instead\n\nHint: Replace the deprecated name:\n  d\u0335i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335d\u0332i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: PaperN/PartII/SpectralLocalModel.lean:53:8: `continuousOn_iff_continuous_restrict` has been deprecated: Use `continuousOn_iff_continuous_domRestrict` instead\n\nHint: Replace the deprecated name:\n  continuousOn_iff_continuous_r\u0335d\u0332o\u0332m\u0332R\u0332estrict\nwarning: PaperN/PartII/SpectralLocalModel.lean:56:39: `dif_pos` has been deprecated: Use `dite_eq_left` instead\n\nHint: Replace the deprecated name:\n  d\u0335i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335d\u0332i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: PaperN/PartII/SpectralLocalModel.lean:61:4: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: PaperN/PartII/SpectralLocalModel.lean:62:4: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: PaperN/PartII/SpectralLocalModel.lean:65:4: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: PaperN/PartII/SpectralLocalModel.lean:68:4: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: PaperN/PartII/SpectralLocalModel.lean:69:4: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: PaperN/PartII/SpectralLocalModel.lean:73:4: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: PaperN/PartII/SpectralLocalModel.lean:98:4: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: PaperN/PartII/SpectralLocalModel.lean:100:4: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: PaperN/PartII/SpectralLocalModel.lean:105:4: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: PaperN/PartII/SpectralLocalModel.lean:106:4: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n\u2714 [4099/4128] Built PaperN.PartII.LocalModelExistence (2.3s)\n\u2714 [4100/4128] Built PaperN.PartII.LocalModelRestriction (2.4s)\n\u26a0 [4101/4128] Built PaperN.PartII.LocalModelGHMap (2.5s)\nwarning: PaperN/PartII/LocalModelGHMap.lean:18:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n\u26a0 [4102/4128] Built PaperN.PartII.LocalModelGHContinuity (2.6s)\nwarning: PaperN/PartII/LocalModelGHContinuity.lean:43:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n\u2714 [4103/4128] Built PaperN.PartII.VariableErrorLocalModel (2.4s)\n\u2714 [4104/4128] Built PaperN.PartII.LocalModelPartition (2.3s)\n\u26a0 [4105/4128] Built PaperN.PartII.ModelFeatureAssembly (3.4s)\nwarning: PaperN/PartII/ModelFeatureAssembly.lean:21:36: `dif_pos` has been deprecated: Use `dite_eq_left` instead\n\nHint: Replace the deprecated name:\n  d\u0335i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335d\u0332i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\n\u2714 [4106/4128] Built PaperN.PartII.ModelFeatureInvariance (3.3s)\n\u2714 [4107/4128] Built PaperN.PartII.ModelFeatureRepresentatives (3.5s)\n\u26a0 [4108/4128] Built PaperN.PartII.FeatureImageConvergence (2.6s)\nwarning: PaperN/PartII/FeatureImageConvergence.lean:13:6: `Metric.NonemptyCompacts.dist_eq` has been deprecated: Use `TopologicalSpace.NonemptyCompacts.dist_eq` instead\n\nNote: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.dist_eq` to `NonemptyCompacts.dist_eq x`).\n\nHint: Replace the deprecated name:\n  M\u0335e\u0335t\u0335r\u0335i\u0335c\u0335.\u0335NonemptyCompacts.dist_eq\n\u26a0 [4109/4128] Built PaperN.PartII.DualFeatureError (2.7s)\nwarning: PaperN/PartII/DualFeatureError.lean:81:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n\u26a0 [4110/4128] Built PaperN.PartII.ModelFeatureSequence (3.3s)\nwarning: PaperN/PartII/ModelFeatureSequence.lean:33:4: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n\u2714 [4111/4128] Built PaperN.PartII.GlobalOrbitApproximation (2.3s)\n\u2714 [4112/4128] Built PaperN.PartII.GlobalModelError (2.8s)\n\u2714 [4113/4128] Built PaperN.PartII.FeaturePseudometricError (3.0s)\n\u26a0 [4114/4128] Built PaperN.PartII.GlobalErrorContinuity (3.3s)\nwarning: PaperN/PartII/GlobalErrorContinuity.lean:37:4: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n\u2714 [4115/4128] Built PaperN.PartII.ModelInterpolation (2.8s)\n\u26a0 [4116/4128] Built PaperN.PartII.InterpolationContinuity (3.4s)\nwarning: PaperN/PartII/InterpolationContinuity.lean:37:4: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n\u2714 [4117/4128] Built PaperN.PartII.InterpolationCompatibility (2.5s)\n\u2714 [4118/4128] Built PaperN.PartII.GlobalARDomination (2.5s)\n\u2714 [4119/4128] Built PaperN.PartII.HannerDomination (2.4s)\n\u26a0 [4120/4128] Built PaperN.PartII.GHAbsoluteRetract (2.3s)\nwarning: PaperN/PartII/GHAbsoluteRetract.lean:32:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n\u26a0 [4121/4128] Built PaperN.PartII.ContractibleExtensorProof (2.6s)\nwarning: PaperN/PartII/ContractibleExtensorProof.lean:16:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: PaperN/PartII/ContractibleExtensorProof.lean:27:8: `continuousOn_iff_continuous_restrict` has been deprecated: Use `continuousOn_iff_continuous_domRestrict` instead\n\nHint: Replace the deprecated name:\n  continuousOn_iff_continuous_r\u0335d\u0332o\u0332m\u0332R\u0332estrict\nwarning: PaperN/PartII/ContractibleExtensorProof.lean:61:16: `dif_pos` has been deprecated: Use `dite_eq_left` instead\n\nHint: Replace the deprecated name:\n  d\u0335i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335d\u0332i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\n\u26a0 [4122/4128] Built PaperN.PartII.UniversalAbsoluteRetract (3.1s)\nwarning: PaperN/PartII/UniversalAbsoluteRetract.lean:14:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: PaperN/PartII/UniversalAbsoluteRetract.lean:15:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: PaperN/PartII/UniversalAbsoluteRetract.lean:16:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: PaperN/PartII/UniversalAbsoluteRetract.lean:23:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n\u2714 [4123/4128] Built PaperN.PartIV.HilbertRecognition (3.1s)\n\u26a0 [4124/4128] Built PaperN.PartII.HannerCategoryProof (2.4s)\nwarning: PaperN/PartII/HannerCategoryProof.lean:33:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: PaperN/PartII/HannerCategoryProof.lean:36:4: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: PaperN/PartII/HannerCategoryProof.lean:45:4: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: PaperN/PartII/HannerCategoryProof.lean:46:4: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: PaperN/PartII/HannerCategoryProof.lean:47:4: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: PaperN/PartII/HannerCategoryProof.lean:54:4: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n\u2714 [4125/4128] Built PaperN.PartII.MainTheorem (2.3s)\n\u2714 [4126/4128] Built PaperN.PartIV.MainTheorem (2.3s)\n\u26a0 [4127/4128] Built Solution (2.4s)\nwarning: Solution.lean:23:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: Solution.lean:24:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: Solution.lean:25:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: Solution.lean:26:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: Solution.lean:27:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: Solution.lean:28:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: Solution.lean:29:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nBuild completed successfully (4128 jobs).",
+  "bwrap_source_tag": "v0.12.0",
+  "challenge": {
+    "bytes": 8066,
+    "canonical_olean_sha256": "e68af1266d7048a4a8c118b1651d2d0873ed830d321c4de37aed9def361e808e",
+    "dependencies": [
+      {
+        "provenance": "allowlisted",
+        "repository": "leanprover-community/mathlib4"
+      }
+    ],
+    "direct_imports": [
+      "Mathlib"
+    ],
+    "lines": 141,
+    "module": "Challenge",
+    "path": "Challenge.lean",
+    "sha256": "dd0f5ed80790b8ab400991ec5da28df19b79abe6e488c13dfa02141e88705509",
+    "transitive_source_count": 2,
+    "trust_level": "high",
+    "untrusted_sources": []
+  },
+  "checked_at": "2026-09-27T04:23:03Z",
+  "classification": {
+    "arxiv": [
+      {
+        "code": "math.GN",
+        "name": "General Topology"
+      },
+      {
+        "code": "math.MG",
+        "name": "Metric Geometry"
+      }
+    ],
+    "msc2020": [
+      {
+        "code": "54E35",
+        "name": "Metric spaces, metrizability"
+      },
+      {
+        "code": "54C55",
+        "name": "Absolute neighborhood extensor, absolute extensor, absolute neighborhood retract (ANR), absolute retract spaces (general properties)"
+      }
+    ]
+  },
+  "comparator": {
+    "challenge_module": "Challenge",
+    "definition_names": [],
+    "path": "comparator.json",
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "sha256": "cef0917ad2e0a010f4e1708aff0f77100b7fc58701b35b12ae3cb71dd6df7fa4",
+    "solution_module": "Solution",
+    "theorem_names": [
+      "PalomarPaperN.main"
+    ]
+  },
+  "comparator_log_tail": "Running con-ron kernel on solution\ncon-ron: accepted 61128 declarations (--verified)\ncon-ron kernel accepts the solution\nRunning nanoda kernel on solution\nnanoda kernel accepts the solution\nRunning Lean default kernel on solution\nLean default kernel accepts the solution\nYour solution is okay!\n\ncon-ron: 1 inductive blocks modelled in-process: Lean.Syntax (30 generated records, checked by the fold as declarations and not counted as records of the file)",
+  "errors": [],
+  "existing_id": null,
+  "formalization": {
+    "automation_method_count": 1,
+    "path": "formalization.yaml",
+    "project_name": "Conditional Hilbert-space classification of Gromov--Hausdorff space",
+    "review_status": "self-assessed",
+    "sha256": "0086d85227284759f5fbe18cfc6e8ff290d5f8b54304940b3130d78e1c962534",
+    "source_count": 5
+  },
+  "kernels": [
+    {
+      "argv": [
+        "/home/runner/.elan/toolchains/leanprover--lean4---v4.35.0-rc3/bin/nanoda_bin"
+      ],
+      "name": "nanoda"
+    },
+    {
+      "argv": [
+        "/home/runner/.elan/toolchains/leanprover--lean4---v4.35.0-rc3/bin/con-ron"
+      ],
+      "name": "con-ron"
+    }
+  ],
+  "lake_manifest": {
+    "path": "lake-manifest.json",
+    "sha256": "d98d2795e74a8e57587768bb883154e44744034379523bf87a2b665fdf95f02b"
+  },
+  "lakefile": {
+    "format": "toml",
+    "path": "lakefile.toml",
+    "sha256": "d559a2c7f01eba9941a9a9d93c1dc8f20db58fe09ad042ac19343e26ce531356"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.35.0-rc3",
+  "lean_toolchain_path": "lean-toolchain",
+  "license": {
+    "declared_identifier": "MIT",
+    "detected_identifier": "MIT",
+    "path": "LICENSE",
+    "sha256": "f3c924f5d1930cfe42aa0912735f22b0174da2459add8106e13337269d0811c8"
+  },
+  "mathlib_cache": {
+    "available": true,
+    "required": true
+  },
+  "mathlib_toolchain": [
+    {
+      "revision": "3cb72cfd416d1b5ec4b930d67648ef036a5df24f",
+      "toolchain": "leanprover/lean4:v4.35.0-rc3"
+    }
+  ],
+  "orcid_validation": {
+    "checked_at": "2026-09-27T04:07:10Z",
+    "records": [],
+    "registry": "https://orcid.org",
+    "schema_version": 1
+  },
+  "phase": "verification",
+  "project_dependencies": [
+    {
+      "name": "mathlib",
+      "repository": "leanprover-community/mathlib4",
+      "revision": "3cb72cfd416d1b5ec4b930d67648ef036a5df24f",
+      "url": "https://github.com/leanprover-community/mathlib4.git"
+    },
+    {
+      "name": "plausible",
+      "repository": "leanprover-community/plausible",
+      "revision": "fb13df72ecefd8ddbf9291021d7f33a8673eb57b",
+      "url": "https://github.com/leanprover-community/plausible"
+    },
+    {
+      "name": "LeanSearchClient",
+      "repository": "leanprover-community/LeanSearchClient",
+      "revision": "29ff470276c725ae01505d55b17148c18fc7dfd3",
+      "url": "https://github.com/leanprover-community/LeanSearchClient"
+    },
+    {
+      "name": "importGraph",
+      "repository": "leanprover-community/import-graph",
+      "revision": "10a2cfff285e1c7c2ebc49c0ba22cab0f3c58ee5",
+      "url": "https://github.com/leanprover-community/import-graph"
+    },
+    {
+      "name": "proofwidgets",
+      "repository": "leanprover-community/ProofWidgets4",
+      "revision": "c643bbb3c24f8a25f9c14e3a6b1ceb13d01f3de1",
+      "url": "https://github.com/leanprover-community/ProofWidgets4"
+    },
+    {
+      "name": "aesop",
+      "repository": "leanprover-community/aesop",
+      "revision": "a90fbf7b02ff06a0deebf74088dff9e5fe02c9ea",
+      "url": "https://github.com/leanprover-community/aesop"
+    },
+    {
+      "name": "Qq",
+      "repository": "leanprover-community/quote4",
+      "revision": "37b0ba0b26109cf9f9c541f0f9557e50cfa1a3b9",
+      "url": "https://github.com/leanprover-community/quote4"
+    },
+    {
+      "name": "batteries",
+      "repository": "leanprover-community/batteries",
+      "revision": "33131f4fb10067cb3009bf4db615d9680c1ccd6b",
+      "url": "https://github.com/leanprover-community/batteries"
+    },
+    {
+      "name": "Cli",
+      "repository": "leanprover/lean4-cli",
+      "revision": "843844fa601dd56767b1eb22b7ada5b64d5e567a",
+      "url": "https://github.com/leanprover/lean4-cli"
+    }
+  ],
+  "protected_config": "{\n  \"challenge_module\": \"PalomarCanonical000d4d91dedf3adbd8041749.Challenge\",\n  \"definition_names\": [],\n  \"external_kernels\": {\n    \"con-ron\": [\n      \"/home/runner/.elan/toolchains/leanprover--lean4---v4.35.0-rc3/bin/con-ron\"\n    ],\n    \"nanoda\": [\n      \"/home/runner/.elan/toolchains/leanprover--lean4---v4.35.0-rc3/bin/nanoda_bin\"\n    ]\n  },\n  \"permitted_axioms\": [\n    \"propext\",\n    \"Quot.sound\",\n    \"Classical.choice\"\n  ],\n  \"solution_module\": \"Solution\",\n  \"theorem_names\": [\n    \"PalomarPaperN.main\"\n  ]\n}\n",
+  "protected_config_sha256": "1da3ff56d2dce0b8cc4c751a9e17554d62770a007e968a3d8efa65e54458830d",
+  "provenance": {
+    "mathematical_sources": [
+      {
+        "authors": [
+          {
+            "name": "Yoshito Ishiki"
+          }
+        ],
+        "identifier": "arxiv:2609.09639v4",
+        "location": "https://arxiv.org/abs/2609.09639v4",
+        "note": "Public paper, with a later locally aligned paperN source snapshot included; conditional formalization of its main proof chain.",
+        "relationship": "formalizes",
+        "title": "The topology of Gromov--Hausdorff space",
+        "type": "paper"
+      },
+      {
+        "authors": [],
+        "note": "Theorem 1.1 continuous-right-inverse consequence remains an explicit Polish-space assumption.",
+        "relationship": "other",
+        "title": "Probability measures and Milyutin maps between metric spaces, Valov, arXiv:0801.1721v2",
+        "type": "paper"
+      },
+      {
+        "authors": [],
+        "note": "2003 Proposition 3.1 with 2006 correction; 1990 Theorem 8 and Corollary 1. Exact locators in EXTERNAL-INPUTS.md.",
+        "relationship": "other",
+        "title": "Antonyan equivariant hyperspace and orbit retract theorems",
+        "type": "paper"
+      },
+      {
+        "authors": [],
+        "note": "Theorem 7.2(b) remains explicit.",
+        "relationship": "other",
+        "title": "Hanner 1951 ANR domination",
+        "type": "paper"
+      },
+      {
+        "authors": [],
+        "note": "1981 p.248 condition (i), with 1985 Section C; recognition remains explicit.",
+        "relationship": "other",
+        "title": "Characterizing Hilbert space topology, Torunczyk 1981, with 1985 correction",
+        "type": "paper"
+      }
+    ],
+    "related_formalizations": [],
+    "repository_role": "substantive-development",
+    "responsible_maintainers": [
+      {
+        "name": "Yoshito Ishiki"
+      }
+    ],
+    "result_origin": "source-based"
+  },
+  "resource_usage": [
+    {
+      "elapsed_seconds": 0.021,
+      "max_rss_kib": 13492,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 0,
+      "system_cpu_seconds": 0.025,
+      "user_cpu_seconds": 0.03,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 61859000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 9011200,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.047,
+      "max_rss_kib": 13492,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 0,
+      "system_cpu_seconds": 0.031,
+      "user_cpu_seconds": 0.049,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 87201000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 12890112,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.021,
+      "max_rss_kib": 13328,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 1,
+      "system_cpu_seconds": 0.027,
+      "user_cpu_seconds": 0.029,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 61366000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 8777728,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.043,
+      "max_rss_kib": 13492,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 0,
+      "system_cpu_seconds": 0.035,
+      "user_cpu_seconds": 0.042,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 84142000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13426688,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.044,
+      "max_rss_kib": 13308,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 1,
+      "system_cpu_seconds": 0.024,
+      "user_cpu_seconds": 0.054,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 84807000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13410304,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.043,
+      "max_rss_kib": 13324,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 1,
+      "system_cpu_seconds": 0.029,
+      "user_cpu_seconds": 0.048,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 83480000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13688832,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.04,
+      "max_rss_kib": 13328,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 1,
+      "system_cpu_seconds": 0.029,
+      "user_cpu_seconds": 0.046,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 80587000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 12660736,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.249,
+      "max_rss_kib": 78496,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.112,
+      "user_cpu_seconds": 0.169,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 289777000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 80642048,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.381,
+      "max_rss_kib": 351764,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.156,
+      "user_cpu_seconds": 0.259,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 421938000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 360468480,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.233,
+      "max_rss_kib": 78232,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.123,
+      "user_cpu_seconds": 0.145,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 274941000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 80371712,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.374,
+      "max_rss_kib": 351884,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.152,
+      "user_cpu_seconds": 0.258,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 416101000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 360345600,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.236,
+      "max_rss_kib": 78224,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.123,
+      "user_cpu_seconds": 0.148,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 277903000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 80117760,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.375,
+      "max_rss_kib": 351776,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.153,
+      "user_cpu_seconds": 0.254,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 414251000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 360235008,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 7.745,
+      "max_rss_kib": 157332,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.133,
+      "user_cpu_seconds": 7.746,
+      "workspace_disk_peak_bytes": 8192
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 7886271000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 161124352,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.13,
+      "max_rss_kib": 31844,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 1,
+      "system_cpu_seconds": 0.037,
+      "user_cpu_seconds": 0.132,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 175686000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 32870400,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 7.789,
+      "max_rss_kib": 150956,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "comparator-preflight",
+      "returncode": 1,
+      "system_cpu_seconds": 0.137,
+      "user_cpu_seconds": 7.71,
+      "workspace_disk_peak_bytes": 4096
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 7853773000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 154595328,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 2.504,
+      "max_rss_kib": 145176,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "module-resolution",
+      "returncode": 0,
+      "system_cpu_seconds": 0.631,
+      "user_cpu_seconds": 1.96,
+      "workspace_disk_peak_bytes": 729088
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 2598976000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 148922368,
+      "phase": "module-resolution:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.06,
+      "max_rss_kib": 23364,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "module-resolution",
+      "returncode": 0,
+      "system_cpu_seconds": 0.034,
+      "user_cpu_seconds": 0.062,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 103232000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 24186880,
+      "phase": "module-resolution:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 49.964,
+      "max_rss_kib": 7914552,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "trusted-cache",
+      "returncode": 0,
+      "system_cpu_seconds": 49.79,
+      "user_cpu_seconds": 79.736,
+      "workspace_disk_peak_bytes": 7952515072
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 129533646000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 8104517632,
+      "phase": "trusted-cache:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 6.773,
+      "max_rss_kib": 289280,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "trusted-cache",
+      "returncode": 0,
+      "system_cpu_seconds": 3.815,
+      "user_cpu_seconds": 6.832,
+      "workspace_disk_peak_bytes": 1499136
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 10653891000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 296226816,
+      "phase": "trusted-cache:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 2.694,
+      "max_rss_kib": 145436,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "trusted-cache",
+      "returncode": 0,
+      "system_cpu_seconds": 0.73,
+      "user_cpu_seconds": 1.942,
+      "workspace_disk_peak_bytes": 729088
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 2677848000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 148934656,
+      "phase": "trusted-cache:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 6.216,
+      "max_rss_kib": 1117892,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "canonical-challenge",
+      "returncode": 0,
+      "system_cpu_seconds": 2.004,
+      "user_cpu_seconds": 3.136,
+      "workspace_disk_peak_bytes": 106496
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 5145804000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 1144737792,
+      "phase": "canonical-challenge:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.054,
+      "max_rss_kib": 23340,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "canonical-challenge",
+      "returncode": 0,
+      "system_cpu_seconds": 0.03,
+      "user_cpu_seconds": 0.059,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 95484000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 24162304,
+      "phase": "canonical-challenge:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.058,
+      "max_rss_kib": 23316,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "canonical-challenge",
+      "returncode": 0,
+      "system_cpu_seconds": 0.036,
+      "user_cpu_seconds": 0.057,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 99660000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 24137728,
+      "phase": "canonical-challenge:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.017,
+      "max_rss_kib": 13492,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 0,
+      "system_cpu_seconds": 0.023,
+      "user_cpu_seconds": 0.029,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 58659000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 9011200,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.041,
+      "max_rss_kib": 13328,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 0,
+      "system_cpu_seconds": 0.024,
+      "user_cpu_seconds": 0.052,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 82922000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13156352,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.017,
+      "max_rss_kib": 13492,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 1,
+      "system_cpu_seconds": 0.021,
+      "user_cpu_seconds": 0.03,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 57985000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 8749056,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.039,
+      "max_rss_kib": 13492,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 0,
+      "system_cpu_seconds": 0.024,
+      "user_cpu_seconds": 0.05,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 80132000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13426688,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.04,
+      "max_rss_kib": 13356,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 0,
+      "system_cpu_seconds": 0.024,
+      "user_cpu_seconds": 0.05,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 80303000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13180928,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.04,
+      "max_rss_kib": 13312,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 1,
+      "system_cpu_seconds": 0.029,
+      "user_cpu_seconds": 0.046,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 80879000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13258752,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.04,
+      "max_rss_kib": 13304,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 1,
+      "system_cpu_seconds": 0.023,
+      "user_cpu_seconds": 0.051,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 80628000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13451264,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.037,
+      "max_rss_kib": 13312,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 1,
+      "system_cpu_seconds": 0.025,
+      "user_cpu_seconds": 0.046,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 77662000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 12648448,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 1.456,
+      "max_rss_kib": 109512,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "candidate-configuration",
+      "returncode": 0,
+      "system_cpu_seconds": 0.745,
+      "user_cpu_seconds": 0.769,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 1522228000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 112402432,
+      "phase": "candidate-configuration:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 1.433,
+      "max_rss_kib": 109576,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "candidate-configuration",
+      "returncode": 0,
+      "system_cpu_seconds": 0.702,
+      "user_cpu_seconds": 0.792,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 1500901000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 112222208,
+      "phase": "candidate-configuration:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 9.117,
+      "max_rss_kib": 908240,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "challenge-export",
+      "returncode": 0,
+      "system_cpu_seconds": 1.967,
+      "user_cpu_seconds": 7.136,
+      "workspace_disk_peak_bytes": 112267264
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 9110781000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 930054144,
+      "phase": "challenge-export:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 495.157,
+      "max_rss_kib": 2417208,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "solution-build",
+      "returncode": 0,
+      "system_cpu_seconds": 353.047,
+      "user_cpu_seconds": 1155.071,
+      "workspace_disk_peak_bytes": 957120512
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 1508123572000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 2475237376,
+      "phase": "solution-build:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 25.2,
+      "max_rss_kib": 1313600,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "solution-export",
+      "returncode": 0,
+      "system_cpu_seconds": 1.571,
+      "user_cpu_seconds": 23.628,
+      "workspace_disk_peak_bytes": 459124736
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 25206018000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 1345142784,
+      "phase": "solution-export:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 226.868,
+      "max_rss_kib": 2682860,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "comparator",
+      "returncode": 0,
+      "system_cpu_seconds": 2.004,
+      "user_cpu_seconds": 382.188,
+      "workspace_disk_peak_bytes": 16384
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 384199258000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 2747265024,
+      "phase": "comparator:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    }
+  ],
+  "schema_version": 2,
+  "solution": {
+    "module": "Solution",
+    "path": "Solution.lean",
+    "sha256": "dd38df89882fa333fd481b38f9cdd3a0038f9f1769831a357b64bd961802965a"
+  },
+  "source": {
+    "bytes": 3427280,
+    "commit": "8b25d3fc5b9f2a61dffa59e1daa8c9c483f70a46",
+    "repository": "yoshito-ishiki-math/lean-gh-space-hilbert",
+    "repository_url": "https://github.com/yoshito-ishiki-math/lean-gh-space-hilbert",
+    "tree_url": "https://github.com/yoshito-ishiki-math/lean-gh-space-hilbert/tree/8b25d3fc5b9f2a61dffa59e1daa8c9c483f70a46"
+  },
+  "stage": "complete",
+  "status": "pass",
+  "submission": {
+    "authorization": {
+      "relationship": "maintainer"
+    },
+    "requested_paths": {
+      "comparator_config_path": "comparator.json",
+      "formalization_metadata_path": "",
+      "project_path": ""
+    },
+    "submission_id": "papern000001"
+  },
+  "tool_digests": {
+    "bwrap": "8a70f687728e5020cc91d317469394ccfd918a56719a13bbd5feeea79b50ef15",
+    "con-ron": "4e5616d94374cae37324dad2594f6230c2bb2297240249fc78ff508f3bc5acef",
+    "lake": "8ba83c98f76562d03b8dbc33f1057151ba6cbb121679dde76b2260ccc90495e1",
+    "lean": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+    "leanchecker": "9e36e955a251b1313c8eb5b7fa101282d51df109d34d8bb7c1cfdf51985aba29",
+    "leanexport": "c5bc1a10a21e22cbb3671d65987cdef2076833b14182d823ccb2153adf2fa954",
+    "nanoda_bin": "8241c5e6baa29490aa118d382f97961b208ae730fdb96545c2abed74c9ece5a8"
+  },
+  "toolchain_commit": "470d5ce1400764999581fd26d5d72b00d990b0f4",
+  "verification_profile": {
+    "id": "palomar-standard-v1",
+    "limits": {
+      "execution_budget_seconds": 19800,
+      "file_size_max_bytes": 1099511627776,
+      "job_timeout_minutes": 350,
+      "memory_high_percent": 95,
+      "memory_max_percent": 98,
+      "minimum_host_memory_bytes": 15032385536,
+      "minimum_workspace_free_bytes": 21474836480,
+      "open_files_max": 1048576,
+      "tasks_max": 32768
+    },
+    "observed_host": {
+      "architecture": "x86_64",
+      "effective_cpus": 4.0,
+      "memory_bytes": 16766406656,
+      "memory_high_bytes": 15928086323,
+      "memory_max_bytes": 16431078522,
+      "workspace_free_bytes": 115364974592
+    },
+    "runner": {
+      "architecture": "x86_64",
+      "label": "ubuntu-24.04",
+      "provider": "github-hosted"
+    },
+    "sha256": "94fcd7906a1b6c076c0036d742e1c5add8625e49bb474818ec8924576dbf0caa",
+    "trusted_tools": {
+      "bwrap_source_tag": "v0.12.0",
+      "toolchain_floor": "v4.35.0-rc2"
+    }
+  },
+  "warnings": [],
+  "workflow_url": "https://github.com/yoshito-ishiki-math/lean-gh-space-hilbert/actions/runs/36293358928",
+  "execution_profile": "palomar-standard-v1"
+}
