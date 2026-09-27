@@ -24,7 +24,7 @@ instance isometryHaar_leftInvariant : IsMulLeftInvariant (isometryHaar (X := X))
   infer_instance
 
 noncomputable def orbitProbability (μ : ProbabilityMeasure X) (g : X ≃ᵢ X) :
-    ProbabilityMeasure X := μ.map g.continuous.measurable.aemeasurable
+    ProbabilityMeasure X := μ.map g
 
 lemma measurable_orbitProbability (μ : ProbabilityMeasure X) : Measurable (orbitProbability μ) := by
   apply Measurable.subtype_mk
@@ -39,7 +39,7 @@ lemma measurable_orbitProbability (μ : ProbabilityMeasure X) : Measurable (orbi
 /-- Average the orbit law using the previously constructed barycenter. -/
 noncomputable def haarAverage (μ : ProbabilityMeasure X) : ProbabilityMeasure X :=
   barycenter (ProbabilityMeasure.map (⟨isometryHaar, inferInstance⟩ : ProbabilityMeasure (X ≃ᵢ X))
-    (measurable_orbitProbability μ).aemeasurable)
+    (orbitProbability μ))
 
 lemma haarAverage_apply (μ : ProbabilityMeasure X) {S : Set X} (hS : MeasurableSet S) :
     (haarAverage μ : Measure X) S = ∫⁻ g : X ≃ᵢ X, (μ : Measure X) (g ⁻¹' S) ∂isometryHaar := by

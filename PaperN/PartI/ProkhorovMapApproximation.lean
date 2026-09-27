@@ -11,8 +11,8 @@ theorem levyProkhorovDist_map_le_of_dist_le
     (hf : Measurable f) (hg : Measurable g) {δ : ℝ} (hδ : 0 ≤ δ)
     (hfg : ∀ a, dist (f a) (g a) ≤ δ) :
     levyProkhorovDist (Measure.map f μ) (Measure.map g μ) ≤ δ := by
-  letI : IsProbabilityMeasure (Measure.map f μ) := Measure.isProbabilityMeasure_map hf.aemeasurable
-  letI : IsProbabilityMeasure (Measure.map g μ) := Measure.isProbabilityMeasure_map hg.aemeasurable
+  letI : IsProbabilityMeasure (Measure.map f μ) := inferInstance
+  letI : IsProbabilityMeasure (Measure.map g μ) := inferInstance
   apply levyProkhorovDist_le_of_forall_le _ _ hδ
   intro ε B hε hB
   rw [Measure.map_apply hf hB, Measure.map_apply hg isOpen_thickening.measurableSet]

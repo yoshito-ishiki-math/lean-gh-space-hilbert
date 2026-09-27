@@ -9,7 +9,7 @@ variable {Xs : ℕ → MeasuredCompact.{u}} {X : MeasuredCompact.{u}}
 
 noncomputable def orbitProbabilityAt (C : CommonRealization Xs X) (n : ℕ)
     (g : Xs n ≃ᵢ Xs n) : ProbabilityMeasure C :=
-  (Xs n).probability.map ((C.seq_isometry n).continuous.comp g.continuous).measurable.aemeasurable
+  (Xs n).probability.map (C.seqMap n ∘ g)
 
 noncomputable def orbitError (C : CommonRealization Xs X) (f : C →ᵇ ℝ) (n : ℕ)
     (g : Xs n ≃ᵢ Xs n) : ℝ :=

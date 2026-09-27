@@ -50,7 +50,7 @@ omit [CompactSpace Z] in
 lemma ballMass_map {X : Type*} [MetricSpace X] [MeasurableSpace X] [BorelSpace X]
     [CompactSpace X] (μ : ProbabilityMeasure X) (e : X → Z) (he : Isometry e)
     (r : ℝ) (x : X) :
-    ballMass (μ.map he.continuous.measurable.aemeasurable) r (e x) = ballMass μ r x := by
+    ballMass (μ.map e) r (e x) = ballMass μ r x := by
   unfold ballMass
   change (∫ y, metricBump (e x) r y ∂(Measure.map e (μ : Measure X))) = _
   rw [integral_map he.continuous.measurable.aemeasurable
@@ -66,7 +66,7 @@ lemma minimumBallMass_isometryEquiv {X : Type*} [MetricSpace X] [MeasurableSpace
     (μ : ProbabilityMeasure X) (ν : ProbabilityMeasure Z) (e : X ≃ᵢ Z)
     (he : Measure.map e (μ : Measure X) = (ν : Measure Z)) (r : ℝ) :
     minimumBallMass μ r = minimumBallMass ν r := by
-  have hp : μ.map e.continuous.measurable.aemeasurable = ν :=
+  have hp : μ.map e = ν :=
     ProbabilityMeasure.toMeasure_injective he
   have hb : ∀ x, ballMass ν r (e x) = ballMass μ r x := by
     intro x
@@ -88,8 +88,8 @@ omit [CompactSpace Z] in
 lemma minimumBallMass_range {X : Type*} [MetricSpace X] [MeasurableSpace X]
     [BorelSpace X] [CompactSpace X] [Nonempty X]
     (μ : ProbabilityMeasure X) (e : X → Z) (he : Isometry e) (r : ℝ) :
-    (∃ z ∈ range e, ballMass (μ.map he.continuous.measurable.aemeasurable) r z = minimumBallMass μ r) ∧
-    ∀ z ∈ range e, minimumBallMass μ r ≤ ballMass (μ.map he.continuous.measurable.aemeasurable) r z := by
+    (∃ z ∈ range e, ballMass (μ.map e) r z = minimumBallMass μ r) ∧
+    ∀ z ∈ range e, minimumBallMass μ r ≤ ballMass (μ.map e) r z := by
   constructor
   · obtain ⟨x, hx⟩ := minimumBallMass_attained μ r
     exact ⟨e x, ⟨x, rfl⟩, (ballMass_map μ e he r x).trans hx⟩

@@ -1,5 +1,7 @@
 import PaperN.PartIV.ProductDiameter
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace PaperN.PartIV
 open PaperN.Shared GromovHausdorff Set
 open scoped NNReal

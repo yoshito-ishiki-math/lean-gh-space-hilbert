@@ -32,7 +32,7 @@ end MeasuredEquiv
 /-- A small measured representative, transporting the given measure, not the selected one. -/
 noncomputable def smallMeasured (X : MeasuredCompact.{u}) : MeasuredCompact.{0} :=
   (smallCarrier X).withProbability (X.probability.map
-    (smallCarrierEquiv X).symm.continuous.measurable.aemeasurable)
+    (smallCarrierEquiv X).symm)
 
 noncomputable def smallMeasuredEquiv (X : MeasuredCompact.{u}) : MeasuredEquiv (smallMeasured X) X :=
   ⟨smallCarrierEquiv X, by
@@ -83,7 +83,7 @@ noncomputable def liftMeasured (X : MeasuredCompact.{0}) : MeasuredCompact.{u} w
   probability := by
     letI : MeasurableSpace (ULift.{u} X) := borel _
     letI : BorelSpace (ULift.{u} X) := ⟨rfl⟩
-    exact X.probability.map (uliftIsometry X).symm.continuous.measurable.aemeasurable
+    exact X.probability.map (uliftIsometry X).symm
 
 noncomputable def liftMeasuredEquiv (X : MeasuredCompact.{0}) : MeasuredEquiv (liftMeasured.{u} X) X := by
   letI : MeasurableSpace (ULift.{u} X) := borel _

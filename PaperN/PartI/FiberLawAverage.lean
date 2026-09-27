@@ -31,7 +31,7 @@ noncomputable def transportedFiberLaw (hm : GHPMetricInput.{u}) (X : MeasuredCom
   letI : MeasurableSpace InvariantMeasuredGHSpace.{u} := borel _
   letI : BorelSpace InvariantMeasuredGHSpace.{u} := ⟨rfl⟩
   intro η
-  exact η.map (continuous_fiberProbability hm X).measurable.aemeasurable
+  exact η.map (fiberProbability X)
 
 /-- The concrete barycenter after transport from the measured-isometry fiber. -/
 noncomputable def fiberLawAverage (hm : GHPMetricInput.{u}) (X : MeasuredCompact.{u}) :

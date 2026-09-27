@@ -25,9 +25,9 @@ theorem IsAbsoluteNeighborhoodExtensor.of_contractible
   let F : Y → X := fun y ↦ if hy : y ∈ U then G ⟨y, hy⟩ else p
   have hFU : ContinuousOn F U := by
     rw [continuousOn_iff_continuous_restrict]
-    have heq : U.restrict F = G := by
+    have heq : U.domRestrict F = G := by
       funext y
-      simp [F, y.property]
+      simp [Set.domRestrict, F, y.property]
     rw [heq]
     exact hG
   have hFp : ∀ y ∉ closure V, F y = p := by

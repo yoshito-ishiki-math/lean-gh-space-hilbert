@@ -3,6 +3,8 @@ import Mathlib.MeasureTheory.Measure.LevyProkhorovMetric
 import Mathlib.Topology.Semicontinuity.Basic
 import Mathlib.Tactic
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace PaperN.PartI
 open MeasureTheory Set TopologicalSpace
 open scoped NNReal ENNReal BoundedContinuousFunction Topology
@@ -17,7 +19,7 @@ private lemma probability_topology_eq :
         inferInstance := by
   change TopologicalSpace.induced _ (TopologicalSpace.induced _
     (TopologicalSpace.induced _ Pi.topologicalSpace)) = _
-  simp only [induced_compose, Pi.topologicalSpace, induced_iInf]
+  simp only [Pi.topologicalSpace, induced_iInf, induced_compose]
   rfl
 
 /-- All weakly open sets of probabilities on a compact metric space are Giry measurable.

@@ -11,9 +11,8 @@ theorem selectedProbability_tendsto (hm : GHPMetricInput.{0}) (hp : GHPPolishInp
     (hs : InvariantFiberLawSelectionStatement hm)
     (Xs : ℕ → MeasuredCompact.{0}) (X : MeasuredCompact.{0})
     (C : CommonRealization Xs X) (hH : C.HausdorffConverges) :
-    Tendsto (fun n ↦ (selectedProbability hm hs (Xs n)).map
-      (C.seq_isometry n).continuous.measurable.aemeasurable) atTop
-      (𝓝 ((selectedProbability hm hs X).map C.limit_isometry.continuous.measurable.aemeasurable)) := by
+    Tendsto (fun n ↦ (selectedProbability hm hs (Xs n)).map (C.seqMap n)) atTop
+      (𝓝 ((selectedProbability hm hs X).map C.limitMap)) := by
   letI := hm.metricSpace
   letI := hm.invariantMetricSpace
   letI : MeasurableSpace InvariantMeasuredGHSpace.{0} := borel _

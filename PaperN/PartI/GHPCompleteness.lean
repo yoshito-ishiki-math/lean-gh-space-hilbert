@@ -34,7 +34,7 @@ theorem ghp_completeSpace :
   have he := C.limit_isometry.isClosedEmbedding.measurableEmbedding
   let ρ : ProbabilityMeasure X := ⟨(ν : Measure C).comap C.limitMap,
     he.isProbabilityMeasure_comap ((mem_ae_iff_prob_eq_one hclosed.measurableSet).mpr hmass)⟩
-  have hρ : ρ.map C.limit_isometry.continuous.measurable.aemeasurable = ν := by
+  have hρ : ρ.map C.limitMap = ν := by
     apply ProbabilityMeasure.toMeasure_injective
     change Measure.map C.limitMap ((ν : Measure C).comap C.limitMap) = _
     rw [he.map_comap]

@@ -3,6 +3,8 @@ import Mathlib.Topology.MetricSpace.Gluing
 
 /-! Finiteness, symmetry, representative invariance, and the real max-infimum formula.
 Triangle inequality, metric separation, completeness, and separability remain future work. -/
+set_option backward.isDefEq.respectTransparency false
+
 namespace PaperN.PartI
 open MeasureTheory Set Metric
 open scoped ENNReal

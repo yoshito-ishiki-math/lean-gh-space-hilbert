@@ -24,7 +24,7 @@ theorem selectedProbability_fullSupport_invariant (hm : GHPMetricInput.{0})
 /-- The constructed average is natural under every isometry between whole carriers. -/
 theorem selectedProbability_natural (hm : GHPMetricInput.{0})
     (hs : InvariantFiberLawSelectionStatement hm) (X Y : MeasuredCompact.{0}) (e : X ≃ᵢ Y) :
-    (selectedProbability hm hs X).map e.continuous.measurable.aemeasurable =
+    (selectedProbability hm hs X).map e =
       selectedProbability hm hs Y := by
   letI := hm.metricSpace
   letI := hm.invariantMetricSpace

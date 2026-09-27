@@ -1,7 +1,7 @@
 {
   "state": "locally-prepared",
   "lean_build": "passed",
-  "jobs": 9040,
+  "jobs": 9361,
   "axioms": [
     "propext",
     "Classical.choice",
@@ -12,9 +12,8 @@
   "challenge_imports": [
     "Mathlib"
   ],
-  "substantive_source_files_matching": 432,
-  "comparator": "not run; required Linux tools unavailable",
-  "nanoda": "not run",
+  "comparator": "pending official preflight on migrated snapshot",
+  "nanoda": "pending official preflight on migrated snapshot",
   "public_repository": "https://github.com/yoshito-ishiki-math/lean-gh-space-hilbert",
   "submission_commit": null,
   "submitted": false,
@@ -24,5 +23,14 @@
     "commit": "302ef17c74a5975e49f4171bb86f10daef469ba4",
     "required_minimum": "v4.35.0-rc2",
     "url": "https://github.com/yoshito-ishiki-math/lean-gh-space-hilbert/actions/runs/36290916485"
-  }
+  },
+  "historical_local_verification": {
+    "lean_build": "passed",
+    "jobs": 9040,
+    "substantive_source_files_matching": 432,
+    "lean_toolchain": "leanprover/lean4:v4.32.1"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.35.0-rc3",
+  "mathlib_revision": "3cb72cfd416d1b5ec4b930d67648ef036a5df24f",
+  "full_build_jobs": 4179
 }

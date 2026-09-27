@@ -21,7 +21,7 @@ def FixedTopologyAssignmentStatement : Prop :=
       (d : CompatibleMetric X) (e : CompatibleMetric Y),
       letI := d.toMetric
       letI := e.toMetric
-      ∀ f : X ≃ᵢ Y, (μ X d).map f.continuous.measurable.aemeasurable = μ Y e) ∧
+      ∀ f : X ≃ᵢ Y, (μ X d).map f = μ Y e) ∧
     (∀ (Xs : ℕ → Type u) (X Z : Type u)
       [∀ n, TopologicalSpace (Xs n)] [∀ n, CompactSpace (Xs n)] [∀ n, Nonempty (Xs n)]
       [TopologicalSpace X] [CompactSpace X] [Nonempty X] [MetricSpace Z] [CompactSpace Z]
@@ -30,6 +30,6 @@ def FixedTopologyAssignmentStatement : Prop :=
       letI := d.toMetric
       ∀ (es : ∀ n, Xs n → Z) (e : X → Z) (hes : ∀ n, Isometry (es n)) (he : Isometry e),
       Tendsto (fun n ↦ hausdorffDist (range (es n)) (range e)) atTop (𝓝 0) →
-      Tendsto (fun n ↦ (μ (Xs n) (ds n)).map (hes n).continuous.measurable.aemeasurable)
-        atTop (𝓝 ((μ X d).map he.continuous.measurable.aemeasurable)))
+      Tendsto (fun n ↦ (μ (Xs n) (ds n)).map (es n))
+        atTop (𝓝 ((μ X d).map e)))
 end PaperN.PartI

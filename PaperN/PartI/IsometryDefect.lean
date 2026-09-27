@@ -38,7 +38,7 @@ theorem hasIsometryDefect_iff {X Y : MeasuredCompact.{u}} (h : X.Isomorphic Y) (
 
 theorem isometryDefect_eq_zero_iff (X : MeasuredCompact.{u}) (g : X ≃ᵢ X) :
     X.isometryDefect g = 0 ↔ Measure.map g X.measure = X.measure := by
-  let ν := X.probability.map g.continuous.measurable.aemeasurable
+  let ν := X.probability.map g
   change dist (LevyProkhorov.ofMeasure X.probability) (LevyProkhorov.ofMeasure ν) = 0 ↔ _
   rw [dist_eq_zero]
   constructor

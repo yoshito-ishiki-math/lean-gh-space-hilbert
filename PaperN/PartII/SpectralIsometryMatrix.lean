@@ -5,7 +5,7 @@ namespace PaperN.PartII
 open MeasureTheory
 variable {X : Type*} [MetricSpace X] [CompactSpace X] [MeasurableSpace X] [BorelSpace X]
 variable (μ : ProbabilityMeasure X) [(μ : Measure X).IsOpenPosMeasure]
-  (hinv : ∀ g : X ≃ᵢ X, μ.map g.continuous.measurable.aemeasurable = μ) (η : ℝ)
+  (hinv : ∀ g : X ≃ᵢ X, μ.map g = μ) (η : ℝ)
   {ι : Type*} [Fintype ι] [DecidableEq ι]
   (b : Module.Basis ι ℝ (spectralCutoff (μ : Measure X) η))
 

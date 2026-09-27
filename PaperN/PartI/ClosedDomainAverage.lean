@@ -21,10 +21,10 @@ theorem closedDomainAverage_tendsto
     Tendsto (fun i ↦ barycenter ((probabilityOnSubtype
       ((diracProba (ts i)).prod (ηs i)) s hs.measurableSet
       (diracProduct_fullMass _ _ _ hs.measurableSet (hηs i))).map
-        F.continuous.measurable.aemeasurable)) l
+        F)) l
       (𝓝 (barycenter ((probabilityOnSubtype ((diracProba t).prod η) s hs.measurableSet
         (diracProduct_fullMass _ _ _ hs.measurableSet hη)).map
-          F.continuous.measurable.aemeasurable))) :=
+          F))) :=
   continuous_barycenter.continuousAt.tendsto.comp
     ((ProbabilityMeasure.continuous_map F.continuous).continuousAt.tendsto.comp
       (closedDomainLaw_tendsto ts t ηs η s hs hηs hη ht hηlim))

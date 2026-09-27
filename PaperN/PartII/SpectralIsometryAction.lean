@@ -8,7 +8,7 @@ variable {X : Type*} [MetricSpace X] [CompactSpace X] [MeasurableSpace X] [Borel
 /-- Inverse pullback is a left representation, rather than an antihomomorphism. -/
 noncomputable def spectralIsometryAction (μ : ProbabilityMeasure X)
     [(μ : Measure X).IsOpenPosMeasure]
-    (hinv : ∀ g : X ≃ᵢ X, μ.map g.continuous.measurable.aemeasurable = μ) (η : ℝ) :
+    (hinv : ∀ g : X ≃ᵢ X, μ.map g = μ) (η : ℝ) :
     (X ≃ᵢ X) →* (spectralCutoff (μ : Measure X) η ≃ₗ[ℝ] spectralCutoff (μ : Measure X) η) where
   toFun g := spectralCutoffPullbackEquiv μ μ g.symm (hinv g.symm) η
   map_one' := by
@@ -21,7 +21,7 @@ noncomputable def spectralIsometryAction (μ : ProbabilityMeasure X)
 /-- The exact inverse convention of the function-space action. -/
 theorem spectralIsometryAction_apply (μ : ProbabilityMeasure X)
     [(μ : Measure X).IsOpenPosMeasure]
-    (hinv : ∀ g : X ≃ᵢ X, μ.map g.continuous.measurable.aemeasurable = μ) (η : ℝ)
+    (hinv : ∀ g : X ≃ᵢ X, μ.map g = μ) (η : ℝ)
     (g : X ≃ᵢ X) (f : spectralCutoff (μ : Measure X) η) (x : X) :
     ((spectralIsometryAction μ hinv η g f : spectralCutoff (μ : Measure X) η) : C(X, ℝ)) x =
       (f : C(X, ℝ)) (g.symm x) := rfl
@@ -29,7 +29,7 @@ theorem spectralIsometryAction_apply (μ : ProbabilityMeasure X)
 /-- Every orbit map is continuous in the actual continuous-function subspace topology. -/
 theorem continuous_spectralIsometryAction_orbit (μ : ProbabilityMeasure X)
     [(μ : Measure X).IsOpenPosMeasure]
-    (hinv : ∀ g : X ≃ᵢ X, μ.map g.continuous.measurable.aemeasurable = μ) (η : ℝ)
+    (hinv : ∀ g : X ≃ᵢ X, μ.map g = μ) (η : ℝ)
     (f : spectralCutoff (μ : Measure X) η) :
     Continuous (fun g : X ≃ᵢ X ↦ spectralIsometryAction μ hinv η g f) := by
   apply Continuous.subtype_mk
@@ -40,7 +40,7 @@ theorem continuous_spectralIsometryAction_orbit (μ : ProbabilityMeasure X)
 /-- Invariance of the measure preserves the integral inner product of spectral functions. -/
 theorem spectralIsometryAction_integral_mul (μ : ProbabilityMeasure X)
     [(μ : Measure X).IsOpenPosMeasure]
-    (hinv : ∀ g : X ≃ᵢ X, μ.map g.continuous.measurable.aemeasurable = μ) (η : ℝ)
+    (hinv : ∀ g : X ≃ᵢ X, μ.map g = μ) (η : ℝ)
     (g : X ≃ᵢ X) (f h : spectralCutoff (μ : Measure X) η) :
     (∫ x, ((spectralIsometryAction μ hinv η g f : spectralCutoff (μ : Measure X) η) : C(X, ℝ)) x *
       ((spectralIsometryAction μ hinv η g h : spectralCutoff (μ : Measure X) η) : C(X, ℝ)) x
@@ -57,7 +57,7 @@ theorem spectralIsometryAction_integral_mul (μ : ProbabilityMeasure X)
 /-- Every matrix coefficient in any finite basis is continuous in the uniform group topology. -/
 theorem continuous_spectralIsometryAction_coefficient (μ : ProbabilityMeasure X)
     [(μ : Measure X).IsOpenPosMeasure]
-    (hinv : ∀ g : X ≃ᵢ X, μ.map g.continuous.measurable.aemeasurable = μ) (η : ℝ)
+    (hinv : ∀ g : X ≃ᵢ X, μ.map g = μ) (η : ℝ)
     {ι : Type*} [Fintype ι] (b : Module.Basis ι ℝ (spectralCutoff (μ : Measure X) η)) (i j : ι) :
     Continuous (fun g : X ≃ᵢ X ↦ b.repr (spectralIsometryAction μ hinv η g (b j)) i) := by
   letI := b.finiteDimensional_of_finite

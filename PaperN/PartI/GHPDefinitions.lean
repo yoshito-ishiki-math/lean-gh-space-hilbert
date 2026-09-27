@@ -30,10 +30,12 @@ noncomputable def leftMeasure (C : CompactCoupling X Y) : Measure C :=
   Measure.map C.left X.measure
 noncomputable def rightMeasure (C : CompactCoupling X Y) : Measure C :=
   Measure.map C.right Y.measure
-instance (C : CompactCoupling X Y) : IsProbabilityMeasure C.leftMeasure :=
-  Measure.isProbabilityMeasure_map C.left_isometry.continuous.measurable.aemeasurable
-instance (C : CompactCoupling X Y) : IsProbabilityMeasure C.rightMeasure :=
-  Measure.isProbabilityMeasure_map C.right_isometry.continuous.measurable.aemeasurable
+instance (C : CompactCoupling X Y) : IsProbabilityMeasure C.leftMeasure := by
+  unfold leftMeasure
+  infer_instance
+instance (C : CompactCoupling X Y) : IsProbabilityMeasure C.rightMeasure := by
+  unfold rightMeasure
+  infer_instance
 
 /-- Both distances are nonnegative extended reals; the cost is their maximum. -/
 noncomputable def cost (C : CompactCoupling X Y) : ℝ≥0∞ :=

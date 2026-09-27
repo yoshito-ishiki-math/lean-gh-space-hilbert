@@ -32,7 +32,7 @@ theorem fixedTopologyProbability_natural (hm : GHPMetricInput.{0})
     letI := d.toMetric
     letI := e.toMetric
     ∀ f : X ≃ᵢ Y, (fixedTopologyProbability hm hs X d).map
-      f.continuous.measurable.aemeasurable = fixedTopologyProbability hm hs Y e := by
+      f = fixedTopologyProbability hm hs Y e := by
   letI := d.toMetric
   letI := e.toMetric
   exact fun f ↦ universalProbability_natural hm hs X Y f
@@ -48,8 +48,8 @@ theorem fixedTopologyProbability_tendsto (hm : GHPMetricInput.{0}) (hp : GHPPoli
     ∀ (es : ∀ n, Xs n → Z) (e : X → Z) (hes : ∀ n, Isometry (es n)) (he : Isometry e),
     Tendsto (fun n ↦ hausdorffDist (range (es n)) (range e)) atTop (𝓝 0) →
     Tendsto (fun n ↦ (fixedTopologyProbability hm hs (Xs n) (ds n)).map
-      (hes n).continuous.measurable.aemeasurable) atTop
-      (𝓝 ((fixedTopologyProbability hm hs X d).map he.continuous.measurable.aemeasurable)) := by
+      (es n)) atTop
+      (𝓝 ((fixedTopologyProbability hm hs X d).map e)) := by
   letI := fun n ↦ (ds n).toMetric
   letI := d.toMetric
   exact universalProbability_tendsto hm hp hs Xs X Z

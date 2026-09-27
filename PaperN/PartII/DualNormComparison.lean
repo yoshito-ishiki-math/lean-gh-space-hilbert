@@ -1,5 +1,7 @@
 import PaperN.PartII.DualRepresentation
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace PaperN.PartII
 open scoped RealInnerProductSpace
 variable {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E] [FiniteDimensional ℝ E]

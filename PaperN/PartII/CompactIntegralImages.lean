@@ -14,7 +14,7 @@ theorem compact_probability_integral_container
       Integrable f μ → (∀ᵐ x ∂μ, f x ∈ K) → (∫ x, f x ∂μ) ∈ L := by
   refine ⟨closure (convexHull ℝ K), ?_, ?_⟩
   · exact isCompact_iff_totallyBounded_isComplete.mpr
-      ⟨(totallyBounded_convexHull E hK.totallyBounded).closure, isClosed_closure.isComplete⟩
+      ⟨(totallyBounded_convexHull.mpr hK.totallyBounded).closure, isClosed_closure.isComplete⟩
   · intro α _ μ _ f hf hm
     apply (convex_convexHull ℝ K).closure.integral_mem isClosed_closure _ hf
     exact hm.mono (fun x hx ↦ subset_closure (subset_convexHull ℝ K hx))

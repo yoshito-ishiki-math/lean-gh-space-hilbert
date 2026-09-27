@@ -14,8 +14,8 @@ theorem map_restrictedLaw_lift
     (hs : MeasurableSet s) (ht : MeasurableSet t)
     (hη : (η : Measure A) s = 1) (hν : (ν : Measure B) t = 1)
     (f : C(A, B)) (g : C(s, t)) (hg : ∀ x, (g x).val = f x.val)
-    (hmap : η.map f.continuous.measurable.aemeasurable = ν) :
-    (probabilityOnSubtype η s hs hη).map g.continuous.measurable.aemeasurable =
+    (hmap : η.map f = ν) :
+    (probabilityOnSubtype η s hs hη).map g =
       probabilityOnSubtype ν t ht hν := by
   apply ProbabilityMeasure.toMeasure_injective
   apply (MeasurableEmbedding.subtype_coe ht).map_injective
@@ -48,7 +48,7 @@ theorem familyFiberAverage_eq_map (hm : GHPMetricInput.{u}) (hp : GHPPolishInput
       (hη : (η : Measure InvariantMeasuredGHSpace.{u})
         {q | q.val.forget = toGHSpace (Xs t)} = 1),
       familyFiberAverage hm hp Xs e he hH t η hη =
-      (averageConcentratedLaw hm (Xs t) η hη).map (he t).continuous.measurable.aemeasurable := by
+      (averageConcentratedLaw hm (Xs t) η hη).map (e t) := by
   letI := hm.metricSpace
   letI := hm.invariantMetricSpace
   letI := hp.separable
@@ -69,14 +69,14 @@ theorem familyFiberAverage_eq_map (hm : GHPMetricInput.{u}) (hp : GHPPolishInput
   let g : C(InvariantFiber (Xs t), s) :=
     ⟨fun q ↦ ⟨(t, q.val), q.property⟩,
       (continuous_const.prodMk continuous_subtype_val).subtype_mk _⟩
-  have hmap : η.map f.continuous.measurable.aemeasurable = ν := by
+  have hmap : η.map f = ν := by
     apply ProbabilityMeasure.toMeasure_injective
     exact (Measure.dirac_prod (ν := (η : Measure InvariantMeasuredGHSpace.{u})) t).symm
-  have hL : θ.map g.continuous.measurable.aemeasurable = L :=
+  have hL : θ.map g = L :=
     map_restrictedLaw_lift η ν _ s _ hs.measurableSet hη hν f g (fun _ ↦ rfl) hmap
-  change barycenter (L.map (continuous_familyFiberProbability hm Xs e he hH).measurable.aemeasurable) =
-    (barycenter (transportedFiberLaw hm (Xs t) θ)).map (he t).continuous.measurable.aemeasurable
-  rw [barycenter_map ⟨e t, (he t).continuous⟩, ← hL]
+  change barycenter (L.map (familyFiberProbability Xs e he)) =
+    (barycenter (transportedFiberLaw hm (Xs t) θ)).map (e t)
+  erw [barycenter_map ⟨e t, (he t).continuous⟩, ← hL]
   apply congrArg barycenter
   apply ProbabilityMeasure.toMeasure_injective
   change Measure.map (familyFiberProbability Xs e he) (Measure.map g (θ : Measure (InvariantFiber (Xs t)))) =

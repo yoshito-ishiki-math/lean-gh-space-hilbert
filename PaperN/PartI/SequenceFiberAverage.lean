@@ -2,6 +2,8 @@ import PaperN.PartI.FamilyAverageIdentification
 import PaperN.PartI.CommonIsometryGraph
 import Mathlib.Topology.Category.LightProfinite.Sequence
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace PaperN.PartI
 open MeasureTheory Filter Set TopologicalSpace Metric GromovHausdorff
 open scoped Topology OnePoint
@@ -44,8 +46,8 @@ theorem averageConcentratedLaw_tendsto (hm : GHPMetricInput.{u}) (hp : GHPPolish
       (hη : (η : Measure InvariantMeasuredGHSpace.{u}) {q | q.val.forget = toGHSpace X} = 1),
       Tendsto ηs atTop (𝓝 η) →
       Tendsto (fun n ↦ (averageConcentratedLaw hm (Xs n) (ηs n) (hηs n)).map
-        (C.seq_isometry n).continuous.measurable.aemeasurable) atTop
-        (𝓝 ((averageConcentratedLaw hm X η hη).map C.limit_isometry.continuous.measurable.aemeasurable)) := by
+        (C.seqMap n)) atTop
+        (𝓝 ((averageConcentratedLaw hm X η hη).map C.limitMap)) := by
   letI := hm.metricSpace
   letI := hm.invariantMetricSpace
   letI : MeasurableSpace InvariantMeasuredGHSpace.{u} := borel _
@@ -65,7 +67,7 @@ theorem averageConcentratedLaw_tendsto (hm : GHPMetricInput.{u}) (hp : GHPPolish
       Tendsto (fun n ↦ hausdorffDist (range (e (ts n))) (range (e t))) atTop (𝓝 0) := by
     intro ts t ht
     have h := tendsto_iff_dist_tendsto_zero.mp (hK.continuousAt.tendsto.comp ht)
-    simpa only [Function.comp_def, NonemptyCompacts.dist_eq, hKe] using h
+    simpa only [Function.comp_def, TopologicalSpace.NonemptyCompacts.dist_eq, hKe] using h
   have ht : Tendsto (fun n : ℕ ↦ (n : OnePoint ℕ)) atTop (𝓝 ∞) :=
     (OnePoint.continuous_iff_from_nat id).mp continuous_id
   have h := familyFiberAverage_tendsto hm hp F e he hF

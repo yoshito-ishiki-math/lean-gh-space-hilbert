@@ -19,7 +19,7 @@ theorem continuousToL2_inner (μ : Measure X) [IsProbabilityMeasure μ] (f g : C
 
 omit [CompactSpace X] [CompactSpace Z] in
 theorem continuousGram_map (e : C(X, Z)) (μ : ProbabilityMeasure X) (v : ι → C(Z, ℝ)) :
-    continuousGram (μ.map e.continuous.measurable.aemeasurable) v =
+    continuousGram (μ.map e) v =
       continuousGram μ (fun i ↦ (v i).comp e) := by
   ext i j
   unfold continuousGram
@@ -42,16 +42,16 @@ omit [CompactSpace Z] in
 theorem continuousGram_map_eq_one [DecidableEq ι] (e : C(X, Z)) (μ : ProbabilityMeasure X)
     (g : ι → C(Z, ℝ)) (v : ι → C(X, ℝ)) (hext : ∀ i, (g i).comp e = v i)
     (hv : Orthonormal ℝ (fun i ↦ continuousToL2 (μ : Measure X) (v i))) :
-    continuousGram (μ.map e.continuous.measurable.aemeasurable) g = 1 := by
+    continuousGram (μ.map e) g = 1 := by
   rw [continuousGram_map]
   simp_rw [hext]
   exact (continuousGram_eq_one_iff μ v).mpr hv
 
 theorem normalized_restrictions_orthonormal [Fintype ι] [DecidableEq ι]
     (e : C(X, Z)) (μ : ProbabilityMeasure X) (g : ι → C(Z, ℝ))
-    (hG : (continuousGram (μ.map e.continuous.measurable.aemeasurable) g).PosDef) :
+    (hG : (continuousGram (μ.map e) g).PosDef) :
     Orthonormal ℝ (fun i ↦ continuousToL2 (μ : Measure X)
-      ((normalizeContinuousFamily (μ.map e.continuous.measurable.aemeasurable) g i).comp e)) := by
+      ((normalizeContinuousFamily (μ.map e) g i).comp e)) := by
   apply (continuousGram_eq_one_iff μ _).mp
   rw [← continuousGram_map]
   exact normalizeContinuousFamily_gram _ g hG

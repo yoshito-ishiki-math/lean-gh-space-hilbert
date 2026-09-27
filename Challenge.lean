@@ -129,7 +129,7 @@ def ValovInput : Prop :=
     [PolishSpace X] [PolishSpace Y] (f : C(X,Y)),
     IsOpenMap f → Function.Surjective f →
     ∃ R : C(ProbabilityMeasure Y, ProbabilityMeasure X),
-      ∀ μ, (R μ).map f.continuous.measurable.aemeasurable = μ
+      ∀ μ, (R μ).map f = μ
 
 /-- Conditional classification, assuming the five displayed literature results. -/
 theorem main

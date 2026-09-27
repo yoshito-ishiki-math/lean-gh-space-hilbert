@@ -1,6 +1,8 @@
 import PaperN.PartI.FiberLawAverage
 import PaperN.PartI.BarycenterNaturality
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace PaperN.PartI
 open MeasureTheory Set GromovHausdorff
 universe u
@@ -17,8 +19,8 @@ theorem fiberLawAverage_natural (hm : GHPMetricInput.{u}) {X Y : MeasuredCompact
     letI : MeasurableSpace InvariantMeasuredGHSpace.{u} := borel _
     letI : BorelSpace InvariantMeasuredGHSpace.{u} := ⟨rfl⟩
     ∀ (ηx : ProbabilityMeasure (InvariantFiber X)) (ηy : ProbabilityMeasure (InvariantFiber Y)),
-      ηx.map measurable_subtype_coe.aemeasurable = ηy.map measurable_subtype_coe.aemeasurable →
-      (fiberLawAverage hm X ηx).map e.continuous.measurable.aemeasurable =
+      ηx.map Subtype.val = ηy.map Subtype.val →
+      (fiberLawAverage hm X ηx).map e =
         fiberLawAverage hm Y ηy := by
   letI := hm.metricSpace
   letI := hm.invariantMetricSpace
@@ -31,8 +33,8 @@ theorem fiberLawAverage_natural (hm : GHPMetricInput.{u}) {X Y : MeasuredCompact
     apply (MeasurableEmbedding.subtype_coe (isClosed_invariantFiber hm Y).measurableSet).map_injective
     erw [Measure.map_map measurable_subtype_coe hr.measurable]
     exact congrArg ProbabilityMeasure.toMeasure hη
-  change (barycenter (transportedFiberLaw hm X ηx)).map e.continuous.measurable.aemeasurable = _
-  rw [barycenter_map ⟨e, e.continuous⟩]
+  change (barycenter (transportedFiberLaw hm X ηx)).map e = _
+  erw [barycenter_map ⟨e, e.continuous⟩]
   apply congrArg barycenter
   apply ProbabilityMeasure.toMeasure_injective
   change Measure.map (probabilityPushforward ⟨e, e.continuous⟩)
@@ -55,7 +57,7 @@ theorem averageConcentratedLaw_natural (hm : GHPMetricInput.{u}) {X Y : Measured
     ∀ (η : ProbabilityMeasure InvariantMeasuredGHSpace.{u})
       (hx : (η : Measure InvariantMeasuredGHSpace.{u}) {q | q.val.forget = toGHSpace X} = 1)
       (hy : (η : Measure InvariantMeasuredGHSpace.{u}) {q | q.val.forget = toGHSpace Y} = 1),
-      (averageConcentratedLaw hm X η hx).map e.continuous.measurable.aemeasurable =
+      (averageConcentratedLaw hm X η hx).map e =
         averageConcentratedLaw hm Y η hy := by
   letI := hm.metricSpace
   letI := hm.invariantMetricSpace

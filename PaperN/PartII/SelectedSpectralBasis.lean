@@ -36,8 +36,8 @@ theorem selected_spectral_basis_extensions
   let es : ∀ n, C(Xs n, C) := fun n ↦ ⟨C.seqMap n, (C.seq_isometry n).continuous⟩
   let μ := selectedProbability hm hs X
   let μs := fun n ↦ selectedProbability hm hs (Xs n)
-  let ν := μ.map e.continuous.measurable.aemeasurable
-  let νs := fun n ↦ (μs n).map (es n).continuous.measurable.aemeasurable
+  let ν := μ.map e
+  let νs := fun n ↦ (μs n).map (es n)
   let P := cutoffContourOperator (selectedLimitOperator hm hs C) (Metric.diam (Set.univ : Set C)) η
   let Ps := fun n ↦ cutoffContourOperator (selectedSequenceOperator hm hs C n)
     (Metric.diam (Set.univ : Set C)) η

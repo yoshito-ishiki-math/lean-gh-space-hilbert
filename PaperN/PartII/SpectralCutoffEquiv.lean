@@ -8,8 +8,8 @@ variable {X Y : Type*} [MetricSpace X] [CompactSpace X] [MeasurableSpace X] [Bor
 
 omit [CompactSpace X] [CompactSpace Y] in
 theorem probability_map_isometryEquiv_symm (μ : ProbabilityMeasure X) (ν : ProbabilityMeasure Y)
-    (e : X ≃ᵢ Y) (hμ : μ.map e.continuous.measurable.aemeasurable = ν) :
-    ν.map e.symm.continuous.measurable.aemeasurable = μ := by
+    (e : X ≃ᵢ Y) (hμ : μ.map e = ν) :
+    ν.map e.symm = μ := by
   apply ProbabilityMeasure.toMeasure_injective
   rw [ProbabilityMeasure.toMeasure_map, ← hμ, ProbabilityMeasure.toMeasure_map,
     Measure.map_map e.symm.continuous.measurable e.continuous.measurable]
@@ -22,7 +22,7 @@ theorem probability_map_isometryEquiv_symm (μ : ProbabilityMeasure X) (ν : Pro
 noncomputable def spectralCutoffPullbackEquiv
     (μ : ProbabilityMeasure X) (ν : ProbabilityMeasure Y)
     [(μ : Measure X).IsOpenPosMeasure] [(ν : Measure Y).IsOpenPosMeasure]
-    (e : X ≃ᵢ Y) (hμ : μ.map e.continuous.measurable.aemeasurable = ν) (η : ℝ) :
+    (e : X ≃ᵢ Y) (hμ : μ.map e = ν) (η : ℝ) :
     spectralCutoff (ν : Measure Y) η ≃ₗ[ℝ] spectralCutoff (μ : Measure X) η where
   toFun f := ⟨(f : C(Y, ℝ)).comp ⟨e, e.continuous⟩,
     spectralCutoff_comap_mem μ ν e e.isometry hμ η f f.property⟩
@@ -49,7 +49,7 @@ noncomputable def spectralCutoffPullbackEquiv
 theorem spectralCutoff_finrank_eq_of_isometryEquiv
     (μ : ProbabilityMeasure X) (ν : ProbabilityMeasure Y)
     [(μ : Measure X).IsOpenPosMeasure] [(ν : Measure Y).IsOpenPosMeasure]
-    (e : X ≃ᵢ Y) (hμ : μ.map e.continuous.measurable.aemeasurable = ν) (η : ℝ) :
+    (e : X ≃ᵢ Y) (hμ : μ.map e = ν) (η : ℝ) :
     Module.finrank ℝ (spectralCutoff (μ : Measure X) η) =
       Module.finrank ℝ (spectralCutoff (ν : Measure Y) η) :=
   (spectralCutoffPullbackEquiv μ ν e hμ η).finrank_eq.symm

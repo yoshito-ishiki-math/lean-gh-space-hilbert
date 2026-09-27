@@ -16,7 +16,7 @@ noncomputable def probabilityOnSubtype (η : ProbabilityMeasure A) (s : Set A)
 /-- Restricting to a full-mass subset and including it again recovers the original law. -/
 theorem map_probabilityOnSubtype (η : ProbabilityMeasure A) (s : Set A)
     (hs : MeasurableSet s) (hη : (η : Measure A) s = 1) :
-    (probabilityOnSubtype η s hs hη).map measurable_subtype_coe.aemeasurable = η := by
+    (probabilityOnSubtype η s hs hη).map Subtype.val = η := by
   apply ProbabilityMeasure.toMeasure_injective
   change Measure.map Subtype.val ((η : Measure A).comap Subtype.val) = (η : Measure A)
   rw [map_comap_subtype_coe hs]

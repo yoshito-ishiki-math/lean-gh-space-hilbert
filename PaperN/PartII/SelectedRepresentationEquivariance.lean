@@ -38,7 +38,7 @@ theorem selected_spectral_equivariant_representative
     (spectralCutoff (μ : Measure X) η) n hn
   have hli : LinearIndependent ℝ (fun i ↦ (b i : C(X, ℝ))) :=
     LinearIndependent.of_comp (continuousToL2 (μ : Measure X)).toLinearMap ho.linearIndependent
-  have hinv : ∀ g : X ≃ᵢ X, μ.map g.continuous.measurable.aemeasurable = μ :=
+  have hinv : ∀ g : X ≃ᵢ X, μ.map g = μ :=
     fun g ↦ selectedProbability_natural hm hs X X g
   refine ⟨b, ho, bestApproximationCoordinatePair (μ : Measure X) p _ hli, rfl,
     spectralOrthogonalRepresentation μ η b hinv hb,

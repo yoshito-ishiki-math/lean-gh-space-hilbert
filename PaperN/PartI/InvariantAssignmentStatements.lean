@@ -11,9 +11,9 @@ def InvariantAssignmentStatement : Prop :=
     (∀ X : MeasuredCompact.{0}, (μ X : Measure X).support = Set.univ ∧
       ∀ g : X ≃ᵢ X, Measure.map g (μ X : Measure X) = (μ X : Measure X)) ∧
     (∀ (X Y : MeasuredCompact.{0}) (e : X ≃ᵢ Y),
-      (μ X).map e.continuous.measurable.aemeasurable = μ Y) ∧
+      (μ X).map e = μ Y) ∧
     ∀ (Xs : ℕ → MeasuredCompact.{0}) (X : MeasuredCompact.{0})
       (C : CommonRealization Xs X), C.HausdorffConverges →
-      Tendsto (fun n ↦ (μ (Xs n)).map (C.seq_isometry n).continuous.measurable.aemeasurable)
-        atTop (𝓝 ((μ X).map C.limit_isometry.continuous.measurable.aemeasurable))
+      Tendsto (fun n ↦ (μ (Xs n)).map (C.seqMap n))
+        atTop (𝓝 ((μ X).map C.limitMap))
 end PaperN.PartI

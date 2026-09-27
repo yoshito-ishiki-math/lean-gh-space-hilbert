@@ -14,8 +14,8 @@ theorem probability_tendsto_of_closedEmbedding
     [MeasurableSpace A] [MeasurableSpace B] [BorelSpace A] [BorelSpace B]
     {e : A → B} (he : IsClosedEmbedding e)
     {ι : Type*} {l : Filter ι} (μs : ι → ProbabilityMeasure A) (μ : ProbabilityMeasure A)
-    (h : Tendsto (fun i ↦ (μs i).map he.continuous.measurable.aemeasurable) l
-      (𝓝 (μ.map he.continuous.measurable.aemeasurable))) :
+    (h : Tendsto (fun i ↦ (μs i).map e) l
+      (𝓝 (μ.map e))) :
     Tendsto μs l (𝓝 μ) := by
   apply ProbabilityMeasure.tendsto_iff_forall_integral_tendsto.mpr
   intro f

@@ -16,7 +16,7 @@ theorem isomorphic_of_cost_eq_zero (C : CompactCoupling X Y) (hc : C.cost = 0) :
     ((isCompact_range C.left_isometry.continuous).isClosed.hausdorffEDist_zero_iff
       (isCompact_range C.right_isometry.continuous).isClosed).mp hh
   let er : range C.left ≃ᵢ range C.right :=
-    { toEquiv := Equiv.setCongr hrange, isometry_toFun := fun _ _ ↦ rfl }
+    { toEquiv := Set.equivOfEq hrange, isometry_toFun := fun _ _ ↦ rfl }
   let e : X ≃ᵢ Y := C.left_isometry.isometryEquivOnRange.trans
     (er.trans C.right_isometry.isometryEquivOnRange.symm)
   have he : C.right ∘ e = C.left := by

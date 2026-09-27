@@ -26,7 +26,7 @@ theorem isomorphic_of_ghpDist_eq_zero (X Y : MeasuredCompact.{u})
     tendsto_iff_dist_tendsto_zero.mpr (hausdorffDist_range_tendsto_of_uniform (f ∘ φ) g ht)
   have hr : range g = range C.limitMap :=
     congrArg (fun k : NonemptyCompacts C ↦ (k : Set C)) (tendsto_nhds_unique hL hK)
-  let ν : ProbabilityMeasure C := Y.probability.map g.continuous.measurable.aemeasurable
+  let ν : ProbabilityMeasure C := Y.probability.map g
   have hν : Tendsto (fun n ↦ C.seqProbability (φ n)) atTop (𝓝 ν) :=
     (weak_tendsto_iff_prokhorov _ _).mpr
       (prokhorov_map_tendsto_of_uniform Y.measure (f ∘ φ) g ht)

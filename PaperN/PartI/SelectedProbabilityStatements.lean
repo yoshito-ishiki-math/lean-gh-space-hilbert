@@ -8,5 +8,5 @@ def NaturalInvariantAssignmentStatement : Prop :=
     (∀ X : MeasuredCompact.{0}, (μ X : Measure X).support = Set.univ ∧
       ∀ g : X ≃ᵢ X, Measure.map g (μ X : Measure X) = (μ X : Measure X)) ∧
     ∀ (X Y : MeasuredCompact.{0}) (e : X ≃ᵢ Y),
-      (μ X).map e.continuous.measurable.aemeasurable = μ Y
+      (μ X).map e = μ Y
 end PaperN.PartI

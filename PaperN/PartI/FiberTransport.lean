@@ -27,7 +27,7 @@ theorem probability_eq_of_invariant_class_eq (X : MeasuredCompact.{u})
 /-- Changing carrier by any isometry represents the same measured class. -/
 theorem probability_map_class {X Y : MeasuredCompact.{u}} (e : X ≃ᵢ Y)
     (μ : ProbabilityMeasure X) :
-    (Y.withProbability (μ.map e.continuous.measurable.aemeasurable)).toMeasuredGHSpace =
+    (Y.withProbability (μ.map e)).toMeasuredGHSpace =
       (X.withProbability μ).toMeasuredGHSpace := by
   symm
   exact Quotient.sound ⟨e, rfl⟩
@@ -48,7 +48,7 @@ theorem exists_fiberProbability (X : MeasuredCompact.{u}) (q : InvariantFiber X)
     rw [hrep]
     exact q.property
   obtain ⟨e⟩ := toGHSpace_eq_toGHSpace_iff_isometryEquiv.mp hcarrier
-  let μ := Y.probability.map e.continuous.measurable.aemeasurable
+  let μ := Y.probability.map e
   have hiso : Y.Isomorphic (X.withProbability μ) := ⟨e, rfl⟩
   exact ⟨μ, MeasuredCompact.invariantFullSupport_of_isomorphic hiso hY,
     (Quotient.sound hiso).symm.trans hrep⟩
@@ -75,7 +75,7 @@ theorem fiberProbability_unique (X : MeasuredCompact.{u}) (q : InvariantFiber X)
 /-- In particular, transport from every representative and every isometry gives the same result. -/
 theorem fiberProbability_eq_map (X Y : MeasuredCompact.{u}) (q : InvariantFiber X)
     (hY : Y.toMeasuredGHSpace = q.val.val) (e : Y ≃ᵢ X) :
-    fiberProbability X q = Y.probability.map e.continuous.measurable.aemeasurable := by
+    fiberProbability X q = Y.probability.map e := by
   apply fiberProbability_unique
   exact (probability_map_class e Y.probability).trans hY
 
@@ -83,7 +83,7 @@ theorem fiberProbability_eq_map (X Y : MeasuredCompact.{u}) (q : InvariantFiber 
 theorem fiberProbability_natural {X Y : MeasuredCompact.{u}} (e : X ≃ᵢ Y)
     (qx : InvariantFiber X) (qy : InvariantFiber Y) (hq : qx.val = qy.val) :
     fiberProbability Y qy =
-      (fiberProbability X qx).map e.continuous.measurable.aemeasurable := by
+      (fiberProbability X qx).map e := by
   apply fiberProbability_unique
   exact (probability_map_class e _).trans ((fiberProbability_class X qx).trans
     (congrArg Subtype.val hq))

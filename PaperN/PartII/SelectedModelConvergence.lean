@@ -71,8 +71,8 @@ theorem intrinsic_coordinateLpNorm_sub_tendsto
     [∀ n, MeasurableSpace (Xs n)] [∀ n, BorelSpace (Xs n)] [Fintype ι]
     (μs : ∀ n, ProbabilityMeasure (Xs n)) (μ : ProbabilityMeasure X)
     (es : ∀ n, C(Xs n, Z)) (e : C(X, Z))
-    (hμ : Tendsto (fun n ↦ (μs n).map (es n).continuous.measurable.aemeasurable)
-      atTop (𝓝 (μ.map e.continuous.measurable.aemeasurable)))
+    (hμ : Tendsto (fun n ↦ (μs n).map (es n))
+      atTop (𝓝 (μ.map e)))
     (p : ENNReal) [Fact (1 ≤ p)] (hp : p ≠ ⊤)
     (vs : ℕ → ι → C(Z, ℝ)) (v : ι → C(Z, ℝ))
     (hv : ∀ i, Tendsto (fun n ↦ vs n i) atTop (𝓝 (v i)))

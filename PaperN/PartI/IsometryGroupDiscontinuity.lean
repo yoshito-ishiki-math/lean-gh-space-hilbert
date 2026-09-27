@@ -23,7 +23,9 @@ theorem twoPoint_isometryGroup_nontrivial :
   have he := Subsingleton.elim (equilateralPermutation 2 s (Equiv.swap a b))
     (IsometryEquiv.refl (Equilateral 2 s))
   have hv := congrArg (fun e : Equilateral 2 s ≃ᵢ Equilateral 2 s ↦ e a) he
-  have hab : a ≠ b := by decide
+  have hab : a ≠ b := by
+    change (0 : Fin 2) ≠ 1
+    decide
   change (Equiv.swap a b) a = a at hv
   rw [Equiv.swap_apply_left] at hv
   exact hab hv.symm

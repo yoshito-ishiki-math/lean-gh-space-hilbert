@@ -5,7 +5,7 @@ namespace PaperN.PartII
 open MeasureTheory
 variable {X : Type*} [MetricSpace X] [CompactSpace X] [MeasurableSpace X] [BorelSpace X]
 variable (μ : ProbabilityMeasure X) [(μ : Measure X).IsOpenPosMeasure]
-  (hinv : ∀ g : X ≃ᵢ X, μ.map g.continuous.measurable.aemeasurable = μ) (η : ℝ)
+  (hinv : ∀ g : X ≃ᵢ X, μ.map g = μ) (η : ℝ)
   {ι : Type*} [Fintype ι] [DecidableEq ι]
   (b : Module.Basis ι ℝ (spectralCutoff (μ : Measure X) η))
 
@@ -40,7 +40,7 @@ theorem spectral_coordinateLpNorm (g : X ≃ᵢ X) (p : ENNReal) [Fact (1 ≤ p)
     coordinateLpNorm (μ : Measure X) p (fun i ↦ (b i : C(X, ℝ))) a := by
   have hn := coordinateLpNorm_map μ (⟨g.symm, g.symm.continuous⟩ : C(X, X)) p hp
     (fun i ↦ (b i : C(X, ℝ))) a
-  rw [hinv g.symm] at hn
+  erw [hinv g.symm] at hn
   rw [hn]
   change ‖ContinuousMap.toLp p _ ℝ (coordinateSynthesis _ _)‖ =
     ‖ContinuousMap.toLp p _ ℝ (coordinateSynthesis _ _)‖

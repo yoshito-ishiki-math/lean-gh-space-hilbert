@@ -1,6 +1,8 @@
 import PaperN.PartI.VaryingFiberTransport
 import PaperN.PartI.FiberLawAverage
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace PaperN.PartI
 open MeasureTheory Filter Set TopologicalSpace Metric GromovHausdorff
 open scoped Topology
@@ -29,7 +31,7 @@ noncomputable def familyFiberProbability
     (e : ∀ t, Xs t → Z) (he : ∀ t, Isometry (e t))
     (p : FamilyFiber Xs) : ProbabilityMeasure Z :=
   (fiberProbability (Xs p.val.1) ⟨p.val.2, p.property⟩).map
-    (he p.val.1).continuous.measurable.aemeasurable
+    (e p.val.1)
 
 /-- The same prescribed Hausdorff convergence makes the carrier classes continuous in GH. -/
 theorem continuous_familyGH

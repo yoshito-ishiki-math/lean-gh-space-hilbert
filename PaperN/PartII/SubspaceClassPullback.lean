@@ -10,7 +10,7 @@ variable {X Y : Type*} [MetricSpace X] [CompactSpace X] [MeasurableSpace X] [Bor
 /-- A continuous measure pushforward preserves orthonormality of pulled-back families. -/
 theorem orthonormal_continuousFamily_comap {ι : Type*} [DecidableEq ι]
     (μ : ProbabilityMeasure X) (ν : ProbabilityMeasure Y) (e : C(X, Y))
-    (hμ : μ.map e.continuous.measurable.aemeasurable = ν) (v : ι → C(Y, ℝ))
+    (hμ : μ.map e = ν) (v : ι → C(Y, ℝ))
     (ho : Orthonormal ℝ (fun i ↦ continuousToL2 (ν : Measure Y) (v i))) :
     Orthonormal ℝ (fun i ↦ continuousToL2 (μ : Measure X) ((v i).comp e)) := by
   apply (continuousGram_eq_one_iff μ _).mp
@@ -24,7 +24,7 @@ theorem subspaceCoordinateClass_comap
     [(μ : Measure X).IsOpenPosMeasure] [(ν : Measure Y).IsOpenPosMeasure]
     (S : Submodule ℝ C(X, ℝ)) (T : Submodule ℝ C(Y, ℝ))
     [FiniteDimensional ℝ S] [FiniteDimensional ℝ T]
-    (e : X → Y) (he : Isometry e) (hμ : μ.map he.continuous.measurable.aemeasurable = ν)
+    (e : X → Y) (he : Isometry e) (hμ : μ.map e = ν)
     (hST : ∀ f ∈ T, f.comp ⟨e, he.continuous⟩ ∈ S)
     (p : ENNReal) [Fact (1 ≤ p)] (hp : p ≠ ⊤)
     [StrictConvexSpace ℝ (Lp ℝ p (μ : Measure X))]

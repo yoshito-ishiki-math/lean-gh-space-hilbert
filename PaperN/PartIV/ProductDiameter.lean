@@ -65,7 +65,9 @@ theorem unitDiameter_nonempty : Nonempty UnitDiameterSpace := by
       (mem_univ (show Equilateral 2 s from (0 : Fin 2)))
       (mem_univ (show Equilateral 2 s from (1 : Fin 2)))
     rw [equilateral_dist, if_neg (show (show Equilateral 2 s from (0 : Fin 2)) ≠
-      (show Equilateral 2 s from (1 : Fin 2)) from by decide)] at h
+      (show Equilateral 2 s from (1 : Fin 2)) from by
+        change (0 : Fin 2) ≠ 1
+        decide)] at h
     exact h
 
 end PaperN.PartIV

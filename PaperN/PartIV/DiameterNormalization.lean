@@ -1,6 +1,8 @@
 import PaperN.PartIV.UnitDiameterApproximation
 import PaperN.Shared.Contraction
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace PaperN.PartIV
 open PaperN.Shared GromovHausdorff Set Metric
 open scoped NNReal

@@ -51,9 +51,9 @@ noncomputable def toLocalModel
     rw [dif_pos hq]
     exact B.ghError_nonneg hf hη p hc ⟨q, hq⟩
   · rw [continuousOn_iff_continuous_restrict]
-    have he : (ball (toGHSpace X₀) B.radius).restrict err = B.ghError hf hη p hc := by
+    have he : (ball (toGHSpace X₀) B.radius).domRestrict err = B.ghError hf hη p hc := by
       funext q
-      simp only [Set.restrict, err, dif_pos q.property]
+      simp only [Set.domRestrict, err, dif_pos q.property]
     rw [he]
     exact B.continuous_ghError hp hg   hf   hη p hpfin hp2 hc
   · rwa [heq X₀ hX₀]

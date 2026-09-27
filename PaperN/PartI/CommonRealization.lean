@@ -27,9 +27,9 @@ instance {Xs : ℕ → MeasuredCompact.{u}} {X : MeasuredCompact.{u}}
 namespace CommonRealization
 variable {Xs : ℕ → MeasuredCompact.{u}} {X : MeasuredCompact.{u}}
 noncomputable def seqProbability (C : CommonRealization Xs X) (n : ℕ) : ProbabilityMeasure C :=
-  ProbabilityMeasure.map (Xs n).probability (C.seq_isometry n).continuous.measurable.aemeasurable
+  ProbabilityMeasure.map (Xs n).probability (C.seqMap n)
 noncomputable def limitProbability (C : CommonRealization Xs X) : ProbabilityMeasure C :=
-  ProbabilityMeasure.map X.probability C.limit_isometry.continuous.measurable.aemeasurable
+  ProbabilityMeasure.map X.probability C.limitMap
 
 def HausdorffConverges (C : CommonRealization Xs X) : Prop :=
   Tendsto (fun n ↦ hausdorffDist (range (C.seqMap n)) (range C.limitMap)) atTop (𝓝 0)

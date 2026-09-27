@@ -12,7 +12,7 @@ theorem continuous_toLp_norm_rpow (μ : Measure X) [IsFiniteMeasure μ]
     ‖ContinuousMap.toLp p μ ℝ f‖ ^ p.toReal = ∫ z, |f z| ^ p.toReal ∂μ := by
   have hp0 : p ≠ 0 := ne_of_gt (lt_of_lt_of_le zero_lt_one Fact.out)
   rw [Lp.norm_def, eLpNorm_congr_ae (ContinuousMap.coeFn_toLp μ f),
-    toReal_eLpNorm f.continuous.aestronglyMeasurable,
+    toReal_eLpNorm,
     lpNorm_eq_integral_norm_rpow_toReal hp0 hp f.continuous.aestronglyMeasurable]
   rw [Real.rpow_inv_rpow (integral_nonneg (fun z ↦ Real.rpow_nonneg (norm_nonneg _) _))
     (ENNReal.toReal_pos hp0 hp).ne']

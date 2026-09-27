@@ -28,8 +28,8 @@ theorem embedded_eventually_orthonormal_coordinateLpMinimizer_tendsto
     [(μ : Measure X).IsOpenPosMeasure]
     (es : ∀ n, Xs n → Z) (hes : ∀ n, Isometry (es n))
     (e : X → Z) (he : Isometry e)
-    (hμ : Tendsto (fun n ↦ (μs n).map (hes n).continuous.measurable.aemeasurable)
-      atTop (𝓝 (μ.map he.continuous.measurable.aemeasurable)))
+    (hμ : Tendsto (fun n ↦ (μs n).map (es n))
+      atTop (𝓝 (μ.map e)))
     (p : ENNReal) [Fact (1 ≤ p)] (hp : p ≠ ⊤)
     [StrictConvexSpace ℝ (Lp ℝ p (μ : Measure X))]
     (vs : ℕ → ι → C(Z, ℝ)) (v : ι → C(Z, ℝ))

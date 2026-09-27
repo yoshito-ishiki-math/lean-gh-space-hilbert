@@ -1,6 +1,8 @@
 import PaperN.PartI.HaarConvergenceStatements
 import PaperN.PartI.UniformOrbit
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace PaperN.PartI
 open MeasureTheory Filter
 open scoped Topology BoundedContinuousFunction

@@ -75,7 +75,7 @@ theorem isClosed_invariantProbabilities [MetricSpace X] [CompactSpace X] [BorelS
   convert h using 1
   ext μ
   change Measure.map g (μ : Measure X) = (μ : Measure X) ↔
-    μ.map hg.measurable.aemeasurable = μ
+    μ.map g = μ
   exact ⟨fun hμ ↦ ProbabilityMeasure.toMeasure_injective hμ,
     fun hμ ↦ congrArg ProbabilityMeasure.toMeasure hμ⟩
 

@@ -33,7 +33,7 @@ noncomputable def familyFiberAverage (hm : GHPMetricInput.{u}) (hp : GHPPolishIn
   have hs : IsClosed s := isClosed_familyFiber hm Xs (continuous_familyGH Xs e he hH)
   let law :=  probabilityOnSubtype ((diracProba t).prod η) s hs.measurableSet
     (diracProduct_fullMass t η s hs.measurableSet hη)
-  exact barycenter (law.map (continuous_familyFiberProbability hm Xs e he hH).measurable.aemeasurable)
+  exact barycenter (law.map (familyFiberProbability Xs e he))
 
 /-- The joint-domain construction has the required varying-parameter convergence.
 Identification with the existing carrier-wise average is proved in FamilyAverageIdentification. -/

@@ -8,8 +8,8 @@ variable {A B : Type*} [MetricSpace A] [CompactSpace A] [MeasurableSpace A] [Bor
 
 /-- Barycenters commute with pushforward by a continuous map. -/
 theorem barycenter_map (f : C(A, B)) (η : ProbabilityMeasure (ProbabilityMeasure A)) :
-    (barycenter η).map f.continuous.measurable.aemeasurable =
-      barycenter (η.map (probabilityPushforward f).continuous.measurable.aemeasurable) := by
+    (barycenter η).map f =
+      barycenter (η.map (probabilityPushforward f)) := by
   apply ProbabilityMeasure.toMeasure_injective
   ext S hS
   rw [ProbabilityMeasure.toMeasure_map, Measure.map_apply f.continuous.measurable hS,

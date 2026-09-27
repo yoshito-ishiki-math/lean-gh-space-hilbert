@@ -13,7 +13,6 @@ def VaryingFiberTransportStatement (hm : GHPMetricInput.{u}) : Prop :=
     (C : CommonRealization Xs X), C.HausdorffConverges →
     ∀ (qs : ∀ n, InvariantFiber (Xs n)) (q : InvariantFiber X),
     Tendsto (fun n ↦ (qs n).val.val) atTop (𝓝 q.val.val) →
-    Tendsto (fun n ↦ (fiberProbability (Xs n) (qs n)).map
-      (C.seq_isometry n).continuous.measurable.aemeasurable) atTop
-      (𝓝 ((fiberProbability X q).map C.limit_isometry.continuous.measurable.aemeasurable))
+    Tendsto (fun n ↦ (fiberProbability (Xs n) (qs n)).map (C.seqMap n)) atTop
+      (𝓝 ((fiberProbability X q).map C.limitMap))
 end PaperN.PartI

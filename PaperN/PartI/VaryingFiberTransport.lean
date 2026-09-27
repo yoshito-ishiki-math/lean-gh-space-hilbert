@@ -15,13 +15,12 @@ theorem varying_fiberProbability_tendsto (hm : GHPMetricInput.{u})
     (qs : ∀ n, InvariantFiber (Xs n)) (q : InvariantFiber X) :
     letI := hm.metricSpace
     Tendsto (fun n ↦ (qs n).val.val) atTop (𝓝 q.val.val) →
-    Tendsto (fun n ↦ (fiberProbability (Xs n) (qs n)).map
-      (C.seq_isometry n).continuous.measurable.aemeasurable) atTop
-      (𝓝 ((fiberProbability X q).map C.limit_isometry.continuous.measurable.aemeasurable)) := by
+    Tendsto (fun n ↦ (fiberProbability (Xs n) (qs n)).map (C.seqMap n)) atTop
+      (𝓝 ((fiberProbability X q).map C.limitMap)) := by
   letI := hm.metricSpace
   intro hq
   let ps (n : ℕ) : ProbabilityMeasure C :=
-    (fiberProbability (Xs n) (qs n)).map (C.seq_isometry n).continuous.measurable.aemeasurable
+    (fiberProbability (Xs n) (qs n)).map (C.seqMap n)
   apply tendsto_nhds_of_unique_mapClusterPt
   intro ν hν
   obtain ⟨φ, hφ, hv⟩ := hν.tendsto_subseq
@@ -41,7 +40,7 @@ theorem varying_fiberProbability_tendsto (hm : GHPMetricInput.{u})
   have he := C.limit_isometry.isClosedEmbedding.measurableEmbedding
   let ρ : ProbabilityMeasure X := ⟨(ν : Measure C).comap C.limitMap,
     he.isProbabilityMeasure_comap ((mem_ae_iff_prob_eq_one hclosed.measurableSet).mpr hmass)⟩
-  have hρ : ρ.map C.limit_isometry.continuous.measurable.aemeasurable = ν := by
+  have hρ : ρ.map C.limitMap = ν := by
     apply ProbabilityMeasure.toMeasure_injective
     change Measure.map C.limitMap ((ν : Measure C).comap C.limitMap) = _
     rw [he.map_comap]
@@ -74,7 +73,7 @@ theorem varying_fiberProbability_tendsto (hm : GHPMetricInput.{u})
     tendsto_nhds_unique hconv (hq.comp hφ.tendsto_atTop)
   have heq := fiberProbability_unique X q ρ hclass
   exact hρ.symm.trans (congrArg (fun p : ProbabilityMeasure X ↦ p.map
-    C.limit_isometry.continuous.measurable.aemeasurable) heq.symm)
+    C.limitMap) heq.symm)
 /-- Connection to the separately reviewable varying-carrier statement. -/
 theorem varyingFiberTransport_spec (hm : GHPMetricInput.{u}) :
     VaryingFiberTransportStatement hm := varying_fiberProbability_tendsto hm

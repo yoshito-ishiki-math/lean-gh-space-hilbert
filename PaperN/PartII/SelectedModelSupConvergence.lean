@@ -51,6 +51,7 @@ theorem selected_spectral_model_sup_convergence
     have hm0 (a : EuclideanSpace ℝ ι) := coordinateLpNorm_map
       (selectedProbability hm hs X)
       (⟨C.limitMap, C.limit_isometry.continuous⟩ : C(X, C)) p hpfin g a
+    simp only [ContinuousMap.coe_mk] at hms hm0
     simpa only [unitNormError, hms, hm0, hext] using hn
   · intro R hRseq
     have ht := nearby_pair_sup_tendsto (fun n ↦ (R n).rel)

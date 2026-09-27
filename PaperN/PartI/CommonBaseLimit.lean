@@ -1,5 +1,7 @@
 import PaperN.PartI.CommonBaseGluing
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace PaperN.PartI.BasedAmbient
 open Metric GromovHausdorff Set Filter
 open scoped Topology

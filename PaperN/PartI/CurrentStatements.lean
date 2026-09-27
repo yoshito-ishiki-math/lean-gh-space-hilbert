@@ -40,14 +40,14 @@ def CurrentInvariantAssignmentStatement : Prop :=
       (μ X : Measure X).support = univ) ∧
     (∀ (X Y : Type u) [MetricSpace X] [CompactSpace X] [Nonempty X]
       [MetricSpace Y] [CompactSpace Y] [Nonempty Y] (e : X ≃ᵢ Y),
-      (μ X).map e.continuous.measurable.aemeasurable = μ Y) ∧
+      (μ X).map e = μ Y) ∧
     (∀ (Xs : ℕ → Type u) (X Z : Type u)
       [∀ n, MetricSpace (Xs n)] [∀ n, CompactSpace (Xs n)] [∀ n, Nonempty (Xs n)]
       [MetricSpace X] [CompactSpace X] [Nonempty X] [MetricSpace Z] [CompactSpace Z]
       (es : ∀ n, Xs n → Z) (e : X → Z) (hes : ∀ n, Isometry (es n)) (he : Isometry e),
       Tendsto (fun n ↦ hausdorffDist (range (es n)) (range e)) atTop (𝓝 0) →
-      Tendsto (fun n ↦ (μ (Xs n)).map (hes n).continuous.measurable.aemeasurable)
-        atTop (𝓝 ((μ X).map he.continuous.measurable.aemeasurable)))
+      Tendsto (fun n ↦ (μ (Xs n)).map (es n))
+        atTop (𝓝 ((μ X).map e)))
 
 /-- The revised selection theorem, using exactly the existing six citation inputs. -/
 theorem currentInvariantAssignment_spec (hm : GHPMetricInput.{0}) (hp : GHPPolishInput hm)

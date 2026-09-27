@@ -76,7 +76,7 @@ universe v
 variable {X : Type v} [MetricSpace X] [CompactSpace X] [MeasurableSpace X] [BorelSpace X]
 
 theorem ambientOperator_eq_measureOperator (e : C(X, Z)) (μ : ProbabilityMeasure X) :
-    ambientOperator e (μ : Measure X) = measureOperator (μ.map e.continuous.measurable.aemeasurable) := by
+    ambientOperator e (μ : Measure X) = measureOperator (μ.map e) := by
   apply ContinuousLinearMap.ext
   intro f
   ext z
@@ -90,8 +90,8 @@ theorem ambientOperator_strong_of_pushforward
     [∀ n, MeasurableSpace (Xs n)] [∀ n, BorelSpace (Xs n)]
     (es : ∀ n, C(Xs n, Z)) (μs : ∀ n, ProbabilityMeasure (Xs n))
     (e : C(X, Z)) (μ : ProbabilityMeasure X)
-    (hμ : Tendsto (fun n ↦ (μs n).map (es n).continuous.measurable.aemeasurable) atTop
-      (𝓝 (μ.map e.continuous.measurable.aemeasurable))) (f : C(Z, ℂ)) :
+    (hμ : Tendsto (fun n ↦ (μs n).map (es n)) atTop
+      (𝓝 (μ.map e))) (f : C(Z, ℂ)) :
     Tendsto (fun n ↦ ambientOperator (es n) (μs n : Measure (Xs n)) f) atTop
       (𝓝 (ambientOperator e (μ : Measure X) f)) := by
   simp_rw [ambientOperator_eq_measureOperator]

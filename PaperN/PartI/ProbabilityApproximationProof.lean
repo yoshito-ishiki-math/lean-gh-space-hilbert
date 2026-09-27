@@ -22,7 +22,7 @@ theorem probabilityApproximationInput_proved : ProbabilityApproximationInput.{u}
     rw [hausdorffDist_comm]
     exact lt_add_of_pos_right _ (by positivity)
   choose s hm hd using hs
-  let μ := fun n ↦ X.probability.map (hm n).aemeasurable
+  let μ := fun n ↦ X.probability.map (s n)
   refine ⟨μ, ?_⟩
   have h := levyProkhorovDist_map_tendsto_of_dist_le (X.probability : Measure X)
     (fun n ↦ C.seqMap n ∘ s n) C.limitMap
@@ -33,9 +33,8 @@ theorem probabilityApproximationInput_proved : ProbabilityApproximationInput.{u}
   convert h using 1
   funext n
   change levyProkhorovDist
-    (((X.probability.map (hm n).aemeasurable).map
-      (C.seq_isometry n).continuous.measurable.aemeasurable).toMeasure)
-    ((X.probability.map C.limit_isometry.continuous.measurable.aemeasurable).toMeasure) = _
+    (((X.probability.map (s n)).map (C.seqMap n)).toMeasure)
+    ((X.probability.map C.limitMap).toMeasure) = _
   simp only [ProbabilityMeasure.toMeasure_map,
     Measure.map_map (C.seq_isometry n).continuous.measurable (hm n)]
 end PaperN.PartI

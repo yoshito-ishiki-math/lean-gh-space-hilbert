@@ -43,7 +43,7 @@ theorem spectralBasis_coefficient_integral
     simp [Finsupp.single_apply, eq_comm]
   exact (congrArg (fun T : spectralCutoff (μ : Measure X) η →ₗ[ℝ] ℝ ↦ T f) hL).symm
 
-variable (hinv : ∀ g : X ≃ᵢ X, μ.map g.continuous.measurable.aemeasurable = μ)
+variable (hinv : ∀ g : X ≃ᵢ X, μ.map g = μ)
 
 /-- The exact matrix-entry formula in eq:local-isometry-representation-2. -/
 theorem spectralIsometryMatrix_integral

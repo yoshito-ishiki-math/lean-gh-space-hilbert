@@ -28,7 +28,7 @@ theorem chosenSpectralBasis_integralOrthonormal (μ : ProbabilityMeasure X)
 /-- The representation using precisely the basis chosen for the coordinate class. -/
 noncomputable def chosenSpectralRepresentation (μ : ProbabilityMeasure X)
     [(μ : Measure X).IsOpenPosMeasure]
-    (hinv : ∀ g : X ≃ᵢ X, μ.map g.continuous.measurable.aemeasurable = μ) (η : ℝ)
+    (hinv : ∀ g : X ≃ᵢ X, μ.map g = μ) (η : ℝ)
     [FiniteDimensional ℝ (spectralCutoff (μ : Measure X) η)]
     (n : ℕ) (hn : n = Module.finrank ℝ (spectralCutoff (μ : Measure X) η)) :
     (X ≃ᵢ X) →* Matrix.orthogonalGroup (Fin n) ℝ :=
@@ -38,7 +38,7 @@ noncomputable def chosenSpectralRepresentation (μ : ProbabilityMeasure X)
 
 theorem continuous_chosenSpectralRepresentation (μ : ProbabilityMeasure X)
     [(μ : Measure X).IsOpenPosMeasure]
-    (hinv : ∀ g : X ≃ᵢ X, μ.map g.continuous.measurable.aemeasurable = μ) (η : ℝ)
+    (hinv : ∀ g : X ≃ᵢ X, μ.map g = μ) (η : ℝ)
     [FiniteDimensional ℝ (spectralCutoff (μ : Measure X) η)]
     (n : ℕ) (hn : n = Module.finrank ℝ (spectralCutoff (μ : Measure X) η)) :
     Continuous (chosenSpectralRepresentation μ hinv η n hn) :=
@@ -68,7 +68,7 @@ theorem selected_exists_orthogonalRepresentation
     (spectralCutoffEquiv (μ : Measure X) hη).symm.finiteDimensional
   let b := subspaceOrthonormalBasis (μ : Measure X) (spectralCutoff (μ : Measure X) η) n hn
   have hb := chosenSpectralBasis_integralOrthonormal μ η n hn
-  have hinv : ∀ g : X ≃ᵢ X, μ.map g.continuous.measurable.aemeasurable = μ :=
+  have hinv : ∀ g : X ≃ᵢ X, μ.map g = μ :=
     fun g ↦ selectedProbability_natural hm hs X X g
   refine ⟨b, subspaceOrthonormalBasis_orthonormal (μ : Measure X) _ n hn,
     spectralOrthogonalRepresentation μ η b hinv hb,

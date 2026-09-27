@@ -10,10 +10,10 @@ variable {Xs : ℕ → MeasuredCompact.{u}} {X : MeasuredCompact.{u}}
 
 noncomputable def seqActionProbability (C : CommonRealization Xs X)
     (gs : ∀ n, Xs n ≃ᵢ Xs n) (n : ℕ) : ProbabilityMeasure C :=
-  (Xs n).probability.map ((C.seq_isometry n).continuous.comp (gs n).continuous).measurable.aemeasurable
+  (Xs n).probability.map (C.seqMap n ∘ gs n)
 noncomputable def limitActionProbability (C : CommonRealization Xs X)
     (g : X ≃ᵢ X) : ProbabilityMeasure C :=
-  X.probability.map (C.limit_isometry.continuous.comp g.continuous).measurable.aemeasurable
+  X.probability.map (C.limitMap ∘ g)
 
 def subsequence (C : CommonRealization Xs X) (φ : ℕ → ℕ) :
     CommonRealization (fun n ↦ Xs (φ n)) X where
@@ -65,13 +65,16 @@ theorem actionProbability_tendsto (C : CommonRealization Xs X)
   have he' : ∀ x, h (C.limitMap x) = f (C.limitMap (g x)) := fun x ↦ congrFun he x
   have hw := ProbabilityMeasure.tendsto_iff_forall_integral_tendsto.mp hW h
   have herr := C.graph_integral_error gs g hG f h he'
-  have hmap : ∀ (Y : Type u) [MetricSpace Y] [MeasurableSpace Y] [BorelSpace Y]
-      (μ : ProbabilityMeasure Y) (e : Y → C) (he : AEMeasurable e (μ : Measure Y)) (a : C →ᵇ ℝ),
-      (∫ z, a z ∂(μ.map he : Measure C)) =
-        ∫ x, a (e x) ∂(μ : Measure Y) := fun _ _ _ _ μ e he a ↦
-      integral_map he a.continuous.aestronglyMeasurable
-  simp only [seqProbability, limitProbability, hmap] at hw
-  simp only [seqActionProbability, limitActionProbability, hmap]
+  simp only [seqProbability, limitProbability, ProbabilityMeasure.toMeasure_map] at hw
+  simp_rw [integral_map (C.seq_isometry _).continuous.measurable.aemeasurable
+    h.continuous.aestronglyMeasurable,
+    integral_map C.limit_isometry.continuous.measurable.aemeasurable
+      h.continuous.aestronglyMeasurable] at hw
+  simp only [seqActionProbability, limitActionProbability, ProbabilityMeasure.toMeasure_map]
+  simp_rw [integral_map ((C.seq_isometry _).continuous.comp (gs _).continuous).measurable.aemeasurable
+    f.continuous.aestronglyMeasurable,
+    integral_map (C.limit_isometry.continuous.comp g.continuous).measurable.aemeasurable
+      f.continuous.aestronglyMeasurable]
   have herr' : Tendsto (fun n ↦
       (∫ x : Xs n, f (C.seqMap n (gs n x)) ∂((Xs n).probability : Measure (Xs n))) -
       ∫ x : Xs n, h (C.seqMap n x) ∂((Xs n).probability : Measure (Xs n))) atTop (𝓝 0) := by

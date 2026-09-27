@@ -20,7 +20,7 @@ noncomputable def universalProbability (hm : GHPMetricInput.{0})
     (X : Type u) [MetricSpace X] [CompactSpace X] [Nonempty X] :
     @ProbabilityMeasure X (borel X) :=
   (selectedProbability hm hs (smallCarrier X)).map
-    (smallCarrierEquiv X).continuous.measurable.aemeasurable
+    (smallCarrierEquiv X)
 
 /-- The result is independent of the chosen small representative and identifying isometry. -/
 theorem universalProbability_eq_map (hm : GHPMetricInput.{0})
@@ -28,7 +28,7 @@ theorem universalProbability_eq_map (hm : GHPMetricInput.{0})
     (X : Type u) [MetricSpace X] [CompactSpace X] [Nonempty X]
     (Y : MeasuredCompact.{0}) (e : Y ≃ᵢ X) :
     universalProbability hm hs X =
-      (selectedProbability hm hs Y).map e.continuous.measurable.aemeasurable := by
+      (selectedProbability hm hs Y).map e := by
   letI : MeasurableSpace X := borel X
   let k := e.trans (smallCarrierEquiv X).symm
   have h := selectedProbability_natural hm hs Y (smallCarrier X) k
@@ -46,7 +46,7 @@ theorem universalProbability_natural (hm : GHPMetricInput.{0})
     (hs : InvariantFiberLawSelectionStatement hm)
     (X : Type u) (Y : Type v) [MetricSpace X] [CompactSpace X] [Nonempty X]
     [MetricSpace Y] [CompactSpace Y] [Nonempty Y] (e : X ≃ᵢ Y) :
-    (universalProbability hm hs X).map e.continuous.measurable.aemeasurable =
+    (universalProbability hm hs X).map e =
       universalProbability hm hs Y := by
   letI : MeasurableSpace X := borel X
   letI : MeasurableSpace Y := borel Y
@@ -84,9 +84,9 @@ theorem small_mapped (hm : GHPMetricInput.{0})
   (Y : Type u) [MetricSpace Y] [CompactSpace Y] [Nonempty Y]
     (f : Y → Z) (hf : Isometry f) :
     ((selectedProbability hm hs (smallCarrier Y)).map
-      ((smallCarrierEquiv Z).symm.isometry.comp (hf.comp (smallCarrierEquiv Y).isometry)).continuous.measurable.aemeasurable).map
-      (smallCarrierEquiv Z).continuous.measurable.aemeasurable =
-    (universalProbability hm hs Y).map hf.continuous.measurable.aemeasurable := by
+      ((smallCarrierEquiv Z).symm ∘ f ∘ smallCarrierEquiv Y)).map
+      (smallCarrierEquiv Z) =
+    (universalProbability hm hs Y).map f := by
   apply ProbabilityMeasure.toMeasure_injective
   simp only [universalProbability, ProbabilityMeasure.toMeasure_map]
   rw [Measure.map_map (smallCarrierEquiv Z).continuous.measurable
@@ -105,8 +105,8 @@ theorem universalProbability_tendsto (hm : GHPMetricInput.{0}) (hp : GHPPolishIn
     (es : ∀ n, Xs n → Z) (e : X → Z) (hes : ∀ n, Isometry (es n)) (he : Isometry e)
     (hH : Tendsto (fun n ↦ hausdorffDist (range (es n)) (range e)) atTop (𝓝 0)) :
     Tendsto (fun n ↦ (universalProbability hm hs (Xs n)).map
-      (hes n).continuous.measurable.aemeasurable) atTop
-      (𝓝 ((universalProbability hm hs X).map he.continuous.measurable.aemeasurable)) := by
+      (es n)) atTop
+      (𝓝 ((universalProbability hm hs X).map e)) := by
   letI : Nonempty Z := ⟨e (Classical.choice inferInstance)⟩
   let C : CommonRealization (fun n ↦ smallCarrier (Xs n)) (smallCarrier X) := {
     Carrier := smallCarrier Z

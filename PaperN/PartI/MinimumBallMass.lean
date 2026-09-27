@@ -1,6 +1,8 @@
 import PaperN.PartI.BallMass
 import PaperN.PartI.CompactMinima
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace PaperN.PartI
 open MeasureTheory Set Filter TopologicalSpace
 open scoped Topology

@@ -10,7 +10,7 @@ variable {X Z ι : Type*} [MetricSpace X] [CompactSpace X]
 theorem coordinateLpNorm_map (μ : ProbabilityMeasure X) (e : C(X, Z))
     (p : ENNReal) [Fact (1 ≤ p)] (hp : p ≠ ⊤)
     (v : ι → C(Z, ℝ)) (a : EuclideanSpace ℝ ι) :
-    coordinateLpNorm (μ.map e.continuous.measurable.aemeasurable : Measure Z) p v a =
+    coordinateLpNorm (μ.map e : Measure Z) p v a =
       coordinateLpNorm (μ : Measure X) p (fun i ↦ (v i).comp e) a := by
   have hp0 : 0 < p.toReal :=
     ENNReal.toReal_pos (ne_of_gt (lt_of_lt_of_le zero_lt_one Fact.out)) hp
@@ -30,8 +30,8 @@ theorem intrinsic_coordinateLpNorm_uniform_on_compact
     [∀ n, MeasurableSpace (Xs n)] [∀ n, BorelSpace (Xs n)]
     (μs : ∀ n, ProbabilityMeasure (Xs n)) (μ : ProbabilityMeasure X)
     (es : ∀ n, C(Xs n, Z)) (e : C(X, Z))
-    (hμ : Tendsto (fun n ↦ (μs n).map (es n).continuous.measurable.aemeasurable)
-      atTop (𝓝 (μ.map e.continuous.measurable.aemeasurable)))
+    (hμ : Tendsto (fun n ↦ (μs n).map (es n))
+      atTop (𝓝 (μ.map e)))
     (p : ENNReal) [Fact (1 ≤ p)] (hp : p ≠ ⊤)
     (vs : ℕ → ι → C(Z, ℝ)) (v : ι → C(Z, ℝ))
     (hv : ∀ i, Tendsto (fun n ↦ vs n i) atTop (𝓝 (v i)))

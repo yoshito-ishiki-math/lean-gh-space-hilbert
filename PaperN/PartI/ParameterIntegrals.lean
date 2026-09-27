@@ -4,6 +4,8 @@ import Mathlib.Topology.UniformSpace.Ascoli
 import Mathlib.Topology.MetricSpace.Equicontinuity
 import Mathlib.Topology.ContinuousMap.Compact
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace PaperN.PartI
 open MeasureTheory Filter TopologicalSpace
 open scoped Topology BoundedContinuousFunction
@@ -110,7 +112,7 @@ theorem uniformWeakIntegrals_spec [CompactSpace Z] : UniformWeakIntegralsStateme
   letI : Nonempty K := hKne.to_subtype
   let F : C(K, Z →ᵇ 𝕜) := ⟨fun f ↦ BoundedContinuousFunction.mkOfCompact f.val,
     (ContinuousMap.isometryEquivBoundedOfCompact Z 𝕜).continuous.comp continuous_subtype_val⟩
-  simpa only [dist_eq_norm, F, ContinuousMap.coe_mk, BoundedContinuousFunction.mkOfCompact_apply] using tendsto_sup_dist_of_uniform
+  simpa [dist_eq_norm, F] using tendsto_sup_dist_of_uniform
     (uniform_integrals_of_compact_parameters μs μ hμ F)
 
 /-- The supremum formulation of the entire parameter-integral lemma. -/

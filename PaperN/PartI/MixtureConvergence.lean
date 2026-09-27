@@ -14,7 +14,7 @@ theorem mixture_weakConverges (C : CommonRealization Xs X) (hW : C.WeakConverges
     (hzero : Tendsto (fun n ↦ (t n : ℝ)) atTop (𝓝 0)) :
     (C.withProbabilities (fun n ↦ probabilityMixture (Xs n).probability (ν n) (t n) (ht n))).WeakConverges := by
   change Tendsto (fun n ↦ (show ProbabilityMeasure C from (probabilityMixture (Xs n).probability (ν n) (t n) (ht n)).map
-    (C.seq_isometry n).continuous.measurable.aemeasurable)) atTop (𝓝 C.limitProbability)
+    (C.seqMap n))) atTop (𝓝 C.limitProbability)
   apply (ProbabilityMeasure.tendsto_iff_forall_integral_tendsto (Ω := C)).mpr
   intro f
   let F (n : ℕ) : Xs n →ᵇ ℝ :=

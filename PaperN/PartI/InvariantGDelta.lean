@@ -2,6 +2,8 @@ import PaperN.PartI.InvariantGDeltaStatements
 import PaperN.PartI.CommonIsometryLimits
 import PaperN.PartI.FullSupportGDelta
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace PaperN.PartI
 open MeasureTheory Set Filter TopologicalSpace
 open scoped Topology

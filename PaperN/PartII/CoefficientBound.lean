@@ -14,7 +14,7 @@ theorem continuous_toLp_norm_mono (p q : ENNReal) [Fact (1 ≤ p)] [Fact (1 ≤ 
   apply ENNReal.toReal_mono (Lp.eLpNorm_ne_top _)
   rw [eLpNorm_congr_ae (ContinuousMap.coeFn_toLp μ f),
     eLpNorm_congr_ae (ContinuousMap.coeFn_toLp μ f)]
-  exact eLpNorm_le_eLpNorm_of_exponent_le hpq f.continuous.aestronglyMeasurable
+  exact eLpNorm_le_eLpNorm_of_exponent_le hpq
 
 theorem coefficient_norm_le_coordinateLpNorm (p : ENNReal) [Fact (1 ≤ p)] (hp : 2 ≤ p)
     (S : Submodule ℝ (Lp ℝ 2 μ)) (b : OrthonormalBasis ι ℝ S)

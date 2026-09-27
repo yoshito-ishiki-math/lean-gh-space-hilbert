@@ -17,8 +17,8 @@ theorem exists_convergent_subspace_representatives
     (Ss : ∀ k, Submodule ℝ C(Xs k, ℝ)) (S : Submodule ℝ C(X, ℝ))
     [∀ k, FiniteDimensional ℝ (Ss k)] [FiniteDimensional ℝ S]
     (es : ∀ k, Xs k → Z) (hes : ∀ k, Isometry (es k)) (e : X → Z) (he : Isometry e)
-    (hμ : Tendsto (fun k ↦ (μs k).map (hes k).continuous.measurable.aemeasurable)
-      atTop (𝓝 (μ.map he.continuous.measurable.aemeasurable)))
+    (hμ : Tendsto (fun k ↦ (μs k).map (es k))
+      atTop (𝓝 (μ.map e)))
     (p : ENNReal) [Fact (1 ≤ p)] (hp : p ≠ ⊤) (hp2 : 2 ≤ p)
     [∀ k, StrictConvexSpace ℝ (Lp ℝ p (μs k : Measure (Xs k)))]
     [StrictConvexSpace ℝ (Lp ℝ p (μ : Measure X))]
@@ -52,6 +52,7 @@ theorem exists_convergent_subspace_representatives
     have heqs k b := coordinateLpNorm_map (μs k)
       (⟨es k, (hes k).continuous⟩ : C(Xs k, Z)) p hp (vs k) b
     have heq b := coordinateLpNorm_map μ (⟨e, he.continuous⟩ : C(X, Z)) p hp v b
+    simp only [ContinuousMap.coe_mk] at heqs heq
     simpa only [unitNormError, heqs, heq, han] using h
   have hrepair := coordinate_class_repair_preserves_suprema Xs as _ _ hase a hnorm
   refine ⟨a, as, hac, hasc, hrepair.1, ?_⟩

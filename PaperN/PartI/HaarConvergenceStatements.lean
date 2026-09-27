@@ -10,7 +10,7 @@ variable {Xs : ℕ → MeasuredCompact.{u}} {X : MeasuredCompact.{u}}
 
 noncomputable def averagedProbability (C : CommonRealization Xs X) (n : ℕ) :
     ProbabilityMeasure C :=
-  (haarAverage (Xs n).probability).map (C.seq_isometry n).continuous.measurable.aemeasurable
+  (haarAverage (Xs n).probability).map (C.seqMap n)
 
 /-- The Haar-averaging convergence step of `lem:convergent-invariant-lifts`. -/
 def HaarConvergenceStatement (C : CommonRealization Xs X) : Prop :=

@@ -16,7 +16,7 @@ variable {X : Type u} {Y : Type v}
 /-- Pushforward with the weak topologies already used by mathlib. -/
 noncomputable def probabilityPushforward (f : C(X, Y)) :
     C(ProbabilityMeasure X, ProbabilityMeasure Y) :=
-  ⟨fun μ ↦ μ.map f.continuous.measurable.aemeasurable,
+  ⟨fun μ ↦ μ.map f,
     ProbabilityMeasure.continuous_map f.continuous⟩
 
 /-- A cited consequence of softness for an open continuous surjection.

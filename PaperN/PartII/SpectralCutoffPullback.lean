@@ -14,7 +14,7 @@ theorem distanceToContinuous_toL2_integral (μ : ProbabilityMeasure X) (f : C(X,
 /-- The continuous representative of the distance operator commutes with pullback. -/
 theorem distanceToContinuous_toL2_comap
     (μ : ProbabilityMeasure X) (ν : ProbabilityMeasure Y)
-    (e : X → Y) (he : Isometry e) (hμ : μ.map he.continuous.measurable.aemeasurable = ν)
+    (e : X → Y) (he : Isometry e) (hμ : μ.map e = ν)
     (f : C(Y, ℝ)) :
     (distanceToContinuous (ν : Measure Y) (continuousToL2 (ν : Measure Y) f)).comp
       ⟨e, he.continuous⟩ =
@@ -31,7 +31,7 @@ theorem distanceToContinuous_toL2_comap
 /-- Continuous eigenfunctions pull back to eigenfunctions with the same eigenvalue. -/
 theorem continuousEigenfunction_comap
     (μ : ProbabilityMeasure X) (ν : ProbabilityMeasure Y) [(ν : Measure Y).IsOpenPosMeasure]
-    (e : X → Y) (he : Isometry e) (hμ : μ.map he.continuous.measurable.aemeasurable = ν)
+    (e : X → Y) (he : Isometry e) (hμ : μ.map e = ν)
     (f : C(Y, ℝ)) (a : ℝ)
     (hf : distanceOperator (ν : Measure Y) (continuousToL2 (ν : Measure Y) f) =
       a • continuousToL2 (ν : Measure Y) f) :
@@ -49,7 +49,7 @@ theorem continuousEigenfunction_comap
 /-- The entire algebraic continuous cutoff is preserved by isometric pullback. -/
 theorem spectralCutoff_comap_mem
     (μ : ProbabilityMeasure X) (ν : ProbabilityMeasure Y) [(ν : Measure Y).IsOpenPosMeasure]
-    (e : X → Y) (he : Isometry e) (hμ : μ.map he.continuous.measurable.aemeasurable = ν)
+    (e : X → Y) (he : Isometry e) (hμ : μ.map e = ν)
     (η : ℝ) (f : C(Y, ℝ)) (hf : f ∈ spectralCutoff (ν : Measure Y) η) :
     f.comp ⟨e, he.continuous⟩ ∈ spectralCutoff (μ : Measure X) η := by
   induction hf using Submodule.span_induction with
