@@ -17,5 +17,12 @@
   "nanoda": "not run",
   "public_repository": "https://github.com/yoshito-ishiki-math/lean-gh-space-hilbert",
   "submission_commit": null,
-  "submitted": false
+  "submitted": false,
+  "official_preflight": {
+    "status": "fail",
+    "code": "toolchain.unsupported",
+    "commit": "302ef17c74a5975e49f4171bb86f10daef469ba4",
+    "required_minimum": "v4.35.0-rc2",
+    "url": "https://github.com/yoshito-ishiki-math/lean-gh-space-hilbert/actions/runs/36290916485"
+  }
 }

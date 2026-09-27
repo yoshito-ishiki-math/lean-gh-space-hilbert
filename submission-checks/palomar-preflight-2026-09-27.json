@@ -1,0 +1,76 @@
+{
+  "checked_at": "2026-09-27T03:16:47Z",
+  "diagnostics": [
+    {
+      "code": "toolchain.unsupported",
+      "explanation": "Lean toolchain leanprover/lean4:v4.32.1 is older than the minimum Palomar supports (v4.35.0-rc2)",
+      "next_action": "Update the repository, commit the correction, then make a new submission using the new commit SHA.",
+      "owner": "submitter",
+      "repairable": false,
+      "retryable": false,
+      "stage": "toolchain",
+      "summary": "Lean toolchain leanprover/lean4:v4.32.1 is older than the minimum Palomar supports (v4.35.0-rc2)"
+    }
+  ],
+  "diagnostics_schema_version": 1,
+  "errors": [
+    "Lean toolchain leanprover/lean4:v4.32.1 is older than the minimum Palomar supports (v4.35.0-rc2)"
+  ],
+  "existing_id": null,
+  "formalization_profile_version": 4,
+  "license": {
+    "declared_identifier": "MIT",
+    "detected_identifier": "MIT",
+    "path": "LICENSE",
+    "sha256": "f3c924f5d1930cfe42aa0912735f22b0174da2459add8106e13337269d0811c8"
+  },
+  "phase": "preparation",
+  "schema_version": 1,
+  "source": {
+    "bytes": 3126378,
+    "commit": "302ef17c74a5975e49f4171bb86f10daef469ba4",
+    "repository": "yoshito-ishiki-math/lean-gh-space-hilbert",
+    "repository_url": "https://github.com/yoshito-ishiki-math/lean-gh-space-hilbert",
+    "tree_url": "https://github.com/yoshito-ishiki-math/lean-gh-space-hilbert/tree/302ef17c74a5975e49f4171bb86f10daef469ba4"
+  },
+  "stage": "preflight",
+  "status": "fail",
+  "submission": {
+    "authorization": {
+      "relationship": "maintainer"
+    },
+    "requested_paths": {
+      "comparator_config_path": "comparator.json",
+      "formalization_metadata_path": "",
+      "project_path": ""
+    },
+    "submission_id": "papern000001"
+  },
+  "verification_profile": {
+    "id": "palomar-standard-v1",
+    "limits": {
+      "execution_budget_seconds": 19800,
+      "file_size_max_bytes": 1099511627776,
+      "job_timeout_minutes": 350,
+      "memory_high_percent": 95,
+      "memory_max_percent": 98,
+      "minimum_host_memory_bytes": 15032385536,
+      "minimum_workspace_free_bytes": 21474836480,
+      "open_files_max": 1048576,
+      "tasks_max": 32768
+    },
+    "runner": {
+      "architecture": "x86_64",
+      "label": "ubuntu-24.04",
+      "provider": "github-hosted"
+    },
+    "sha256": "94fcd7906a1b6c076c0036d742e1c5add8625e49bb474818ec8924576dbf0caa",
+    "trusted_tools": {
+      "bwrap_source_tag": "v0.12.0",
+      "toolchain_floor": "v4.35.0-rc2"
+    }
+  },
+  "warnings": [],
+  "workflow_url": "https://github.com/yoshito-ishiki-math/lean-gh-space-hilbert/actions/runs/36290916485",
+  "execution_profile": "palomar-standard-v1"
+}

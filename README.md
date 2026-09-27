@@ -71,6 +71,16 @@ same-agent source alignment are linked in [MAIN-ALIGNMENT.md](MAIN-ALIGNMENT.md)
 
 ## Official mechanical preflight
 
+Latest [official run](https://github.com/yoshito-ishiki-math/lean-gh-space-hilbert/actions/runs/36290916485)
+checked commit `302ef17c74a5975e49f4171bb86f10daef469ba4` and returned **fail**:
+`toolchain.unsupported`. This project pins Lean **v4.32.1**, whereas that pipeline
+requires **v4.35.0-rc2** or newer. Comparator and NanoDa were not reached.
+The [machine report](submission-checks/palomar-preflight-2026-09-27.json) records
+this result. A compatible Lean/Mathlib migration and proof revalidation are
+required before another preflight; changing the toolchain string alone is not
+sufficient. The existing local proof verification remains at its recorded version.
+
+
 Run **Palomar mechanical preflight** from the Actions tab. It calls the official
 full workflow at the pinned pipeline revision, using `palomar-standard-v1` and
 `comparator.json`. The default target is the selected workflow commit; an exact
