@@ -19,8 +19,9 @@ sources:
     authors: ["Yoshito Ishiki"]
     type: paper
     relationship: formalizes
-    location: "manuscript/main.tex"
-    note: "Owner manuscript, paperN snapshot; conditional formalization of its main proof chain."
+    id: "arxiv:2609.09639v4"
+    location: "https://arxiv.org/abs/2609.09639v4"
+    note: "Public paper, with a later locally aligned paperN source snapshot included; conditional formalization of its main proof chain."
   - title: "Probability measures and Milyutin maps between metric spaces, Valov, arXiv:0801.1721v2"
     type: paper
     relationship: other
